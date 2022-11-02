@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
-import messageRoutes from "./routes/message.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "passport";
@@ -34,7 +33,7 @@ const __dirname = dirname(__filename);
 const port = process.env.PORT || 3001;
 // specify your routes here
 app.use("/user", userRoutes);
-app.use("/message", messageRoutes);
+
 
 console.log("Connecting to database. Put the kettle on while you wait... 🫖");
 
