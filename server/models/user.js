@@ -3,6 +3,11 @@ import { generateRobohashAvatar } from "../helpers/avatar.js";
 const { Schema, model } = mongoose;
 
 const UserSchema = new Schema({
+  userName: {
+    type: String,
+    required: [true, "the user must have a useName"],
+    unique: true,
+  },
   email: {
     type: String,
     required: [true, "the user must have an Email"],
@@ -12,8 +17,10 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "the user must have a firstName"],
   },
-  lastName: String,
-  ip: String,
+  lastName: {
+    type: String,
+    required: [true, "the user must have a lastName"],
+  },
   password: {
     type: String,
     required: [true, "the user must have a password"],
@@ -21,7 +28,9 @@ const UserSchema = new Schema({
   },
   avatar: { type: String, default: generateRobohashAvatar() },
   dates: { registered: { type: Date, default: Date.now }, last_active: Date },
-  messages: Number,
+  pro: Boolean,
+  certificates: [Schema.Types.ObjectId],
+  skills: [String],
 });
 
 const User = model("user", UserSchema);
