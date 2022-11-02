@@ -12,13 +12,10 @@ export const registerUser = async (req, res) => {
       return res.status(409).json({ message: "User is already registered!" });
     }
 
-    // userName should be ADDED
-
     const createdUser = await User.create({
       firstName,
       lastName,
       email,
-
       password: hashedPassword,
     });
     return res.status(201).json({ message: "User created", createdUser });
