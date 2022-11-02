@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-/* import userRoutes from "./routes/user.js"; */
+import userRoutes from "./routes/user.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-/* import configureJwtStrategy from "./passport-config.js"; */
+import configureJwtStrategy from "./passport-config.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 
@@ -27,12 +27,12 @@ app.use(
 dotenv.config();
 app.use(cookieParser());
 app.use(passport.initialize());
-/* configureJwtStrategy(passport); */
+configureJwtStrategy(passport);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const port = process.env.PORT || 3001;
 // specify your routes here
-/* app.use("/user", userRoutes); */
+app.use("/user", userRoutes);
 
 console.log("Connecting to database. Put the kettle on while you wait... 🫖");
 
