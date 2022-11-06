@@ -18,17 +18,248 @@
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
       "options": [
-        { "option": "1", "isCorrect": false },
+        { "option": "1", "isCorrect": true },
         { "option": "Error", "isCorrect": false },
         { "option": "10", "isCorrect": false },
         { "option": "5", "isCorrect": false }
       ],
-      "correctOptions": 0,
+      "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
       "explanation": "The output of the above snippet code will be one because, first of all, the interpreter will search 'obj' for the property (y). But it fails to find 'obj' for property 'y,' so it chooses a value from outside the object, which is available within the given code.",
       "image": "https://i.postimg.cc/PrLntGFS/question-2.png",
       "question_number": 2
+    },
+    {
+      "questionText": "Which one of the following also known as Conditional Expression:",
+      "options": [
+        { "option": "Alternative to if-else", "isCorrect": false },
+        { "option": "Switch statement", "isCorrect": false },
+        { "option": "If-then-else statement", "isCorrect": false },
+        { "option": "immediate if", "isCorrect": true }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition",
+      "image": "",
+      "question_number": 3
+    },
+    {
+      "questionText": "In JavaScript, what is a block of statement?",
+      "options": [
+        { "option": "Conditional block", "isCorrect": false },
+        {
+          "option": "block that combines a number of statements into a single compound statement",
+          "isCorrect": true
+        },
+        {
+          "option": "both conditional block and a single statement",
+          "isCorrect": false
+        },
+        {
+          "option": "block that contains a single statement",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "A block of statement can be understand as the set of the zero or more statements. In general, a block of statement has common definition which combines one or a number of statements into a single statement for ease.",
+      "image": "",
+      "question_number": 4
+    },
+    {
+      "questionText": "When interpreter encounters an empty statements, what it will do:",
+      "options": [
+        { "option": "Shows a warning", "isCorrect": false },
+        {
+          "option": "Prompts to complete the statement",
+          "isCorrect": false
+        },
+        {
+          "option": "Throws an error",
+          "isCorrect": false
+        },
+        {
+          "option": "Ignores the statements",
+          "isCorrect": true
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "In JavaScript, when the interpreter encounters a empty statements it normally ignores or not response to that empty statement. The empty statements also sometimes very useful like we use the empty statements for creating loop for nothing",
+      "image": "",
+      "question_number": 5
+    },
+    {
+      "questionText": "The 'function' and 'var' are known as:",
+      "options": [
+        { "option": "Keywords", "isCorrect": false },
+        {
+          "option": "Data types",
+          "isCorrect": false
+        },
+        {
+          "option": "Declaration statements",
+          "isCorrect": true
+        },
+        {
+          "option": "Prototypes",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "The 'function' and'var' both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.",
+      "image": "",
+      "question_number": 6
+    },
+    {
+      "questionText": "What will happen, if the following JavaScript code is executed?",
+      "options": [
+        { "option": "An error is displayed", "isCorrect": false },
+        {
+          "option": "An exception is thrown",
+          "isCorrect": false
+        },
+        {
+          "option": "The values of count variable are logged or stored in a particular location or storage",
+          "isCorrect": true
+        },
+        {
+          "option": "The value of count from 0 to 9 is displayed in the console",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "The function 'console.log ()' used in the above function is one of the pre-defined functions of JavaScript. It takes values as arguments passed to it, and displays that value in arguments inside the console when the code is executed.",
+      "image": "https://i.postimg.cc/FsC8qPr0/question-7.png",
+      "question_number": 7
+    },
+    {
+      "questionText": "Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "9", "isCorrect": false },
+        {
+          "option": "0",
+          "isCorrect": false
+        },
+        {
+          "option": "8",
+          "isCorrect": true
+        },
+        {
+          "option": "undefined",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "The 'if-else' is one of the conditional statements available in JavaScript like several other languages. Here the comparison performed in the 'if' statement evaluates to false, so the instructions written in the else part gets executed. If the comparison performed in the 'if' statement evaluates to true, then the instruction written in the if statement will be executed.",
+      "image": "https://i.postimg.cc/ncSXSQXC/question-8.png",
+      "question_number": 8
+    },
+    {
+      "questionText": "What will happen, if the following JavaScript code is executed?",
+      "options": [
+        { "option": "An error is displayed", "isCorrect": false },
+        {
+          "option": "An exception is thrown",
+          "isCorrect": false
+        },
+        {
+          "option": "The values of count variable are logged or stored in a particular location or storage",
+          "isCorrect": true
+        },
+        {
+          "option": "The value of count from 0 to 9 is displayed in the console",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "The function 'console.log ()' used in the above function is one of the pre-defined functions of JavaScript. It takes values as arguments passed to it, and displays that value in arguments inside the console when the code is executed.",
+      "image": "https://i.postimg.cc/FsC8qPr0/question-7.png",
+      "question_number": 7
+    },
+    {
+      "questionText": "Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "9", "isCorrect": false },
+        {
+          "option": "0",
+          "isCorrect": false
+        },
+        {
+          "option": "8",
+          "isCorrect": true
+        },
+        {
+          "option": "undefined",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "The 'if-else' is one of the conditional statements available in JavaScript like several other languages. Here the comparison performed in the 'if' statement evaluates to false, so the instructions written in the else part gets executed. If the comparison performed in the 'if' statement evaluates to true, then the instruction written in the if statement will be executed.",
+      "image": "https://i.postimg.cc/ncSXSQXC/question-8.png",
+      "question_number": 8
+    },
+    {
+      "questionText": "What would be the output of the following Javascript code?",
+      "options": [
+        { "option": "Fee 10000", "isCorrect": false },
+        {
+          "option": "10000",
+          "isCorrect": false
+        },
+        {
+          "option": "Fee10000",
+          "isCorrect": true
+        },
+        {
+          "option": "Exception",
+          "isCorrect": false
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "Fee10000 is the correct answer. After concatenation, both the strings are shown as a concatenated string.",
+      "image": "https://i.postimg.cc/Y2TqcTck/question-9.png",
+      "question_number": 9
+    },
+    {
+      "questionText": "Which of the following is not a JavaScript Data Types",
+      "options": [
+        { "option": "Boolean", "isCorrect": false },
+        {
+          "option": "Undefined",
+          "isCorrect": false
+        },
+        {
+          "option": "Number",
+          "isCorrect": false
+        },
+        {
+          "option": "Float",
+          "isCorrect": true
+        }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": "'Float' is the correct answer. JavaScript supports only the following Data types: Number, String, Boolean, Object, and Undefined",
+      "image": "",
+      "question_number": 10
     }
   ]
 }
