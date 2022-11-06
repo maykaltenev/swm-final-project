@@ -1,3 +1,4 @@
+
 {
   "javascript": [
     {
@@ -31,16 +32,26 @@
       "question_number": 2
     },
     {
+
       "questionText": "Which one of the following also known as Conditional Expression:",
       "options": [
         { "option": "Alternative to if-else", "isCorrect": false },
         { "option": "Switch statement", "isCorrect": false },
         { "option": "If-then-else statement", "isCorrect": false },
         { "option": "immediate if", "isCorrect": true }
+
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition",
       "image": "",
       "question_number": 3
@@ -61,10 +72,24 @@
           "option": "block that contains a single statement",
           "isCorrect": false
         }
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 11
+    },
+    {
+      "questionText": "Which of the following given functions of the Number Object formats a number with a different number of digits to the right of the decimal?",
+      "options": [
+        { "option": "toExponential()", "isCorrect": false },
+        { "option": "toFixed()", "isCorrect": true },
+        { "option": "toPrecision()", "isCorrect": false },
+        { "option": "toLocaleString()", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "A block of statement can be understand as the set of the zero or more statements. In general, a block of statement has common definition which combines one or a number of statements into a single statement for ease.",
       "image": "",
       "question_number": 4
@@ -85,10 +110,24 @@
           "option": "Ignores the statements",
           "isCorrect": true
         }
+
+      "explanation": "The tofixed() method formats the given number with a specific number of digits to the right of the decimal.",
+      "image": "",
+      "question_number": 12
+    },
+    {
+      "questionText": "Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
+      "options": [
+        { "option": "slice()", "isCorrect": false },
+        { "option": "split()", "isCorrect": false },
+        { "option": "substr()", "isCorrect": true },
+        { "option": "search()", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "In JavaScript, when the interpreter encounters a empty statements it normally ignores or not response to that empty statement. The empty statements also sometimes very useful like we use the empty statements for creating loop for nothing",
       "image": "",
       "question_number": 5
@@ -109,10 +148,24 @@
           "option": "Prototypes",
           "isCorrect": false
         }
+
+      "explanation": "The method Subtr() in the javascript is used to return the characters in the string starting at the specified position via the specified number of the characters.",
+      "image": "",
+      "question_number": 13
+    },
+    {
+      "questionText": "Choose the correct snippet from the following to check if the variable a is not equal the NULL:",
+      "options": [
+        { "option": "if(a!==null)", "isCorrect": true },
+        { "option": "if (a!)", "isCorrect": false },
+        { "option": "if(a!null)", "isCorrect": false},
+        { "option": "if(a!=null)", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "The 'function' and'var' both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.",
       "image": "",
       "question_number": 6
@@ -133,10 +186,24 @@
           "option": "The value of count from 0 to 9 is displayed in the console",
           "isCorrect": false
         }
+
+      "explanation": "The == is only true if the type and the content of both operands are the same. The == is also one of the common abstracts used for comparing two operands to check whether they are equal or not but it will notcheck the data type of the variables. So, the ! == operator is known as non-equal, which is used in our case, to compare 0 to NULL. It obtains the output either as true or false that totally depends on the given conditions.",
+      "image": "",
+      "question_number": 14
+    },
+    {
+      "questionText": "See the given code of JavaScript and choose the correct output from the following:",
+      "options": [
+        { "option": "compilation error", "isCorrect": false },
+        { "option": "false", "isCorrect": false },
+        { "option": "runtime error", "isCorrect": false},
+        { "option": "true", "isCorrect": true }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "The function 'console.log ()' used in the above function is one of the pre-defined functions of JavaScript. It takes values as arguments passed to it, and displays that value in arguments inside the console when the code is executed.",
       "image": "https://i.postimg.cc/FsC8qPr0/question-7.png",
       "question_number": 7
@@ -157,10 +224,24 @@
           "option": "undefined",
           "isCorrect": false
         }
+
+      "explanation": "The '==' operatorconverts the both operand to the same type in case they both are of different datatype and perform comparison. A strict comparison will give true as output only when the content and the data type of both operands are same.",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 15
+    },
+    {
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "The 'if-else' is one of the conditional statements available in JavaScript like several other languages. Here the comparison performed in the 'if' statement evaluates to false, so the instructions written in the else part gets executed. If the comparison performed in the 'if' statement evaluates to true, then the instruction written in the if statement will be executed.",
       "image": "https://i.postimg.cc/ncSXSQXC/question-8.png",
       "question_number": 8
@@ -181,10 +262,24 @@
           "option": "The value of count from 0 to 9 is displayed in the console",
           "isCorrect": false
         }
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 16
+    },
+    {
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "The function 'console.log ()' used in the above function is one of the pre-defined functions of JavaScript. It takes values as arguments passed to it, and displays that value in arguments inside the console when the code is executed.",
       "image": "https://i.postimg.cc/FsC8qPr0/question-7.png",
       "question_number": 7
@@ -205,10 +300,24 @@
           "option": "undefined",
           "isCorrect": false
         }
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 17
+    },
+    {
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "The 'if-else' is one of the conditional statements available in JavaScript like several other languages. Here the comparison performed in the 'if' statement evaluates to false, so the instructions written in the else part gets executed. If the comparison performed in the 'if' statement evaluates to true, then the instruction written in the if statement will be executed.",
       "image": "https://i.postimg.cc/ncSXSQXC/question-8.png",
       "question_number": 8
@@ -229,10 +338,24 @@
           "option": "Exception",
           "isCorrect": false
         }
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 18
+    },
+    {
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "Fee10000 is the correct answer. After concatenation, both the strings are shown as a concatenated string.",
       "image": "https://i.postimg.cc/Y2TqcTck/question-9.png",
       "question_number": 9
@@ -253,13 +376,33 @@
           "option": "Float",
           "isCorrect": true
         }
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 19
+    },
+    {
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
+      "options": [
+        { "option": "10", "isCorrect": false },
+        { "option": "9", "isCorrect": false },
+        { "option": "8", "isCorrect": true },
+        { "option": "0", "isCorrect": false }
+
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
+
       "explanation": "'Float' is the correct answer. JavaScript supports only the following Data types: Number, String, Boolean, Object, and Undefined",
       "image": "",
       "question_number": 10
+
+      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "question_number": 20
+
     }
   ]
 }
+
