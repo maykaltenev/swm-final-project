@@ -1,4 +1,3 @@
-
 {
   "javascript": [
     {
@@ -81,7 +80,7 @@
       "options": [
         { "option": "if(a!==null)", "isCorrect": true },
         { "option": "if (a!)", "isCorrect": false },
-        { "option": "if(a!null)", "isCorrect": false},
+        { "option": "if(a!null)", "isCorrect": false },
         { "option": "if(a!=null)", "isCorrect": false }
       ],
       "correctOptions": 1,
@@ -96,7 +95,7 @@
       "options": [
         { "option": "compilation error", "isCorrect": false },
         { "option": "false", "isCorrect": false },
-        { "option": "runtime error", "isCorrect": false},
+        { "option": "runtime error", "isCorrect": false },
         { "option": "true", "isCorrect": true }
       ],
       "correctOptions": 1,
@@ -117,7 +116,7 @@
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
-      "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
+      "explanation": "",
       "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
       "question_number": 16
     },
@@ -183,4 +182,3 @@
     }
   ]
 }
-
