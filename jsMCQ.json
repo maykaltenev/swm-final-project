@@ -1,58 +1,34 @@
 {
   "javascript": [
     {
-      "questionText": "Which of the following option is used as hexadecimal literal beginning?",
+      "questionText": "Which type of JavaScript language is ___",
       "options": [
-        { "option": "00", "isCorrect": false },
-        { "option": "0x", "isCorrect": false },
-        { "option": "0X", "isCorrect": false },
-        { "option": "Both 0x and 0X", "isCorrect": true }
+        { "option": "Object-Oriented", "isCorrect": false },
+        { "option": "Object-Based", "isCorrect": true },
+        { "option": "Assembly-language", "isCorrect": false },
+        { "option": "High-level", "isCorrect": false }
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
-      "explanation": ""
-    },
-    {
-      "questionText": " Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
-      "options": [
-        { "option": "split()", "isCorrect": false },
-        { "option": "slice()", "isCorrect": false },
-        { "option": "substr()", "isCorrect": true },
-        { "option": "search()", "isCorrect": false }
-      ],
-      "correctOptions": 1,
-      "mark": 1,
-      "difficultyLevel": "beginner",
-      "explanation": ""
-    },
-    {
-      "questionText": "Javascript is an _______ language?",
+      "explanation": "JavaScript is not a pure OOP's (object oriented programming) based languages such as PHP, java or many other languages, although it is an object-based language. It is not OOP's based language, because it doesn't have three basic properties of object-oriented programming languages, such as polymorphism, encapsulation, and inheritance.",
       "image": "",
-      "options": [
-        { "option": "Object-Oriented", "isCorrect": true },
-        { "option": "Object-Based", "isCorrect": false },
-        { "option": "Procedural", "isCorrect": false },
-        { "option": "None of the above", "isCorrect": false }
-      ],
-      "correctOptions": 1,
-      "mark": 1,
-      "difficultyLevel": "beginner",
-      "explanation": ""
+      "question_number": 1
     },
     {
-      "questionText": "What will be the output of the following JavaScript code?",
-      "image": "https://www.flickr.com/photos/196853451@N02/52474387116/in/dateposted-public/",
+      "questionText": " Which of the following is the correct output for the following JavaScript code:",
       "options": [
-        { "option": "00", "isCorrect": false },
-        { "option": "0x", "isCorrect": false },
-        { "option": "0X", "isCorrect": false },
-        { "option": "Both 0x and 0X", "isCorrect": true }
+        { "option": "1", "isCorrect": false },
+        { "option": "Error", "isCorrect": false },
+        { "option": "10", "isCorrect": false },
+        { "option": "5", "isCorrect": false }
       ],
-      "correctOptions": 1,
+      "correctOptions": 0,
       "mark": 1,
       "difficultyLevel": "beginner",
-      "explanation": ""
+      "explanation": "The output of the above snippet code will be one because, first of all, the interpreter will search 'obj' for the property (y). But it fails to find 'obj' for property 'y,' so it chooses a value from outside the object, which is available within the given code.",
+      "image": "https://i.postimg.cc/PrLntGFS/question-2.png",
+      "question_number": 2
     }
   ]
 }
