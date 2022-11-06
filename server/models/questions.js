@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const QuestionsSchema = new Schema({
+export const QuestionsSchema = new Schema({
   questionText: {
     type: String,
     required: [true, "question is required"],
