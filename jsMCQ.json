@@ -13,7 +13,7 @@
       "difficultyLevel": "beginner",
       "explanation": "JavaScript is not a pure OOP's (object oriented programming) based languages such as PHP, java or many other languages, although it is an object-based language. It is not OOP's based language, because it doesn't have three basic properties of object-oriented programming languages, such as polymorphism, encapsulation, and inheritance.",
       "image": "",
-      "question_number": 1
+      "questionNumber": 1
     },
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
@@ -28,7 +28,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The output of the above snippet code will be one because, first of all, the interpreter will search 'obj' for the property (y). But it fails to find 'obj' for property 'y,' so it chooses a value from outside the object, which is available within the given code.",
       "image": "https://i.postimg.cc/PrLntGFS/question-2.png",
-      "question_number": 2
+      "questionNumber": 2
     },
     {
       "questionText": "Which one of the following also known as Conditional Expression:",
@@ -43,7 +43,7 @@
       "difficultyLevel": "beginner",
       "explanation": "A conditional expression can only evaluate two things, which either true or false, that are purely based on the evaluation of the condition",
       "image": "",
-      "question_number": 3
+      "questionNumber": 3
     },
     {
       "questionText": "Which of the following given functions of the Number Object formats a number with a different number of digits to the right of the decimal?",
@@ -58,7 +58,7 @@
       "difficultyLevel": "beginner",
       "explanation": "A block of statement can be understand as the set of the zero or more statements. In general, a block of statement has common definition which combines one or a number of statements into a single statement for ease.",
       "image": "",
-      "question_number": 4
+      "questionNumber": 4
     },
     {
       "questionText": "Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
@@ -74,7 +74,7 @@
 
       "explanation": "In JavaScript, when the interpreter encounters a empty statements it normally ignores or not response to that empty statement. The empty statements also sometimes very useful like we use the empty statements for creating loop for nothing",
       "image": "",
-      "question_number": 5
+      "questionNumber": 5
     },
     {
       "questionText": "Choose the correct snippet from the following to check if the variable a is not equal the NULL:",
@@ -90,7 +90,7 @@
 
       "explanation": "The 'function' and'var' both are the Declaration statements. These both are used for defining, and declaring variable, function in anywhere in the program.",
       "image": "",
-      "question_number": 6
+      "questionNumber": 6
     },
     {
       "questionText": "See the given code of JavaScript and choose the correct output from the following:",
@@ -106,7 +106,7 @@
 
       "explanation": "The function 'console.log ()' used in the above function is one of the pre-defined functions of JavaScript. It takes values as arguments passed to it, and displays that value in arguments inside the console when the code is executed.",
       "image": "https://i.postimg.cc/FsC8qPr0/question-7.png",
-      "question_number": 7
+      "questionNumber": 7
     },
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
@@ -121,7 +121,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
       "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
-      "question_number": 16
+      "questionNumber": 16
     },
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
@@ -137,7 +137,7 @@
 
       "explanation": "Fee10000 is the correct answer. After concatenation, both the strings are shown as a concatenated string.",
       "image": "https://i.postimg.cc/Y2TqcTck/question-9.png",
-      "question_number": 9
+      "questionNumber": 9
     },
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
@@ -152,7 +152,7 @@
       "difficultyLevel": "beginner",
       "explanation": "'Float' is the correct answer. JavaScript supports only the following Data types: Number, String, Boolean, Object, and Undefined",
       "image": "",
-      "question_number": 10
+      "questionNumber": 10
     },
     {
       "questionText": " Which of the following is the correct output for the following JavaScript code:",
@@ -167,7 +167,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The code of the given program uses a switch statement, in which the value of the expression is compared with the available case labels. If the value matches with any case label, the code written corresponding to that case is executed otherwise the instruction written to the default is executed. Another important point is that switch statements are also used as an alternative to if-else statements to reduce the complexity and size of the code",
       "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
-      "question_number": 11
+      "questionNumber": 11
     },
     {
       "questionText": "Which of the following given functions of the Number Object formats a number with a different number of digits to the right of the decimal?",
@@ -182,7 +182,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The tofixed() method formats the given number with a specific number of digits to the right of the decimal.",
       "image": "",
-      "question_number": 12
+      "questionNumber": 12
     },
     {
       "questionText": "Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
@@ -197,7 +197,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The method Subtr() in the javascript is used to return the characters in the string starting at the specified position via the specified number of the characters.",
       "image": "",
-      "question_number": 13
+      "questionNumber": 13
     },
     {
       "questionText": "Choose the correct snippet from the following to check if the variable a is not equal the NULL:",
@@ -212,7 +212,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The == is only true if the type and the content of both operands are the same. The == is also one of the common abstracts used for comparing two operands to check whether they are equal or not but it will notcheck the data type of the variables. So, the ! == operator is known as non-equal, which is used in our case, to compare 0 to NULL. It obtains the output either as true or false that totally depends on the given conditions.",
       "image": "",
-      "question_number": 14
+      "questionNumber": 14
     },
     {
       "questionText": "Which one of the following is correct output for the following given JavaScript code:",
@@ -227,7 +227,7 @@
       "difficultyLevel": "beginner",
       "explanation": "In the above given code, the ternary operator is used that works on the 3 operands. The statement in the following code, initialize the type variable with value 'little shorter' that is returned through the function.",
       "image": "",
-      "question_number": 15
+      "questionNumber": 15
     },
     {
       "questionText": " Which one of the following is the correct way for calling the JavaScript code?",
@@ -242,7 +242,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The JavaScript code can be called simply by making the function call to the element on which the JavaScript code execution has to be run. There are several other ways to call JavaScript code such as submit, onclick, and onload, etc.",
       "image": "",
-      "question_number": 16
+      "questionNumber": 16
     },
     {
       "questionText": "Which of the following type of a variable is volatile?",
@@ -257,7 +257,7 @@
       "difficultyLevel": "beginner",
       "explanation": "The variables whose value can be modified that kind of variable are known as Mutable variable. In the JavaScript, only arrays and objects are mutable but not the primitive values.",
       "image": "",
-      "question_number": 17
+      "questionNumber": 17
     },
     {
       "questionText": "Which of the following option is used as hexadecimal literal beginning?",
@@ -272,7 +272,7 @@
       "difficultyLevel": "beginner",
       "explanation": "In general, the X and x both can be used to denote the hexadecimal values, so any integer literal that begins with either 0X or 0x denotes a hexadecimal number",
       "image": "",
-      "question_number": 18
+      "questionNumber": 18
     },
     {
       "questionText": "When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.",
@@ -287,7 +287,7 @@
       "difficultyLevel": "beginner",
       "explanation": "In the case, where the result of any arithmetic expression is beyond the largest represent-able number,JavaScript prints the infinity. Similarly, if the result of any numerical operation is beyond the largest negative number, JavaScript prints negative infinity.",
       "image": "",
-      "question_number": 19
+      "questionNumber": 19
     },
     {
       "questionText": "In the JavaScript, which one of the following is not considered as an error:",
@@ -302,7 +302,7 @@
       "difficultyLevel": "beginner",
       "explanation": "Yes, you heard right that division of any integer by zero is not an error in the JavaScript. It just prints the infinity as a result. However, there is an exception in JavaScript, dividing zero with zero will not have any defined number/value so, the result of this specific operation is a special value 'Not a Number' (or NaN) and printed as NaN.",
       "image": "",
-      "question_number": 20
+      "questionNumber": 20
     }
   ]
 }
