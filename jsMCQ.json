@@ -1,0 +1,58 @@
+{
+  "javascript": [
+    {
+      "questionText": "Which of the following option is used as hexadecimal literal beginning?",
+      "options": [
+        { "option": "00", "isCorrect": false },
+        { "option": "0x", "isCorrect": false },
+        { "option": "0X", "isCorrect": false },
+        { "option": "Both 0x and 0X", "isCorrect": true }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": ""
+    },
+    {
+      "questionText": " Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
+      "options": [
+        { "option": "split()", "isCorrect": false },
+        { "option": "slice()", "isCorrect": false },
+        { "option": "substr()", "isCorrect": true },
+        { "option": "search()", "isCorrect": false }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": ""
+    },
+    {
+      "questionText": "Javascript is an _______ language?",
+      "image": "",
+      "options": [
+        { "option": "Object-Oriented", "isCorrect": true },
+        { "option": "Object-Based", "isCorrect": false },
+        { "option": "Procedural", "isCorrect": false },
+        { "option": "None of the above", "isCorrect": false }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": ""
+    },
+    {
+      "questionText": "What will be the output of the following JavaScript code?",
+      "image": "https://www.flickr.com/photos/196853451@N02/52474387116/in/dateposted-public/",
+      "options": [
+        { "option": "00", "isCorrect": false },
+        { "option": "0x", "isCorrect": false },
+        { "option": "0X", "isCorrect": false },
+        { "option": "Both 0x and 0X", "isCorrect": true }
+      ],
+      "correctOptions": 1,
+      "mark": 1,
+      "difficultyLevel": "beginner",
+      "explanation": ""
+    }
+  ]
+}
