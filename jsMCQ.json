@@ -24,12 +24,11 @@
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
-      "explanation": "",
-      "image": ""
+      "explanation": ""
     },
     {
       "questionText": "Javascript is an _______ language?",
-
+      "image": "",
       "options": [
         { "option": "Object-Oriented", "isCorrect": true },
         { "option": "Object-Based", "isCorrect": false },
@@ -42,8 +41,8 @@
       "explanation": ""
     },
     {
-      "questionText": "",
-      "image": "",
+      "questionText": "What will be the output of the following JavaScript code?",
+      "image": "https://www.flickr.com/photos/196853451@N02/52474387116/in/dateposted-public/",
       "options": [
         { "option": "00", "isCorrect": false },
         { "option": "0x", "isCorrect": false },
