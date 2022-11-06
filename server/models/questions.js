@@ -25,6 +25,9 @@ const QuestionsSchema = new Schema({
   questionNumber: Number,
 });
 
-const question = model("Question", QuestionsSchema);
+const javaScript = model("JavaScript", QuestionsSchema);
+const react = model("React", QuestionsSchema);
+const nodeJs = model("NodeJs", QuestionsSchema);
+const mongoDB = model("MongoDB", QuestionsSchema);
 
 export default question;
