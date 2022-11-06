@@ -91,18 +91,18 @@
       "question_number": 14
     },
     {
-      "questionText": "See the given code of JavaScript and choose the correct output from the following:",
+      "questionText": "Which one of the following is correct output for the following given JavaScript code:",
       "options": [
-        { "option": "compilation error", "isCorrect": false },
-        { "option": "false", "isCorrect": false },
-        { "option": "runtime error", "isCorrect": false},
-        { "option": "true", "isCorrect": true }
+        { "option": "123.56", "isCorrect": false },
+        { "option": "Taller", "isCorrect": true },
+        { "option": "190", "isCorrect": false},
+        { "option": "Little shorter", "isCorrect": false}
       ],
       "correctOptions": 1,
       "mark": 1,
       "difficultyLevel": "beginner",
-      "explanation": "The '==' operatorconverts the both operand to the same type in case they both are of different datatype and perform comparison. A strict comparison will give true as output only when the content and the data type of both operands are same.",
-      "image": "https://i.postimg.cc/jjbwr4vS/q11.png",
+      "explanation": "In the above given code, the ternary operator is used that works on the 3 operands. The statement in the following code, initialize the type variable with value 'little shorter' that is returned through the function.",
+      "image": "",
       "question_number": 15
     },
     {
