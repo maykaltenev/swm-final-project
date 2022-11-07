@@ -26,7 +26,7 @@ const UserContextProvider = ({ children }) => {
           localStorageUser();
         });
       setError("");
-      navigate("/message");
+      navigate("/mypage");
       return;
     } catch (error) {
       console.log(error);
