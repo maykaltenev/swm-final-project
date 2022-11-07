@@ -5,6 +5,7 @@ const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
   const [javaScriptData, setJavaScriptData] = useState([]);
+  const [points, setPoints] = useState(0);
   const getQuestions = async () => {
     const response = await axios.get("http://localhost:5000/questions/js", {
       withCredentials: true,
@@ -16,7 +17,7 @@ const QuestionContextProvider = ({ children }) => {
     getQuestions();
   }, []);
   return (
-    <QuestionContext.Provider value={{ javaScriptData }}>
+    <QuestionContext.Provider value={{ javaScriptData, setPoints, points }}>
       {children}
     </QuestionContext.Provider>
   );
