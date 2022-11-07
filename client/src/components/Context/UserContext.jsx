@@ -1,9 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 const UserContext = createContext(null);
-
 const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
@@ -24,11 +22,9 @@ const UserContextProvider = ({ children }) => {
         .then((data) =>
           localStorage.setItem("user", JSON.stringify(data.data.user))
         )
-
         .then(() => {
           localStorageUser();
         });
-
       setError("");
       navigate("/message");
       return;
@@ -37,7 +33,6 @@ const UserContextProvider = ({ children }) => {
       setError(" The email address or password is incorrect ");
     }
   };
-
   const handleLogout = async () => {
     try {
       await axios
@@ -53,7 +48,6 @@ const UserContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-
   const localStorageUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     return setUser(user);
@@ -61,12 +55,10 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     localStorageUser();
   }, []);
-
   return (
     <UserContext.Provider value={{ userData, error, user, handleLogout }}>
       {children}
     </UserContext.Provider>
   );
 };
-
 export { UserContext, UserContextProvider };
