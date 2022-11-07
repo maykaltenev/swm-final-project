@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import style from "./Register.module.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -24,13 +23,12 @@ export default function Register() {
   };
 
   return (
-    <div className={style.formContainer}>
-      <form onSubmit={handleSubmit} className={style.form}>
+    <div>
+      <form onSubmit={handleSubmit}>
         <div>
           <p>Register</p>
           <input
             label="First Name"
-            className={style.input}
             placeholder="First name"
             type="text"
             autoComplete="firstName"
@@ -39,7 +37,6 @@ export default function Register() {
           />
           <input
             label="Last Name"
-            className={style.input}
             placeholder="Last name"
             type="text"
             autoComplete="lastName"
@@ -48,7 +45,6 @@ export default function Register() {
           />
           <input
             label="Email"
-            className={style.input}
             placeholder=" E-mail"
             type="email"
             autoComplete="email"
@@ -58,20 +54,17 @@ export default function Register() {
 
           <input
             label="Password"
-            className={style.input}
             placeholder="Password"
             type="password"
             autoComplete="new-password"
             name="password"
             required
           />
-          <button className={style.button} type="submit">
-            Register
-          </button>
+          <button type="submit">Register</button>
           <p>
             Already have an account ?{" "}
             {
-              <Link className={style.a} variant="contained" to="/login">
+              <Link variant="contained" to="/login">
                 Login
               </Link>
             }

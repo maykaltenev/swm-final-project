@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
-import style from "../Register/Register.module.css";
 
 export default function Login() {
   const { userData, error } = useContext(UserContext);
@@ -12,14 +11,13 @@ export default function Login() {
   };
 
   return (
-    <div className={style.formContainer}>
+    <div>
       <form onSubmit={handleLogin}>
         <div>
           <p>Login</p>
           <p>{error}</p>
           <input
             label="Email"
-            className={style.input}
             placeholder=" E-mail"
             type="email"
             autoComplete="email"
@@ -28,20 +26,17 @@ export default function Login() {
           />
           <input
             label="Password"
-            className={style.input}
             placeholder="Password"
             type="password"
             autoComplete="new-password"
             name="password"
             required
           />
-          <button className={style.button} type="submit">
-            Login
-          </button>
+          <button type="submit">Login</button>
           <p>
             Don't have an account ?{" "}
             {
-              <Link className={style.a} variant="contained" to="/">
+              <Link variant="contained" to="/">
                 Register
               </Link>
             }
