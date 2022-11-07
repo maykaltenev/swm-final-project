@@ -1,24 +1,33 @@
 import React from "react";
 
-import { useContext } from "react";
-import { QuestionContext } from "../Context/QuestionContext";
-export default function QuestionCard() {
-  const { javaScriptData } = useContext(QuestionContext);
+//styles
+import style from "./Question.module.css";
+
+export default function QuestionCard({question}) {
+
   return (
     <div>
-      {javaScriptData.map((question) => (
-        <div>
+      {
+        <div key={question._id}>
           {question.questionNumber}
-          <h5 key={question._id}>{question.questionText}</h5>
+          <h5>{question.questionText}</h5>
           {question.image && <img src={question.image} alt="" width="400px" />}
           <div>
             {question.options.map((option) => (
-              <div key={option._id}>{option.option}</div>
+              <div key={option._id}>
+                <input
+                  className={style.button}
+                  type="radio"
+                  name="option"
+                  value="option"
+                />{" "}
+                {option.option}
+              </div>
             ))}
             <hr />
           </div>
         </div>
-      ))}
+      }
     </div>
   );
 }
