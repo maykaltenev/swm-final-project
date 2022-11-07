@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const QuestionsSchema = new Schema({
+export const QuestionsSchema = new Schema({
   questionText: {
     type: String,
     required: [true, "question is required"],
@@ -25,9 +25,16 @@ const QuestionsSchema = new Schema({
   questionNumber: Number,
 });
 
+<<<<<<< HEAD
 const javaScript = model("JavaScript", QuestionsSchema);
 const react = model("React", QuestionsSchema);
 const nodeJs = model("NodeJs", QuestionsSchema);
 const mongoDB = model("MongoDB", QuestionsSchema);
+=======
+export const javaScript = model("JavaScript", QuestionsSchema);
+export const react = model("React", QuestionsSchema);
+export const nodeJs = model("NodeJs", QuestionsSchema);
+export const mongoDB = model("MongoDB", QuestionsSchema);
 
-export default question;
+>>>>>>> d6ca0a6940aab5a79f34e9ee0c71f88fff50e092
+
