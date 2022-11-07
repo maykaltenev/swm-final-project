@@ -11,3 +11,12 @@ export const createJsQuestions = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+export const getAllJSQuestions = async (req, res) => {
+    try {
+        const javascript = await javaScript.find();
+        return res.status(201).json({ message: "JavaScript Questions found", javascript });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
