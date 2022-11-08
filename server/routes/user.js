@@ -1,4 +1,5 @@
 import { Router } from "express";
+import passport from "passport";
 import {
   registerUser,
   loginUser,
@@ -19,4 +20,16 @@ router.get("/allUser", getAllUsers);
 //http:localhost:5000/user/logout
 router.get("/logout", logout);
 
+
+//google authuentication
+ router.get('/google',
+  passport.authenticate('google', { scope:
+      [ 'email', 'profile' ] }
+));
+
+router.get( '/google/callback',
+    passport.authenticate( 'google', {
+        successRedirect: '/',
+        failureRedirect: '/login'
+})); 
 export default router;

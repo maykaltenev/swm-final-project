@@ -35,6 +35,8 @@ const port = process.env.PORT || 3001;
 // specify your routes here
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
+//googleauthroute
+app.use("/auth",userRoutes)
 console.log("Connecting to database. Put the kettle on while you wait... 🫖");
 
 mongoose
