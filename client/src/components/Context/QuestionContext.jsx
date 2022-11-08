@@ -10,7 +10,7 @@ const QuestionContextProvider = ({ children }) => {
     const response = await axios.get("http://localhost:5000/questions/js", {
       withCredentials: true,
     });
-    console.log(response);
+
     if (response.data) setJavaScriptData(response.data.javascript);
   };
   useEffect(() => {

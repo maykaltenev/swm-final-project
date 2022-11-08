@@ -10,6 +10,7 @@ const router = Router();
 router.post("/js", createJsQuestions);
 //http://localhost:5000/question/js
 router.get("/js", getAllJSQuestions);
-
+//http://localhost:5000/question/js/quiz
+// router.post("/js/quiz", createUserResponse);
 
 export default router;

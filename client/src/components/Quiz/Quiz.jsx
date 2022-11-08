@@ -8,17 +8,13 @@ function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const { javaScriptData, points } = useContext(QuestionContext);
   // const [userResponses, setA] = useState(javaScriptData.map(() => {}));
-
   // userResponses
   /* [{
     id: id of question
     selectedAnswerId: id of the answer - undefined or null
    }]
-   
    const updatedResponses = [...userResponses]
-
    updateResponses.find
-
    */
 
   const handlePrevious = (e) => {
