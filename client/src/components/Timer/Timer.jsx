@@ -1,7 +1,19 @@
 import { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useEffect, useContext } from "react";
+import { UserContext } from "../Context/UserContext";
 
 function CountDownTimer() {
+  const { timer, time } = useContext(UserContext);
+
+  const [tm, setTm] = useState(time);
+
+  console.log("time", time);
+
+  useEffect(() => {
+    timer();
+  }, []);
+
   const formatRemainingTime = (time) => {
     let minutes = Math.floor((time % 3600) / 60);
     let seconds = time % 60;
@@ -16,7 +28,7 @@ function CountDownTimer() {
   };
 
   const renderTime = ({ remainingTime }) => {
-    if (remainingTime === 0) {
+    if (remainingTime && time <= 0) {
       return <div className="timer">Too late...</div>;
     }
 
@@ -30,11 +42,13 @@ function CountDownTimer() {
 
   return (
     <div>
+      <button onClick={timer}>set timer</button>
       <h1>Remaining Time</h1>
       <div className="timer-wrapper">
         <CountdownCircleTimer
-          isPlaying
+          initialRemainingTime={time}
           duration={600}
+          isPlaying
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
         >
