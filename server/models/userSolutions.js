@@ -5,7 +5,7 @@ export const UserSolutionsSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "user" },
     userResults: [{
         question: { type: Schema.Types.ObjectId, ref: "JavaScript" },
-        answer: { type: Schema.Types.ObjectId },
+        answer: { type: Schema.Types.ObjectId, ref: "JavaScript" },
     }],
     // question_1: {
     //     question: { type: Schema.Types.ObjectId, ref: "JavaScript" },

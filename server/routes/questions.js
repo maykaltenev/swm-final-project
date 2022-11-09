@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {
     createJsQuestions,
-    getAllJSQuestions
+    getAllJSQuestions,
+    createUserResponse
 } from "../controllers/questionControllers.js";
 
 const router = Router();
@@ -10,7 +11,7 @@ const router = Router();
 router.post("/js", createJsQuestions);
 //http://localhost:5000/question/js
 router.get("/js", getAllJSQuestions);
-//http://localhost:5000/question/js/quiz
-// router.post("/js/quiz", createUserResponse);
+// http://localhost:5000/question/js/quiz
+router.patch("/js/quiz", createUserResponse);
 
 export default router;

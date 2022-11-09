@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -9,6 +10,27 @@ import style from "./Question.module.css";
 
 export default function QuestionCard({ question, showAnswer }) {
   const { setPoints, points } = useContext(QuestionContext);
+  const [userInputAnswerId, setUserInputAnswerId] = useState("");
+  const getUser = JSON.parse(localStorage.getItem("user"));
+
+  const handleUserAnswer = (question, e, getUser) => {
+    addUserAnswerInput(question, e, getUser);
+  };
+  const addUserAnswerInput = async (question, answer, user) => {
+    try {
+      await axios.patch(
+        "http://localhost:5000/questions/js/quiz",
+        {
+          question,
+          answer,
+          user,
+        },
+        { withCredentials: true }
+      );
+    } catch (error) {
+      console.log("error adding comment", error);
+    }
+  };
 
   return (
     <div>
@@ -27,6 +49,10 @@ export default function QuestionCard({ question, showAnswer }) {
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
+                  id={option?._id}
+                  onChange={(e) =>
+                    handleUserAnswer(question._id, e.target.id, getUser._id)
+                  }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>
               </div>

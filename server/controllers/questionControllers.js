@@ -21,11 +21,27 @@ export const getAllJSQuestions = async (req, res) => {
     }
 };
 
+// export const createUserResponse = async (req, res) => {
+//     try {
+//         if (userSolution.findOne({ user }))
+//             return res.status(201).json({ message: "Question created", userSolution });
+//     } catch (error) {
+//         return res.status(500).json({ message: error.message });
+//     }
+// }
 export const createUserResponse = async (req, res) => {
+    const { answer, user, question } = req.body;
+    console.log("answer:", answer, "user:", user, "question:", question)
     try {
-        if (userSolution.findOne({ user }))
-            return res.status(201).json({ message: "Question created", createQuestion });
+        const answerFromTheUser = await userSolution.findByIdAndUpdate(
+            user,
+            { $push: { user, userResults: { answer, question } } },
+            { new: true }
+        );
+        console.log(answerFromTheUser)
+        if (!answerFromTheUser) return;
+        return res.status(200).json({ message: answerFromTheUser });
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.send(error.message);
     }
-}
+};
