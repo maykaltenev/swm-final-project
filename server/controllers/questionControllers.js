@@ -43,11 +43,11 @@ export const createUserResponse = async (req, res) => {
         const answerFromTheUser = await QuizSession.findByIdAndUpdate(
             sessionId,
             {
-                $push: { userSolutions: { answer, question } }
+                $push: { userSolutions: { question, answer } }
             },
             { new: true }
         );
-        // console.log(answerFromTheUser)
+        console.log(answerFromTheUser)
         if (!answerFromTheUser) return;
         return res.status(200).json({ message: answerFromTheUser });
     } catch (error) {
