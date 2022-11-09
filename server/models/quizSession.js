@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
-import { QuestionsSchema } from "./questions";
-import { UserSolutionsSchema } from "./userSolutions";
+import { QuestionsSchema } from "./questions.js";
+import { UserSolutionsSchema } from "./userSolutions.js";
 
 export const QuizSessionSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "user" },

@@ -10,14 +10,16 @@ const QuestionContextProvider = ({ children }) => {
     const response = await axios.get("http://localhost:5000/questions/js", {
       withCredentials: true,
     });
-
     if (response.data) setJavaScriptData(response.data.javascript);
   };
-  useEffect(() => {
-    getQuestions();
-  }, []);
+  // useEffect(() => {
+  //   getQuestions();
+  // }, []);
+
   return (
-    <QuestionContext.Provider value={{ javaScriptData, setPoints, points }}>
+    <QuestionContext.Provider
+      value={{ getQuestions, javaScriptData, setPoints, points }}
+    >
       {children}
     </QuestionContext.Provider>
   );

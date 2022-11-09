@@ -90,4 +90,6 @@ export const UserSolutionsSchema = new Schema({
     //     answer: { type: String },
     // },
 })
-export const userSolution = model("User-Solution", UserSolutionsSchema)
+const userSolution = model("User-Solution", UserSolutionsSchema);
+
+export default userSolution;
