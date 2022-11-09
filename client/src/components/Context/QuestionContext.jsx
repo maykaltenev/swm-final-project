@@ -6,19 +6,28 @@ const QuestionContext = createContext(null);
 const QuestionContextProvider = ({ children }) => {
   const [javaScriptData, setJavaScriptData] = useState([]);
   const [points, setPoints] = useState(0);
+  const [sessionId, setSessionId] = useState("");
   const getQuestions = async () => {
-    const response = await axios.get("http://localhost:5000/questions/js", {
-      withCredentials: true,
-    });
-    if (response.data) setJavaScriptData(response.data.javascript);
+    await axios
+      .get("http://localhost:5000/questions/js", {
+        withCredentials: true,
+      })
+      .then((data) => setJavaScriptData(data.data.javascript));
   };
+
   // useEffect(() => {
   //   getQuestions();
   // }, []);
-
   return (
     <QuestionContext.Provider
-      value={{ getQuestions, javaScriptData, setPoints, points }}
+      value={{
+        sessionId,
+        setSessionId,
+        getQuestions,
+        javaScriptData,
+        setPoints,
+        points,
+      }}
     >
       {children}
     </QuestionContext.Provider>

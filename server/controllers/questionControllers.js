@@ -22,13 +22,14 @@ export const getAllJSQuestions = async (req, res) => {
 };
 export const createQuizSession = async (req, res) => {
     const { user, questions, userSolution } = req.body
-
+    console.log(questions)
     try {
-        const newQuizSession = await QuizSession.create(
+        const newQuizSession = await QuizSession.create({
             user,
             questions,
             userSolution
-        );
+        });
+        console.log(newQuizSession)
         if (!newQuizSession) return;
         return res.status(200).json({ message: "New Quiz Session Created", newQuizSession });
     } catch (error) {
@@ -36,15 +37,17 @@ export const createQuizSession = async (req, res) => {
     }
 }
 export const createUserResponse = async (req, res) => {
-    const { answer, user, question } = req.body;
-    console.log("answer:", answer, "user:", user, "question:", question)
+    const { answer, user, question, sessionId } = req.body;
+    console.log("sessionId:", sessionId, "answer:", answer, "user:", user, "question:", question)
     try {
-        const answerFromTheUser = await UserSolution.findByIdAndUpdate(
-            user,
-            { $push: { user, userResults: { answer, question } } },
+        const answerFromTheUser = await QuizSession.findByIdAndUpdate(
+            sessionId,
+            {
+                $push: { userSolutions: { answer, question } }
+            },
             { new: true }
         );
-        console.log(answerFromTheUser)
+        // console.log(answerFromTheUser)
         if (!answerFromTheUser) return;
         return res.status(200).json({ message: answerFromTheUser });
     } catch (error) {

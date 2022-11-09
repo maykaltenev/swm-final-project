@@ -3,12 +3,13 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import { useContext } from "react";
 import { QuestionContext } from "../Context/QuestionContext";
 import axios from "axios";
+
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
-  const { getQuestions, javaScriptData, points } = useContext(QuestionContext);
+  const { getQuestions, javaScriptData, points, setSessionId } =
+    useContext(QuestionContext);
   const getUser = JSON.parse(localStorage.getItem("user"));
-
   // const [userResponses, setA] = useState(javaScriptData.map(() => {}));
   // userResponses
   /* [{
@@ -20,6 +21,7 @@ function Quiz() {
    */
   const handleCreateNewSession = async () => {
     getQuestions();
+
     try {
       await axios
         .post(
@@ -32,7 +34,8 @@ function Quiz() {
             withCredentials: true,
           }
         )
-        .then((data) => console.log(data));
+        // .then((data) => console.log(data));
+        .then((data) => setSessionId(data.data.newQuizSession._id));
     } catch (error) {
       console.log(error);
     }
@@ -44,10 +47,10 @@ function Quiz() {
     // });
   };
 
-  // const handlePrevious = (e) => {
-  //   e.preventDefault();
-  //   setCurrentQuestion(currentQuestion - 1);
-  // };
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setCurrentQuestion(currentQuestion - 1);
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -71,7 +74,7 @@ function Quiz() {
         question={javaScriptData[currentQuestion]}
         showExplanation={showExplanation}
       />
-      {/* <button onClick={handlePrevious}>Previous</button> */}
+      <button onClick={handlePrevious}>Previous</button>
       <button onClick={handleNext}>Next</button>
       <button onClick={handleShowAnswer}>Show Answer</button>
     </div>

@@ -9,14 +9,14 @@ import { QuestionContext } from "../Context/QuestionContext";
 import style from "./Question.module.css";
 
 export default function QuestionCard({ question, showAnswer }) {
-  const { setPoints, points } = useContext(QuestionContext);
+  const { setPoints, points, sessionId } = useContext(QuestionContext);
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
   const getUser = JSON.parse(localStorage.getItem("user"));
 
-  const handleUserAnswer = (question, e, getUser) => {
-    addUserAnswerInput(question, e, getUser);
+  const handleUserAnswer = (question, e, getUser, sessionId) => {
+    addUserAnswerInput(question, e, getUser, sessionId);
   };
-  const addUserAnswerInput = async (question, answer, user) => {
+  const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios.patch(
         "http://localhost:5000/questions/js/quiz",
@@ -24,6 +24,7 @@ export default function QuestionCard({ question, showAnswer }) {
           question,
           answer,
           user,
+          sessionId,
         },
         { withCredentials: true }
       );
@@ -51,7 +52,12 @@ export default function QuestionCard({ question, showAnswer }) {
                   value={option?.option}
                   id={option?._id}
                   onChange={(e) =>
-                    handleUserAnswer(question._id, e.target.id, getUser._id)
+                    handleUserAnswer(
+                      question._id,
+                      e.target.id,
+                      getUser._id,
+                      sessionId
+                    )
                   }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>
