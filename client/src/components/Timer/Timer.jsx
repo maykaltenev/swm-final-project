@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 function CountDownTimer() {
   const { timer, time } = useContext(UserContext);
-
-  const [tm, setTm] = useState(time);
 
   console.log("time", time);
 
@@ -46,7 +43,7 @@ function CountDownTimer() {
       <h1>Remaining Time</h1>
       <div className="timer-wrapper">
         <CountdownCircleTimer
-          initialRemainingTime={time}
+          elapsedTime={time}
           duration={600}
           isPlaying
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}

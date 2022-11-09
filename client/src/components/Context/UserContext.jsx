@@ -86,22 +86,23 @@ const UserContextProvider = ({ children }) => {
     const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
     const timeDifference = differenceInSeconds(new Date(quizTimer.end), date);
 
-    console.log("timeDifference", timeDifference);
     setTime(timeDifference);
     const id = user?._id;
 
     try {
-      await axios.patch(
-        "http://localhost:5000/user/addTimer",
-        {
-          id: id,
-          start: date,
-          end: addMinutes(date, 10),
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      await axios
+        .patch(
+          "http://localhost:5000/user/addTimer",
+          {
+            id: id,
+            start: date,
+            end: addMinutes(date, 10),
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(() => getUser());
     } catch (error) {
       console.log(error);
     }

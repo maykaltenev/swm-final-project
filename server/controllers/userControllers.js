@@ -88,7 +88,7 @@ export const updateQuizTimer = async (req, res) => {
   try {
     const addQuizTimer = await User.findByIdAndUpdate(
       id,
-      { "quizTimer.start": start, "quizTimer.end": end },
+      { $set: { "quizTimer.start": start, "quizTimer.end": end } },
       { new: true }
     );
     if (!addQuizTimer) return;
