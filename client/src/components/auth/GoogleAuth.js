@@ -1,56 +1,59 @@
-import {  GoogleLogin, GoogleLogout } from "react-google-login";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
-const  {REACT_APP_CLIENTID} = process.env; 
 
 function GoogleAuth() {
+    const [ profile, setProfile ] = useState([]);
+    const  {REACT_APP_CLIENTID} = process.env; 
+    
+    useEffect(() => {
+        const initClient = () => {
+            gapi.client.init({
+                clientId: {REACT_APP_CLIENTID},
+                scope: ''
+            });
+        };
+        gapi.load('client:auth2', initClient);
+    });
 
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [url, setUrl] = useState("");
-const [loginStatus, setLoginStatus] = useState(false);
-
-const responseGoogle = (response) => {
-console.log("the response is:",response)
-  setName(response.profileObj.name);
-  setEmail(response.profileObj.email);
-  setUrl(response.profileObj.imageUrl);
-  setLoginStatus(true);
-};
-
-const logout = () => {
-  console.log("logout");
-  setLoginStatus(false);
-};
-
-  return (
-    <div>
+    const onSuccess = (res) => {
        
-      {!loginStatus && (
-        <GoogleLogin
-       clientId={REACT_APP_CLIENTID}
-          buttonText="Login with Google"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
-      )}
-       {loginStatus && (
-        <div>
-          <h2>Welcome {name}</h2>
-          <h2>Email: {email}</h2>
-          <img src={url} alt={name} />
-          <br />
-          <GoogleLogout
-             clientId={REACT_APP_CLIENTID} 
-            buttonText="Logout"
-            onLogoutSuccess={logout}
-          />
-        </div>
-      )} 
-     
-    </div>
-  )
-}
+       setProfile(res.profileObj)
+    };
 
+    const onFailure = (err) => {
+        console.log('failed', err);
+    };
+
+    const logOut = () => {
+        setProfile(null);
+    };
+   // console.log("the profile is:",profile)
+    return (
+        <div>
+         
+               { profile ? (
+                <div>
+                    <img src={profile.imageUrl} alt="useravathar" />
+                    <h3>User Logged in</h3>
+                    <p>Name: {profile.name}</p>
+                    <p>Email Address: {profile.email}</p>
+                    <br />
+                    <br />
+                    <GoogleLogout clientId={REACT_APP_CLIENTID} buttonText="Log out" onLogoutSuccess={logOut} />
+                </div>
+            ) : (
+                <GoogleLogin
+                    clientId={REACT_APP_CLIENTID}
+                    buttonText="Sign in with Google"
+                    onSuccess={onSuccess}
+                    onFailure={onFailure}
+                    cookiePolicy={'single_host_origin'}
+                    isSignedIn={true}
+                />
+            )}
+        </div>
+    );
+}
 export default GoogleAuth
