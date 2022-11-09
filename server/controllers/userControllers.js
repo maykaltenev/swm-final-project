@@ -56,10 +56,13 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const getAllUsers = async (req, res) => {
+export const getUserData = async (req, res) => {
+  const { id } = req.body;
+
   try {
-    const allUsers = await User.find();
-    return res.status(200).json(allUsers);
+    const userData = await User.findOne({ _id: id });
+
+    return res.status(200).json(userData);
   } catch (error) {
     return res.send(error.message);
   }
@@ -76,5 +79,22 @@ export const logout = async (req, res, next) => {
       .send("User logged out");
   } catch (error) {
     res.send(error);
+  }
+};
+
+export const updateQuizTimer = async (req, res) => {
+  const { start, end, id } = req.body;
+
+  try {
+    const addQuizTimer = await User.findByIdAndUpdate(
+      id,
+      { $set: { "quizTimer.start": start, "quizTimer.end": end } },
+      { new: true }
+    );
+    if (!addQuizTimer) return;
+
+    return res.status(200).json({ message: addQuizTimer });
+  } catch (error) {
+    return res.status(404).json({ message: error });
   }
 };

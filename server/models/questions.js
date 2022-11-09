@@ -29,5 +29,3 @@ export const javaScript = model("JavaScript", QuestionsSchema);
 export const react = model("React", QuestionsSchema);
 export const nodeJs = model("NodeJs", QuestionsSchema);
 export const mongoDB = model("MongoDB", QuestionsSchema);
-
-

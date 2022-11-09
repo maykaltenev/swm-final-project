@@ -3,13 +3,12 @@ import React from "react";
 //styles
 import style from "./Question.module.css";
 
-export default function QuestionCard({question}) {
-
+export default function QuestionCard({ question }) {
   return (
     <div>
       {
         <div key={question._id}>
-          {question.questionNumber}
+          {question?.questionNumber}
           <h5>{question.questionText}</h5>
           {question.image && <img src={question.image} alt="" width="400px" />}
           <div>

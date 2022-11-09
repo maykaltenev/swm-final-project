@@ -26,6 +26,7 @@ const UserSchema = new Schema({
   pro: Boolean,
   certificates: [Schema.Types.ObjectId],
   skills: [String],
+  quizTimer: { start: { type: Date }, end: { type: Date } },
 });
 
 const User = model("user", UserSchema);
