@@ -7,6 +7,8 @@ export const UserSolutionsSchema = new Schema({
         question: { type: Schema.Types.ObjectId, ref: "JavaScript" },
         answer: { type: Schema.Types.ObjectId, ref: "JavaScript" },
     }],
+    sessionId: { type: Schema.Types.ObjectId, ref: "quizSession" }
+
     // question_1: {
     //     question: { type: Schema.Types.ObjectId, ref: "JavaScript" },
     //     answer: { type: String },

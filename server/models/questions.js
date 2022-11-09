@@ -23,7 +23,9 @@ export const QuestionsSchema = new Schema({
   explanation: { type: String },
   image: { type: String },
   questionNumber: { type: Number },
-});
+  sessionId: { type: Schema.Types.ObjectId, ref: "quizSession" }
+})
+
 
 
 export const javaScript = model("JavaScript", QuestionsSchema);
