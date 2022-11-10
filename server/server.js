@@ -6,10 +6,11 @@ import questionRoutes from './routes/questions.js'
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+import cookieSession from "cookie-session"
 import configureJwtStrategy from "./passport-config.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
-
+import {passportAuth} from "./passport-googleauth.js"
 // specify your middleware here
 const app = express();
 app.use(
@@ -25,10 +26,20 @@ app.use(
     limit: "10mb",
   })
 );
+
+ app.use(cookieSession({
+  name: 'google-auth-session',
+  keys: ['key1', 'key2']
+})) 
+
 dotenv.config();
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use(passport.session());
+
 configureJwtStrategy(passport);
+passportAuth(passport);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const port = process.env.PORT || 3001;
@@ -36,7 +47,7 @@ const port = process.env.PORT || 3001;
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 //googleauthroute
-app.use("/auth",userRoutes)
+app.use("/api/auth",userRoutes)
 console.log("Connecting to database. Put the kettle on while you wait... 🫖");
 
 mongoose
