@@ -80,7 +80,7 @@ const UserContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const timer = async () => {
+  const timer = async (examTime) => {
     const date = new Date();
     const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
     const id = user?._id;
@@ -92,7 +92,7 @@ const UserContextProvider = ({ children }) => {
           {
             id: id,
             start: date,
-            end: addMinutes(date, 10),
+            end: addMinutes(date, examTime),
           },
           {
             withCredentials: true,
