@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {Link }from "react-router-dom"
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
-
 
 function GoogleAuth() {
     const [ profile, setProfile ] = useState([]);
@@ -18,7 +18,7 @@ function GoogleAuth() {
     });
 
     const onSuccess = (res) => {
-       
+       console.log("the response is", res)
        setProfile(res.profileObj)
     };
 
@@ -29,7 +29,7 @@ function GoogleAuth() {
     const logOut = () => {
         setProfile(null);
     };
-   // console.log("the profile is:",profile)
+    console.log("the profile is:",profile)
     return (
         <div>
          
@@ -44,6 +44,7 @@ function GoogleAuth() {
                     <GoogleLogout clientId={REACT_APP_CLIENTID} buttonText="Log out" onLogoutSuccess={logOut} />
                 </div>
             ) : (
+                <>
                 <GoogleLogin
                     clientId={REACT_APP_CLIENTID}
                     buttonText="Sign in with Google"
@@ -52,6 +53,9 @@ function GoogleAuth() {
                     cookiePolicy={'single_host_origin'}
                     isSignedIn={true}
                 />
+                <a href="http://localhost:5000/api/auth/google">Link to</a>
+               
+                </>
             )}
         </div>
     );
