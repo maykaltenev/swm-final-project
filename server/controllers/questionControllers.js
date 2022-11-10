@@ -12,16 +12,18 @@ export const createJsQuestions = async (req, res) => {
     }
 };
 
-export const getAllJSQuestions = async (req, res) => {
-    try {
-        const javascript = await javaScript.find();
-        return res.status(201).json({ message: "JavaScript Questions found", javascript });
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
+// export const getAllJSQuestions = async (req, res) => {
+//     try {
+//         const javascript = await javaScript.find();
+//         return res.status(201).json({ message: "JavaScript Questions found", javascript });
+//     } catch (error) {
+//         return res.status(500).json({ message: error.message });
+//     }
+// };
 export const createQuizSession = async (req, res) => {
-    const { user, questions, userSolution } = req.body
+    const { user, userSolution } = req.body
+    //! we create the questions here, add random and limit(20) after more data is added.
+    const questions = await javaScript.find();
     console.log(questions)
     try {
         const newQuizSession = await QuizSession.create({

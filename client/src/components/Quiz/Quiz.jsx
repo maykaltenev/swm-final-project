@@ -7,45 +7,35 @@ import axios from "axios";
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
-  const { getQuestions, javaScriptData, points, setSessionId } =
-    useContext(QuestionContext);
-  const getUser = JSON.parse(localStorage.getItem("user"));
-  // const [userResponses, setA] = useState(javaScriptData.map(() => {}));
-  // userResponses
-  /* [{
-    id: id of question
-    selectedAnswerId: id of the answer - undefined or null
-   }]
-   const updatedResponses = [...userResponses]
-   updateResponses.find
-   */
-  const handleCreateNewSession = async () => {
-    getQuestions();
+  const {
+    getQuestions,
+    handleCreateNewSession,
+    javaScriptData,
+    points,
+    setSessionId,
+  } = useContext(QuestionContext);
+  // const getUser = JSON.parse(localStorage.getItem("user"));
 
-    try {
-      await axios
-        .post(
-          "http://localhost:5000/questions/js/createQuiz",
-          {
-            user: getUser._id,
-            questions: javaScriptData,
-          },
-          {
-            withCredentials: true,
-          }
-        )
-        // .then((data) => console.log(data));
-        .then((data) => setSessionId(data.data.newQuizSession._id));
-    } catch (error) {
-      console.log(error);
-    }
-
-    // localStorage.setItem("user", JSON.stringify(data.data.user))
-
-    // .then(() => {
-    //   localStorageUser();
-    // });
-  };
+  // const handleCreateNewSession = async () => {
+  //   // getQuestions();
+  //   try {
+  //     await axios
+  //       .post(
+  //         "http://localhost:5000/questions/js/createQuiz",
+  //         {
+  //           user: getUser._id,
+  //           questions: javaScriptData,
+  //         },
+  //         {
+  //           withCredentials: true,
+  //         }
+  //       )
+  //       // .then((data) => console.log(data));
+  //       .then((data) => setSessionId(data.data.newQuizSession._id));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handlePrevious = (e) => {
     e.preventDefault();
