@@ -21,6 +21,7 @@ const QuestionContextProvider = ({ children }) => {
   // }, []);
   const handleCreateNewSession = async () => {
     // getQuestions();
+
     try {
       await axios
         .post(

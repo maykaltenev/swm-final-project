@@ -20,5 +20,6 @@ router.post("/js/createQuiz", createQuizSession);
 router.patch("/js/quiz", createUserResponse);
 //http://localhost:5000/questions/js/quiz/:id
 router.post("/js/quiz/", getSessionData);
+//http://localhost:5000/questions/js/quiz/quizAnswer
 router.patch("/js/quiz/quizAnswer", updateUserResponse);
 export default router;

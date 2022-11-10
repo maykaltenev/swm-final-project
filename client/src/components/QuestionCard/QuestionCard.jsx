@@ -22,6 +22,7 @@ export default function QuestionCard({ question, showAnswer }) {
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
   };
+
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios
@@ -32,28 +33,39 @@ export default function QuestionCard({ question, showAnswer }) {
             withCredentials: true,
           }
         )
-        .then((data) => setCurrentWholeSession(data));
-      currentWholeSession.data.currentSession.userSolutions.map(
-        async (item) => {
-          if (item.question == question) {
-            await axios.patch(
-              "http://localhost:5000/questions/js/quizAnswer",
-              {
-                question,
-                answer,
-                // user,
-                sessionId,
-              },
-              { withCredentials: true }
-            );
-          }
-        }
-      );
+        .then((data) => setCurrentWholeSession(data.data.currentSession));
+      console.log(currentWholeSession);
+      const checker = currentWholeSession.userSolutions.map((item) =>
+        Object.values(item).includes(question)
+      )[0];
+      console.log(checker);
+      if (checker) {
+        await axios.patch(
+          "http://localhost:5000/questions/js/quizAnswer",
+          {
+            question,
+            answer,
+            // user,
+            sessionId,
+          },
+          { withCredentials: true }
+        );
+      } else {
+        await axios.patch(
+          "http://localhost:5000/questions/js/quiz",
+          {
+            question,
+            answer,
+            user,
+            sessionId,
+          },
+          { withCredentials: true }
+        );
+      }
     } catch (error) {
       console.log("error adding user input", error);
     }
   };
-  console.log(currentWholeSession);
   return (
     <div>
       {

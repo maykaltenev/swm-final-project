@@ -20,16 +20,19 @@ export const getSessionData = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
 export const updateUserResponse = async (req, res) => {
     const { question, answer, sessionId } = req.body
     try {
-        const updatedAnswer = await QuizSession.findByIdAndUpdate(sessionId, {
-            $set:
+        const updatedAnswer = await QuizSession.findByIdAndUpdate({ "_id": sessionId, "userSolutions.question": question },
             {
-
-            }
-        });
-        return res.status(201).json({ message: "Session found", currentSession });
+                $set:
+                {
+                    'userSolutions.answer': answer
+                }
+            }, { new: true });
+        console.log(updatedAnswer)
+        return res.status(201).json({ message: "Updated Answer", updatedAnswer });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -62,13 +65,12 @@ export const createQuizSession = async (req, res) => {
 }
 export const createUserResponse = async (req, res) => {
     const { answer, user, question, sessionId } = req.body;
-    // console.log("sessionId:", sessionId, "answer:", answer, "user:", user, "question:", question)
+    console.log("sessionId:", sessionId, "answer:", answer, "user:", user, "question:", question)
     try {
         // 1. First check the SessionID
         // 2. Check inside the array of responses if the question is in the array
         // 2.1 If yes => assign a new answer
         // 2.2. else => push the question and the answer
-        console.log("testing", result)
         const answerFromTheUser = await QuizSession.findByIdAndUpdate(
             sessionId,
             {
@@ -76,6 +78,7 @@ export const createUserResponse = async (req, res) => {
             },
             { new: true }
         );
+
         // const currentSession = await QuizSession.find({ sessionId }, { userSolutions: { $elemMatch: { question } } });
         // db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
         // const currentSession = await QuizSession.findById(sessionId).populate('userSolutions').select('question')
@@ -88,7 +91,6 @@ export const createUserResponse = async (req, res) => {
         // })
         // const result = await QuizSession.find({ "_id": sessionId, "userSolutions": { "question": { $eq: question } } });
         // const result = await QuizSession.find({ sessionId }, { userSolutions: { question } })
-
         if (!answerFromTheUser) return;
         return res.status(200).json({ message: answerFromTheUser });
     } catch (error) {
