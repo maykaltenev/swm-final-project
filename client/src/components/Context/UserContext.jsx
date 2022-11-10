@@ -7,7 +7,6 @@ const UserContext = createContext(null);
 const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
-  const [time, setTime] = useState("");
   const navigate = useNavigate();
 
   const userData = async (formData) => {
@@ -84,9 +83,6 @@ const UserContextProvider = ({ children }) => {
   const timer = async () => {
     const date = new Date();
     const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
-    const timeDifference = differenceInSeconds(new Date(quizTimer.end), date);
-
-    setTime(timeDifference);
     const id = user?._id;
 
     try {
@@ -113,7 +109,7 @@ const UserContextProvider = ({ children }) => {
   }, []);
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer, time }}
+      value={{ userData, error, user, handleLogout, getUser, timer }}
     >
       {children}
     </UserContext.Provider>
