@@ -6,6 +6,7 @@ const QuestionContext = createContext(null);
 const QuestionContextProvider = ({ children }) => {
   const [javaScriptData, setJavaScriptData] = useState([]);
   const [points, setPoints] = useState(0);
+  const [currentWholeSession, setCurrentWholeSession] = useState("");
   const [sessionId, setSessionId] = useState("");
   const getUser = JSON.parse(localStorage.getItem("user"));
   // const getQuestions = async () => {
@@ -15,7 +16,6 @@ const QuestionContextProvider = ({ children }) => {
   //     })
   //     .then((data) => setJavaScriptData(data.data.javascript));
   // };
-
   // useEffect(() => {
   //   getQuestions();
   // }, []);
@@ -47,7 +47,8 @@ const QuestionContextProvider = ({ children }) => {
       value={{
         sessionId,
         setSessionId,
-
+        currentWholeSession,
+        setCurrentWholeSession,
         handleCreateNewSession,
         // getQuestions,
         javaScriptData,

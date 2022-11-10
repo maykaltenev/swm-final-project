@@ -9,7 +9,13 @@ import { QuestionContext } from "../Context/QuestionContext";
 import style from "./Question.module.css";
 
 export default function QuestionCard({ question, showAnswer }) {
-  const { setPoints, points, sessionId } = useContext(QuestionContext);
+  const {
+    setPoints,
+    points,
+    sessionId,
+    currentWholeSession,
+    setCurrentWholeSession,
+  } = useContext(QuestionContext);
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
   const getUser = JSON.parse(localStorage.getItem("user"));
 
@@ -18,21 +24,36 @@ export default function QuestionCard({ question, showAnswer }) {
   };
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
-      await axios.patch(
-        "http://localhost:5000/questions/js/quiz",
-        {
-          question,
-          answer,
-          user,
-          sessionId,
-        },
-        { withCredentials: true }
+      await axios
+        .post(
+          `http://localhost:5000/questions/js/quiz/`,
+          { sessionId },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((data) => setCurrentWholeSession(data));
+      currentWholeSession.data.currentSession.userSolutions.map(
+        async (item) => {
+          if (item.question == question) {
+            await axios.patch(
+              "http://localhost:5000/questions/js/quizAnswer",
+              {
+                question,
+                answer,
+                // user,
+                sessionId,
+              },
+              { withCredentials: true }
+            );
+          }
+        }
       );
     } catch (error) {
-      console.log("error adding comment", error);
+      console.log("error adding user input", error);
     }
   };
-
+  console.log(currentWholeSession);
   return (
     <div>
       {
