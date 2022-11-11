@@ -21,39 +21,54 @@ export default function QuestionCard({ question, showAnswer }) {
 
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
+    //console.log("the questuion is :",question)
+    //console.log("the session id is is :",sessionId)
   };
+
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
+    console.log("insde addUserinput question",question)
+    console.log("insde addUserinput answer",answer)
+    console.log("insde addUserinput session",sessionId)
     try {
       await axios
         .post(
-          `http://localhost:5000/questions/js/quiz/`,
-          { sessionId },
+          `http://localhost:5000/questions/js/createQuiz`,
+          { sessionId ,
+            question,
+            answer
+          },
           {
             withCredentials: true,
           }
         )
         .then((data) => setCurrentWholeSession(data));
+        //console.log("the currentwhole sesion is:",currentWholeSession.data.currentSession._id.userSolutions)
+/* --------------no need in frontend
       currentWholeSession.data.currentSession.userSolutions.map(
         async (item) => {
           if (item.question == question) {
+            console.log("the targeted question is:",item.question)
+      
             await axios.patch(
               "http://localhost:5000/questions/js/quizAnswer",
               {
                 question,
                 answer,
-                // user,
+                user,
                 sessionId,
               },
               { withCredentials: true }
             );
+            console.log("the question with pathch is",question)
           }
         }
-      );
+      ); */
     } catch (error) {
       console.log("error adding user input", error);
     }
   };
-  console.log(currentWholeSession);
+  
+  console.log("th current whole session is:",currentWholeSession)
   return (
     <div>
       {
