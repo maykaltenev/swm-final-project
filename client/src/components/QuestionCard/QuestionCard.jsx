@@ -17,6 +17,7 @@ export default function QuestionCard({ question, showAnswer }) {
     setCurrentWholeSession,
   } = useContext(QuestionContext);
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
+
   const getUser = JSON.parse(localStorage.getItem("user"));
 
   const handleUserAnswer = (question, e, getUser, sessionId) => {

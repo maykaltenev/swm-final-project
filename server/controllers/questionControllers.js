@@ -24,19 +24,39 @@ export const getSessionData = async (req, res) => {
 export const updateUserResponse = async (req, res) => {
     const { question, answer, sessionId } = req.body
     try {
-        const updatedAnswer = await QuizSession.findByIdAndUpdate({ "_id": sessionId, "userSolutions.question": question },
-            {
-                $set:
-                {
-                    'userSolutions.answer': answer
-                }
-            }, { new: true });
+        //! How to do useSolutions.questionID === questionID
+        //! update this question with the new answer
+        const updatedAnswer = await QuizSession.find({
+            sessionId,
+            userSolutions: { $elemMatch: { question } }
+        })
+        // {
+        //     $set: {
+        //         userSolutions: { answer: answer }
+        //     }
+        // }, { new: true })
+
+        // {
+        //     "_id": sessionId,
+        //     "userSolutions"
+        //     {
+        //         $or: [{ answer: null },
+        //         { "$ne": { "userSolutions.answer": answer } }]
+
+        //     },
+        // {
+        //     $set:
+        //     {
+        //         'userSolutions.$.answer': answer
+        //     }
+        // }, { new: true });
+
         console.log(updatedAnswer)
         return res.status(201).json({ message: "Updated Answer", updatedAnswer });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
-};
+}
 
 // export const getAllJSQuestions = async (req, res) => {
 //     try {
@@ -78,7 +98,6 @@ export const createUserResponse = async (req, res) => {
             },
             { new: true }
         );
-
         // const currentSession = await QuizSession.find({ sessionId }, { userSolutions: { $elemMatch: { question } } });
         // db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
         // const currentSession = await QuizSession.findById(sessionId).populate('userSolutions').select('question')
