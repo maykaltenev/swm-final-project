@@ -1,5 +1,5 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import { differenceInSeconds } from "date-fns";
 
