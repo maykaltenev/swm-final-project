@@ -17,6 +17,7 @@ export default function QuestionCard({ question, showAnswer }) {
     addUserAnswerInput(question, e, getUser, sessionId);
   };
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
+    console.log(sessionId);
     try {
       await axios.patch(
         "http://localhost:5000/questions/js/quiz",
