@@ -74,7 +74,6 @@ export const createUserResponse = async (req, res) => {
       { new: true }
     );
 
-    if (!answerFromTheUser) return;
     return res.status(200).json({ message: answerFromTheUser });
   } catch (error) {
     return res.send(error.message);
