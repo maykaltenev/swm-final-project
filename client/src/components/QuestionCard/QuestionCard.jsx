@@ -36,13 +36,19 @@ export default function QuestionCard({ question, showAnswer }) {
             )
           )
         );
+      getAnswersFromLocalStorage();
     } catch (error) {
       console.log("error adding comment", error);
     }
   };
 
+  const getAnswersFromLocalStorage = () => {
+    let userAnswers = localStorage.getItem("answers");
+  };
+
   useEffect(() => {
     addUserAnswerInput();
+    /* getAnswersFromLocalStorage(); */
   }, []);
 
   return (
