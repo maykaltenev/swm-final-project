@@ -1,11 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import addMinutes from "date-fns/addMinutes";
+import differenceInSeconds from "date-fns/differenceInSeconds";
 const UserContext = createContext(null);
 const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
   const navigate = useNavigate();
+
   const userData = async (formData) => {
     try {
       await axios
@@ -50,13 +53,64 @@ const UserContextProvider = ({ children }) => {
   };
   const localStorageUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    return setUser(user);
+    const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
+    setUser(user);
+
+    return;
   };
+
+  const getUser = async () => {
+    try {
+      await axios
+        .post(
+          "http://localhost:5000/user/userData",
+          { id: user._id },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((data) =>
+          localStorage.setItem("quizTime", JSON.stringify(data.data.quizTimer))
+        )
+        .then(() => {
+          localStorageUser();
+        });
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const timer = async () => {
+    const date = new Date();
+    const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
+    const id = user?._id;
+
+    try {
+      await axios
+        .patch(
+          "http://localhost:5000/user/addTimer",
+          {
+            id: id,
+            start: date,
+            end: addMinutes(date, 10),
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(() => getUser());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     localStorageUser();
   }, []);
   return (
-    <UserContext.Provider value={{ userData, error, user, handleLogout }}>
+    <UserContext.Provider
+      value={{ userData, error, user, handleLogout, getUser, timer }}
+    >
       {children}
     </UserContext.Provider>
   );
