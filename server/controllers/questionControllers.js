@@ -74,7 +74,7 @@ export const createUserResponse = async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json({ message: answerFromTheUser });
+    return res.status(200).json(answerFromTheUser);
   } catch (error) {
     return res.send(error.message);
   }

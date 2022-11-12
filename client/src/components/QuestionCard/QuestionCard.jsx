@@ -1,7 +1,5 @@
 import axios from "axios";
-import React, { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
@@ -12,27 +10,40 @@ export default function QuestionCard({ question, showAnswer }) {
   const { setPoints, points, sessionId } = useContext(QuestionContext);
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
   const getUser = JSON.parse(localStorage.getItem("user"));
-
+  const [answers, setAnswers] = useState([]);
+  console.log(answers);
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
   };
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
-    console.log(sessionId);
     try {
-      await axios.patch(
-        "http://localhost:5000/questions/js/quiz",
-        {
-          question,
-          answer,
-          user,
-          sessionId,
-        },
-        { withCredentials: true }
-      );
+      await axios
+        .patch(
+          "http://localhost:5000/questions/js/quiz",
+          {
+            question,
+            answer,
+            user,
+            sessionId,
+          },
+          { withCredentials: true }
+        )
+        .then((data) =>
+          localStorage.setItem(
+            "answers",
+            JSON.stringify(
+              data.data?.userSolutions.map((answer) => answer.answer)
+            )
+          )
+        );
     } catch (error) {
       console.log("error adding comment", error);
     }
   };
+
+  useEffect(() => {
+    addUserAnswerInput();
+  }, []);
 
   return (
     <div>
