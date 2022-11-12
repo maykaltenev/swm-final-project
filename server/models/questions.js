@@ -20,10 +20,13 @@ export const QuestionsSchema = new Schema({
     required: [true, "question should have mark"],
   },
   difficultyLevel: { type: String },
-  explanation: String,
-  image: String,
-  questionNumber: Number,
-});
+  explanation: { type: String },
+  image: { type: String },
+  questionNumber: { type: Number },
+  sessionId: { type: Schema.Types.ObjectId, ref: "quizSession" }
+})
+
+
 
 export const javaScript = model("JavaScript", QuestionsSchema);
 export const react = model("React", QuestionsSchema);
