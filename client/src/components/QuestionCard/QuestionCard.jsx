@@ -6,12 +6,20 @@ import { QuestionContext } from "../Context/QuestionContext";
 //styles
 import style from "./Question.module.css";
 
-export default function QuestionCard({ question, showAnswer }) {
-  const { setPoints, points, sessionId } = useContext(QuestionContext);
+export default function QuestionCard({
+  question,
+  showAnswer,
+  currentQuestion,
+}) {
+  // useState
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
-  const getUser = JSON.parse(localStorage.getItem("user"));
   const [answers, setAnswers] = useState([]);
-  console.log(answers);
+
+  //Context
+  const { setPoints, points, sessionId } = useContext(QuestionContext);
+
+  const getUser = JSON.parse(localStorage.getItem("user"));
+
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
   };
@@ -28,13 +36,15 @@ export default function QuestionCard({ question, showAnswer }) {
           },
           { withCredentials: true }
         )
-        .then((data) =>
-          localStorage.setItem(
-            "answers",
-            JSON.stringify(
-              data.data?.userSolutions.map((answer) => answer.answer)
+        .then(
+          (data) =>
+            data.data?.userSolutions &&
+            localStorage.setItem(
+              "answers",
+              JSON.stringify(
+                data.data?.userSolutions.map((answer) => answer.answer)
+              )
             )
-          )
         );
       getAnswersFromLocalStorage();
     } catch (error) {
@@ -43,14 +53,16 @@ export default function QuestionCard({ question, showAnswer }) {
   };
 
   const getAnswersFromLocalStorage = () => {
-    let userAnswers = localStorage.getItem("answers");
+    const userAnswers = JSON.parse(localStorage.getItem("answers"));
+    console.log("indside", userAnswers);
+    if (userAnswers) return userAnswers && setAnswers(userAnswers);
   };
 
   useEffect(() => {
     addUserAnswerInput();
-    /* getAnswersFromLocalStorage(); */
+    getAnswersFromLocalStorage();
   }, []);
-
+  console.log("from outside", answers);
   return (
     <div>
       {
@@ -63,12 +75,17 @@ export default function QuestionCard({ question, showAnswer }) {
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
+                  /*    { answers && answers.map(item => item == answer)} */
+
                   className={style.button}
                   type="radio"
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
+                  checked={
+                    answers ? answers[currentQuestion] == option?._id : false
+                  }
                   onChange={(e) =>
                     handleUserAnswer(
                       question._id,
