@@ -63,6 +63,7 @@ function Quiz() {
       <QuestionCard
         question={javaScriptData[currentQuestion]}
         showExplanation={showExplanation}
+        currentQuestion={currentQuestion}
       />
       <button onClick={handlePrevious}>Previous</button>
       <button onClick={handleNext}>Next</button>

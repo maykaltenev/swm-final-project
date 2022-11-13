@@ -4,6 +4,7 @@ import axios from "axios";
 const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
+  const [answers, setAnswers] = useState([]);
   const [javaScriptData, setJavaScriptData] = useState([]);
   const [points, setPoints] = useState(0);
   const [sessionId, setSessionId] = useState("");
@@ -20,7 +21,8 @@ const QuestionContextProvider = ({ children }) => {
   //   getQuestions();
   // }, []);
   const handleCreateNewSession = async () => {
-    // getQuestions();
+    localStorage.removeItem("answers");
+    setAnswers([]);
     try {
       await axios
         .post(
@@ -45,6 +47,8 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
+        setAnswers,
+        answers,
         sessionId,
         setSessionId,
 
