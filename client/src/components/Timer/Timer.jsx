@@ -8,7 +8,7 @@ function CountDownTimer() {
   const date = new Date();
   const duration = 600;
   const quizTime = JSON.parse(localStorage.getItem("quizTime"));
-  const timeDifference = differenceInSeconds(new Date(quizTime.end), date);
+  const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
   console.log(timeDifference);
 
   const formatRemainingTime = (time) => {
