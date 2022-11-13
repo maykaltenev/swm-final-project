@@ -13,10 +13,11 @@ export default function QuestionCard({
 }) {
   // useState
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
-  const [answers, setAnswers] = useState([]);
+  /*  const [answers, setAnswers] = useState([]); */
 
   //Context
-  const { setPoints, points, sessionId } = useContext(QuestionContext);
+  const { setPoints, points, sessionId, setAnswers, answers } =
+    useContext(QuestionContext);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
 
@@ -83,9 +84,7 @@ export default function QuestionCard({
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={
-                    answers ? answers[currentQuestion] == option?._id : false
-                  }
+                  checked={answers && answers.includes(option?._id)}
                   onChange={(e) =>
                     handleUserAnswer(
                       question._id,
