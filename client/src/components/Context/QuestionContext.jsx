@@ -8,6 +8,7 @@ const QuestionContextProvider = ({ children }) => {
   const [javaScriptData, setJavaScriptData] = useState([]);
   const [points, setPoints] = useState(0);
   const [sessionId, setSessionId] = useState("");
+
   const getUser = JSON.parse(localStorage.getItem("user"));
   // const getQuestions = async () => {
   //   await axios
