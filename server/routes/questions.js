@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
     createJsQuestions,
-     getAllJSQuestions,
-    updateUserResponse,
-    getSessionData,
+     //getAllJSQuestions,
+
     createQuizSession,
+    createUserResponse
    // createUserResponse
 } from "../controllers/questionControllers.js";
 
@@ -14,10 +14,10 @@ const router = Router();
 router.post("/js", createJsQuestions);
 
 http://localhost:5000/questions/js/quiz///:id
-router.post("/js/quiz/", getSessionData);
+//router.post("/js/quiz/", getSessionData);
 
 //http://localhost:5000/questions/js
-router.get("/js", getAllJSQuestions);
+//router.get("/js", getAllJSQuestions);
 
 //http://localhost:5000/questions/js/createQuiz
 router.post("/js/createQuiz", createQuizSession);
@@ -25,6 +25,7 @@ router.post("/js/createQuiz", createQuizSession);
 // http://localhost:5000/questions/js/quiz
 //router.patch("/js/quiz", createUserResponse);
 
-//http://localhost:5000/questions/js/quiz/quizAnswer
-router.patch("/js/quiz/quizAnswer", updateUserResponse);
+//http://localhost:5000/questions/js/quiz
+router.patch("/js/quiz", createUserResponse);
+
 export default router;

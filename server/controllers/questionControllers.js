@@ -11,7 +11,7 @@ export const createJsQuestions = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
-export const getSessionData = async (req, res) => {
+/* export const getSessionData = async (req, res) => {
     const { sessionId } = req.body
     try {
         const currentSession = await QuizSession.findById(sessionId);
@@ -19,17 +19,17 @@ export const getSessionData = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
-};
+}; */
 
 
- export const getAllJSQuestions = async (req, res) => {
+ /* export const getAllJSQuestions = async (req, res) => {
     try {
         const javascript = await javaScript.find();
          return res.status(201).json({ message: "JavaScript Questions found", javascript });
      } catch (error) {
          return res.status(500).json({ message: error.message });
      }
- };
+ }; */
  
 export const createQuizSession = async (req, res) => {
     const { user, userSolution } = req.body
@@ -48,42 +48,45 @@ export const createQuizSession = async (req, res) => {
         return res.send(error.message);
     }
 }
-export const updateUserResponse = async (req, res) => {
-    const { answer, user, question, sessionId } = req.body;
-     console.log("sessionId:", sessionId, "answer:", answer, "user:", user, "question:", question)
+
+export const createUserResponse = async (req, res) => {
     try {
-     
-        const updatedAnswerFromTheUser = await QuizSession.findOneAndUpdate({'sessionid':sessionId, 'userSolutions.question':question},{
+      const { answer, user, question, sessionId } = req.body;
+  
+      const session = await QuizSession.findOne({
+        _id: sessionId,
+        "userSolutions.question": question,
+      });
+      if (session) {
+        const updatedSession = await QuizSession.findOneAndUpdate(
+          { _id: sessionId, "userSolutions.question": question },
+          {
             //setting a specific field to a new value
-            $set:{
-                //userSolutions.$ is the solution we found using findOne
-                'userSolutions.$.answer':req.body.answer
-            }
-        },{new:true})
+            $set: {
+              //userSolutions.$ is the solution we found using findOne
+              "userSolutions.$.answer": answer,
+            },
+          },
+          { new: true }
+        );
+  
+        return res.status(200).json(updatedSession);
+      }
+    
+      const answerFromTheUser = await QuizSession.findByIdAndUpdate(
+        sessionId,
+        {
+            $push: { userSolutions: { question, answer } }
+        },
+        { new: true }
+    );
+       
       //  if (!answerFromTheUser) return;
-        return res.status(200).json( updatedAnswerFromTheUser );
+        return res.status(200).json(answerFromTheUser);
     } catch (error) {
         return res.send(error.message);
     }
 };
-        /* const answerFromTheUser = await QuizSession.findOneAndUpdate(
-            sessionId,
-            {
-                $push: { userSolutions: { question, answer } }
-            },
-            { new: true }
-        ); */
-        // const currentSession = await QuizSession.find({ sessionId }, { userSolutions: { $elemMatch: { question } } });
-        // db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
-        // const currentSession = await QuizSession.findById(sessionId).populate('userSolutions').select('question')
-        // currentSession.userSolutions.find(item => {
-        //     if (String(item.question) == question) {
-        //         console.log("True")
-        //     } else {
-        //         console.log("False")
-        //     }
-        // })
-        // const result = await QuizSession.find({ "_id": sessionId, "userSolutions": { "question": { $eq: question } } });
-        // const result = await QuizSession.find({ sessionId }, { userSolutions: { question } })
+       
 
        
