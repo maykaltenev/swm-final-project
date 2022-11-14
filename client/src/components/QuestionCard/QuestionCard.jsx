@@ -57,7 +57,8 @@ export default function QuestionCard({
   const getAnswersFromLocalStorage = () => {
     const userAnswers = JSON.parse(localStorage.getItem("answers"));
     console.log("indside", userAnswers);
-    if (userAnswers) return userAnswers && setAnswers(userAnswers);
+    // if (userAnswers) return userAnswers && setAnswers(userAnswers);
+    if (userAnswers) return setAnswers(userAnswers);
   };
 
   useEffect(() => {
