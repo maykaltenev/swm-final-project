@@ -80,7 +80,7 @@ export const createUserResponse = async (req, res) => {
   }
 };
 
-export const createResultResponse = async (req, res) => {
+export const createResult = async (req, res) => {
   try {
     const { sessionId } = req.body;
 
@@ -88,30 +88,26 @@ export const createResultResponse = async (req, res) => {
       _id: sessionId,
     });
     if (session) {
-      const checkResult = await QuizSession.findOneAndUpdate(
-        { _id: sessionId, "userSolutions.answer": answer },
-        {
-          //setting a specific field to a new value
-          $set: {
-            //userSolutions.$ is the solution we found using findOne
-            "userSolutions.$.answer": answer,
-          },
-        },
-        { new: true }
-      );
+      const checkResult = await QuizSession.findById(sessionId).select("userSolutions.answer");
+      const allQuestion = await QuizSession.findById(sessionId).select("questions.options");
+      const allTrueAnswers = allQuestion.questions.map(question => question.options.filter(option => option.isCorrect === true));
+      const userCorrectAnswers =
+        allTrueAnswers
+          .map(
+            (trueAnswer) =>
+              checkResult.userSolutions
+                .filter(
+                  (checkResultId =>
+                    String(checkResultId.answer) === String(trueAnswer[0]._id))
+                )
+          )
+          .flat()
+          .map(item => String(item.answer));
 
-      return res.status(200).json(updatedSession);
+      const wrongAnswers = checkResult.userSolutions - userCorrectAnswers.length;
+
+      const userAnswerPercentage = Math.round((userCorrectAnswers.length / allQuestion.questions.length) * 100);
     }
-
-    const answerFromTheUser = await QuizSession.findByIdAndUpdate(
-      sessionId,
-      {
-        $push: { userSolutions: { question, answer } },
-      },
-      { new: true }
-    );
-
-    return res.status(200).json(answerFromTheUser);
   } catch (error) {
     return res.send(error.message);
   }
