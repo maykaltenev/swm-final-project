@@ -45,7 +45,8 @@ export default function QuestionCard({
               "answers",
               JSON.stringify(
                 data.data?.userSolutions.map((answer) => answer.answer)
-              )
+              ),
+              console.log(data)
             )
         );
       getAnswersFromLocalStorage();
@@ -56,7 +57,6 @@ export default function QuestionCard({
 
   const getAnswersFromLocalStorage = () => {
     const userAnswers = JSON.parse(localStorage.getItem("answers"));
-    console.log("indside", userAnswers);
     // if (userAnswers) return userAnswers && setAnswers(userAnswers);
     if (userAnswers) return setAnswers(userAnswers);
   };
@@ -65,7 +65,6 @@ export default function QuestionCard({
     addUserAnswerInput();
     getAnswersFromLocalStorage();
   }, []);
-  console.log("from outside", answers);
   return (
     <div>
       {

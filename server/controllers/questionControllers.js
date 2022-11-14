@@ -79,3 +79,40 @@ export const createUserResponse = async (req, res) => {
     return res.send(error.message);
   }
 };
+
+export const createResultResponse = async (req, res) => {
+  try {
+    const { sessionId } = req.body;
+
+    const session = await QuizSession.findOne({
+      _id: sessionId,
+    });
+    if (session) {
+      const checkResult = await QuizSession.findOneAndUpdate(
+        { _id: sessionId, "userSolutions.answer": answer },
+        {
+          //setting a specific field to a new value
+          $set: {
+            //userSolutions.$ is the solution we found using findOne
+            "userSolutions.$.answer": answer,
+          },
+        },
+        { new: true }
+      );
+
+      return res.status(200).json(updatedSession);
+    }
+
+    const answerFromTheUser = await QuizSession.findByIdAndUpdate(
+      sessionId,
+      {
+        $push: { userSolutions: { question, answer } },
+      },
+      { new: true }
+    );
+
+    return res.status(200).json(answerFromTheUser);
+  } catch (error) {
+    return res.send(error.message);
+  }
+}
