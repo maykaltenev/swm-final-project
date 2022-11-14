@@ -15,8 +15,11 @@ export default function QuestionCard({ question, showAnswer }) {
     sessionId,
     currentWholeSession,
     setCurrentWholeSession,
+    answers,setAnswers
   } = useContext(QuestionContext);
+
   const [userInputAnswerId, setUserInputAnswerId] = useState("");
+
   const getUser = JSON.parse(localStorage.getItem("user"));
 
   const handleUserAnswer = (question, e, getUser, sessionId) => {
@@ -26,49 +29,44 @@ export default function QuestionCard({ question, showAnswer }) {
   };
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
-    console.log("insde addUserinput question",question)
-    console.log("insde addUserinput answer",answer)
-    console.log("insde addUserinput session",sessionId)
+    console.log("insde addUserinput question", question);
+    console.log("insde addUserinput answer", answer);
+    console.log("insde addUserinput session", sessionId);
     try {
       await axios
-        .post(
-          `http://localhost:5000/questions/js/createQuiz`,
-          { sessionId ,
-            question,
-            answer
-          },
+        .patch(
+          `http://localhost:5000/questions/js/quiz`,
+          { sessionId, question, answer, user },
           {
             withCredentials: true,
           }
         )
-        .then((data) => setCurrentWholeSession(data));
-        //console.log("the currentwhole sesion is:",currentWholeSession.data.currentSession._id.userSolutions)
-/* --------------no need in frontend
-      currentWholeSession.data.currentSession.userSolutions.map(
-        async (item) => {
-          if (item.question == question) {
-            console.log("the targeted question is:",item.question)
-      
-            await axios.patch(
-              "http://localhost:5000/questions/js/quizAnswer",
-              {
-                question,
-                answer,
-                user,
-                sessionId,
-              },
-              { withCredentials: true }
-            );
-            console.log("the question with pathch is",question)
-          }
-        }
-      ); */
+        .then(
+          (data) =>
+            data.data?.userSolutions &&
+            localStorage.setItem(
+              "answers",
+              JSON.stringify(
+                data.data?.userSolutions.map((answer) => answer.answer)
+              )
+            )
+        );
     } catch (error) {
       console.log("error adding user input", error);
     }
   };
-  
-  console.log("th current whole session is:",currentWholeSession)
+
+  const getAnswersFromLocalStorage = () => {
+        const userAnswer = JSON.parse(localStorage.getItem("answers"));
+        if(userAnswer){
+          return setAnswers(userAnswer)
+        }
+  };
+  useEffect(() => {
+    addUserAnswerInput()
+    getAnswersFromLocalStorage()
+  },[])
+  //console.log("th current whole session is:",currentWholeSession)
   return (
     <div>
       {

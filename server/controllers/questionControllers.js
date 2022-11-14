@@ -52,7 +52,7 @@ export const createQuizSession = async (req, res) => {
 export const createUserResponse = async (req, res) => {
     try {
       const { answer, user, question, sessionId } = req.body;
-  
+  console.log(answer,user,question,sessionId)
       const session = await QuizSession.findOne({
         _id: sessionId,
         "userSolutions.question": question,

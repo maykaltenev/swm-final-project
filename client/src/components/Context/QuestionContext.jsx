@@ -8,17 +8,10 @@ const QuestionContextProvider = ({ children }) => {
   const [points, setPoints] = useState(0);
   const [currentWholeSession, setCurrentWholeSession] = useState("");
   const [sessionId, setSessionId] = useState("");
+const [answers,setAnswers] = useState([])
+
   const getUser = JSON.parse(localStorage.getItem("user"));
-  // const getQuestions = async () => {
-  //   await axios
-  //     .get("http://localhost:5000/questions/js", {
-  //       withCredentials: true,
-  //     })
-  //     .then((data) => setJavaScriptData(data.data.javascript));
-  // };
-  // useEffect(() => {
-  //   getQuestions();
-  // }, []);
+  
   const handleCreateNewSession = async () => {
     // getQuestions();
     try {
@@ -33,15 +26,18 @@ const QuestionContextProvider = ({ children }) => {
           }
         )
         .then(
-          (data) => (
-            setSessionId(data.data.newQuizSession._id),
-            setJavaScriptData(data.data.newQuizSession.questions)
+          (data) => (           
+           setSessionId(data.data.newQuizSession._id),
+            setJavaScriptData(data.data.newQuizSession.questions) ,
+            console.log(data)
           )
         );
     } catch (error) {
       console.log(error);
     }
   };
+  console.log(sessionId)
+  console.log(javaScriptData)
   return (
     <QuestionContext.Provider
       value={{
@@ -54,6 +50,8 @@ const QuestionContextProvider = ({ children }) => {
         javaScriptData,
         setPoints,
         points,
+        answers,
+        setAnswers
       }}
     >
       {children}
