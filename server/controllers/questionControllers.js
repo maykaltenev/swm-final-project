@@ -90,12 +90,9 @@ export const createResult = async (req, res) => {
     if (session) {
       // Collect all the user answers
       const checkResult = await QuizSession.findById(sessionId).select("userSolutions.answer");
-
       // Get all the question for this session
       const allQuestion = await QuizSession.findById(sessionId).select("questions.options");
-
       // Collect all the correct answers
-
       //! Working
       const allTrueAnswers = allQuestion.questions.map(question => question.options.filter(option => option.isCorrect === true));
       const userCorrectAnswers =
@@ -111,15 +108,9 @@ export const createResult = async (req, res) => {
           .flat()
           .map(item => String(item.answer));
 
-      const wrongAnswers = checkResult.userSolutions.length - userCorrectAnswers.length; // 2 [ {}, {}]
+      const wrongAnswersArray = checkResult.userSolutions.filter((item) => (!userCorrectAnswers.includes(String(item.answer))))
       const userAnswerPercentage = Math.round((userCorrectAnswers.length / allQuestion.questions.length) * 100);
-
-      const wrongAnswersArray = () => {
-        const result = checkResult.userSolutions.filter((item) => (!userCorrectAnswers.includes(String(item.answer))))
-        return result;
-      }
-      console.log("function", wrongAnswersArray())
-
+      return res.status(200).json({ userCorrectAnswers, wrongAnswersArray, userAnswerPercentage });
     }
   } catch (error) {
     return res.send(error.message);
