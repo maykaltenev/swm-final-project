@@ -113,57 +113,12 @@ export const createResult = async (req, res) => {
 
       const wrongAnswers = checkResult.userSolutions.length - userCorrectAnswers.length; // 2 [ {}, {}]
       const userAnswerPercentage = Math.round((userCorrectAnswers.length / allQuestion.questions.length) * 100);
-      const wrongAnswerNew = []
 
       const wrongAnswersArray = () => {
-        const result = checkResult.userSolutions
-          .filter((item) => {
-            if (!userCorrectAnswers.includes(String(item.answer))) {
-              return wrongAnswerNew.push(String(item.answer))
-            }
-          })
-        return result
+        const result = checkResult.userSolutions.filter((item) => (!userCorrectAnswers.includes(String(item.answer))))
+        return result;
       }
       console.log("function", wrongAnswersArray())
-      console.log("array", wrongAnswerNew)
-
-
-
-
-
-      //! Working
-      //? Test
-      // //1. save the given questionID and the answerID from the user input
-      // //2. we check all the questionID with the userSolutions_QuestionID true  => array of 4 options sometimes there will be more than 2 true answers
-      // //3. if question.option = userSolutions_answer 
-      // const correctA = [];
-      // const wrongA = [];
-      // const allTrueAnswers = allQuestion.questions.map(question => question.options.filter(option => option.isCorrect === true));
-
-      // allTrueAnswers
-      //   .map(
-      //     (trueAnswer) =>
-      //       checkResult.userSolutions
-      //         .filter(
-      //           (checkResultId) =>
-      //             String(checkResultId.answer) === String(trueAnswer[0]._id) ? correctA.push(checkResultId.answer) : wrongA.push(checkResultId.answer)
-      //         )
-      //   )
-
-      // console.log(allTrueAnswers)
-
-      // const userCorrectAnswers =
-      //   allTrueAnswers
-      //     .map(
-      //       (trueAnswer) =>
-      //         checkResult.userSolutions
-      //           .filter(
-      //             (checkResultId =>
-      //               String(checkResultId.answer) === String(trueAnswer[0]._id))
-      //           )
-      //     )
-      //     .flat()
-      //     .map(item => String(item.answer));
 
     }
   } catch (error) {
