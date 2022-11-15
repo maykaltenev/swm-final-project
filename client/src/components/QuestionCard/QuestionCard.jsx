@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
 
+import { AiOutlineStar } from "react-icons/ai";
+
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
 
@@ -74,6 +76,7 @@ export default function QuestionCard({
             <img src={question?.image} alt="" width="400px" />
           )}
           <div>
+            <AiOutlineStar />
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
