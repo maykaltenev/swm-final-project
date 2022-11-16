@@ -7,7 +7,8 @@ import Quiz from "./components/Quiz/Quiz";
 import CountDownTimer from "./components/Timer/Timer";
 
 function App() {
-  return (
+
+    return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Register />} />
