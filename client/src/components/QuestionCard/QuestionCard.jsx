@@ -25,6 +25,8 @@ export default function QuestionCard({
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
   };
+
+  console.log("question", question);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios

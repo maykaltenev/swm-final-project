@@ -80,6 +80,53 @@ export const createUserResponse = async (req, res) => {
   }
 };
 
+/* export const createResult = async (req, res) => {
+  try {
+    const { sessionId } = req.body;
+
+    const session = await QuizSession.findOne({
+      _id: sessionId,
+    });
+    if (session) {
+      // Collect all the user answers
+      const checkResult = await QuizSession.findById(sessionId).select(
+        "userSolutions.answer"
+      );
+      // Get all the question for this session
+      const allQuestion = await QuizSession.findById(sessionId).select(
+        "questions.options"
+      );
+      // Collect all the correct answers
+      //! Working
+      const allTrueAnswers = allQuestion.questions.map((question) =>
+        question.options.filter((option) => option.isCorrect === true)
+      );
+      const userCorrectAnswers = allTrueAnswers
+        .map((trueAnswer) =>
+          checkResult.userSolutions.filter(
+            (checkResultId) =>
+              String(checkResultId.answer) === String(trueAnswer[0]._id)
+          )
+        )
+        .flat()
+        .map((item) => String(item.answer));
+
+      const wrongAnswersArray = checkResult.userSolutions.filter(
+        (item) => !userCorrectAnswers.includes(String(item.answer))
+      );
+      const userAnswerPercentage = Math.round(
+        (userCorrectAnswers.length / allQuestion.questions.length) * 100
+      );
+      return res
+        .status(200)
+        .json({ userCorrectAnswers, wrongAnswersArray, userAnswerPercentage });
+    }
+  } catch (error) {
+    return res.send(error.message);
+  }
+};
+ */
+
 export const createResult = async (req, res) => {
   try {
     const { sessionId } = req.body;
@@ -89,30 +136,55 @@ export const createResult = async (req, res) => {
     });
     if (session) {
       // Collect all the user answers
-      const checkResult = await QuizSession.findById(sessionId).select("userSolutions.answer");
+      const checkResult = await QuizSession.findById(sessionId).select(
+        "userSolutions"
+      );
       // Get all the question for this session
-      const allQuestion = await QuizSession.findById(sessionId).select("questions.options");
+      const allQuestion = await QuizSession.findById(sessionId).select(
+        "questions"
+      );
+
+      // for (let i = 0; i < checkResult.userSolutions.length; i++) {
+      //   /*  console.log(checkResult.userSolutions[i].question); */
+
+      for (let j = 0; j <= allQuestion.questions.length - 1; j++) {
+        /* console.log("all", allQuestion.questions[j]._id); */
+        console.log("checkResul", checkResult.userSolutions);
+        if (
+          String(checkResult.userSolutions[j].question) ===
+          String(allQuestion.questions[j]._id)
+        ) {
+          console.log("first");
+        }
+      }
+
+      /* console.log("allqu", allQuestion); */
       // Collect all the correct answers
       //! Working
-      const allTrueAnswers = allQuestion.questions.map(question => question.options.filter(option => option.isCorrect === true));
-      const userCorrectAnswers =
-        allTrueAnswers
-          .map(
-            (trueAnswer) =>
-              checkResult.userSolutions
-                .filter(
-                  (checkResultId =>
-                    String(checkResultId.answer) === String(trueAnswer[0]._id))
-                )
+      const allTrueAnswers = allQuestion.questions.map((question) =>
+        question.options.filter((option) => option.isCorrect === true)
+      );
+      const userCorrectAnswers = allTrueAnswers
+        .map((trueAnswer) =>
+          checkResult.userSolutions.filter(
+            (checkResultId) =>
+              String(checkResultId.answer) === String(trueAnswer[0]._id)
           )
-          .flat()
-          .map(item => String(item.answer));
+        )
+        .flat()
+        .map((item) => String(item.answer));
 
-      const wrongAnswersArray = checkResult.userSolutions.filter((item) => (!userCorrectAnswers.includes(String(item.answer))))
-      const userAnswerPercentage = Math.round((userCorrectAnswers.length / allQuestion.questions.length) * 100);
-      return res.status(200).json({ userCorrectAnswers, wrongAnswersArray, userAnswerPercentage });
+      const wrongAnswersArray = checkResult.userSolutions.filter(
+        (item) => !userCorrectAnswers.includes(String(item.answer))
+      );
+      const userAnswerPercentage = Math.round(
+        (userCorrectAnswers.length / allQuestion.questions.length) * 100
+      );
+      return res
+        .status(200)
+        .json({ userCorrectAnswers, wrongAnswersArray, userAnswerPercentage });
     }
   } catch (error) {
     return res.send(error.message);
   }
-}
+};

@@ -9,13 +9,18 @@ import { QuestionContext } from "../Context/QuestionContext";
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [result, setResult] = useState("");
+
+  console.log("result", result);
   const {
     getQuestions,
     handleCreateNewSession,
     javaScriptData,
     points,
+    sessionId,
     setSessionId,
   } = useContext(QuestionContext);
+
   // const getUser = JSON.parse(localStorage.getItem("user"));
 
   // const handleCreateNewSession = async () => {
@@ -54,7 +59,15 @@ function Quiz() {
     setShowExplanation((showExplanation) => !showExplanation);
     console.log(showExplanation);
   };
-  console.log("currentQuestion", currentQuestion);
+  const handleResult = async () => {
+    const result = await axios.post(
+      "http://localhost:5000/questions/js/quiz/result",
+      { sessionId: sessionId }
+    );
+
+    return setResult(result);
+  };
+
   return (
     <>
       <div className="quiz-main-container">
@@ -74,6 +87,34 @@ function Quiz() {
         <button onClick={handleShowAnswer}>Show Answer</button>
       </div>
       <QuestionCircles setCurrentQuestion={setCurrentQuestion} />
+
+      {currentQuestion === javaScriptData.length - 1 ? (
+        <button onClick={handleResult}>Result</button>
+      ) : (
+        ""
+      )}
+      {result && (
+        <div>
+          {" "}
+          <div>
+            <h1>Your Score:{result.data?.userAnswerPercentage} %</h1>{" "}
+          </div>
+          <div>
+            <p>Total Number of Questions: {javaScriptData?.length}</p>
+          </div>
+          <div>
+            <p>
+              Number of Correct Answers:{" "}
+              {result.data.userCorrectAnswers?.length}
+            </p>
+          </div>
+          <div>
+            <p>
+              Number of Wrong Answers: {result.data.wrongAnswersArray?.length}
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
