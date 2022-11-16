@@ -43,9 +43,10 @@ export const createQuizSession = async (req, res) => {
   }
 };
 export const createUserResponse = async (req, res) => {
+
   try {
     const { answer, user, question, sessionId } = req.body;
-
+    console.log("from create", answer)
     const session = await QuizSession.findOne({
       _id: sessionId,
       "userSolutions.question": question,
@@ -152,10 +153,10 @@ export const createResult = async (req, res) => {
           if (String(checkResult.userSolutions[i].question) === String(allQuestion.questions[j]._id)) {
             for (let k = 0; k < allQuestion.questions[j].options.length; k++) {
               if (String(allQuestion.questions[j].options[k]._id) === String(checkResult.userSolutions[i].answer)) {
-                console.log("allQOptionId", String(allQuestion.questions[j].options[k]._id))
-                console.log("userAnswerId", String(checkResult.userSolutions[i].answer))
-                console.log(allQuestion.questions[j].options[k].isCorrect)
-                console.log("_______---------______-------__________-______--")
+                // console.log("allQOptionId", String(allQuestion.questions[j].options[k]._id))
+                // console.log("userAnswerId", String(checkResult.userSolutions[i].answer))
+                // console.log(allQuestion.questions[j].options[k].isCorrect)
+                // console.log("_______---------______-------__________-______--")
               }
             }
           }
