@@ -1,24 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../Context/UserContext"; //for google
 
 export default function Register() {
-  function handleCallbackResponse(response) {
-console.log("Encoded JWT ID token:" + response.credential)
-  }
-
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id :"1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com" ,
-      callback: handleCallbackResponse
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      {theme:"outline", size:"large"}
-    );
-  }, [])
+  
+  const { googleUser, setGoogleUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
