@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext"; //for google
 
 export default function Register() {
-  
   const { googleUser, setGoogleUser } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -75,8 +74,12 @@ export default function Register() {
             }
           </p>
         </div>
-        {/* google button */}
-        <div id="signInDiv"></div>
+        {/* -----------------------google button--------------- */}
+        <div id="signInDiv"> </div>
+        {/*  if we have no user : signin button
+      if we have user : show logout button */}
+        
+         {/* -----------------------google button--------------- */}
       </form>
     </div>
   );

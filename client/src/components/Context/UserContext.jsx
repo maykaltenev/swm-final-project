@@ -17,7 +17,7 @@ const [googleUser, setGoogleUser] = useState({});
 function handleCallbackResponse(response) {
 console.log("Encoded JWT ID token:" + response.credential)
 let userObject = jwt_decode(response.credential)
-console.log(userObject)
+navigate("/")
 setGoogleUser(userObject)
 }
 
@@ -31,6 +31,7 @@ useEffect(() => {
   google.accounts.id.renderButton(
     document.getElementById("signInDiv"),
     {theme:"outline", size:"large"}
+   
   );
 }, [])
 /* ---------------google auth ---------------- */
