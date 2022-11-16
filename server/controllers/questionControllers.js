@@ -146,17 +146,29 @@ export const createResult = async (req, res) => {
 
       // for (let i = 0; i < checkResult.userSolutions.length; i++) {
       //   /*  console.log(checkResult.userSolutions[i].question); */
-
-      for (let j = 0; j <= allQuestion.questions.length - 1; j++) {
+      for (let j = 0; j < allQuestion.questions.length; j++) {
         /* console.log("all", allQuestion.questions[j]._id); */
-        console.log("checkResul", checkResult.userSolutions);
-        if (
-          String(checkResult.userSolutions[j].question) ===
-          String(allQuestion.questions[j]._id)
-        ) {
-          console.log("first");
+        for (let i = 0; i < checkResult.userSolutions.length; i++) {
+          if (String(checkResult.userSolutions[i].question) === String(allQuestion.questions[j]._id)) {
+            for (let k = 0; k < allQuestion.questions[j].options.length; k++) {
+              if (String(allQuestion.questions[j].options[k]._id) === String(checkResult.userSolutions[i].answer)) {
+                console.log("allQOptionId", String(allQuestion.questions[j].options[k]._id))
+                console.log("userAnswerId", String(checkResult.userSolutions[i].answer))
+                console.log(allQuestion.questions[j].options[k].isCorrect)
+                console.log("_______---------______-------__________-______--")
+              }
+            }
+          }
         }
       }
+      // console.log("checkResul", checkResult.userSolutions);
+      // if (
+      //   String(checkResult.userSolutions[j].question) ===
+      //   String(allQuestion.questions[j]._id)
+      // ) {
+      //   console.log("first");
+      // }
+
 
       /* console.log("allqu", allQuestion); */
       // Collect all the correct answers
