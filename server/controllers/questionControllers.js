@@ -70,7 +70,7 @@ export const createUserResponse = async (req, res) => {
     const answerFromTheUser = await QuizSession.findByIdAndUpdate(
       sessionId,
       {
-        $push: { userSolutions: { question, answer } },
+        $push: { userSolutions: { question, $push: { answer } } },
       },
       { new: true }
     );

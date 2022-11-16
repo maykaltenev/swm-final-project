@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import React, { useContext, useState, useEffect } from "react";
 
 // Context
@@ -13,8 +14,7 @@ export default function QuestionCard({
   currentQuestion,
 }) {
   // useState
-  const [userInputAnswerId, setUserInputAnswerId] = useState("");
-  /*  const [answers, setAnswers] = useState([]); */
+  const [userInputAnswerId, setUserInputAnswerId] = useState([]);
 
   //Context
   const { setPoints, points, sessionId, setAnswers, answers } =
@@ -23,10 +23,20 @@ export default function QuestionCard({
   const getUser = JSON.parse(localStorage.getItem("user"));
 
   const handleUserAnswer = (question, e, getUser, sessionId) => {
-    addUserAnswerInput(question, e, getUser, sessionId);
+    const { id, checked } = e.target;
+    if (checked) {
+      setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+    } else {
+      setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+    }
   };
+  useEffect(() => {
+    addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
+  }, [userInputAnswerId]);
+  useEffect(() => {
+    setUserInputAnswerId([]);
+  }, [question]);
 
-  console.log("question", question);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios
@@ -46,7 +56,9 @@ export default function QuestionCard({
             localStorage.setItem(
               "answers",
               JSON.stringify(
-                data.data?.userSolutions.map((answer) => answer.answer)
+                data.data?.userSolutions.map((item) =>
+                  item.answer.map((answer) => answer)
+                )
               ),
               console.log(data)
             )
@@ -62,7 +74,6 @@ export default function QuestionCard({
     // if (userAnswers) return userAnswers && setAnswers(userAnswers);
     if (userAnswers) return setAnswers(userAnswers);
   };
-
   useEffect(() => {
     addUserAnswerInput();
     getAnswersFromLocalStorage();
@@ -80,21 +91,18 @@ export default function QuestionCard({
               <div key={option?._id}>
                 <input
                   /*    { answers && answers.map(item => item == answer)} */
-
                   className={style.button}
-                  type="radio"
+                  type="checkbox"
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={answers && answers.includes(option?._id)}
+                  checked={
+                    answers &&
+                    answers.map((answer) => answer.includes(option._id))[0]
+                  }
                   onChange={(e) =>
-                    handleUserAnswer(
-                      question._id,
-                      e.target.id,
-                      getUser._id,
-                      sessionId
-                    )
+                    handleUserAnswer(question._id, e, getUser._id, sessionId)
                   }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>
