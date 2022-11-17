@@ -40,7 +40,7 @@ function Quiz() {
           <span> {javaScriptData.length}</span>
           <div>Points: {points}</div>
         </div>
-        <button onClick={handleCreateNewSession}>Start New Quiz</button>
+        {/* <button onClick={handleCreateNewSession}>Start New Quiz</button> */}
         <QuestionCard
           question={javaScriptData[currentQuestion]}
           showExplanation={showExplanation}

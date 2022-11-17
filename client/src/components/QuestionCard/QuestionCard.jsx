@@ -22,6 +22,7 @@ export default function QuestionCard({
     getMarkedFromLocalStorage,
     marked,
     setMarked,
+    handleCreateNewSession,
   } = useContext(QuestionContext);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
@@ -85,6 +86,7 @@ export default function QuestionCard({
     addUserAnswerInput();
     getAnswersFromLocalStorage();
     getMarkedFromLocalStorage();
+    handleCreateNewSession();
   }, []);
 
   return (

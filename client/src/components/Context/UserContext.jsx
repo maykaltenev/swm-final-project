@@ -29,7 +29,7 @@ const UserContextProvider = ({ children }) => {
           localStorageUser();
         });
       setError("");
-      navigate("/mypage");
+      navigate("/createquiz");
       return;
     } catch (error) {
       console.log(error);

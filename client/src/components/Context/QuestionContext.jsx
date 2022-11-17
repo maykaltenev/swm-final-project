@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const QuestionContext = createContext(null);
 
@@ -10,7 +11,7 @@ const QuestionContextProvider = ({ children }) => {
   const [sessionId, setSessionId] = useState("");
 
   const getUser = JSON.parse(localStorage.getItem("user"));
-
+  const navigate = useNavigate();
   const getMarkedFromLocalStorage = () => {
     const marked = localStorage.getItem("marked");
     if (marked) {
@@ -22,11 +23,12 @@ const QuestionContextProvider = ({ children }) => {
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
   const handleCreateNewSession = async () => {
-    localStorage.removeItem("answers");
-    localStorage.removeItem("marked");
+    /*  localStorage.removeItem("answers");
+    localStorage.removeItem("marked"); */
 
-    setAnswers([]);
-    setMarked([]);
+    /* setAnswers([]);
+    setMarked([]); */
+    navigate("/mypage");
     try {
       await axios
         .post(

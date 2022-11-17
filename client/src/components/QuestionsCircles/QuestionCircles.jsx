@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { QuestionContext } from "../Context/QuestionContext";
+import { Link } from "react-router-dom";
 
 export default function QuestionCircles({ setCurrentQuestion }) {
   const { javaScriptData, marked } = useContext(QuestionContext);
@@ -8,10 +9,18 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     setCurrentQuestion(i);
   };
   return (
-    <div style={{ marginTop: "2rem", width: "25rem", height: "25rem" }}>
+    <div
+      style={{
+        marginTop: "2rem",
+        width: "25rem",
+        height: "25rem",
+      }}
+    >
       {javaScriptData.map((question, i) => (
-        <a
+        <Link
           style={{
+            textDecoration: "none",
+            cursor: "pointer",
             backgroundColor: marked.includes(question?._id) ? "lightgray" : "",
             border: "1px black solid",
             borderRadius: "50%",
@@ -20,11 +29,10 @@ export default function QuestionCircles({ setCurrentQuestion }) {
             padding: "0.3rem",
           }}
           key={question?._id}
-          //   onClick={setCurrentQuestion(i)}
           onClick={() => handleChangeIndex(i)}
         >
           {i + 1}
-        </a>
+        </Link>
       ))}
     </div>
   );
