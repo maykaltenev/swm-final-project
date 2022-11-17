@@ -16,12 +16,7 @@
    
    
   }
-  form input{
-   
 
-    
-    
-  }
   .show {
     position: fixed;
   /*  inset: 0; */
@@ -37,7 +32,7 @@
   }
   .show .container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;

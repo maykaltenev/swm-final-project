@@ -27,6 +27,7 @@ function Header() {
     navigate("/");
     setGoogleUser("");
     setGoogleUserToggle(false)
+    setOpenRegisterForm(false);
   };
 
   return (
