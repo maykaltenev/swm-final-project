@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { QuestionContext } from "../Context/QuestionContext";
 
 export default function QuestionCircles({ setCurrentQuestion }) {
-  const { javaScriptData } = useContext(QuestionContext);
+  const { javaScriptData, marked } = useContext(QuestionContext);
 
   const handleChangeIndex = (i) => {
     setCurrentQuestion(i);
@@ -12,6 +12,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
       {javaScriptData.map((question, i) => (
         <a
           style={{
+            backgroundColor: marked.includes(question?._id) ? "lightgray" : "",
             border: "1px black solid",
             borderRadius: "50%",
             width: "4rem",
