@@ -74,13 +74,14 @@ export default function Register() {
             }
           </p>
         </div>
-        {/* -----------------------google button--------------- */}
-        <div id="signInDiv"> </div>
+        
+      </form>
+      {/* -----------------------google button--------------- */}
+      <div id="signInDiv"> </div>
         {/*  if we have no user : signin button
       if we have user : show logout button */}
         
          {/* -----------------------google button--------------- */}
-      </form>
     </div>
   );
 }

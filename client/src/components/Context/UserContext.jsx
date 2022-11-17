@@ -3,44 +3,51 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addMinutes from "date-fns/addMinutes";
 import differenceInSeconds from "date-fns/differenceInSeconds";
-import jwt_decode from "jwt-decode"
+import jwt_decode from "jwt-decode";
 const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
-
   const [error, setError] = useState("");
+  //state for the user in normal login form
   const [user, setUser] = useState("");
+  //state to open registerform
+  const [openRegisterForm, setOpenRegisterForm] = useState(false);
+
   const navigate = useNavigate();
-/* ---------------google auth ---------------- */
-const [googleUser, setGoogleUser] = useState({});
+  /* ---------------google auth ---------------- */
+  //state to have a googgle user details
+  const [googleUser, setGoogleUser] = useState({});
 
-function handleCallbackResponse(response) {
-console.log("Encoded JWT ID token:" + response.credential)
-let userObject = jwt_decode(response.credential)
-navigate("/")
-let storingInLocalStorage = localStorage.setItem("user",JSON.stringify( userObject))
-let getUserFromLocalStorage =  JSON.parse(localStorage.getItem("user"));
-//console.log("storing in locl",storingInLocalStorage )
-//console.log("getting from locl",getUserFromLocalStorage )
- setGoogleUser(getUserFromLocalStorage) 
-}
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token:" + response.credential);
+    let userObject = jwt_decode(response.credential);
+    navigate("/");
+    let storingInLocalStorage = localStorage.setItem(
+      "user",
+      JSON.stringify(userObject)
+    );
+    let getUserFromLocalStorage = JSON.parse(localStorage.getItem("user"));
+    //console.log("storing in locl",storingInLocalStorage )
+    //console.log("getting from locl",getUserFromLocalStorage )
+    setGoogleUser(getUserFromLocalStorage);
+  }
 
-console.log("google user details is:",googleUser)
+  console.log("google user details is:", googleUser);
 
-useEffect(() => {
-  /* global google */
-  google.accounts.id.initialize({
-    client_id : "1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com" ,
-    callback: handleCallbackResponse
-  });
-
-  google.accounts.id.renderButton(
-    document.getElementById("signInDiv"),
-    {theme:"outline", size:"large"}
-   
-  );
-}, [])
-/* ---------------google auth ---------------- */
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id:
+        "1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+const getGoogleDiv = document.getElementById("signInDiv")
+    google.accounts.id.renderButton(getGoogleDiv, {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
+  /* ---------------google auth ---------------- */
   const userData = async (formData) => {
     try {
       await axios
@@ -141,7 +148,18 @@ useEffect(() => {
   }, []);
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer,googleUser, setGoogleUser }}
+      value={{
+        userData,
+        error,
+        user,
+        handleLogout,
+        getUser,
+        timer,
+        googleUser,
+        setGoogleUser,
+        openRegisterForm,
+        setOpenRegisterForm,
+      }}
     >
       {children}
     </UserContext.Provider>
