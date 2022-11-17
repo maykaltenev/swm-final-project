@@ -11,7 +11,6 @@ function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [result, setResult] = useState("");
 
-  console.log("result", result);
   const {
     getQuestions,
     handleCreateNewSession,
@@ -19,30 +18,8 @@ function Quiz() {
     points,
     sessionId,
     setSessionId,
+    setUserInputAnswerId,
   } = useContext(QuestionContext);
-
-  // const getUser = JSON.parse(localStorage.getItem("user"));
-
-  // const handleCreateNewSession = async () => {
-  //   // getQuestions();
-  //   try {
-  //     await axios
-  //       .post(
-  //         "http://localhost:5000/questions/js/createQuiz",
-  //         {
-  //           user: getUser._id,
-  //           questions: javaScriptData,
-  //         },
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       )
-  //       // .then((data) => console.log(data));
-  //       .then((data) => setSessionId(data.data.newQuizSession._id));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handlePrevious = (e) => {
     e.preventDefault();

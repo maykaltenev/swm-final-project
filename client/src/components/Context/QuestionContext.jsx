@@ -9,6 +9,8 @@ const QuestionContextProvider = ({ children }) => {
   const [points, setPoints] = useState(0);
   const [sessionId, setSessionId] = useState("");
 
+  const [userInputAnswerId, setUserInputAnswerId] = useState([]);
+
   const getUser = JSON.parse(localStorage.getItem("user"));
   // const getQuestions = async () => {
   //   await axios
@@ -48,11 +50,12 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
-        setAnswers,
         answers,
+        setAnswers,
         sessionId,
         setSessionId,
-
+        userInputAnswerId,
+        setUserInputAnswerId,
         handleCreateNewSession,
         // getQuestions,
         javaScriptData,

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import React, { useContext, useState, useEffect } from "react";
 
-// Context
+// import Context
 import { QuestionContext } from "../Context/QuestionContext";
 
 //styles
@@ -13,15 +13,19 @@ export default function QuestionCard({
   showAnswer,
   currentQuestion,
 }) {
-  // useState
-  const [userInputAnswerId, setUserInputAnswerId] = useState([]);
-
   //Context
-  const { setPoints, points, sessionId, setAnswers, answers } =
-    useContext(QuestionContext);
+  const {
+    setPoints,
+    points,
+    sessionId,
+    setAnswers,
+    answers,
 
+    userInputAnswerId,
+    setUserInputAnswerId,
+  } = useContext(QuestionContext);
+  //Local Storage
   const getUser = JSON.parse(localStorage.getItem("user"));
-
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     const { id, checked } = e.target;
     if (checked) {
@@ -33,51 +37,61 @@ export default function QuestionCard({
   useEffect(() => {
     addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
   }, [userInputAnswerId]);
-  useEffect(() => {
-    setUserInputAnswerId([]);
-  }, [question]);
 
+  useEffect(() => {
+    const checker = JSON.parse(localStorage.getItem("quizSession"));
+    // const result = checker?.map((item) => String(item?.questionID));
+
+    // if (result?.includes(question?._id)) {
+    //   setUserInputAnswerId();
+    // } else {
+    // }
+    console.log("checker", checker);
+  }, [question]);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
+      await axios.patch(
+        "http://localhost:5000/questions/js/quiz",
+        {
+          question,
+          answer,
+          user,
+          sessionId,
+        },
+        { withCredentials: true }
+      );
       await axios
-        .patch(
-          "http://localhost:5000/questions/js/quiz",
-          {
-            question,
-            answer,
-            user,
-            sessionId,
-          },
-          { withCredentials: true }
-        )
-        .then(
-          (data) =>
-            data.data?.userSolutions &&
+        .get(`http://localhost:5000/questions/js/sessionID/${sessionId}`)
+        .then((data) => {
+          let questions = [];
+          data.data.data?.userSolutions.map((item) => {
+            let object = { questionID: item.question, answers: item.answer };
+            questions.push(object);
+          });
+          data?.data?.data?.userSolutions &&
             localStorage.setItem(
-              "answers",
-              JSON.stringify(
-                data.data?.userSolutions.map((item) =>
-                  item.answer.map((answer) => answer)
-                )
-              ),
-              console.log(data)
-            )
-        );
-      getAnswersFromLocalStorage();
+              "quizSession",
+              // JSON.stringify(
+              //   data.data?.userSolutions.map((item) =>
+              //     item.answer.map((answer) => answer)
+              //   )
+              // )
+              JSON.stringify(questions)
+            );
+        });
     } catch (error) {
       console.log("error adding comment", error);
     }
   };
 
   const getAnswersFromLocalStorage = () => {
-    const userAnswers = JSON.parse(localStorage.getItem("answers"));
+    const localQuizSession = JSON.parse(localStorage.getItem("quizSession"));
     // if (userAnswers) return userAnswers && setAnswers(userAnswers);
-    if (userAnswers) return setAnswers(userAnswers);
+    if (localQuizSession) {
+      return setAnswers(localQuizSession);
+    }
   };
-  useEffect(() => {
-    addUserAnswerInput();
-    getAnswersFromLocalStorage();
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div>
       {
@@ -90,17 +104,21 @@ export default function QuestionCard({
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
-                  /*    { answers && answers.map(item => item == answer)} */
+                  // { answers && answers.map(item => item == answer)}
                   className={style.button}
                   type="checkbox"
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={
-                    answers &&
-                    answers.map((answer) => answer.includes(option._id))[0]
-                  }
+                  // checked={
+                  //   answers &&
+                  //   answers?.map(
+                  //     (answer) => answer?.questionID === question?._id
+                  //   )
+                  //     ? answers?.answers?.includes(option?._id)
+                  //     : false
+                  // }
                   onChange={(e) =>
                     handleUserAnswer(question._id, e, getUser._id, sessionId)
                   }
