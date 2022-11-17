@@ -10,9 +10,17 @@
   .register-container .container {
     
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
    
+   
+  }
+  form input{
+   
+
+    
+    
   }
   .show {
     position: fixed;
@@ -38,14 +46,16 @@
   .show form,.register-container form {
     margin-top: 5%;
     display: flex;
-    flex-direction: column;
-    width: 70%;
+    flex-direction: row;
+    width: 100%;
     gap: 1rem;
   }
   .show input,.register-container input {
+    display: flex;
+    width:100%;
     margin-top: 5%;
     font-size: 1rem;
-    padding: 1.5%;
+    padding: 4%;
     border: none;
     outline: none;
     border: 1px solid black;
@@ -54,12 +64,12 @@
   .show button,.register-container button {
     margin-top: 5%;
     padding: 3%;
-    min-width: 40%;
-    color: white;
+width: 70%;
+    color:black;
     font-size: 1rem;
     font-weight: 600;
     border: none;
     cursor: pointer;
     outline: none;
-    background-color: #000;
+    background-color: blue;
   }

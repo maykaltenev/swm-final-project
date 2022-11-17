@@ -7,7 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import Quiz from "./components/Quiz/Quiz";
 import CountDownTimer from "./components/Timer/Timer";
 import Home from "./components/Home/Home";
-
+//css
+import "./App.css"
 function App() {
   return (
     <div className="App">

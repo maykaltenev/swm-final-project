@@ -1,13 +1,14 @@
 import React from 'react'
-//component
+//css
+import "./Home.css"
 
 
 function Home() {
 
   return (
-    <div>
+    <div className = "home-page">
       
-      Welcome to MERN Quizzie App
+      <h1>Welcome to MERN Quizzie App</h1>
        
     </div>
   )
