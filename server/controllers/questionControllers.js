@@ -22,6 +22,15 @@ export const createJsQuestions = async (req, res) => {
 //         return res.status(500).json({ message: error.message });
 //     }
 // };
+export const getAllQuestionsBySession = async (req, res) => {
+  const sessionId = req.params.id
+  try {
+    const data = await QuizSession.findById(sessionId);
+    return res.status(201).json({ message: "All Session Questions found", data });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 export const createQuizSession = async (req, res) => {
   const { user, userSolution } = req.body;
   //! we create the questions here, add random and limit(20) after more data is added.
@@ -70,7 +79,7 @@ export const createUserResponse = async (req, res) => {
     const answerFromTheUser = await QuizSession.findByIdAndUpdate(
       sessionId,
       {
-        $push: { userSolutions: { question, $push: { answer } } },
+        $push: { userSolutions: { question, answer } },
       },
       { new: true }
     );
