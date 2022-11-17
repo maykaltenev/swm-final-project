@@ -18,13 +18,19 @@ function handleCallbackResponse(response) {
 console.log("Encoded JWT ID token:" + response.credential)
 let userObject = jwt_decode(response.credential)
 navigate("/")
-setGoogleUser(userObject)
+let storingInLocalStorage = localStorage.setItem("user",JSON.stringify( userObject))
+let getUserFromLocalStorage =  JSON.parse(localStorage.getItem("user"));
+//console.log("storing in locl",storingInLocalStorage )
+//console.log("getting from locl",getUserFromLocalStorage )
+ setGoogleUser(getUserFromLocalStorage) 
 }
+
+console.log("google user details is:",googleUser)
 
 useEffect(() => {
   /* global google */
   google.accounts.id.initialize({
-    client_id :"1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com" ,
+    client_id : "1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com" ,
     callback: handleCallbackResponse
   });
 
