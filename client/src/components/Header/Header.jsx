@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import Register from "../Register/Register";
 //image
 import Logo from "../../assets/logo.png";
 //css
@@ -14,8 +15,8 @@ function Header() {
   const { googleUser, setGoogleUser, openRegisterForm, setOpenRegisterForm } =
     useContext(UserContext);
 
-  const handleLoginButton = () => {
-    //setOpenRegisterForm(true);
+  const handleJoinusButton = () => {
+    setOpenRegisterForm(true);
     setGoogleUserToggle(true)
     navigate("/register");
   };
@@ -30,10 +31,11 @@ function Header() {
 
   return (
     <div className="header">
+      {openRegisterForm && <Register/>}
       <div className="header-menu">
         <img src={Logo} width="70px" height="50px" alt="" />
 
-        <button onClick={handleLoginButton}>Join Us</button>
+        <button onClick={handleJoinusButton}>Join Us</button>
 
         <button onClick={handleLogoutButton}>Logout</button>
       </div>
