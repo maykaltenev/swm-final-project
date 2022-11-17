@@ -1,6 +1,7 @@
 /* import "./App.css"; */
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
+import Header from "../Header/Header";
 import { Route, Routes } from "react-router-dom";
 //import QuestionCard from "./components/QuestionCard/QuestionCard";
 import Quiz from "./components/Quiz/Quiz";
@@ -8,11 +9,11 @@ import CountDownTimer from "./components/Timer/Timer";
 import Home from "./components/Home/Home";
 
 function App() {
-
-    return (
+  return (
     <div className="App">
+      <Header />
       <Routes>
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Quiz />} />

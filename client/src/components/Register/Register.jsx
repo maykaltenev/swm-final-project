@@ -2,14 +2,17 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext"; //for google
+//css
+import "./Register.css";
 
 export default function Register() {
-  const { googleUser, setGoogleUser } = useContext(UserContext);
+  const { googleUser, setGoogleUser,openRegisterForm, setOpenRegisterForm } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setOpenRegisterForm(false);
     const formData = new FormData(event.target);
     try {
       await axios
@@ -19,15 +22,15 @@ export default function Register() {
           email: formData.get("email"),
           password: formData.get("password"),
         })
-        /* .then(() => dispatch(authActions.login())) */
-        .then(navigate("/login"));
+       .then(navigate("/login"));
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <div className={openRegisterForm ? "show" : "register-container"}>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <p>Register</p>
@@ -64,7 +67,7 @@ export default function Register() {
             name="password"
             required
           />
-          <button type="submit">Register</button>
+          <button onClick={() => setOpenRegisterForm(false)} type="submit">Register</button>
           <p>
             Already have an account ?{" "}
             {
@@ -82,6 +85,7 @@ export default function Register() {
       if we have user : show logout button */}
         
          {/* -----------------------google button--------------- */}
+    </div>
     </div>
   );
 }
