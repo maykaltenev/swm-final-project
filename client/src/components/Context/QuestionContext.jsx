@@ -10,20 +10,23 @@ const QuestionContextProvider = ({ children }) => {
   const [sessionId, setSessionId] = useState("");
 
   const getUser = JSON.parse(localStorage.getItem("user"));
-  // const getQuestions = async () => {
-  //   await axios
-  //     .get("http://localhost:5000/questions/js", {
-  //       withCredentials: true,
-  //     })
-  //     .then((data) => setJavaScriptData(data.data.javascript));
-  // };
 
-  // useEffect(() => {
-  //   getQuestions();
-  // }, []);
+  const getMarkedFromLocalStorage = () => {
+    const marked = localStorage.getItem("marked");
+    if (marked) {
+      return JSON.parse(localStorage.getItem("marked"));
+    } else {
+      return [];
+    }
+  };
+  const [marked, setMarked] = useState(getMarkedFromLocalStorage());
+
   const handleCreateNewSession = async () => {
     localStorage.removeItem("answers");
+    localStorage.removeItem("marked");
+
     setAnswers([]);
+    setMarked([]);
     try {
       await axios
         .post(
@@ -52,9 +55,10 @@ const QuestionContextProvider = ({ children }) => {
         answers,
         sessionId,
         setSessionId,
-
+        marked,
+        setMarked,
+        getMarkedFromLocalStorage,
         handleCreateNewSession,
-        // getQuestions,
         javaScriptData,
         setPoints,
         points,

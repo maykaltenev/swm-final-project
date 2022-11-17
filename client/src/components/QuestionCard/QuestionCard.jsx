@@ -14,13 +14,15 @@ export default function QuestionCard({
   showAnswer,
   currentQuestion,
 }) {
-  // useState
-  const [userInputAnswerId, setUserInputAnswerId] = useState("");
-  /*  const [answers, setAnswers] = useState([]); */
-
   //Context
-  const { setPoints, points, sessionId, setAnswers, answers } =
-    useContext(QuestionContext);
+  const {
+    sessionId,
+    setAnswers,
+    answers,
+    getMarkedFromLocalStorage,
+    marked,
+    setMarked,
+  } = useContext(QuestionContext);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
 
@@ -58,15 +60,33 @@ export default function QuestionCard({
 
   const getAnswersFromLocalStorage = () => {
     const userAnswers = JSON.parse(localStorage.getItem("answers"));
-    console.log("indside", userAnswers);
+
     if (userAnswers) return userAnswers && setAnswers(userAnswers);
   };
 
+  const handleMark = (id) => {
+    const alreadyMarked = marked?.includes(id);
+
+    if (alreadyMarked) {
+      const filtered = marked?.filter((el) => el !== id);
+      setMarked(filtered);
+
+      return;
+    } else {
+      return setMarked((prev) => [...prev, id]);
+    }
+  };
+  console.log("marked", marked);
+
+  useEffect(() => {
+    localStorage.setItem("marked", JSON.stringify(marked));
+  }, [marked]);
   useEffect(() => {
     addUserAnswerInput();
     getAnswersFromLocalStorage();
+    getMarkedFromLocalStorage();
   }, []);
-  console.log("from outside", answers);
+
   return (
     <div>
       {
@@ -75,13 +95,13 @@ export default function QuestionCard({
           {question?.image && (
             <img src={question?.image} alt="" width="400px" />
           )}
+          {question && (
+            <AiOutlineStar onClick={() => handleMark(question?._id)} />
+          )}
           <div>
-            <AiOutlineStar />
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
-                  /*    { answers && answers.map(item => item == answer)} */
-
                   className={style.button}
                   type="radio"
                   name="option"
@@ -109,72 +129,3 @@ export default function QuestionCard({
     </div>
   );
 }
-
-/** Reference for saving state within array of objects 
- * 
- * 
- * export default function QuestionCard({ question, showAnswer }) {
-  const { setPoints, points } = useContext(QuestionContext);
-  const [userResponses, setUserResponses] = useState([
-    {
-      questionId: "",
-      answerId: "",
-    },
-  ]);
-  // const handleUserResponses = (answerId, questionId) => {
-  //   setUserResponses((currentResponse) => ({
-  //     ...currentResponse,
-  //     questionId: questionId,
-  //     answerId: answerId,
-  //   }));
-  // };
-  const userResponsesArray = [];
-  // const handleUserResponses = (userResponsesArray, answerId, questionId) => {
-  //   if (!userResponsesArray) {
-  //     userResponsesArray.map((userResponse) => {
-  //       if (userResponse.questionId === questionId) {
-  //         return (userResponse.answerId = answerId);
-  //       } else {
-  //         return userResponsesArray.push({
-  //           questionId: questionId,
-  //           answerId: answerId,
-  //         });
-  //       }
-  //     });
-  //     userResponsesArray.push({ questionId: questionId, answerId: answerId });
-  //   }
-  // };
-  console.log(userResponsesArray);
-  return (
-    <div>
-      {
-        <div key={question?._id}>
-          <h5>{question?.questionText}</h5>
-          {question?.image && (
-            <img src={question?.image} alt="" width="400px" />
-          )}
-          <div>
-            {question?.options.map((option) => (
-              <div key={option?._id}>
-                <input
-                  className={style.button}
-                  type="radio"
-                  name="option"
-                  style={{ border: "1px red solid" }}
-                  value={option?.option}
-                  // onChange={() =>
-                  //   handleUserResponses(option.value, question._id)
-                  // }
-                />
-                <label htmlFor={option?.option}>{option?.option}</label>
-              </div>
-            ))}
-            {showAnswer && <div>{question?.explanation}</div>}
-            <hr />
-          </div>
-        </div>
-      }
-    </div>
-  );
-}
-*/
