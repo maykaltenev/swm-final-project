@@ -23,6 +23,7 @@ const QuestionContextProvider = ({ children }) => {
   // }, []);
   const handleCreateNewSession = async () => {
     localStorage.removeItem("answers");
+
     setAnswers([]);
     try {
       await axios

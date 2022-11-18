@@ -25,15 +25,21 @@ export default function QuestionCard({
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     const { id, checked } = e.target;
     if (checked) {
+      // setUserInputAnswerId((userInputAnswerId) => [
+      //   ...Array.from(new Set(userInputAnswerId)),
+      //   id,
+      // ]);
       setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
     } else {
       setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
     }
   };
+
   useEffect(() => {
     addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
-  }, [userInputAnswerId]);
-  useEffect(() => {}, []);
+    getAnswersFromLocalStorage();
+  }, [userInputAnswerId, question]);
+
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios.patch(
@@ -51,9 +57,9 @@ export default function QuestionCard({
         .then((data) => {
           let questions = [];
           data.data.data?.userSolutions.map((item) => {
+            console.log(item.answer);
             item.answer.map((answer) => questions.push(answer));
           });
-          console.log(questions);
           data?.data?.data?.userSolutions &&
             localStorage.setItem(
               "answers",
@@ -62,8 +68,11 @@ export default function QuestionCard({
               //     item.answer.map((answer) => answer)
               //   )
               // )
-              JSON.stringify(questions)
+              JSON.stringify(Array.from(new Set(questions)))
             );
+        })
+        .then(() => {
+          getAnswersFromLocalStorage();
         });
       // .then(
       //   (data) =>
@@ -84,14 +93,14 @@ export default function QuestionCard({
   };
 
   const getAnswersFromLocalStorage = () => {
-    const userAnswers = JSON.parse(localStorage.getItem("answers"));
-    // if (userAnswers) return userAnswers && setAnswers(userAnswers);
-    if (userAnswers) return setAnswers(userAnswers);
+    const userAnswers = localStorage.getItem("answers");
+    if (userAnswers) {
+      return setAnswers(userAnswers);
+    } else {
+      return [];
+    }
   };
-  useEffect(() => {
-    addUserAnswerInput();
-    getAnswersFromLocalStorage();
-  }, []);
+
   return (
     <div>
       {
@@ -111,7 +120,7 @@ export default function QuestionCard({
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={answers && answers.includes(option?._id)}
+                  checked={answers && answers?.includes(option?._id)}
                   onChange={(e) =>
                     handleUserAnswer(question._id, e, getUser._id, sessionId)
                   }
