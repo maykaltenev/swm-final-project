@@ -25,6 +25,7 @@ const QuestionContextProvider = ({ children }) => {
   const [javaScriptData, setJavaScriptData] = useState(
     getQuizQuestionsFromLocalStorage()
   );
+
   useEffect(() => {
     getQuizQuestionsFromLocalStorage();
   }, []);
@@ -78,7 +79,10 @@ const QuestionContextProvider = ({ children }) => {
         )
         .then(() =>
           setJavaScriptData(JSON.parse(localStorage.getItem("quizQuestions")))
-        );
+        )
+        .then(() => {
+          setSessionId(JSON.parse(localStorage.getItem("sessionId")));
+        });
     } catch (error) {
       console.log(error);
     }
