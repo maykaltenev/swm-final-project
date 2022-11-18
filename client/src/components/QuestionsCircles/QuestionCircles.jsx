@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import { QuestionContext } from "../Context/QuestionContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function QuestionCircles({ setCurrentQuestion }) {
   const { javaScriptData, marked } = useContext(QuestionContext);
-
+  const navigate = useNavigate();
   const handleChangeIndex = (i) => {
-    setCurrentQuestion(i);
+    navigate(`/mypage/${i}`);
+    console.log(i);
   };
   return (
     <div
@@ -17,7 +18,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
       }}
     >
       {javaScriptData.map((question, i) => (
-        <Link
+        <a
           style={{
             textDecoration: "none",
             cursor: "pointer",
@@ -32,7 +33,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
           onClick={() => handleChangeIndex(i)}
         >
           {i + 1}
-        </Link>
+        </a>
       ))}
     </div>
   );

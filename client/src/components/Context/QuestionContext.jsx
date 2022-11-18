@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
 
   const [points, setPoints] = useState(0);
@@ -53,7 +54,7 @@ const QuestionContextProvider = ({ children }) => {
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
   const handleCreateNewSession = async () => {
-    navigate("/mypage");
+    navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(
@@ -90,6 +91,8 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
+        currentQuestion,
+        setCurrentQuestion,
         setAnswers,
         answers,
         sessionId,

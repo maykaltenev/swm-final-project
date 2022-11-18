@@ -8,14 +8,18 @@ import CountDownTimer from "./components/Timer/Timer";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
 
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
+import { useContext } from "react";
+import { UserContext } from "./components/Context/UserContext";
 
 function App() {
+  const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/mypage" element={<Quiz />} />
+        <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
         <Route path="/timer" element={<CountDownTimer />} />
       </Routes>

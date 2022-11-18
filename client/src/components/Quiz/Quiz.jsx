@@ -4,12 +4,14 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
-import CountDownTimer from "../Timer/Timer";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function Quiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
   const {
+    currentQuestion,
+    setCurrentQuestion,
     getQuestions,
     handleCreateNewSession,
     javaScriptData,
@@ -17,14 +19,16 @@ function Quiz() {
     setSessionId,
   } = useContext(QuestionContext);
 
-  const handlePrevious = (e) => {
-    e.preventDefault();
-    setCurrentQuestion(currentQuestion - 1);
-  };
+  const { id } = useParams();
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    setCurrentQuestion(currentQuestion + 1);
+  const handlePrevious = () => {
+    setCurrentQuestion(id);
+    navigate(`/mypage/${id * 1 > 0 ? id * 1 - 1 : id}`);
+  };
+  const navigate = useNavigate();
+  const handleNext = () => {
+    setCurrentQuestion(id);
+    navigate(`/mypage/${id * 1 < javaScriptData.length - 1 ? id * 1 + 1 : id}`);
   };
   const handleShowAnswer = (e) => {
     e.preventDefault();
@@ -37,19 +41,18 @@ function Quiz() {
     <>
       <div className="quiz-main-container">
         <div className="quiz-container">
-          <span>{currentQuestion + 1}</span>/
-          <span> {javaScriptData.length}</span>
+          <span>{id * 1 + 1}</span>/<span> {javaScriptData.length}</span>
           <div>Points: {points}</div>
         </div>
         <QuestionCard
-          question={javaScriptData[currentQuestion]}
+          question={javaScriptData[id]}
           showExplanation={showExplanation}
-          currentQuestion={currentQuestion}
+          currentQuestion={id}
         />
-        <button onClick={handlePrevious}>Previous</button>
+        <button onClick={handlePrevious}> Previous</button>
         <button onClick={handleNext}>Next</button>
         <button onClick={handleShowAnswer}>Show Answer</button>
-        <QuestionCircles setCurrentQuestion={setCurrentQuestion} />
+        <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
       </div>
     </>
   );
