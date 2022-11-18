@@ -16,7 +16,7 @@ function Header() {
     useContext(UserContext);
 
   const handleJoinusButton = () => {
-    setOpenRegisterForm(true);
+    setOpenRegisterForm(!openRegisterForm);
     setGoogleUserToggle(true)
     navigate("/register");
   };

@@ -7,6 +7,7 @@ import jwt_decode from "jwt-decode";
 const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
+  const [disabled, setDisabled] = useState(false)
   const [error, setError] = useState("");
   //state for the user in normal login form
   const [user, setUser] = useState("");
@@ -41,11 +42,13 @@ const UserContextProvider = ({ children }) => {
         "1094286495848-b0o394drtofdv1as2gfdchurcc9r9rrs.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
-const getGoogleDiv = document.getElementById("signInDiv")
+ const getGoogleDiv = document.getElementById("signInDiv")
     google.accounts.id.renderButton(getGoogleDiv, {
       theme: "outline",
       size: "large",
-    });
+    }); 
+   
+   
   }, []);
   /* ---------------google auth ---------------- */
   const userData = async (formData) => {
@@ -159,6 +162,8 @@ const getGoogleDiv = document.getElementById("signInDiv")
         setGoogleUser,
         openRegisterForm,
         setOpenRegisterForm,
+        disabled,
+        setDisabled
       }}
     >
       {children}

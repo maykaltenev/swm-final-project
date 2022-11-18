@@ -6,7 +6,7 @@ import { UserContext } from "../Context/UserContext"; //for google
 import "./Register.css";
 
 export default function Register() {
-  const { googleUser, setGoogleUser,openRegisterForm, setOpenRegisterForm } = useContext(UserContext);
+  const { disabled, setDisabled,googleUser, setGoogleUser,openRegisterForm, setOpenRegisterForm } = useContext(UserContext);
 
   const navigate = useNavigate();
 
