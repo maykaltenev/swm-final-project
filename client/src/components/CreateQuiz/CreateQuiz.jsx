@@ -17,6 +17,7 @@ function CreateQuiz() {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
+    localStorage.removeItem("ans");
 
     setAnswers([]);
     setMarked([]);

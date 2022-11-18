@@ -1,4 +1,5 @@
 import axios from "axios";
+import { set } from "date-fns/esm";
 import React, { useContext, useState, useEffect } from "react";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
@@ -29,9 +30,33 @@ export default function QuestionCard({
 
   const getUser = JSON.parse(localStorage.getItem("user"));
 
-  const handleUserAnswer = (question, e, getUser, sessionId) => {
+  /* const handleUserAnswer = (question, e, getUser, sessionId) => {
     addUserAnswerInput(question, e, getUser, sessionId);
+  }; */
+
+  const getAns = () => {
+    const answer = localStorage.getItem("ans");
+    if (answer) {
+      return JSON.parse(localStorage.getItem("ans"));
+    } else {
+      return [];
+    }
   };
+  const [ans, setAns] = useState(getAns());
+  const handleAns = (question, answer, getUser, sessionId) => {
+    const answerExist = ans?.includes(answer);
+    if (answerExist) {
+      const filteredAnswer = ans?.filter((el) => el !== answer);
+      setAns(filteredAnswer);
+      return addUserAnswerInput(question, ans, getUser, sessionId);
+    } else {
+      setAns((prev) => [...prev, answer]);
+      return addUserAnswerInput(question, ans, getUser, sessionId);
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("ans", JSON.stringify(ans));
+  }, [ans]);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios
@@ -46,14 +71,14 @@ export default function QuestionCard({
           { withCredentials: true }
         )
         .then(
-          (data) =>
-            data.data?.userSolutions &&
+          (data) => console.log("data", data.data.userSolutions, answer)
+          /* data.data?.userSolutions &&
             localStorage.setItem(
               "answers",
               JSON.stringify(
                 data.data?.userSolutions.map((answer) => answer.answer)
               )
-            )
+            ) */
         );
       getAnswersFromLocalStorage();
     } catch (error) {
@@ -90,6 +115,7 @@ export default function QuestionCard({
     getMarkedFromLocalStorage();
     getSessionIdFromLocalStorage();
     getQuizQuestionsFromLocalStorage();
+    getAns();
   }, []);
 
   return (
@@ -111,19 +137,14 @@ export default function QuestionCard({
               <div key={option?._id}>
                 <input
                   className={style.button}
-                  type="radio"
+                  type="checkbox"
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={answers && answers.includes(option?._id)}
+                  checked={ans && ans.includes(option?._id)}
                   onChange={(e) =>
-                    handleUserAnswer(
-                      question._id,
-                      e.target.id,
-                      getUser._id,
-                      sessionId
-                    )
+                    handleAns(question._id, e.target.id, getUser._id, sessionId)
                   }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>

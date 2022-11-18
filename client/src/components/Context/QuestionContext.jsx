@@ -30,7 +30,7 @@ const QuestionContextProvider = ({ children }) => {
   useEffect(() => {
     getQuizQuestionsFromLocalStorage();
   }, []);
-  console.log(javaScriptData);
+
   // Get the Session ID from localStorage
   const getSessionIdFromLocalStorage = () => {
     const sessionId = localStorage.getItem("sessionId");

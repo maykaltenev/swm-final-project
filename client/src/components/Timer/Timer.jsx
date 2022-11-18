@@ -22,7 +22,6 @@ function CountDownTimer() {
     getQuizTimeFromLocalStorage();
   }, []);
   const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
-  console.log(timeDifference);
 
   const formatRemainingTime = (time) => {
     let minutes = Math.floor((time % 3600) / 60);
