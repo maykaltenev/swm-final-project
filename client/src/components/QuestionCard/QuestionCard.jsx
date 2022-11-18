@@ -25,13 +25,16 @@ export default function QuestionCard({
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     const { id, checked } = e.target;
     if (checked) {
-      // setUserInputAnswerId((userInputAnswerId) => [
-      //   ...Array.from(new Set(userInputAnswerId)),
-      //   id,
-      // ]);
-      setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+      setUserInputAnswerId((userInputAnswerId) => [
+        ...Array.from(new Set(userInputAnswerId)),
+        id,
+      ]);
+
+      // setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
     } else {
-      setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+      setUserInputAnswerId(
+        Array.from(new Set(userInputAnswerId)).filter((e) => e !== id)
+      );
     }
   };
 
@@ -41,6 +44,7 @@ export default function QuestionCard({
   }, [userInputAnswerId, question]);
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
+    console.log("answer", answer);
     try {
       await axios.patch(
         "http://localhost:5000/questions/js/quiz",
@@ -57,7 +61,6 @@ export default function QuestionCard({
         .then((data) => {
           let questions = [];
           data.data.data?.userSolutions.map((item) => {
-            console.log(item.answer);
             item.answer.map((answer) => questions.push(answer));
           });
           data?.data?.data?.userSolutions &&
@@ -68,7 +71,7 @@ export default function QuestionCard({
               //     item.answer.map((answer) => answer)
               //   )
               // )
-              JSON.stringify(Array.from(new Set(questions)))
+              JSON.stringify(questions)
             );
         })
         .then(() => {
@@ -95,7 +98,7 @@ export default function QuestionCard({
   const getAnswersFromLocalStorage = () => {
     const userAnswers = localStorage.getItem("answers");
     if (userAnswers) {
-      return setAnswers(userAnswers);
+      return setAnswers(Array.from(new Set(JSON.parse(userAnswers))));
     } else {
       return [];
     }

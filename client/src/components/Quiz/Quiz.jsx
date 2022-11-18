@@ -11,7 +11,6 @@ function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [result, setResult] = useState("");
 
-  console.log("result", result);
   const {
     getQuestions,
     handleCreateNewSession,
