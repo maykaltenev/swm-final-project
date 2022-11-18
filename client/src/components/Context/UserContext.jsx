@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addMinutes from "date-fns/addMinutes";
-import differenceInSeconds from "date-fns/differenceInSeconds";
+
 const UserContext = createContext(null);
 const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
@@ -53,7 +53,7 @@ const UserContextProvider = ({ children }) => {
   };
   const localStorageUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
+
     setUser(user);
 
     return;
@@ -82,7 +82,6 @@ const UserContextProvider = ({ children }) => {
   };
   const timer = async () => {
     const date = new Date();
-    const quizTimer = JSON.parse(localStorage.getItem("quizTime"));
     const id = user?._id;
 
     try {

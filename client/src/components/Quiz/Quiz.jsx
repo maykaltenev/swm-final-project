@@ -4,6 +4,7 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
+import CountDownTimer from "../Timer/Timer";
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -31,7 +32,7 @@ function Quiz() {
     setShowExplanation((showExplanation) => !showExplanation);
     console.log(showExplanation);
   };
-  console.log("currentQuestion", currentQuestion);
+
   return (
     <>
       <div className="quiz-main-container">
@@ -40,7 +41,6 @@ function Quiz() {
           <span> {javaScriptData.length}</span>
           <div>Points: {points}</div>
         </div>
-        {/* <button onClick={handleCreateNewSession}>Start New Quiz</button> */}
         <QuestionCard
           question={javaScriptData[currentQuestion]}
           showExplanation={showExplanation}
@@ -49,8 +49,8 @@ function Quiz() {
         <button onClick={handlePrevious}>Previous</button>
         <button onClick={handleNext}>Next</button>
         <button onClick={handleShowAnswer}>Show Answer</button>
+        <QuestionCircles setCurrentQuestion={setCurrentQuestion} />
       </div>
-      <QuestionCircles setCurrentQuestion={setCurrentQuestion} />
     </>
   );
 }

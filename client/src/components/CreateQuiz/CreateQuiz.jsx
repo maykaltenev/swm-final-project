@@ -1,18 +1,30 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { QuestionContext } from "../Context/QuestionContext";
+import { UserContext } from "../Context/UserContext";
 
 function CreateQuiz() {
-  const { handleCreateNewSession, setAnswers, setMarked } =
-    useContext(QuestionContext);
+  const { timer } = useContext(UserContext);
+  const {
+    handleCreateNewSession,
+    setAnswers,
+    setMarked,
+    setSessionId,
+    setJavaScriptData,
+  } = useContext(QuestionContext);
   const handleNewQuiz = () => {
     localStorage.removeItem("answers");
     localStorage.removeItem("marked");
+    localStorage.removeItem("quizQuestions");
+    localStorage.removeItem("sessionId");
 
     setAnswers([]);
     setMarked([]);
+    setSessionId("");
+    setJavaScriptData([]);
 
     handleCreateNewSession();
+    timer();
   };
 
   return (

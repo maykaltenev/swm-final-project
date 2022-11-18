@@ -5,6 +5,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
+import CountDownTimer from "../Timer/Timer";
 
 //styles
 import style from "./Question.module.css";
@@ -22,7 +23,8 @@ export default function QuestionCard({
     getMarkedFromLocalStorage,
     marked,
     setMarked,
-    handleCreateNewSession,
+    getSessionIdFromLocalStorage,
+    getQuizQuestionsFromLocalStorage,
   } = useContext(QuestionContext);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
@@ -77,16 +79,17 @@ export default function QuestionCard({
       return setMarked((prev) => [...prev, id]);
     }
   };
-  console.log("marked", marked);
 
   useEffect(() => {
     localStorage.setItem("marked", JSON.stringify(marked));
   }, [marked]);
+
   useEffect(() => {
     addUserAnswerInput();
     getAnswersFromLocalStorage();
     getMarkedFromLocalStorage();
-    handleCreateNewSession();
+    getSessionIdFromLocalStorage();
+    getQuizQuestionsFromLocalStorage();
   }, []);
 
   return (
@@ -129,6 +132,7 @@ export default function QuestionCard({
             {showAnswer && <div>{question?.explanation}</div>}
             <hr />
           </div>
+          <CountDownTimer />
         </div>
       }
     </div>

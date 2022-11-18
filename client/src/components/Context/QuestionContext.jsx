@@ -6,12 +6,41 @@ const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
   const [answers, setAnswers] = useState([]);
-  const [javaScriptData, setJavaScriptData] = useState([]);
+
   const [points, setPoints] = useState(0);
-  const [sessionId, setSessionId] = useState("");
 
   const getUser = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
+
+  // Get Quiz Questions from localStorage
+
+  const getQuizQuestionsFromLocalStorage = () => {
+    const quizQuestions = localStorage.getItem("quizQuestions");
+    if (quizQuestions) {
+      return JSON.parse(localStorage.getItem("quizQuestions"));
+    } else {
+      return [];
+    }
+  };
+  const [javaScriptData, setJavaScriptData] = useState(
+    getQuizQuestionsFromLocalStorage()
+  );
+  useEffect(() => {
+    getQuizQuestionsFromLocalStorage();
+  }, []);
+  console.log(javaScriptData);
+  // Get the Session ID from localStorage
+  const getSessionIdFromLocalStorage = () => {
+    const sessionId = localStorage.getItem("sessionId");
+    if (sessionId) {
+      return JSON.parse(localStorage.getItem("sessionId"));
+    } else {
+      return "";
+    }
+  };
+  const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
+
+  // Get Marked Questions
   const getMarkedFromLocalStorage = () => {
     const marked = localStorage.getItem("marked");
     if (marked) {
@@ -23,11 +52,6 @@ const QuestionContextProvider = ({ children }) => {
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
   const handleCreateNewSession = async () => {
-    /*  localStorage.removeItem("answers");
-    localStorage.removeItem("marked"); */
-
-    /* setAnswers([]);
-    setMarked([]); */
     navigate("/mypage");
     try {
       await axios
@@ -42,9 +66,18 @@ const QuestionContextProvider = ({ children }) => {
         )
         .then(
           (data) => (
-            setSessionId(data.data.newQuizSession._id),
-            setJavaScriptData(data.data.newQuizSession.questions)
+            localStorage.setItem(
+              "quizQuestions",
+              JSON.stringify(data.data.newQuizSession.questions)
+            ),
+            localStorage.setItem(
+              "sessionId",
+              JSON.stringify(data.data.newQuizSession._id)
+            )
           )
+        )
+        .then(() =>
+          setJavaScriptData(JSON.parse(localStorage.getItem("quizQuestions")))
         );
     } catch (error) {
       console.log(error);
@@ -60,7 +93,10 @@ const QuestionContextProvider = ({ children }) => {
         marked,
         setMarked,
         getMarkedFromLocalStorage,
+        getSessionIdFromLocalStorage,
+        getQuizQuestionsFromLocalStorage,
         handleCreateNewSession,
+        setJavaScriptData,
         javaScriptData,
         setPoints,
         points,

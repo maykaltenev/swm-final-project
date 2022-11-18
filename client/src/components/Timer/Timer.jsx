@@ -1,13 +1,26 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Context/UserContext";
 import { differenceInSeconds } from "date-fns";
 
 function CountDownTimer() {
   const { timer } = useContext(UserContext);
+
+  const getQuizTimeFromLocalStorage = () => {
+    const quizTime = localStorage.getItem("quizTime");
+    if (quizTime) {
+      return JSON.parse(localStorage.getItem("quizTime"));
+    } else {
+      return "";
+    }
+  };
+  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
   const date = new Date();
   const duration = 600;
-  const quizTime = JSON.parse(localStorage.getItem("quizTime"));
+
+  useEffect(() => {
+    getQuizTimeFromLocalStorage();
+  }, []);
   const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
   console.log(timeDifference);
 
@@ -39,7 +52,6 @@ function CountDownTimer() {
 
   return (
     <div>
-      <button onClick={timer}>set timer</button>
       <h1>Remaining Time</h1>
       <div className="timer-wrapper">
         <CountdownCircleTimer
