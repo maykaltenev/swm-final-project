@@ -33,37 +33,51 @@ export default function QuestionCard({
   useEffect(() => {
     addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
   }, [userInputAnswerId]);
-  useEffect(() => {
-    setUserInputAnswerId([]);
-  }, [question]);
-
+  useEffect(() => {}, []);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
+      await axios.patch(
+        "http://localhost:5000/questions/js/quiz",
+        {
+          question,
+          answer,
+          user,
+          sessionId,
+        },
+        { withCredentials: true }
+      );
       await axios
-        .patch(
-          "http://localhost:5000/questions/js/quiz",
-          {
-            question,
-            answer,
-            user,
-            sessionId,
-          },
-          { withCredentials: true }
-        )
-        .then(
-          (data) =>
-            data.data?.userSolutions &&
+        .get(`http://localhost:5000/questions/js/sessionID/${sessionId}`)
+        .then((data) => {
+          let questions = [];
+          data.data.data?.userSolutions.map((item) => {
+            item.answer.map((answer) => questions.push(answer));
+          });
+          console.log(questions);
+          data?.data?.data?.userSolutions &&
             localStorage.setItem(
               "answers",
-              JSON.stringify(
-                data.data?.userSolutions.map((item) =>
-                  item.answer.map((answer) => answer)
-                )
-              ),
-              console.log(data)
-            )
-        );
-      getAnswersFromLocalStorage();
+              // JSON.stringify(
+              //   data.data?.userSolutions.map((item) =>
+              //     item.answer.map((answer) => answer)
+              //   )
+              // )
+              JSON.stringify(questions)
+            );
+        });
+      // .then(
+      //   (data) =>
+      //     data.data?.userSolutions &&
+      //     localStorage.setItem(
+      //       "answers",
+      //       JSON.stringify(
+      //         data.data?.userSolutions.map((item) =>
+      //           item.answer.map((answer) => answer)
+      //         )
+      //       ),
+      //       console.log(data)
+      //     )
+      // );
     } catch (error) {
       console.log("error adding comment", error);
     }
@@ -97,10 +111,7 @@ export default function QuestionCard({
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={
-                    answers &&
-                    answers.map((answer) => answer.includes(option._id))[0]
-                  }
+                  checked={answers && answers.includes(option?._id)}
                   onChange={(e) =>
                     handleUserAnswer(question._id, e, getUser._id, sessionId)
                   }
