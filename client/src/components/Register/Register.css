@@ -20,10 +20,10 @@
   .show {
     position: fixed;
   /*  inset: 0; */
-    position: fixed;
-    top: 5%;
+    
+    top: 0%;
     right: 0;
-    bottom: 0;
+    bottom: 0; 
     z-index: 1;
     display: flex;
     justify-content: center;
