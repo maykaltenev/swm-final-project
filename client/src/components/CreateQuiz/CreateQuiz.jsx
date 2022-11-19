@@ -5,21 +5,14 @@ import { UserContext } from "../Context/UserContext";
 
 function CreateQuiz() {
   const { timer } = useContext(UserContext);
-  const {
-    handleCreateNewSession,
-    setAnswers,
-    setMarked,
-    setSessionId,
-    setJavaScriptData,
-  } = useContext(QuestionContext);
+  const { handleCreateNewSession, setMarked, setSessionId, setJavaScriptData } =
+    useContext(QuestionContext);
   const handleNewQuiz = () => {
-    localStorage.removeItem("answers");
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
-    localStorage.removeItem("ans");
+    localStorage.removeItem("answers");
 
-    setAnswers([]);
     setMarked([]);
     setSessionId("");
     setJavaScriptData([]);
