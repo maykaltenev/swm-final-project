@@ -19,8 +19,6 @@ export default function QuestionCard({
   //Context
   const {
     sessionId,
-    setAnswers,
-    answers,
     getMarkedFromLocalStorage,
     marked,
     setMarked,
@@ -34,62 +32,46 @@ export default function QuestionCard({
     addUserAnswerInput(question, e, getUser, sessionId);
   }; */
 
-  const getAns = () => {
-    const answer = localStorage.getItem("ans");
+  const getAnswersFromLocalStorage = () => {
+    const answer = localStorage.getItem("answers");
     if (answer) {
-      return JSON.parse(localStorage.getItem("ans"));
+      return JSON.parse(localStorage.getItem("answers"));
     } else {
       return [];
     }
   };
-  const [ans, setAns] = useState(getAns());
-  const handleAns = (question, answer, getUser, sessionId) => {
-    const answerExist = ans?.includes(answer);
+  const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
+
+  const handleAnswer = (question, answerInput, getUser, sessionId) => {
+    const answerExist = answer?.includes(answerInput);
     if (answerExist) {
-      const filteredAnswer = ans?.filter((el) => el !== answer);
-      setAns(filteredAnswer);
-      return addUserAnswerInput(question, ans, getUser, sessionId);
+      const filteredAnswer = answer?.filter((el) => el !== answerInput);
+      setAnswer(filteredAnswer);
+      return addUserAnswerInput(question, answer, getUser, sessionId);
     } else {
-      setAns((prev) => [...prev, answer]);
-      return addUserAnswerInput(question, ans, getUser, sessionId);
+      setAnswer((prev) => [...prev, answerInput]);
+      return addUserAnswerInput(question, answer, getUser, sessionId);
     }
   };
   useEffect(() => {
-    localStorage.setItem("ans", JSON.stringify(ans));
-  }, [ans]);
+    localStorage.setItem("answers", JSON.stringify(answer));
+  }, [answer]);
+
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
-      await axios
-        .patch(
-          "http://localhost:5000/questions/js/quiz",
-          {
-            question,
-            answer,
-            user,
-            sessionId,
-          },
-          { withCredentials: true }
-        )
-        .then(
-          (data) => console.log("data", data.data.userSolutions, answer)
-          /* data.data?.userSolutions &&
-            localStorage.setItem(
-              "answers",
-              JSON.stringify(
-                data.data?.userSolutions.map((answer) => answer.answer)
-              )
-            ) */
-        );
-      getAnswersFromLocalStorage();
+      await axios.patch(
+        "http://localhost:5000/questions/js/quiz",
+        {
+          question,
+          answer,
+          user,
+          sessionId,
+        },
+        { withCredentials: true }
+      );
     } catch (error) {
       console.log("error adding comment", error);
     }
-  };
-
-  const getAnswersFromLocalStorage = () => {
-    const userAnswers = JSON.parse(localStorage.getItem("answers"));
-
-    if (userAnswers) return userAnswers && setAnswers(userAnswers);
   };
 
   const handleMark = (id) => {
@@ -115,7 +97,6 @@ export default function QuestionCard({
     getMarkedFromLocalStorage();
     getSessionIdFromLocalStorage();
     getQuizQuestionsFromLocalStorage();
-    getAns();
   }, []);
 
   return (
@@ -142,9 +123,14 @@ export default function QuestionCard({
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={ans && ans.includes(option?._id)}
+                  checked={answer && answer.includes(option?._id)}
                   onChange={(e) =>
-                    handleAns(question._id, e.target.id, getUser._id, sessionId)
+                    handleAnswer(
+                      question._id,
+                      e.target.id,
+                      getUser._id,
+                      sessionId
+                    )
                   }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>
