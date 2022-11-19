@@ -88,7 +88,6 @@ export default function QuestionCard({
 
   const getAnswersFromLocalStorage = () => {
     const userAnswers = JSON.parse(localStorage.getItem("answers"));
-
     if (userAnswers) return userAnswers && setAnswers(userAnswers);
   };
 
