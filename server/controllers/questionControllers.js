@@ -33,7 +33,11 @@ export const createQuizSession = async (req, res) => {
       questions,
       userSolution,
     });
-
+//----------checking enum---------------
+if(questions.inputType === "radio"){
+  console.log("the questions in backend is:",questions)
+}
+//----------checking enum---------------
     if (!newQuizSession) return;
     return res
       .status(200)
