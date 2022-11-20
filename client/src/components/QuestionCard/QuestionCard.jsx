@@ -90,22 +90,25 @@ export default function QuestionCard({
   //   // }
   // };
   const handleUserAnswer = (question, e, getUser, sessionId) => {
-    const questionExist = answer?.map((item) => item.questionID === question);
+    const questionExist = answer?.find((item) => item.questionID === question);
     console.log("question exist filter", questionExist);
     if (questionExist) {
       console.log("questionExist inside if", questionExist);
-      const answerExist = questionExist?.answers?.includes(e);
+      const answerExist = questionExist?.answers?.includes(String(e));
       console.log("answerExist", answerExist);
       if (answerExist) {
-        const filteredAnswer = answerExist?.answers?.filter((el) => el !== e);
+        const filteredAnswer = questionExist?.answers?.filter((el) => el !== e);
         console.log("filterAnswer", filteredAnswer);
-        setAnswer((prev) => [
-          {
-            ...prev,
-            questionID: question,
-            answers: [...prev.answers, filteredAnswer],
-          },
-        ]);
+        setAnswer((prev) => {
+          return prev.map((item) => {
+            if (item.questionID === question) {
+              return {
+                questionID: question,
+                answers: filteredAnswer,
+              };
+            }
+          });
+        });
       } else {
         setAnswer((prev) => {
           return prev.map((item) => {
