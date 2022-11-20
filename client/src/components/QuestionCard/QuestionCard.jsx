@@ -18,35 +18,89 @@ export default function QuestionCard({
     setPoints,
     points,
     sessionId,
-    setAnswers,
-    answers,
 
     userInputAnswerId,
     setUserInputAnswerId,
   } = useContext(QuestionContext);
   //Local Storage
+
   const getUser = JSON.parse(localStorage.getItem("user"));
-  const handleUserAnswer = (question, e, getUser, sessionId) => {
-    const { id, checked } = e.target;
-    if (checked) {
-      setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+  const getAnswersFromLocalStorage = () => {
+    const answer = localStorage.getItem("answers");
+    if (answer) {
+      return JSON.parse(localStorage.getItem("answers"));
     } else {
-      setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+      return [];
     }
   };
+  const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
+
+  const handleUserAnswer = (question, e, getUser, sessionId) => {
+    const questionExist = answer?.map((item) => item.questionID === question);
+    console.log("question exist filter", questionExist);
+    if (questionExist) {
+      console.log("questionExist inside if", questionExist);
+      const answerExist = questionExist?.answers?.includes(e);
+      console.log("answerExist", answerExist);
+      if (answerExist) {
+        const filteredAnswer = answerExist?.answers?.filter((el) => el !== e);
+        console.log("filterAnswer", filteredAnswer);
+        setAnswer((prev) => [
+          {
+            ...prev,
+            questionID: question,
+            answers: [...prev.answers, filteredAnswer],
+          },
+        ]);
+      } else {
+        setAnswer((prev) => [
+          {
+            ...prev,
+            questionID: question,
+            answers: [e],
+          },
+        ]);
+      }
+    }
+
+    // ! Update on setAnswers
+    // } else {
+    //   setAnswer((prev) => {
+    //     return prev.map((item) => {
+    //       if (item.questionID === question) {
+    //         return {
+    //           ...item,
+    //           questionID: question,
+    //           answers: [...item.answers, e],
+    //         };
+    //       } else {
+    //         return { ...item, questionID: question, answers: [e] };
+    //       }
+    //     });
+    //   });
+    // }
+    // }
+    // };
+    //!Testing Code
+    // if (checked) {
+    //   setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+    // } else {
+    //   setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+    // }
+  };
+  console.log("answer after adding", answer);
   useEffect(() => {
     addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
   }, [userInputAnswerId]);
 
   useEffect(() => {
-    const checker = JSON.parse(localStorage.getItem("quizSession"));
+    const checker = JSON.parse(localStorage.getItem("answers"));
     // const result = checker?.map((item) => String(item?.questionID));
 
     // if (result?.includes(question?._id)) {
     //   setUserInputAnswerId();
     // } else {
     // }
-    console.log("checker", checker);
   }, [question]);
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
@@ -70,7 +124,7 @@ export default function QuestionCard({
           });
           data?.data?.data?.userSolutions &&
             localStorage.setItem(
-              "quizSession",
+              "answers",
               // JSON.stringify(
               //   data.data?.userSolutions.map((item) =>
               //     item.answer.map((answer) => answer)
@@ -84,14 +138,6 @@ export default function QuestionCard({
     }
   };
 
-  const getAnswersFromLocalStorage = () => {
-    const localQuizSession = JSON.parse(localStorage.getItem("quizSession"));
-    // if (userAnswers) return userAnswers && setAnswers(userAnswers);
-    if (localQuizSession) {
-      return setAnswers(localQuizSession);
-    }
-  };
-  useEffect(() => {}, []);
   return (
     <div>
       {
@@ -120,7 +166,12 @@ export default function QuestionCard({
                   //     : false
                   // }
                   onChange={(e) =>
-                    handleUserAnswer(question._id, e, getUser._id, sessionId)
+                    handleUserAnswer(
+                      question._id,
+                      e.target.id,
+                      getUser._id,
+                      sessionId
+                    )
                   }
                 />
                 <label htmlFor={option?.option}>{option?.option}</label>
@@ -201,5 +252,4 @@ export default function QuestionCard({
       }
     </div>
   );
-}
-*/
+}*/
