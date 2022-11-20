@@ -2,6 +2,7 @@ import express from "express";
 import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
+
 export const createJsQuestions = async (req, res) => {
   console.log(req.body);
   try {
@@ -22,6 +23,8 @@ export const createJsQuestions = async (req, res) => {
 //         return res.status(500).json({ message: error.message });
 //     }
 // };
+
+
 export const createQuizSession = async (req, res) => {
   const { user, userSolution } = req.body;
   //! we create the questions here, add random and limit(20) after more data is added.
@@ -33,11 +36,7 @@ export const createQuizSession = async (req, res) => {
       questions,
       userSolution,
     });
-//----------checking enum---------------
-if(questions.inputType === "radio"){
-  console.log("the questions in backend is:",questions)
-}
-//----------checking enum---------------
+
     if (!newQuizSession) return;
     return res
       .status(200)

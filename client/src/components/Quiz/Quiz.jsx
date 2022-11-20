@@ -55,6 +55,7 @@ function Quiz() {
     console.log(showExplanation);
   };
   console.log("currentQuestion", currentQuestion);
+  console.log("javasxript data with enum",javaScriptData)
   return (
     <>
       <div className="quiz-main-container">

@@ -69,6 +69,7 @@ export default function QuestionCard({
   return (
     <div>
       {
+        
         <div key={question?._id}>
           <h5>{question?.questionText}</h5>
           {question?.image && (
@@ -81,7 +82,7 @@ export default function QuestionCard({
                   /*    { answers && answers.map(item => item == answer)} */
 
                   className={style.button}
-                  type="radio"
+                  type={question?.inputType}
                   name="option"
                   style={{ border: "1px red solid" }}
                   value={option?.option}
