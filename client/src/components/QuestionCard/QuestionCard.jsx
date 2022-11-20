@@ -33,8 +33,8 @@ export default function QuestionCard({
       return [];
     }
   };
+  // const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
-
   // const handleUserAnswer = (question, e, getUser, sessionId) => {
 
   //   const questionExist = answer?.map((item) => item.questionID === question);
@@ -102,6 +102,8 @@ export default function QuestionCard({
         setAnswer((prev) => {
           return prev.map((item) => {
             if (item.questionID === question) {
+              console.log("insideTheItemID", item.questionID);
+              console.log("insideTheItemID", question);
               return {
                 questionID: question,
                 answers: filteredAnswer,
@@ -115,17 +117,33 @@ export default function QuestionCard({
             console.log("check", item);
             if (item.questionID === question) {
               return {
-                ...item,
                 questionID: question,
                 answers: [...item.answers, e],
               };
             } else {
-              return { ...item, questionID: question, answers: [e] };
+              return { questionID: question, answers: [e] };
             }
           });
         });
       }
+    } else {
+      setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
     }
+    // } else {
+    //   setAnswer((prev) => {
+    //     return prev.map((item) => {
+    //       console.log("check", item);
+    //       if (item.questionID === question) {
+    //         return {
+    //           ...item,
+    //           questionID: question,
+    //           answers: [...item.answers, e],
+    //         };
+    //       } else {
+    //         return { ...item, questionID: question, answers: [e] };
+    //       }
+    //     });
+    //   });
   };
 
   //!Testing Code
@@ -136,13 +154,11 @@ export default function QuestionCard({
   // }
   console.log("answer after adding", answer);
   useEffect(() => {
-    addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
-  }, [userInputAnswerId]);
+    addUserAnswerInput(question, answer, getUser, sessionId);
+  }, [answer]);
 
   useEffect(() => {
-    const checker = JSON.parse(localStorage.getItem("answers"));
     // const result = checker?.map((item) => String(item?.questionID));
-
     // if (result?.includes(question?._id)) {
     //   setUserInputAnswerId();
     // } else {
@@ -178,7 +194,8 @@ export default function QuestionCard({
               // )
               JSON.stringify(questions)
             );
-        });
+        })
+        .then(getAnswersFromLocalStorage());
     } catch (error) {
       console.log("error adding comment", error);
     }
