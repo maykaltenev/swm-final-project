@@ -15,6 +15,9 @@ export const QuestionsSchema = new Schema({
     type: Number,
     required: [true, "question should have correct options"],
   },
+  inputType:{
+    enum: ["radio", "checkbox", "text"]
+  },
   mark: {
     type: Number,
     required: [true, "question should have mark"],
