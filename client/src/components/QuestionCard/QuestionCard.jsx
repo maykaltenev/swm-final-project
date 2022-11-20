@@ -35,6 +35,60 @@ export default function QuestionCard({
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
 
+  // const handleUserAnswer = (question, e, getUser, sessionId) => {
+
+  //   const questionExist = answer?.map((item) => item.questionID === question);
+  //   console.log("question exist filter", questionExist);
+  //   if (questionExist) {
+  //     console.log("questionExist inside if", questionExist);
+  //     const answerExist = questionExist?.answers?.includes(e);
+  //     console.log("answerExist", answerExist);
+  //     if (answerExist) {
+  //       const filteredAnswer = answerExist?.answers?.filter((el) => el !== e);
+  //       console.log("filterAnswer", filteredAnswer);
+  //       setAnswer((prev) => [
+  //         {
+  //           ...prev,
+  //           questionID: question,
+  //           answers: [...prev.answers, filteredAnswer],
+  //         },
+  //       ]);
+  //     } else {
+  //       setAnswer((prev) => [
+  //         {
+  //           ...prev,
+  //           questionID: question,
+  //           answers: [e],
+  //         },
+  //       ]);
+  //     }
+  //   }
+
+  //   // ! Update on setAnswers
+  //   // } else {
+  //   //   setAnswer((prev) => {
+  //   //     return prev.map((item) => {
+  //   //       if (item.questionID === question) {
+  //   //         return {
+  //   //           ...item,
+  //   //           questionID: question,
+  //   //           answers: [...item.answers, e],
+  //   //         };
+  //   //       } else {
+  //   //         return { ...item, questionID: question, answers: [e] };
+  //   //       }
+  //   //     });
+  //   //   });
+  //   // }
+  //   // }
+  //   // };
+  //   //!Testing Code
+  //   // if (checked) {
+  //   //   setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+  //   // } else {
+  //   //   setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+  //   // }
+  // };
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     const questionExist = answer?.map((item) => item.questionID === question);
     console.log("question exist filter", questionExist);
@@ -53,41 +107,30 @@ export default function QuestionCard({
           },
         ]);
       } else {
-        setAnswer((prev) => [
-          {
-            ...prev,
-            questionID: question,
-            answers: [e],
-          },
-        ]);
+        setAnswer((prev) => {
+          return prev.map((item) => {
+            console.log("check", item);
+            if (item.questionID === question) {
+              return {
+                ...item,
+                questionID: question,
+                answers: [...item.answers, e],
+              };
+            } else {
+              return { ...item, questionID: question, answers: [e] };
+            }
+          });
+        });
       }
     }
-
-    // ! Update on setAnswers
-    // } else {
-    //   setAnswer((prev) => {
-    //     return prev.map((item) => {
-    //       if (item.questionID === question) {
-    //         return {
-    //           ...item,
-    //           questionID: question,
-    //           answers: [...item.answers, e],
-    //         };
-    //       } else {
-    //         return { ...item, questionID: question, answers: [e] };
-    //       }
-    //     });
-    //   });
-    // }
-    // }
-    // };
-    //!Testing Code
-    // if (checked) {
-    //   setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
-    // } else {
-    //   setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
-    // }
   };
+
+  //!Testing Code
+  // if (checked) {
+  //   setUserInputAnswerId((userInputAnswerId) => [...userInputAnswerId, id]);
+  // } else {
+  //   setUserInputAnswerId(userInputAnswerId.filter((e) => e !== id));
+  // }
   console.log("answer after adding", answer);
   useEffect(() => {
     addUserAnswerInput(question, userInputAnswerId, getUser, sessionId);
