@@ -68,6 +68,7 @@ export default function QuestionCard({
             }
           });
         });
+        addUserAnswerInput(question, e, getUser, sessionId);
       } else {
         setAnswer((prev) => {
           console.log("checkQ", question);
@@ -85,14 +86,16 @@ export default function QuestionCard({
           });
         });
       }
+      addUserAnswerInput(question, e, getUser, sessionId);
     } else {
       console.log("no answer", e, question);
       setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
     }
   };
-
+  console.log("after adding answers", answer);
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
+    addUserAnswerInput(question, answer, getUser, sessionId);
   }, [answer]);
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
@@ -161,12 +164,20 @@ export default function QuestionCard({
                   style={{ border: "1px red solid" }}
                   value={option?.option}
                   id={option?._id}
-                  checked={answer && answer?.answers?.includes(option?._id)}
+                  checked={
+                    (answer &&
+                      answer[
+                        answer?.findIndex(
+                          (item) => item?.questionID === question?._id
+                        )
+                      ]?.answers?.includes(option?._id)) ||
+                    false
+                  }
                   onChange={(e) =>
                     handleUserAnswer(
-                      question._id,
-                      e.target.id,
-                      getUser._id,
+                      question?._id,
+                      e.target?.id,
+                      getUser?._id,
                       sessionId
                     )
                   }
