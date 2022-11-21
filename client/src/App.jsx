@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Quiz from "./components/Quiz/Quiz";
 import CountDownTimer from "./components/Timer/Timer";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
+import CodeEditorWindow from "./components/CodeEditorWindow/CodeEditorWindow.js"
 
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
         <Route path="/timer" element={<CountDownTimer />} />
+        <Route path="/codeeditor" element={<CodeEditorWindow />} />
       </Routes>
     </div>
   );
