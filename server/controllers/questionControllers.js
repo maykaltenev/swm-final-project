@@ -120,24 +120,79 @@ export const createResult = async (req, res) => {
       const allQuestion = await QuizSession.findById(sessionId).select(
         "questions"
       );
-
-      checkResult.userSolutions.map(question => console.log(question.answer))
+      const resultArray = [];
+      // Iterate over all the questions object
       allQuestion.questions.map((question) => {
+        // Iterate over all the the userSolutions object
         checkResult.userSolutions.map(solutions => {
+          // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
+            // If the ID's are the same check if the correct options is 1
             if (question.correctOptions === 1) {
+              // If the correct option is 1, filter the correct option from the question options
               const correctOption = question.options.filter(correct => correct.isCorrect)[0];
+              console.log(correctOption)
+              // Check if the correct options is the same as the user solution answer
               const isAnswerCorrect = solutions.answer.includes((correctOption._id));
               if (isAnswerCorrect) {
-                console.log(correctAnswer, correctOption)
-                resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: solutions.answer[0], mark: 1, correct: true })
+                //If the answer is correct, add new object that contains the questionID, the correctAnswer, the userAnswers
+                //if the answer was correct mark: 1 and  correct: true  
+                resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: solutions.answer, mark: 1, correct: true })
               } else {
-                resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: solutions.answer[0], mark: 0, correct: false })
+                //if the answer was correct mark: 0 and  correct: false  
+                resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: solutions.answer, mark: 0, correct: false })
               }
+            } else if (question.correctOptions === 2) {
+              // If the correct option is 2, filter the correct option from the question options
+              const correctOption = question.options.filter(correct => correct.isCorrect === true);
+              const correctAnswer = [];
+              const wrongAnswer = [];
+              //! Pushing also the correct in the wrongAnswer arraay
+              solutions.answer.map((solution, i) => {
+                correctOption.filter((correct) => {
+                  if (String(correct._id) === String(solution)) {
+                    return correctAnswer.push(correct._id)
+                  } else {
+                    return wrongAnswer.push(solution)
+                  }
+                })
+              })
+              console.log("correct", correctAnswer)
+              console.log("wrong", wrongAnswer)
             }
+
+
+
+            //   correctOption.map((correct, i) => {
+            //     console.log(i)
+            //     if (String(correct._id) === String(solution)) {
+            //       return correctAnswer.push(solution)
+            //     } else {
+            //       return wrongAnswer.push(solution)
+            //     }
+            //   })
+            // })
+            // console.log("wrongAnswer", wrongAnswer)
+            // console.log("correctAnswer", correctAnswer)
+            // if (correctAnswer.length === 2 && solutions.answer === 2) {
+            //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer }, mark: 1, correct: true })
+            // } else {
+            //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongAnswer: wrongAnswer }, mark: 1, correct: true })
+            // }
+
+
+
+            // if (String(questions.options[k]._id) === String(checkResult.userSolutions[i].answer)) {
+
+            // }
           }
         })
       })
+      // console.log(resultArray)
+      // const correctAnswers = resultArray.reduce((acc, curr) => {
+      //   return acc + curr.mark
+      // }, 0)
+      // console.log(correctAnswers)
 
 
 
