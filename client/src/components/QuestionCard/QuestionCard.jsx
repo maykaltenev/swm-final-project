@@ -108,25 +108,32 @@ export default function QuestionCard({
                 questionID: question,
                 answers: filteredAnswer,
               };
+            } else {
+              return {
+                ...item,
+              };
             }
           });
         });
       } else {
         setAnswer((prev) => {
+          console.log("checkQ", question);
           return prev.map((item) => {
             console.log("check", item);
             if (item.questionID === question) {
+              console.log("add all the prev + the new");
               return {
                 questionID: question,
                 answers: [...item.answers, e],
               };
             } else {
-              return { questionID: question, answers: [e] };
+              return { ...item };
             }
           });
         });
       }
     } else {
+      console.log("no answer", e, question);
       setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
     }
     // } else {
