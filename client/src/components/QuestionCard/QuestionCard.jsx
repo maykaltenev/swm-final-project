@@ -57,6 +57,7 @@ export default function QuestionCard({
             if (item.questionID === question) {
               console.log("insideTheItemID", item.questionID);
               console.log("insideTheItemID", question);
+              addUserAnswerInput(question, filteredAnswer, getUser, sessionId);
               return {
                 questionID: question,
                 answers: filteredAnswer,
@@ -68,7 +69,6 @@ export default function QuestionCard({
             }
           });
         });
-        addUserAnswerInput(question, e, getUser, sessionId);
       } else {
         setAnswer((prev) => {
           console.log("checkQ", question);
@@ -76,6 +76,12 @@ export default function QuestionCard({
             console.log("check", item);
             if (item.questionID === question) {
               console.log("add all the prev + the new");
+              addUserAnswerInput(
+                question,
+                [...item.answers, e],
+                getUser,
+                sessionId
+              );
               return {
                 questionID: question,
                 answers: [...item.answers, e],
@@ -86,16 +92,15 @@ export default function QuestionCard({
           });
         });
       }
-      addUserAnswerInput(question, e, getUser, sessionId);
     } else {
       console.log("no answer", e, question);
       setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
+      addUserAnswerInput(question, e, getUser, sessionId);
     }
   };
   console.log("after adding answers", answer);
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
-    addUserAnswerInput(question, answer, getUser, sessionId);
   }, [answer]);
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
