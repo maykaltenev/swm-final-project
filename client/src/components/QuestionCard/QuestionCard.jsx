@@ -161,8 +161,11 @@ export default function QuestionCard({
   // }
   console.log("answer after adding", answer);
   useEffect(() => {
-    addUserAnswerInput(question, answer, getUser, sessionId);
+    localStorage.setItem("answers", JSON.stringify(answer));
   }, [answer]);
+  // useEffect(() => {
+  //   addUserAnswerInput(question, answer, getUser, sessionId);
+  // }, [answer]);
 
   useEffect(() => {
     // const result = checker?.map((item) => String(item?.questionID));
@@ -183,26 +186,26 @@ export default function QuestionCard({
         },
         { withCredentials: true }
       );
-      await axios
-        .get(`http://localhost:5000/questions/js/sessionID/${sessionId}`)
-        .then((data) => {
-          let questions = [];
-          data.data.data?.userSolutions.map((item) => {
-            let object = { questionID: item.question, answers: item.answer };
-            questions.push(object);
-          });
-          data?.data?.data?.userSolutions &&
-            localStorage.setItem(
-              "answers",
-              // JSON.stringify(
-              //   data.data?.userSolutions.map((item) =>
-              //     item.answer.map((answer) => answer)
-              //   )
-              // )
-              JSON.stringify(questions)
-            );
-        })
-        .then(getAnswersFromLocalStorage());
+      // await axios
+      //   .get(`http://localhost:5000/questions/js/sessionID/${sessionId}`)
+      //   .then((data) => {
+      //     let questions = [];
+      //     data.data.data?.userSolutions.map((item) => {
+      //       let object = { questionID: item.question, answers: item.answer };
+      //       questions.push(object);
+      //     });
+      //     data?.data?.data?.userSolutions &&
+      //       localStorage.setItem(
+      //         "answers",
+      //         // JSON.stringify(
+      //         //   data.data?.userSolutions.map((item) =>
+      //         //     item.answer.map((answer) => answer)
+      //         //   )
+      //         // )
+      //         JSON.stringify(questions)
+      //       );
+      //   })
+      // .then(getAnswersFromLocalStorage());
     } catch (error) {
       console.log("error adding comment", error);
     }
