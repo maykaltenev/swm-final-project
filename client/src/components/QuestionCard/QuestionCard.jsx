@@ -37,49 +37,59 @@ export default function QuestionCard({
     if (answer) {
       return JSON.parse(localStorage.getItem("answers"));
     } else {
-      return [{ question: "", answers: [] }];
+      return [];
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
 
-  const handleAnswer = (question, answerInput, getUser, sessionId) => {
-    // const answerExist = answer?.includes(answerInput);
-    // if (answerExist) {
-    //   const filteredAnswer = answer?.filter((el) => el !== answerInput);
-    //   setAnswer(filteredAnswer);
-    //   return addUserAnswerInput(question, answer, getUser, sessionId);
-    // } else {
-
-    // const questionExist = answer.find((item) => item.question === question);
-
-    // console.log(questionExist);
-    // if (questionExist) {
-    //   const filterAnswer = questionExist?.answers.filter(
-    //     (el) => el !== answerInput
-    //   );
-    //   console.log(filterAnswer);
-    //   setAnswer((prev) => [
-    //     ...prev,
-    //     {
-    //       question,
-    //       answers: filterAnswer,
-    //     },
-    //   ]);
-    //   return addUserAnswerInput(question, answer, getUser, sessionId);
-    // } else {
-    setAnswer((prev) => {
-      return prev.map((item) => {
-        if (item.question === question) {
-          return { ...item, answers: [...item.answers, answerInput] };
-        } else {
-          return { ...item, question, answers: [answerInput] };
-        }
-      });
-    });
-    console.log(answer);
-    return addUserAnswerInput(question, answer, getUser, sessionId);
+  const handleUserAnswer = (question, e, getUser, sessionId) => {
+    const questionExist = answer?.find((item) => item.questionID === question);
+    console.log("question exist filter", questionExist);
+    if (questionExist) {
+      console.log("questionExist inside if", questionExist);
+      const answerExist = questionExist?.answers?.includes(String(e));
+      console.log("answerExist", answerExist);
+      if (answerExist) {
+        const filteredAnswer = questionExist?.answers?.filter((el) => el !== e);
+        console.log("filterAnswer", filteredAnswer);
+        setAnswer((prev) => {
+          return prev.map((item) => {
+            if (item.questionID === question) {
+              console.log("insideTheItemID", item.questionID);
+              console.log("insideTheItemID", question);
+              return {
+                questionID: question,
+                answers: filteredAnswer,
+              };
+            } else {
+              return {
+                ...item,
+              };
+            }
+          });
+        });
+      } else {
+        setAnswer((prev) => {
+          console.log("checkQ", question);
+          return prev.map((item) => {
+            console.log("check", item);
+            if (item.questionID === question) {
+              console.log("add all the prev + the new");
+              return {
+                questionID: question,
+                answers: [...item.answers, e],
+              };
+            } else {
+              return { ...item };
+            }
+          });
+        });
+      }
+    } else {
+      console.log("no answer", e, question);
+      setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
+    }
   };
-  // };
 
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
@@ -153,7 +163,7 @@ export default function QuestionCard({
                   id={option?._id}
                   checked={answer && answer?.answers?.includes(option?._id)}
                   onChange={(e) =>
-                    handleAnswer(
+                    handleUserAnswer(
                       question._id,
                       e.target.id,
                       getUser._id,

@@ -45,7 +45,7 @@ export const createQuizSession = async (req, res) => {
 export const createUserResponse = async (req, res) => {
   try {
     const { answer, user, question, sessionId } = req.body;
-    console.log("answer", answer)
+    console.log("from create", answer)
     const session = await QuizSession.findOne({
       _id: sessionId,
       "userSolutions.question": question,
@@ -72,7 +72,7 @@ export const createUserResponse = async (req, res) => {
       },
       { new: true }
     );
-    console.log("first", answerFromTheUser.userSolutions)
+
     return res.status(200).json(answerFromTheUser);
   } catch (error) {
     return res.send(error.message);
