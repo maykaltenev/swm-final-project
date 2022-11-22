@@ -79,15 +79,10 @@ function Quiz() {
             <p>Total Number of Questions: {javaScriptData?.length}</p>
           </div>
           <div>
-            <p>
-              Number of Correct Answers:{" "}
-              {result.data.userCorrectAnswers?.length}
-            </p>
+            <p>Number of Correct Answers: {result.data?.correctAnswers}</p>
           </div>
           <div>
-            <p>
-              Number of Wrong Answers: {result.data.wrongAnswersArray?.length}
-            </p>
+            <p>Number of Wrong Answers: {result.data?.wrongAnswers}</p>
           </div>
         </div>
       )}

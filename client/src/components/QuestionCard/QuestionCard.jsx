@@ -41,7 +41,6 @@ export default function QuestionCard({
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
-
   const handleUserAnswer = (question, e, getUser, sessionId) => {
     const questionExist = answer?.find((item) => item.questionID === question);
     console.log("question exist filter", questionExist);
