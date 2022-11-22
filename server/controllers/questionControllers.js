@@ -128,86 +128,121 @@ export const createResult = async (req, res) => {
         checkResult.userSolutions.map(solutions => {
           // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
-            // If the ID's are the same check if the correct options is 1
-            if (question.correctOptions === 1) {
-              // If the correct option is 1, filter the correct option from the question options
-              const correctOption = question.options.filter(correct => correct.isCorrect)[0];
-              console.log(correctOption)
-              // Check if the correct options is the same as the user solution answer
-              const isAnswerCorrect = solutions.answer.includes((correctOption._id));
-              if (isAnswerCorrect) {
-                //If the answer is correct, add new object that contains the questionID, the correctAnswer, the userAnswers
-                //if the answer was correct mark: 1 and  correct: true  
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: solutions.answer, wrongUserAnswer: [] }, mark: 1, correct: true })
-              } else {
-                //if the answer was correct mark: 0 and  correct: false  
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: [], wrongUserAnswer: solutions.answer }, mark: 0, correct: false })
-              }
-            } else if (question.correctOptions >= 2) {
-              // If the correct option is 2, filter the correct option from the question options
-              const correctOption = question.options.filter(correct => correct.isCorrect === true);
-              const correctAnswer = [];
-              const wrongAnswer = [];
-              const resultArray = [];
-              //! Pushing also the correct in the wrongAnswer array
-              question.options.map((questionOption, i) => {
-                solutions.answer.filter((solutionInput, i) => {
-                  if (String(questionOption._id) === String(solutionInput)) {
-                    if (questionOption.isCorrect) {
-                      return correctAnswer.push(questionOption)
-                    } else {
-                      return wrongAnswer.push(questionOption)
-                    }
+            const correctOption = question.options.filter(correct => correct.isCorrect === true);
+            const correctAnswer = [];
+            const wrongAnswer = [];
+            question.options.map((questionOption, i) => {
+              solutions.answer.filter((solutionInput, i) => {
+                if (String(questionOption._id) === String(solutionInput)) {
+                  if (questionOption.isCorrect) {
+                    return correctAnswer.push(questionOption)
+                  } else {
+                    return wrongAnswer.push(questionOption)
                   }
-                })
+                }
               })
-              if (correctAnswer.length === correctOption.length && solutions.answer.length === correctOption.length) {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 1, correct: true })
-              } else {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 0, correct: false })
-              }
-              console.log(resultArray)
-
-              // for (let i = 0; i < correctOption.length; i++) {
-              //   for (let j = 0; j < solutions.answer.length; j++) {
-              //     console.log(solutions.answer[j])
-              //     if (String(solutions.answer[j]) === String(correctOption[i]._id)) {
-              //       correctAnswer.push(solutions.answer[j])
-              //     } else {
-              //       wrongAnswer.push(solutions.answer[j])
-              //     }
-              //   }
-              // }
-
+            })
+            if (correctAnswer.length === correctOption.length && solutions.answer.length === correctOption.length) {
+              resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 1, correct: true })
+            } else {
+              resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 0, correct: false })
             }
 
 
+            console.log(resultArray)
 
-            //   correctOption.map((correct, i) => {
-            //     console.log(i)
-            //     if (String(correct._id) === String(solution)) {
-            //       return correctAnswer.push(solution)
-            //     } else {
-            //       return wrongAnswer.push(solution)
-            //     }
-            //   })
-            // })
-            // console.log("wrongAnswer", wrongAnswer)
-            // console.log("correctAnswer", correctAnswer)
-            // if (correctAnswer.length === 2 && solutions.answer === 2) {
-            //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer }, mark: 1, correct: true })
-            // } else {
-            //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongAnswer: wrongAnswer }, mark: 1, correct: true })
-            // }
-
-
-
-            // if (String(questions.options[k]._id) === String(checkResult.userSolutions[i].answer)) {
-
-            // }
           }
         })
       })
+
+
+      // //! Working solution
+      // allQuestion.questions.map((question) => {
+      //   // Iterate over all the the userSolutions object
+      //   checkResult.userSolutions.map(solutions => {
+      //     // Check if the current questionID is the same a the current solutionID
+      //     if (String(solutions.question) === String(question._id)) {
+      //       // If the ID's are the same check if the correct options is 1
+      //       if (question.correctOptions === 1) {
+      //         // If the correct option is 1, filter the correct option from the question options
+      //         const correctOption = question.options.filter(correct => correct.isCorrect)[0];
+      //         console.log(correctOption)
+      //         // Check if the correct options is the same as the user solution answer
+      //         const isAnswerCorrect = solutions.answer.includes((correctOption._id));
+      //         if (isAnswerCorrect) {
+      //           //If the answer is correct, add new object that contains the questionID, the correctAnswer, the userAnswers
+      //           //if the answer was correct mark: 1 and  correct: true  
+      //           resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: solutions.answer, wrongUserAnswer: [] }, mark: 1, correct: true })
+      //         } else {
+      //           //if the answer was correct mark: 0 and  correct: false  
+      //           resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: [], wrongUserAnswer: solutions.answer }, mark: 0, correct: false })
+      //         }
+      //       } else if (question.correctOptions >= 2) {
+      //         // If the correct option is 2, filter the correct option from the question options
+      //         const correctOption = question.options.filter(correct => correct.isCorrect === true);
+      //         const correctAnswer = [];
+      //         const wrongAnswer = [];
+      //         //! Pushing also the correct in the wrongAnswer array
+      //         question.options.map((questionOption, i) => {
+      //           solutions.answer.filter((solutionInput, i) => {
+      //             if (String(questionOption._id) === String(solutionInput)) {
+      //               if (questionOption.isCorrect) {
+      //                 return correctAnswer.push(questionOption)
+      //               } else {
+      //                 return wrongAnswer.push(questionOption)
+      //               }
+      //             }
+      //           })
+      //         })
+      //         if (correctAnswer.length === correctOption.length && solutions.answer.length === correctOption.length) {
+      //           resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 1, correct: true })
+      //         } else {
+      //           resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongUserAnswer: wrongAnswer }, mark: 0, correct: false })
+      //         }
+      //         console.log(resultArray)
+
+      //         // for (let i = 0; i < correctOption.length; i++) {
+      //         //   for (let j = 0; j < solutions.answer.length; j++) {
+      //         //     console.log(solutions.answer[j])
+      //         //     if (String(solutions.answer[j]) === String(correctOption[i]._id)) {
+      //         //       correctAnswer.push(solutions.answer[j])
+      //         //     } else {
+      //         //       wrongAnswer.push(solutions.answer[j])
+      //         //     }
+      //         //   }
+      //         // }
+
+      //       }
+
+
+      //       console.log(resultArray)
+      //       //   correctOption.map((correct, i) => {
+      //       //     console.log(i)
+      //       //     if (String(correct._id) === String(solution)) {
+      //       //       return correctAnswer.push(solution)
+      //       //     } else {
+      //       //       return wrongAnswer.push(solution)
+      //       //     }
+      //       //   })
+      //       // })
+      //       // console.log("wrongAnswer", wrongAnswer)
+      //       // console.log("correctAnswer", correctAnswer)
+      //       // if (correctAnswer.length === 2 && solutions.answer === 2) {
+      //       //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer }, mark: 1, correct: true })
+      //       // } else {
+      //       //   resultArray.push({ question: question._id, correctAnswer: correctOption, userAnswer: { correctUserAnswer: correctAnswer, wrongAnswer: wrongAnswer }, mark: 1, correct: true })
+      //       // }
+
+
+
+      //       // if (String(questions.options[k]._id) === String(checkResult.userSolutions[i].answer)) {
+
+      //       // }
+      //     }
+      //   })
+      // })
+
+      // //! Working solution
       // console.log(resultArray)
       // const correctAnswers = resultArray.reduce((acc, curr) => {
       //   return acc + curr.mark
