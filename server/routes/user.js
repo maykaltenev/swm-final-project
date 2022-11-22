@@ -1,11 +1,12 @@
 import { Router } from "express";
+import passport from "passport";
 import {
   registerUser,
   loginUser,
   logout,
   updateQuizTimer,
   getUserData,
-  GoogleStrategy
+ 
 } from "../controllers/userControllers.js";
 const router = Router();
 

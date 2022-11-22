@@ -1,12 +1,17 @@
+import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import passport from "passport"
 import generateToken from "../helpers/authenticationHelper.js";
 import User from "../models/user.js";
+dotenv.config();
 /* -----------------------google strategy-------------------------- */
-export const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 console.log('strategy is', GoogleStrategy)
 // initialize googlestrategy. syntax ({options}, callback function)
+console.log("DB USER", process.env.DB_USER)
 console.log("GOOGLE_CLIENT_ID",process.env.GOOGLE_CLIENT_ID)
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,

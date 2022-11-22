@@ -9,7 +9,7 @@ import passport from "passport";
 import configureJwtStrategy from "./passport-config.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
-
+dotenv.config();
 // specify your middleware here
 const app = express();
 app.use(
@@ -25,7 +25,7 @@ app.use(
     limit: "10mb",
   })
 );
-dotenv.config();
+
 app.use(cookieParser());
 app.use(passport.initialize());
 configureJwtStrategy(passport);
@@ -36,6 +36,7 @@ const port = process.env.PORT || 3001;
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 console.log("Connecting to database. Put the kettle on while you wait... 🫖");
+
 
 mongoose
   .connect(
