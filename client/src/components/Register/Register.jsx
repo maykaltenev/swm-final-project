@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import GLogin from "./GLogin.js";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -70,6 +71,7 @@ export default function Register() {
             }
           </p>
         </div>
+      <GLogin/>
       </form>
     </div>
   );
