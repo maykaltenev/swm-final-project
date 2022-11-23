@@ -163,12 +163,24 @@ export const createResult = async (req, res) => {
       const userAnswerPercentage = Math.round(
         (correctAnswers / resultArray.length) * 100
       );
-
+console.log("the result array is",resultArray)
       return res
         .status(200)
-        .json({ resultArray, correctAnswers, wrongAnswers, userAnswerPercentage });
+        .json({ resultArray,allQuestion, correctAnswers, wrongAnswers, userAnswerPercentage });
     }
   } catch (error) {
     return res.send(error.message);
   }
 };
+//get result
+/* export const getResult = async (req, res) => {
+
+  try {
+    const getQuestions = await javaScript.remove();
+    return res
+      .status(201)
+      .json({ message: "Deleted ", deleted });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}; */
