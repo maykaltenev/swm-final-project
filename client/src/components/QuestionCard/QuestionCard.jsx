@@ -41,25 +41,18 @@ export default function QuestionCard({
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
-  const handleUserAnswer = (question, e, getUser, sessionId) => {
+  const handleUserAnswer = (question, e, getUser, sessionId, inputType) => {
     const questionExist = answer?.find((item) => item.questionID === question);
     console.log("question exist filter", questionExist);
     if (questionExist) {
-      console.log("questionExist inside if", questionExist);
-      const answerExist = questionExist?.answers?.includes(String(e));
-      console.log("answerExist", answerExist);
-      if (answerExist) {
-        const filteredAnswer = questionExist?.answers?.filter((el) => el !== e);
-        console.log("filterAnswer", filteredAnswer);
+      if (inputType === "radio") {
         setAnswer((prev) => {
           return prev.map((item) => {
             if (item.questionID === question) {
-              console.log("insideTheItemID", item.questionID);
-              console.log("insideTheItemID", question);
-              addUserAnswerInput(question, filteredAnswer, getUser, sessionId);
+              addUserAnswerInput(question, e, getUser, sessionId);
               return {
                 questionID: question,
-                answers: filteredAnswer,
+                answers: e,
               };
             } else {
               return {
@@ -69,27 +62,59 @@ export default function QuestionCard({
           });
         });
       } else {
-        setAnswer((prev) => {
-          console.log("checkQ", question);
-          return prev.map((item) => {
-            console.log("check", item);
-            if (item.questionID === question) {
-              console.log("add all the prev + the new");
-              addUserAnswerInput(
-                question,
-                [...item.answers, e],
-                getUser,
-                sessionId
-              );
-              return {
-                questionID: question,
-                answers: [...item.answers, e],
-              };
-            } else {
-              return { ...item };
-            }
+        console.log("questionExist inside if", questionExist);
+        const answerExist = questionExist?.answers?.includes(String(e));
+        console.log("answerExist", answerExist);
+        if (answerExist) {
+          const filteredAnswer = questionExist?.answers?.filter(
+            (el) => el !== e
+          );
+          console.log("filterAnswer", filteredAnswer);
+          setAnswer((prev) => {
+            return prev.map((item) => {
+              if (item.questionID === question) {
+                console.log("insideTheItemID", item.questionID);
+                console.log("insideTheItemID", question);
+                addUserAnswerInput(
+                  question,
+                  filteredAnswer,
+                  getUser,
+                  sessionId
+                );
+                return {
+                  questionID: question,
+                  answers: filteredAnswer,
+                };
+              } else {
+                return {
+                  ...item,
+                };
+              }
+            });
           });
-        });
+        } else {
+          setAnswer((prev) => {
+            console.log("checkQ", question);
+            return prev.map((item) => {
+              console.log("check", item);
+              if (item.questionID === question) {
+                console.log("add all the prev + the new");
+                addUserAnswerInput(
+                  question,
+                  [...item.answers, e],
+                  getUser,
+                  sessionId
+                );
+                return {
+                  questionID: question,
+                  answers: [...item.answers, e],
+                };
+              } else {
+                return { ...item };
+              }
+            });
+          });
+        }
       }
     } else {
       console.log("no answer", e, question);
@@ -182,7 +207,8 @@ export default function QuestionCard({
                       question?._id,
                       e.target?.id,
                       getUser?._id,
-                      sessionId
+                      sessionId,
+                      question.inputType
                     )
                   }
                 />
