@@ -1,7 +1,14 @@
 import axios from "axios";
-import { set } from "date-fns/esm";
 import React, { useContext, useState, useEffect } from "react";
 
+//simple code editor && highlighting library
+
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css";
+// react icons
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
@@ -143,14 +150,20 @@ export default function QuestionCard({
     getSessionIdFromLocalStorage();
     getQuizQuestionsFromLocalStorage();
   }, []);
-
+  console.log("question", question);
   return (
     <div>
       {
         <div key={question?._id}>
           <h5>{question?.questionText}</h5>
-          {question?.image && (
-            <img src={question?.image} alt="" width="400px" />
+          {question?.code && (
+            <div style={{ padding: "1rem", backgroundColor: "" }}>
+              <Editor
+                value={question.code}
+                highlight={(code) => highlight(code, languages.js)}
+                disabled
+              />
+            </div>
           )}
           {question &&
             (marked.includes(question._id) ? (
