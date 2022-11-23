@@ -18,6 +18,7 @@ export default function QuestionCard({
 }) {
   //Context
   const {
+    javaScriptData,
     sessionId,
     getMarkedFromLocalStorage,
     marked,
@@ -28,19 +29,35 @@ export default function QuestionCard({
 
   const getUser = JSON.parse(localStorage.getItem("user"));
 
-  /* const handleUserAnswer = (question, e, getUser, sessionId) => {
-    addUserAnswerInput(question, e, getUser, sessionId);
-  }; */
-
   const getAnswersFromLocalStorage = () => {
     const answer = localStorage.getItem("answers");
     if (answer) {
       return JSON.parse(localStorage.getItem("answers"));
     } else {
-      return [];
+      return [{ questions: "", answers: [] }];
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
+  /* console.log(answer); */
+  const result = () => {
+    let cor = [];
+    javaScriptData.map((item) =>
+      cor.push(item.options.filter((option) => option.isCorrect))
+    );
+    const found = cor.map((i, idx) => i.some((r) => answer.includes(r)));
+
+    /* const found = answer.some((r) => cor.indexOf(r) >= 0); */
+    console.log(found);
+    /* cor.map((i, idx) => console.log(idx, i.length));
+     */
+    /*  cor.map((i, idx) =>
+      console.log(
+        idx,
+        i.map((e) => e._id.includes(answer.map((l) => l)))
+      )
+    ); */
+  };
+  result();
 
   const handleAnswer = (question, answerInput, getUser, sessionId) => {
     const answerExist = answer?.includes(answerInput);
