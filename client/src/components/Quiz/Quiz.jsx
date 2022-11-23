@@ -40,12 +40,7 @@ function Quiz() {
     console.log(showExplanation);
   };
   const handleResult = async () => {
-    const result = await axios.post(
-      "http://localhost:5000/questions/js/quiz/result",
-      { sessionId: sessionId }
-    );
-
-    return setResult(result);
+    navigate("/result")    
   };
 
   return (
@@ -66,26 +61,11 @@ function Quiz() {
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
       </div>
       {Number(id) === javaScriptData.length - 1 ? (
-        <button onClick={handleResult}>Result</button>
+        <button onClick={handleResult}>Submit</button>
       ) : (
         ""
       )}
-      {result && (
-        <div>
-          <div>
-            <h1>Your Score:{result.data?.userAnswerPercentage} %</h1>{" "}
-          </div>
-          <div>
-            <p>Total Number of Questions: {javaScriptData?.length}</p>
-          </div>
-          <div>
-            <p>Number of Correct Answers: {result.data?.correctAnswers}</p>
-          </div>
-          <div>
-            <p>Number of Wrong Answers: {result.data?.wrongAnswers}</p>
-          </div>
-        </div>
-      )}
+    
     </>
   );
 }
