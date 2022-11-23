@@ -33,7 +33,7 @@ router.patch("/addTimer", updateQuizTimer);
 
 
  router.get('/google/callback', passport.authenticate('google', {
-     failureRedirect: '/users/google/failure',
+     failureRedirect: '/user/google/failure',
      session: false
  }), async (req, res) => {
  
