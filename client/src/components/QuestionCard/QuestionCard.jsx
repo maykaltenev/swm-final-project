@@ -1,7 +1,7 @@
 import axios from "axios";
-import { set } from "date-fns/esm";
-import React, { useContext, useState, useEffect } from "react";
 
+import React, { useContext, useState, useEffect, useRef } from "react";
+import debounce from "lodash.debounce";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
@@ -28,10 +28,7 @@ export default function QuestionCard({
 
   const getUser = JSON.parse(localStorage.getItem("user"));
 
-  /* const handleUserAnswer = (question, e, getUser, sessionId) => {
-    addUserAnswerInput(question, e, getUser, sessionId);
-  }; */
-
+  const userInput = useRef(null);
   const getAnswersFromLocalStorage = () => {
     const answer = localStorage.getItem("answers");
     if (answer) {
@@ -41,18 +38,44 @@ export default function QuestionCard({
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
-  const handleUserAnswer = (question, e, getUser, sessionId, inputType) => {
+  const handleUserAnswer = (
+    question,
+    e,
+    getUser,
+    sessionId,
+    inputType,
+    userInput
+  ) => {
     const questionExist = answer?.find((item) => item.questionID === question);
-    console.log("question exist filter", questionExist);
+    console.log("type", inputType);
     if (questionExist) {
+      console.log(inputType, "should ber radio");
       if (inputType === "radio") {
+        console.log(inputType, "equal to radio");
         setAnswer((prev) => {
           return prev.map((item) => {
             if (item.questionID === question) {
               addUserAnswerInput(question, e, getUser, sessionId);
               return {
                 questionID: question,
-                answers: e,
+                answers: [e],
+              };
+            } else {
+              return {
+                ...item,
+              };
+            }
+          });
+        });
+      } else if (inputType === "text") {
+        console.log("if text", inputType);
+        setAnswer((prev) => {
+          return prev.map((item) => {
+            if (item.questionID === question) {
+              addUserAnswerInput(question, userInput, getUser, sessionId);
+              return {
+                questionID: question,
+                answers: [userInput],
               };
             } else {
               return {
@@ -62,14 +85,11 @@ export default function QuestionCard({
           });
         });
       } else {
-        console.log("questionExist inside if", questionExist);
         const answerExist = questionExist?.answers?.includes(String(e));
-        console.log("answerExist", answerExist);
         if (answerExist) {
           const filteredAnswer = questionExist?.answers?.filter(
             (el) => el !== e
           );
-          console.log("filterAnswer", filteredAnswer);
           setAnswer((prev) => {
             return prev.map((item) => {
               if (item.questionID === question) {
@@ -117,14 +137,23 @@ export default function QuestionCard({
         }
       }
     } else {
-      console.log("no answer", e, question);
-      setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
-      addUserAnswerInput(question, e, getUser, sessionId);
+      if (inputType !== "text") {
+        console.log("not equal to text", inputType);
+        setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
+        addUserAnswerInput(question, e, getUser, sessionId);
+      } else {
+        setAnswer((prev) => [
+          ...prev,
+          { questionID: question, answers: [userInput] },
+        ]);
+        addUserAnswerInput(question, userInput, getUser, sessionId);
+      }
     }
   };
   console.log("after adding answers", answer);
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
+    console.log("fromEffectUserInput", userInput?.current?.value);
   }, [answer]);
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
@@ -188,11 +217,12 @@ export default function QuestionCard({
               <div key={option?._id}>
                 <input
                   className={style.button}
-                  type={question.inputType}
-                  name={question.inputType}
+                  type={question?.inputType}
+                  name={question?.inputType}
                   style={{ border: "1px red solid" }}
-                  value={question.inputType === "text" ? null : option?.option}
+                  value={question?.inputType === "text" ? null : option?.option}
                   id={option?._id}
+                  ref={userInput}
                   checked={
                     (answer &&
                       answer[
@@ -202,14 +232,29 @@ export default function QuestionCard({
                       ]?.answers?.includes(option?._id)) ||
                     false
                   }
-                  onChange={(e) =>
-                    handleUserAnswer(
-                      question?._id,
-                      e.target?.id,
-                      getUser?._id,
-                      sessionId,
-                      question.inputType
-                    )
+                  onChange={
+                    question.inputType !== "text"
+                      ? (e) =>
+                          handleUserAnswer(
+                            question?._id,
+                            e.target?.id,
+                            getUser?._id,
+                            sessionId,
+                            question?.inputType,
+                            userInput?.current?.value
+                          )
+                      : debounce(
+                          (e) =>
+                            handleUserAnswer(
+                              question?._id,
+                              e.target?.id,
+                              getUser?._id,
+                              sessionId,
+                              question?.inputType,
+                              userInput?.current?.value
+                            ),
+                          500
+                        )
                   }
                 />
                 <label htmlFor={option?.option}>
