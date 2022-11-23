@@ -8,9 +8,10 @@ const getUserAnswerFromResultArray = () => {
     const answer = allQues?.resultArray?.map(item => item.userAnswer)
  const userWrongAnswer = answer?.map(item => item.wrongUserAnswer) 
  const userWrongOption = userWrongAnswer?.map(item => item.map(e => e.option))
-const wrongValues = userWrongOption.values()
-
-console.log("the user wrong values is", wrongValues)
+ //const wrongValues = userWrongOption?.map(item => item.values())
+//const wrongValues = userWrongOption.values()
+/* const wrongValues = userWrongOption?.find()
+console.log("the user wrong values is", wrongValues) */
 console.log("the user wrong option is:", userWrongOption)
  console.log("wrong answer result is :", userWrongAnswer) 
    console.log("answer from resultArray is:", answer) 
