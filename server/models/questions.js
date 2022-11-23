@@ -21,7 +21,7 @@ export const QuestionsSchema = new Schema({
   },
   difficultyLevel: { type: String },
   explanation: { type: String },
-  image: { type: String },
+  code: { type: String },
   questionNumber: { type: Number },
   inputType: { type: String, enum: ["radio", "checkbox", "text"] },
   sessionId: { type: Schema.Types.ObjectId, ref: "quizSession" }

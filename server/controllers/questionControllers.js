@@ -163,7 +163,6 @@ export const createResult = async (req, res) => {
       const userAnswerPercentage = Math.round(
         (correctAnswers / resultArray.length) * 100
       );
-
       return res
         .status(200)
         .json({ resultArray, correctAnswers, wrongAnswers, userAnswerPercentage });

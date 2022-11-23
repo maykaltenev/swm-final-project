@@ -163,10 +163,10 @@ export default function QuestionCard({
               <div key={option?._id}>
                 <input
                   className={style.button}
-                  type="checkbox"
-                  name="option"
+                  type={question.inputType}
+                  name={question.inputType}
                   style={{ border: "1px red solid" }}
-                  value={option?.option}
+                  value={question.inputType === "text" ? null : option?.option}
                   id={option?._id}
                   checked={
                     (answer &&
@@ -186,7 +186,9 @@ export default function QuestionCard({
                     )
                   }
                 />
-                <label htmlFor={option?.option}>{option?.option}</label>
+                <label htmlFor={option?.option}>
+                  {question.inputType === "text" ? "" : option?.option}
+                </label>
               </div>
             ))}
             {showAnswer && <div>{question?.explanation}</div>}
