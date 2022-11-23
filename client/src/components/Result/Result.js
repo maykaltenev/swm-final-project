@@ -28,7 +28,8 @@ console.log("the session id", sessionId)
   const handleCheckanswers = async() => {
 
     const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId } ) 
-setAllQues(getQuesAndAnswers.data.allQuestion)
+    console.log("getallquestions from backend",getQuesAndAnswers)
+setAllQues(getQuesAndAnswers.data)
   }
   
 useEffect(() => {
