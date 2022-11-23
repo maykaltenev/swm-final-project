@@ -40,7 +40,8 @@ function Quiz() {
     console.log(showExplanation);
   };
   const handleResult = async () => {
-    navigate("/result")    
+    navigate("/result") 
+     
   };
 
   return (
