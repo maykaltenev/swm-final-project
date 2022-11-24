@@ -84,7 +84,7 @@ export const createUserResponse = async (req, res) => {
         },
         { new: true }
       );
-      console.log("answer", updatedSession.userSolutions.answer)
+
       return res.status(200).json(updatedSession);
     }
 
