@@ -27,7 +27,7 @@ getUserAnswerFromResultArray()
             {i + 1}) {item.questionText}
           </h5>
           <div>
-            {item?.options?.map((e) => (
+            {item?.options?.map((e,i) => (
               <li className={e.isCorrect === true ? "green" : ""}>
                 {e.option}
               </li>
