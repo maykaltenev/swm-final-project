@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CheckAllAnswersResult.css";
 
 function CheckAllAnswersResult({ allQues }) {
+  const wrongResultArray = [];
+
+
   /* console.log("the allques in result array is:".allQues)
   
 const getUserAnswerFromResultArray = () => {
@@ -11,39 +14,43 @@ const getUserAnswerFromResultArray = () => {
  console.log("wrong answer result is :", userWrongAnswer) 
   const userWrongOption = userWrongAnswer?.map(item => item?.map(e => e?.option)[0]) 
   console.log("the user wrong option is:", userWrongOption) 
+
+allQues?.resultArray?.map(item => item.userAnswer.map(wrongAns => {
+  wrongAns.option[0]
+}))
+  
 } */
   //getUserAnswerFromResultArray()
   /* -------------------checking for wrong result from user */
+
   console.log("all ques is:", allQues);
+
   return (
     <div key={allQues._id}>
-      {allQues?.resultArray?.map((question, i) => (
-        <>
-        <h5>
-          {i + 1}) {question.question.questionText}
-        </h5>
-        <div>
-          {question?.question?.options?.map((option,i) => (
-            <li>{option.option}</li>
-          ))}
+      {allQues?.allQuestion?.questions?.map((question, i) => (
+        < div >
+          <h5 >
+            {i + 1}) {question.questionText}
+          </h5>
+          
+          <div>
+           
+            
+            {question?.options?.map((option, i) => (
+              < li className={option.isCorrect === true ? "green" : ""} > {option.option}</li>
+/* 
+               < li className={userAnswer.userAnswer.wrongUserAnswer.includes((option)) ? "red" : ""} > {option.option}</li> */
+            ))}
+          </div>
+          {/*  {question.userAnswer.correctUserAnswer.length > 0 ? } */}
         </div>
-{/*  {question.userAnswer.correctUserAnswer.length > 0 ? } */}
- </>
-      ))}
+      ))
+      }
 
       <>
-        {/*   <div>
-             {item?.options?.map((e,i) => (
-              <li  className={e.isCorrect === true ? "green" : ""} >
-                {e.option}
-              </li>
-            ))}
-
-          </div>                     
-          <h5>Explanation:</h5>
-          <h5>{item.explanation}</h5> */}
+      
       </>
-    </div>
+    </div >
   );
 }
 
