@@ -4,18 +4,18 @@ import "./CheckAllAnswersResult.css";
 function CheckAllAnswersResult({ allQues }) {
   const wrongAnswersArr = [];
   allQues?.userWrongAnswer?.map((item) => wrongAnswersArr.push(item.option));
-
+console.log("all ques",allQues)
   return (
     <div key={allQues._id}>
       {allQues?.allQuestion?.questions?.map((question, i) => (
-        <div>
+        <div key={i}>
           <h5>
             {i + 1}. {question.questionText}
           </h5>
 
-          <div>
+          <div key={question._id}>
             {question?.options?.map((option, i) => (
-              <li
+              <li key={i}
                 className={
                   option.isCorrect === true
                     ? "green"
@@ -32,8 +32,6 @@ function CheckAllAnswersResult({ allQues }) {
           </div>
         </div>
       ))}
-
-      <></>
     </div>
   );
 }
