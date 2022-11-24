@@ -136,7 +136,8 @@ export const createResult = async (req, res) => {
               const userCorrectAnswer = []; // 2
               const userWrongAnswer = []; // 1
               question.options.map((questionOption) => {
-                solutions.answer.filter((solutionInput) => {
+                solutions.answer.filter((solutionInput) => {               
+
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
                       return userCorrectAnswer.push(questionOption);
