@@ -127,7 +127,7 @@ export const createResult = async (req, res) => {
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
         checkResult.userSolutions.map((solutions) => {
-          // Check if the current questionID is the same a the current solutionID
+                   // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
             // All the correct options
             if (
@@ -181,6 +181,7 @@ export const createResult = async (req, res) => {
             }
             //! For inputType === "text"
           } else {
+
           }
         });
       });
