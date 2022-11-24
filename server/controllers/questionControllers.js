@@ -71,6 +71,7 @@ export const createUserResponse = async (req, res) => {
       _id: sessionId,
       "userSolutions.question": question,
     });
+    console.log(answer);
     if (session) {
       const updatedSession = await QuizSession.findOneAndUpdate(
         { _id: sessionId, "userSolutions.question": question },
@@ -163,7 +164,6 @@ export const createResult = async (req, res) => {
       const userAnswerPercentage = Math.round(
         (correctAnswers / resultArray.length) * 100
       );
-console.log("the result array is",resultArray)
       return res
         .status(200)
         .json({ resultArray,allQuestion, correctAnswers, wrongAnswers, userAnswerPercentage });
