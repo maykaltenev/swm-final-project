@@ -15,7 +15,7 @@ export default function GLogin () {
     useEffect(() => {
 
         const getData = async () => {
-            const response = await axios.get('/users/glogin/'+ id)
+            const response = await axios.get('/user/glogin/'+ id)
 
             console.log('response:', response)
 

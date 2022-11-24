@@ -2,7 +2,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import GLogin from "../GLogin/Glogin";
 //image
-import GoogleLogo from "../../assets/googlelogo.png"
+import GoogleLogo from "../../assets/signin.png"
 
 export default function Register() {
   const navigate = useNavigate();
