@@ -17,19 +17,31 @@ const getUserAnswerFromResultArray = () => {
   console.log("all ques is:", allQues);
   return (
     <div key={allQues._id}>
-      {allQues?.resultArray?.map((question, i) => (
-        <>
-        <h5>
-          {i + 1}) {question.question.questionText}
-        </h5>
-        <div>
-          {question?.question?.options?.map((option,i) => (
-            <li>{option.option}</li>
-          ))}
+      {allQues?.allQuestion?.questions?.map((question, i) => (
+        < div >
+          <h5 >
+            {i + 1}) {question.questionText}
+          </h5>
+          {allQues?.resultArray.map(userAnswer => {
+            userAnswer.userAnswer.wrongUserAnswer.map(wrong => {
+              console.log(wrong)
+            })
+          })}
+          <div>
+            {allQues?.resultArray.map(userAnswer => {
+              userAnswer.userAnswer.wrongUserAnswer.map(wrong => {
+                console.log(wrong)
+              })
+            })}
+            {question?.options?.map((option, i) => (
+              < li className={option.isCorrect === true ? "green" : ""} > {option.option}</li>
+              // < li className={userAnswer.userAnswer.wrongUserAnswer.includes((option)) ? "red" : ""} > {option.option}</li>
+            ))}
+          </div>
+          {/*  {question.userAnswer.correctUserAnswer.length > 0 ? } */}
         </div>
-{/*  {question.userAnswer.correctUserAnswer.length > 0 ? } */}
- </>
-      ))}
+      ))
+      }
 
       <>
         {/*   <div>
@@ -43,7 +55,7 @@ const getUserAnswerFromResultArray = () => {
           <h5>Explanation:</h5>
           <h5>{item.explanation}</h5> */}
       </>
-    </div>
+    </div >
   );
 }
 

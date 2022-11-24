@@ -1,3 +1,13 @@
-.green{
-    background-color: green;
+.green {
+  background-color: green;
+}
+.darkred {
+  background-color: darkred;
+}
+.gray {
+  background-color: rgb(216, 252, 209);
+}
+.red {
+  background-color: rgb(250, 208, 208);
+  width: fit-content;
 }
