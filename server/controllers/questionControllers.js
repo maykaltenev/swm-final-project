@@ -138,7 +138,6 @@ export const createResult = async (req, res) => {
                 (correct) => correct.isCorrect === true
               ); // 2 // 3 // 1
 
-
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
                   if (String(questionOption._id) === String(solutionInput)) {
@@ -193,16 +192,15 @@ export const createResult = async (req, res) => {
       const userAnswerPercentage = Math.round(
         (correctAnswers / resultArray.length) * 100
       );
-      return res
-        .status(200)
-        .json({
-          allUserAnswers,
-          resultArray,
-          allQuestion,
-          correctAnswers,
-          wrongAnswers,
-          userAnswerPercentage,
-        });
+      return res.status(200).json({
+        allUserAnswers,
+        resultArray,
+        allQuestion,
+        correctAnswers,
+        wrongAnswers,
+        userAnswerPercentage,
+        userWrongAnswer,
+      });
     }
   } catch (error) {
     return res.send(error.message);
