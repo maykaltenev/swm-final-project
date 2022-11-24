@@ -3,7 +3,6 @@ import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
 export const createJsQuestions = async (req, res) => {
-
   try {
     const createQuestion = await javaScript.create(req.body);
     return res
@@ -14,12 +13,9 @@ export const createJsQuestions = async (req, res) => {
   }
 };
 export const removeJsCollection = async (req, res) => {
-
   try {
     const deleted = await javaScript.remove();
-    return res
-      .status(201)
-      .json({ message: "Deleted ", deleted });
+    return res.status(201).json({ message: "Deleted ", deleted });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -34,10 +30,12 @@ export const removeJsCollection = async (req, res) => {
 //     }
 // };
 export const getAllQuestionsBySession = async (req, res) => {
-  const sessionId = req.params.id
+  const sessionId = req.params.id;
   try {
     const data = await QuizSession.findById(sessionId);
-    return res.status(201).json({ message: "All Session Questions found", data });
+    return res
+      .status(201)
+      .json({ message: "All Session Questions found", data });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -92,7 +90,7 @@ export const createUserResponse = async (req, res) => {
       sessionId,
       {
         $push: {
-          userSolutions: { question, answer }
+          userSolutions: { question, answer },
         },
       },
       { new: true }
@@ -102,7 +100,6 @@ export const createUserResponse = async (req, res) => {
   } catch (error) {
     return res.send(error.message);
   }
-
 };
 
 export const createResult = async (req, res) => {
@@ -125,40 +122,67 @@ export const createResult = async (req, res) => {
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
-        checkResult.userSolutions.map(solutions => {
+        checkResult.userSolutions.map((solutions) => {
           // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
-            // All the correct options 
-            if (question.inputType === "radio" || question.inputType === "checkbox") {
-              const correctOption = question.options.filter(correct => correct.isCorrect === true); // 2 // 3 // 1
-              const userCorrectAnswer = [];  // 2
+            // All the correct options
+            if (
+              question.inputType === "radio" ||
+              question.inputType === "checkbox"
+            ) {
+              const correctOption = question.options.filter(
+                (correct) => correct.isCorrect === true
+              ); // 2 // 3 // 1
+              const userCorrectAnswer = []; // 2
               const userWrongAnswer = []; // 1
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
-                      return userCorrectAnswer.push(questionOption)
+                      return userCorrectAnswer.push(questionOption);
                     } else {
-                      return userWrongAnswer.push(questionOption)
+                      return userWrongAnswer.push(questionOption);
                     }
                   }
-                })
-              })
-              if (userCorrectAnswer.length === correctOption.length && solutions.answer.length === correctOption.length) {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: userCorrectAnswer, wrongUserAnswer: userWrongAnswer }, mark: 1, correct: true })
+                });
+              });
+              if (
+                userCorrectAnswer.length === correctOption.length &&
+                solutions.answer.length === correctOption.length
+              ) {
+                resultArray.push({
+                  question: question,
+                  correctOptions: correctOption,
+                  userSolutions:solutions,
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 1,
+                  correct: true,
+                });
               } else {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: userCorrectAnswer, wrongUserAnswer: userWrongAnswer }, mark: 0, correct: false })
+                resultArray.push({
+                  question: question,
+                  correctOptions: correctOption,
+                  userSolutions:solutions,
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 0,
+                  correct: false,
+                });
               }
             }
             //! For inputType === "text"
           } else {
-
           }
-        })
-      })
+        });
+      });
       const correctAnswers = resultArray.reduce((acc, curr) => {
-        return acc + curr.mark
-      }, 0)
+        return acc + curr.mark;
+      }, 0);
       const wrongAnswers = resultArray.length - correctAnswers;
 
       const userAnswerPercentage = Math.round(
@@ -166,7 +190,13 @@ export const createResult = async (req, res) => {
       );
       return res
         .status(200)
-        .json({ resultArray,allQuestion, correctAnswers, wrongAnswers, userAnswerPercentage });
+        .json({
+          resultArray,
+          allQuestion,
+          correctAnswers,
+          wrongAnswers,
+          userAnswerPercentage,
+        });
     }
   } catch (error) {
     return res.send(error.message);
