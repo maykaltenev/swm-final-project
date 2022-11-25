@@ -28,10 +28,14 @@ app.use(
 
 app.use(cookieParser());
 app.use(passport.initialize());
+
 configureJwtStrategy(passport);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 const port = process.env.PORT || 3001;
+
 // specify your routes here
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);

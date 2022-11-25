@@ -18,7 +18,6 @@ passport.use(new GoogleStrategy({
     callbackURL: '/user/google/callback',
     proxy: true
 }, async (accessToken, refreshToken, profile, cb)=> {
-
     // console.log('inside strategy instance: accessToken', accessToken)
     // console.log('inside strategy instance: refreshToken', refreshToken)
     console.log('inside strategy instance: profile', profile)

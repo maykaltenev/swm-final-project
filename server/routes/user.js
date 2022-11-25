@@ -41,7 +41,7 @@ router.patch("/addTimer", updateQuizTimer);
  
      // User is the class. req.user is a new User
      const token = await req.user.generateToken('1d')
- 
+ console.log("the token from google server is:",token)
      res.cookie('cookiename', token)
  
      res.redirect('http://localhost:3000/glogin/' + req.user._id)
