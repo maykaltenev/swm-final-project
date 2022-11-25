@@ -268,7 +268,7 @@ export default function QuestionCard({
                               question?.inputType,
                               userInput?.current?.value
                             ),
-                          500
+                          300
                         )
                   }
                 />

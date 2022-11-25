@@ -4,7 +4,8 @@ import "./CheckAllAnswersResult.css";
 function CheckAllAnswersResult({ allQues }) {
   const wrongAnswersArr = [];
 
-  allQues?.userWrongAnswer.map((item) => wrongAnswersArr.push(item._id));
+
+  allQues?.userWrongAnswer?.map((item) => wrongAnswersArr.push(item._id));
 
   /* allQues?.resultArray?.map((item) =>
     console.log("item", item.userAnswer.wrongUserAnswer)
@@ -27,35 +28,38 @@ const getUserAnswerFromResultArray = () => {
   return (
     <div key={allQues._id}>
       {allQues?.allQuestion?.questions?.map((question, i) => (
-        <div>
+        < div >
           <h5>
-            {i + 1}) {question.questionText}
+            {i + 1}) {question?.questionText}
           </h5>
-          {/*  {allQues?.resultArray.map(userAnswer => {
+          {/* {allQues?.resultArray.map(userAnswer => {
             userAnswer.userAnswer.wrongUserAnswer.map(wrong => {
               console.log(wrong)
-            }) 
-          })}*/}
-          <div>
+            })
+          })}  */}
+          < div >
             {question?.options?.map((option, i) => (
-              <li
+              // { console.log(allQues) }
+
+              < li key={i}
                 className={
                   option.isCorrect === true
                     ? "green"
                     : wrongAnswersArr.includes(option._id)
-                    ? "red"
-                    : ""
+                      ? "red"
+                      : ""
                 }
               >
-                {" "}
+
                 {option.option}
               </li>
               // < li className={userAnswer.userAnswer.wrongUserAnswer.includes((option)) ? "red" : ""} > {option.option}</li>
             ))}
           </div>
           {/*  {question.userAnswer.correctUserAnswer.length > 0 ? } */}
-        </div>
-      ))}
+        </div >
+      ))
+      }
 
       <>
         {/*   <div>
@@ -69,7 +73,7 @@ const getUserAnswerFromResultArray = () => {
           <h5>Explanation:</h5>
           <h5>{item.explanation}</h5> */}
       </>
-    </div>
+    </div >
   );
 }
 

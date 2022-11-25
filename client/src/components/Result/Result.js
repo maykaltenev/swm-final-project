@@ -11,7 +11,7 @@ function Result() {
 
   const { javaScriptData, sessionId } = useContext(QuestionContext);
   const navigate = useNavigate();
-console.log("the session id", sessionId)
+  console.log("the session id", sessionId)
 
   const getResult = async () => {
     const result = await axios.post(
@@ -25,18 +25,19 @@ console.log("the session id", sessionId)
     navigate("/createQuiz");
   };
   //function for checking the correct answer and user answer with explanation
-  const handleCheckanswers = async() => {
+  const handleCheckanswers = async () => {
 
-    const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId } ) 
-    console.log("getallquestions from backend",getQuesAndAnswers)
-setAllQues(getQuesAndAnswers.data)
+    const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId })
+    console.log("getallquestions from backend", getQuesAndAnswers)
+    setAllQues(getQuesAndAnswers.data)
   }
-  
-useEffect(() => {
-    getResult() 
-}, [])
 
-console.log("all questions is:", allQues)
+  useEffect(() => {
+    getResult()
+  }, [])
+  console.log(allQues)
+
+
 
   return (
     <div>
@@ -56,7 +57,7 @@ console.log("all questions is:", allQues)
           </div>
           <button onClick={handleCheckanswers}>Check Answers</button>
           <button onClick={handleTryagain}>Try Again</button>
-          <CheckAllAnswersResult allQues = {allQues}/>
+          <CheckAllAnswersResult allQues={allQues} />
         </div>
       )}
     </div>
