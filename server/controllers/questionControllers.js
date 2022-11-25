@@ -124,7 +124,7 @@ export const createResult = async (req, res) => {
 
       const userCorrectAnswer = []; // 2
       const userWrongAnswer = [];
-
+      const allUserAnswers = [...userCorrectAnswer, ...userWrongAnswer]; // 1
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
@@ -139,8 +139,10 @@ export const createResult = async (req, res) => {
               const correctOption = question.options.filter(
                 (correct) => correct.isCorrect === true
               ); // 2 // 3 // 1
+
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
+
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
                       return userCorrectAnswer.push(questionOption);
@@ -155,8 +157,9 @@ export const createResult = async (req, res) => {
                 solutions.answer.length === correctOption.length
               ) {
                 resultArray.push({
-                  question: question._id,
+                  question: question,
                   correctOptions: correctOption,
+                  userSolutions: allUserAnswers,
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -166,8 +169,9 @@ export const createResult = async (req, res) => {
                 });
               } else {
                 resultArray.push({
-                  question: question._id,
+                  question: question,
                   correctOptions: correctOption,
+                  userSolutions: allUserAnswers,
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -177,21 +181,31 @@ export const createResult = async (req, res) => {
                 });
               }
             } else {
-              //! For inputType === "text"
+              // //! For inputType === "text"
               const correct = (question.options[0].option)
               const userInput = (solutions.answer[0])
               const result = Diff.diffChars(correct, userInput);
+              const resultWord = Diff.diffWords(correct, userInput);
+              const resultBlock = Diff.diffLines(correct, userInput);
+              const resultSentences = Diff.diffSentences(correct, userInput);
               const correctAnswer = [];
               const wrongAnswers = [];
               let lastCorrectAnswer = [];
               let lastWrongAnswer = [];
               // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
               result.forEach((part) => {
-                (part.added === undefined && part.removed === undefined) ? correctAnswer.push(userInput) :
-                  wrongAnswers.push(userInput)
+                if ((part.added === undefined && part.removed === undefined)) {
+                  return correctAnswer.push(userInput)
+                } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
+                  return correctAnswer.push(userInput)
+                } else {
+                  return wrongAnswers.push(userInput)
+                }
               })
-
-              console.log(result)
+              console.log("result", result)
+              console.log("resultWord", resultWord)
+              console.log("resultBlock", resultBlock)
+              console.log("resultSentences", resultSentences)
               console.log("correct!", correctAnswer)
               console.log("wrong!", wrongAnswers)
             }
@@ -208,6 +222,7 @@ export const createResult = async (req, res) => {
         (correctAnswers / resultArray.length) * 100
       );
       return res.status(200).json({
+        allUserAnswers,
         resultArray,
         allQuestion,
         correctAnswers,

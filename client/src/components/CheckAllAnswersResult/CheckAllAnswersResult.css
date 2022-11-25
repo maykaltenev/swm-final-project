@@ -1,11 +1,18 @@
 .green {
   background-color: green;
 }
-.darkred {
-  background-color: darkred;
+
+.lightgreen {
+  background-color: lightgreen;
+}
+.lightgreen::after {
+  content: "Correctly Answered";
 }
 .gray {
-  background-color: rgb(216, 252, 209);
+  background-color: grey;
+}
+.gray::after {
+  content: "Not Answered";
 }
 .red {
   background-color: rgb(250, 208, 208);

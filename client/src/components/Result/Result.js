@@ -35,9 +35,8 @@ function Result() {
   useEffect(() => {
     getResult()
   }, [])
-  console.log(allQues)
 
-
+  console.log("all questions is:", allQues)
 
   return (
     <div>
