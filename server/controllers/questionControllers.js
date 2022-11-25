@@ -181,7 +181,13 @@ export const createResult = async (req, res) => {
             }
             //! For inputType === "text"
           } else {
+          const correctOption = question.options.map(option => option.option)[0]
 
+          //checking user inputted answer for input type === text
+         console.log(question.inputType === "text")
+            console.log(solutions.answer)
+          
+         
           }
         });
       });
