@@ -6,7 +6,8 @@ import {
     createUserResponse,
     createResult,
     removeJsCollection,
-    getAllQuestionsBySession
+    getAllQuestionsBySession,
+  
 } from "../controllers/questionControllers.js";
 
 const router = Router();
@@ -25,4 +26,5 @@ router.post("/js/quiz/result", createResult);
 router.delete("/js/quiz/delete", removeJsCollection)
 // http://localhost:5000/questions/js/sessionID/:id
 router.get("/js/sessionID/:id", getAllQuestionsBySession);
+
 export default router;

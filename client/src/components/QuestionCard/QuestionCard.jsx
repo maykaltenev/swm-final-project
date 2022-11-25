@@ -82,6 +82,7 @@ export default function QuestionCard({
           return prev.map((item) => {
             if (item.questionID === question) {
               addUserAnswerInput(question, userInput, getUser, sessionId);
+              console.log("the user input for inputtype text is:",userInput)
               return {
                 questionID: question,
                 answers: [userInput],
@@ -235,7 +236,7 @@ export default function QuestionCard({
                   type={question?.inputType}
                   name={question?.inputType}
                   style={{ border: "1px red solid" }}
-                  value={question?.inputType === "text" ? null : option?.option}
+                  value={question?.inputType === "text" ? null : option?.option }
                   id={option?._id}
                   ref={userInput}
                   checked={
