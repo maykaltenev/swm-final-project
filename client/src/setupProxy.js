@@ -1,20 +1,21 @@
-import { createProxyMiddleware } from 'http-proxy-middleware' ;
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-//module.exports = function(app) {
-  export default function app(){
+module.exports = function (app) {
   app.use(
-    '/user',
-    createProxyMiddleware({
-      target: 'http://localhost:5000',
-      changeOrigin: true,
-    })
+    createProxyMiddleware(["/user"], { target: "http://localhost:5000" })
   );
+  //   '/user',
+  //   createProxyMiddleware({
+  //     target: 'http://localhost:5000',
+  //     changeOrigin: true,
+  //   })
+  // );
 
-  app.use(
-    '/quiz',
-    createProxyMiddleware({
-      target: 'http://localhost:5000',
-      changeOrigin: true,
-    })
-  );
+  //  app.use(
+  //   '/questions',
+  //   createProxyMiddleware({
+  //     target: 'http://localhost:5000',
+  //     changeOrigin: true,
+  //   })
+  // );
 };

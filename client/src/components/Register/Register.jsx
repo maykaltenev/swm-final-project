@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import GLogin from "../GLogin/Glogin";
+
 //image
 import GoogleLogo from "../../assets/signin.png"
 
@@ -25,6 +25,7 @@ export default function Register() {
     }
   };
 
+  console.log("i am checking")
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -72,9 +73,10 @@ export default function Register() {
               </Link>
             }
           </p>
+          
           <a href='/user/google'><img src={GoogleLogo} alt=''/></a>
         </div>
-      <GLogin/>
+    
       </form>
     </div>
   );
