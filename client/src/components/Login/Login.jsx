@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import axios from "axios"
+import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
 export default function Login() {
   const { userData, error } = useContext(UserContext);
+  const {id} = useParams()
+
+
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
