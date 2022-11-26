@@ -208,7 +208,8 @@ export default function QuestionCard({
     getQuizQuestionsFromLocalStorage();
   }, []);
   console.log("question", question);
-  return (
+
+     return (
     <div>
       {
         <div key={question?._id}>
@@ -229,6 +230,7 @@ export default function QuestionCard({
               <AiOutlineStar onClick={() => handleMark(question?._id)} />
             ))}
           <div>
+         
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
@@ -248,6 +250,11 @@ export default function QuestionCard({
                       ]?.answers?.includes(option?._id)) ||
                     false
                   }
+               placeholder={answer && answer[
+                answer?.findIndex(
+                  (item) => item?.questionID === question?._id
+                )
+              ]?.answers[0]}
                   onChange={
                     question.inputType !== "text"
                       ? (e) =>
