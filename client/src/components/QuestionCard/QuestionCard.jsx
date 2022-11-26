@@ -209,6 +209,7 @@ export default function QuestionCard({
   }, []);
   console.log("question", question);
 
+  
      return (
     <div>
       {
@@ -255,6 +256,7 @@ export default function QuestionCard({
                   (item) => item?.questionID === question?._id
                 )
               ]?.answers[0]}
+              maxLength={option?.option?.length}
                   onChange={
                     question.inputType !== "text"
                       ? (e) =>
