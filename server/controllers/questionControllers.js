@@ -122,9 +122,9 @@ export const createResult = async (req, res) => {
       );
       const resultArray = [];
 
-      const userCorrectAnswer = []; // 2
-      const userWrongAnswer = [];
-      const allUserAnswers = [...userCorrectAnswer, ...userWrongAnswer]; // 1
+      const userCorrectAnswerAll = []; // 2
+      const userWrongAnswerAll = [];
+   
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
@@ -139,15 +139,17 @@ export const createResult = async (req, res) => {
               const correctOption = question.options.filter(
                 (correct) => correct.isCorrect === true
               ); // 2 // 3 // 1
+              const userCorrectAnswer = []; // 2
+              const userWrongAnswer = [];
 
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
-
+                
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
-                      return userCorrectAnswer.push(questionOption);
+                      return userCorrectAnswer.push(questionOption) && userCorrectAnswerAll.push(questionOption);
                     } else {
-                      return userWrongAnswer.push(questionOption);
+                      return userWrongAnswer.push(questionOption) && userWrongAnswerAll.push(questionOption) ;
                     }
                   }
                 });
@@ -159,7 +161,7 @@ export const createResult = async (req, res) => {
                 resultArray.push({
                   question: question,
                   correctOptions: correctOption,
-                  userSolutions: allUserAnswers,
+             
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -171,7 +173,7 @@ export const createResult = async (req, res) => {
                 resultArray.push({
                   question: question,
                   correctOptions: correctOption,
-                  userSolutions: allUserAnswers,
+                
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -226,13 +228,13 @@ export const createResult = async (req, res) => {
         (correctAnswers / resultArray.length) * 100
       );
       return res.status(200).json({
-        allUserAnswers,
         resultArray,
         allQuestion,
         correctAnswers,
         wrongAnswers,
         userAnswerPercentage,
-        userWrongAnswer,
+       userCorrectAnswerAll,
+       userWrongAnswerAll,
       });
     }
   } catch (error) {
