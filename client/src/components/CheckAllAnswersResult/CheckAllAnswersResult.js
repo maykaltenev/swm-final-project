@@ -8,11 +8,11 @@ function CheckAllAnswersResult({ allQues }) {
   //if user doesn't enter any ans
   const noAnswerArr = [];
   noAnswerArr.push(allQues?.resultArray?.map((ques) => ques.question._id));
-
+  console.log(noAnswerArr)
   //user correctarray
   const correctArray = [];
   const wrongArray = [];
-
+  console.log(allQues)
   allQues?.resultArray?.map((item) =>
     item.correct === true
       ? correctArray.push(item.question._id)
