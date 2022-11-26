@@ -196,7 +196,7 @@ export const createResult = async (req, res) => {
               result.forEach((part) => {
                 if ((part.added === undefined && part.removed === undefined)) {
                   return correctAnswer.push(userInput)
-                } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
+                } else if (((part.removed === true && part.count < 2) || (part.added === true && part.count < 2))) { 
                   return correctAnswer.push(userInput)
                 } else {
                   return wrongAnswers.push(userInput)
