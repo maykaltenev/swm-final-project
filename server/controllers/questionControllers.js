@@ -182,32 +182,36 @@ export const createResult = async (req, res) => {
               }
             } else {
               // //! For inputType === "text"
-              const correct = (question.options[0].option)
-              const userInput = (solutions.answer[0])
-              const result = Diff.diffChars(correct, userInput);
-              const resultWord = Diff.diffWords(correct, userInput);
-              const resultBlock = Diff.diffLines(correct, userInput);
-              const resultSentences = Diff.diffSentences(correct, userInput);
               const correctAnswer = [];
               const wrongAnswers = [];
-              let lastCorrectAnswer = [];
-              let lastWrongAnswer = [];
-              // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
-              result.forEach((part) => {
-                if ((part.added === undefined && part.removed === undefined)) {
-                  return correctAnswer.push(userInput)
-                } else if (((part.removed === true && part.count < 2) || (part.added === true && part.count < 2))) { 
-                  return correctAnswer.push(userInput)
-                } else {
-                  return wrongAnswers.push(userInput)
-                }
-              })
-              console.log("result", result)
-              console.log("resultWord", resultWord)
-              console.log("resultBlock", resultBlock)
-              console.log("resultSentences", resultSentences)
-              console.log("correct!", correctAnswer)
-              console.log("wrong!", wrongAnswers)
+              const correct = (question.options[0].option).trim().toLowerCase()
+              const userInput = (solutions.answer[0]).trim().toLowerCase()
+              if (correct === userInput) {
+                correctAnswer.push(solutions.answer[0])
+              } else {
+                wrongAnswers.push(solutions.answer[0])
+              }
+              console.log("correctA!", correctAnswer);
+              console.log("wrongA!", wrongAnswers);
+              // const result = Diff.diffChars(correct, userInput);
+              // const resultWord = Diff.diffWords(correct, userInput);
+              // const resultBlock = Diff.diffLines(correct, userInput);
+              // const resultSentences = Diff.diffSentences(correct, userInput);
+              // const correctAnswer = [];
+              // const wrongAnswers = [];
+              // let lastCorrectAnswer = [];
+              // let lastWrongAnswer = [];
+              // // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
+              // result.forEach((part) => {
+              //   if ((part.added === undefined && part.removed === undefined)) {
+              //     return correctAnswer.push(userInput)
+              //   } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
+              //     return correctAnswer.push(userInput)
+              //   } else {
+              //     return wrongAnswers.push(userInput)
+              //   }
+              // })
+
             }
           }
         });
