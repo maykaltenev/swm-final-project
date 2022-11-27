@@ -23,6 +23,7 @@ export const QuestionsSchema = new Schema({
   explanation: { type: String },
   code: { type: String },
   questionNumber: { type: Number },
+  questionType: { type: String, enum: ["javascript", "react", "nodejs", "mongodb"] },
   inputType: { type: String, enum: ["radio", "checkbox", "text"] },
   sessionId: { type: Schema.Types.ObjectId, ref: "quizSession" }
 })

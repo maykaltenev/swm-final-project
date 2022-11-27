@@ -8,6 +8,7 @@ export const QuizSessionSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   questions: [QuestionsSchema],
   userSolutions: [UserSolutionsSchema],
+  sessionType: { type: String, enum: ["javascript", "react", "nodejs", "mongodb"] },
 });
 
 const quizSession = model("quizSession", QuizSessionSchema);

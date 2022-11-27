@@ -98,3 +98,28 @@ export const updateQuizTimer = async (req, res) => {
     return res.status(404).json({ message: error });
   }
 };
+export const updateUserQuizResults = async (req, res) => {
+  const { userId, sessionId, resultPercentage, quizType } = req.body;
+  console.log(resultPercentage)
+  try {
+    const updateUserQuizResult = await User.findByIdAndUpdate(
+      userId,
+      {
+        $push: {
+          quizResults: {
+            sessionId,
+            resultPercentage,
+            quizType,
+            createdOn: Date.now()
+          }
+        }
+      },
+      { new: true }
+    );
+
+    console.log(updateUserQuizResult)
+    return res.status(200).json(updateUserQuizResult);
+  } catch (error) {
+    return res.send(error);
+  }
+};

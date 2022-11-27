@@ -26,6 +26,13 @@ const UserSchema = new Schema({
   pro: Boolean,
   certificates: [Schema.Types.ObjectId],
   skills: [String],
+  quizResults: {
+    sessionId: String,
+    resultPercentage: String,
+    quizType: String,
+    createdOn: { type: Date, default: Date.now },
+    type: Array,
+  },
   quizTimer: { start: { type: Date }, end: { type: Date } },
 });
 

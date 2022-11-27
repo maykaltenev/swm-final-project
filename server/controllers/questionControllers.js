@@ -71,7 +71,7 @@ export const createUserResponse = async (req, res) => {
       _id: sessionId,
       "userSolutions.question": question,
     });
-    console.log(answer);
+
     if (session) {
       const updatedSession = await QuizSession.findOneAndUpdate(
         { _id: sessionId, "userSolutions.question": question },
