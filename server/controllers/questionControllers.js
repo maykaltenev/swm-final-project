@@ -183,17 +183,45 @@ export const createResult = async (req, res) => {
               }
             } else {
               // //! For inputType === "text"
-              const correctAnswer = [];
-              const wrongAnswers = [];
+              const userCorrectAnswer = [];
+              const userWrongAnswer = [];
+              // Correct Option
+              const correctOption = question.options[0].option;
               const correct = (question.options[0].option).trim().toLowerCase()
               const userInput = (solutions.answer[0]).trim().toLowerCase()
               if (correct === userInput) {
-                correctAnswer.push(solutions.answer[0])
+                userCorrectAnswer.push(solutions.answer[0])
               } else {
-                wrongAnswers.push(solutions.answer[0])
+                userWrongAnswer.push(solutions.answer[0])
               }
-              console.log("correctA!", correctAnswer);
-              console.log("wrongA!", wrongAnswers);
+              if (
+                userCorrectAnswer.length > 0
+              ) {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 1,
+                  correct: true,
+                });
+              } else {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 0,
+                  correct: false,
+                });
+              }
+
               // const result = Diff.diffChars(correct, userInput);
               // const resultWord = Diff.diffWords(correct, userInput);
               // const resultBlock = Diff.diffLines(correct, userInput);
@@ -224,7 +252,7 @@ export const createResult = async (req, res) => {
       const wrongAnswers = resultArray.length - correctAnswers;
 
       const userAnswerPercentage = Math.round(
-        (correctAnswers / resultArray.length) * 100
+        (correctAnswers / allQuestion.questions.length) * 100
       );
       return res.status(200).json({
         resultArray,
