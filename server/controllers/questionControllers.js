@@ -124,7 +124,7 @@ export const createResult = async (req, res) => {
 
       const userCorrectAnswerAll = []; // 2
       const userWrongAnswerAll = [];
-   
+
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
@@ -144,12 +144,12 @@ export const createResult = async (req, res) => {
 
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
-                
+
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
                       return userCorrectAnswer.push(questionOption) && userCorrectAnswerAll.push(questionOption);
                     } else {
-                      return userWrongAnswer.push(questionOption) && userWrongAnswerAll.push(questionOption) ;
+                      return userWrongAnswer.push(questionOption) && userWrongAnswerAll.push(questionOption);
                     }
                   }
                 });
@@ -159,9 +159,9 @@ export const createResult = async (req, res) => {
                 solutions.answer.length === correctOption.length
               ) {
                 resultArray.push({
-                  question: question,
+                  question: question._id,
                   correctOptions: correctOption,
-             
+
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -171,9 +171,8 @@ export const createResult = async (req, res) => {
                 });
               } else {
                 resultArray.push({
-                  question: question,
+                  question: question._id,
                   correctOptions: correctOption,
-                
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -233,8 +232,8 @@ export const createResult = async (req, res) => {
         correctAnswers,
         wrongAnswers,
         userAnswerPercentage,
-       userCorrectAnswerAll,
-       userWrongAnswerAll,
+        userCorrectAnswerAll,
+        userWrongAnswerAll,
       });
     }
   } catch (error) {

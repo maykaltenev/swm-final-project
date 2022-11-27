@@ -2,60 +2,45 @@ import React, { useState } from "react";
 import "./CheckAllAnswersResult.css";
 
 function CheckAllAnswersResult({ allQues }) {
-  const wrongAnswersArr = [];
-  allQues?.userWrongAnswerAll?.map((item) => wrongAnswersArr.push(item.option));
 
+  const wrongAnswersArr = allQues?.userWrongAnswerAll?.map(item => item?.option);
+  console.log(wrongAnswersArr)
   //if user doesn't enter any ans
   /*  const noAnswerArr = [];
   noAnswerArr.push(allQues?.resultArray?.map((ques) => ques.question._id));
   console.log(noAnswerArr)  */
 
- const noAns = allQues?.resultArray?.filter(result => 
-    {
-      return allQues?.allQuestion?.questions?.filter((ques) => String(ques?.question?._id)!== String(result?.question?._id)) 
-    }
+  // const noAns = allQues?.allQuestion?.questions?.map(question => {
+  //   return allQues?.resultArray?.filter((result) => String(ques?.question?._id) !== String(result?.question?._id))
+  // }
 
-    )
-    console.log("noAns is:",noAns)
+
 
   //user correctarray
   const correctArray = [];
   const wrongArray = [];
-  console.log( "all ques",allQues);
-  allQues?.resultArray?.map((item) =>
-    item.correct === false
-      ? item.userAnswer.correctUserAnswer.length === 0 &&
-        item.userAnswer.wrongUserAnswer.length === 0
-        ? "gray"
-        : "green"
-      : "red"
-  );
-allQues?.resultArray?.map((item) =>
-console.log("the item is:",item.correct )
- 
-   
-);
+  console.log("all ques", allQues);
 
+
+  allQues?.resultArray?.map((item) =>
+    item.correct === true
+      ? correctArray.push(item.question)
+      : wrongArray.push(item.question)
+  );
+  console.log("arrayIdCorrect", correctArray)
+  console.log("wrongArrayID", wrongArray)
   return (
     <div key={allQues._id}>
       {allQues?.allQuestion?.questions?.map((question, i) => (
         <div key={i}>
           <h5
-            /* className={
-              !correctArray.includes(question._id)
-                ? !wrongArray.includes(question._id)
-                  ? "gray"
-                  : "lightgreen"
-                : "lightred"
-            } */
-            className={allQues?.resultArray?.map((item) =>
-              item.correct === undefined
-                
-                  ? "gray"
-                  : null
-                 
-            )
-          }
+            className={
+              correctArray.includes(question._id)
+                ? "lightgreen"
+                : wrongArray.includes(question._id)
+                  ? "red"
+                  : "gray"
+            }
           >
             {i + 1}. {question.questionText}
           </h5>
@@ -68,8 +53,8 @@ console.log("the item is:",item.correct )
                   option.isCorrect === true
                     ? "green"
                     : wrongAnswersArr.includes(option.option)
-                    ? "red"
-                    : ""
+                      ? "red"
+                      : ""
                 }
               >
                 {option.option}
