@@ -12,13 +12,18 @@ import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
 import Result from "./components/Result/Result";
 
+
+import "./index.css"
+import Home from "./components/Home/Home";
+
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Register />} />
+      <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
