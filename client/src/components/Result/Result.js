@@ -7,66 +7,52 @@ import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResul
 import { UserContext } from "../Context/UserContext";
 
 function Result() {
-  const [result, setResult] = useState("");
-  const [allQues, setAllQues] = useState("")
-  console.log(allQues.userAnswerPercentage)
-  const { javaScriptData, sessionId } = useContext(QuestionContext);
-  const { user } = useContext(UserContext);
+  /* const [result, setResult] = useState(""); */
+  /* const [allQues, setAllQues] = useState(""); */
+  const [show, setShow] = useState(false);
+  const {
+    javaScriptData,
+    sessionId,
+    result,
+
+    getResult,
+  } = useContext(QuestionContext);
+
   const navigate = useNavigate();
+  console.log("first", result);
 
-  const getResult = async () => {
-    const result = await axios.post(
-      "http://localhost:5000/questions/js/quiz/result",
-      { sessionId: sessionId }
-    );
-
-    return setResult(result);
-  };
-  const getUserUpdated = async () => {
-    const update = await axios.post(
-      "http://localhost:5000/user/js/quiz/result",
-      { userId: user._id, sessionId: sessionId, resultPercentage: allQues.userAnswerPercentage, quizType: "javascript" }
-    ).then(data => console.log(data))
-
-  }
   //function for navigating to create quiz session
-  const handleTryagain = () => {
+  const handleTryAgain = () => {
     navigate("/createQuiz");
   };
-  //function for checking the correct answer and user answer with explanation
-  const handleCheckanswers = async () => {
-
-    const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId })
-    console.log("getallquestions from backend", getQuesAndAnswers)
-    setAllQues(getQuesAndAnswers.data)
-  }
 
   useEffect(() => {
-    getResult()
-  }, [])
+    getResult();
+  }, []);
 
-  console.log("all questions is:", allQues)
-
+  const handleCheckAnswers = () => {
+    setShow(!show);
+  };
   return (
     <div>
       {result && (
         <div className="result-card">
           <div>
-            <h1>Your Score:{result.data?.userAnswerPercentage} %</h1>{" "}
+            <h1>Your Score:{result?.userAnswerPercentage} %</h1>{" "}
           </div>
           <div>
             <p>Total Number of Questions: {javaScriptData?.length}</p>
           </div>
           <div>
-            <p>Number of Correct Answers: {result.data?.correctAnswers}</p>
+            <p>Number of Correct Answers: {result?.correctAnswers}</p>
           </div>
           <div>
-            <p>Number of Wrong Answers: {result.data?.wrongAnswers}</p>
+            <p>Number of Wrong Answers: {result?.wrongAnswers}</p>
           </div>
-          <button onClick={handleCheckanswers}>Check Answers</button>
-          <button onClick={handleTryagain}>Try Again</button>
-          <button onClick={getUserUpdated}>UpdateUser</button>
-          <CheckAllAnswersResult allQues={allQues} />
+          {<button onClick={handleCheckAnswers}>Check Answers</button>}
+          <button onClick={handleTryAgain}>Try Again</button>
+
+          {show && <CheckAllAnswersResult allQues={result} />}
         </div>
       )}
     </div>

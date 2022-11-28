@@ -2,7 +2,6 @@ import express from "express";
 import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
-import * as Diff from "diff";
 
 export const createJsQuestions = async (req, res) => {
   try {
@@ -144,12 +143,17 @@ export const createResult = async (req, res) => {
 
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
-
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
-                      return userCorrectAnswer.push(questionOption) && userCorrectAnswerAll.push(questionOption);
+                      return (
+                        userCorrectAnswer.push(questionOption) &&
+                        userCorrectAnswerAll.push(questionOption)
+                      );
                     } else {
-                      return userWrongAnswer.push(questionOption) && userWrongAnswerAll.push(questionOption);
+                      return (
+                        userWrongAnswer.push(questionOption) &&
+                        userWrongAnswerAll.push(questionOption)
+                      );
                     }
                   }
                 });
@@ -187,16 +191,14 @@ export const createResult = async (req, res) => {
               const userWrongAnswer = [];
               // Correct Option
               const correctOption = question.options[0].option;
-              const correct = (question.options[0].option).trim().toLowerCase()
-              const userInput = (solutions.answer[0]).trim().toLowerCase()
+              const correct = question.options[0].option.trim().toLowerCase();
+              const userInput = solutions.answer[0].trim().toLowerCase();
               if (correct === userInput) {
-                userCorrectAnswer.push(solutions.answer[0])
+                userCorrectAnswer.push(solutions.answer[0]);
               } else {
-                userWrongAnswer.push(solutions.answer[0])
+                userWrongAnswer.push(solutions.answer[0]);
               }
-              if (
-                userCorrectAnswer.length > 0
-              ) {
+              if (userCorrectAnswer.length > 0) {
                 resultArray.push({
                   question: question._id,
                   correctOptions: correctOption,
@@ -240,7 +242,6 @@ export const createResult = async (req, res) => {
               //     return wrongAnswers.push(userInput)
               //   }
               // })
-
             }
           }
         });

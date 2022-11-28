@@ -10,6 +10,9 @@ const QuestionContextProvider = ({ children }) => {
   const [points, setPoints] = useState(0);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
+
+  const [result, setResult] = useState("");
+
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
@@ -87,9 +90,42 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const getUserUpdated = async (data) => {
+    const update = await axios.post(
+      "http://localhost:5000/user/js/quiz/result",
+      {
+        userId: getUser._id,
+        sessionId: sessionId,
+        resultPercentage: data.data.userAnswerPercentage,
+        quizType: "javascript",
+      }
+    );
+  };
+
+  const getResult = async () => {
+    try {
+      const result = await axios
+        .post("http://localhost:5000/questions/js/quiz/result", {
+          sessionId: sessionId,
+        })
+        .then((data) => {
+          setResult(data.data);
+          getUserUpdated(data);
+        });
+      navigate("/result");
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log("result.userAnswerPercentage", result.userAnswerPercentage);
+
   return (
     <QuestionContext.Provider
       value={{
+        getResult,
+        /* getUserUpdated, */
+        result,
         currentQuestion,
         setCurrentQuestion,
         sessionId,

@@ -13,6 +13,7 @@ function Quiz() {
   const [result, setResult] = useState("");
 
   const {
+    getResult,
     currentQuestion,
     setCurrentQuestion,
     getQuestions,
@@ -40,9 +41,6 @@ function Quiz() {
     setShowExplanation((showExplanation) => !showExplanation);
     console.log(showExplanation);
   };
-  const handleResult = async () => {
-    navigate("/result");
-  };
 
   return (
     <>
@@ -62,7 +60,7 @@ function Quiz() {
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
       </div>
       {Number(id) === javaScriptData.length - 1 ? (
-        <button onClick={handleResult}>Submit</button>
+        <button onClick={getResult}>Submit</button>
       ) : (
         ""
       )}

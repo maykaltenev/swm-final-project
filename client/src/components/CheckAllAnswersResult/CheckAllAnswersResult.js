@@ -2,33 +2,22 @@ import React, { useState } from "react";
 import "./CheckAllAnswersResult.css";
 
 function CheckAllAnswersResult({ allQues }) {
-
-  const wrongAnswersArr = allQues?.userWrongAnswerAll?.map(item => item?.option);
-  console.log(wrongAnswersArr)
-  //if user doesn't enter any ans
-  /*  const noAnswerArr = [];
-  noAnswerArr.push(allQues?.resultArray?.map((ques) => ques.question._id));
-  console.log(noAnswerArr)  */
-
-  // const noAns = allQues?.allQuestion?.questions?.map(question => {
-  //   return allQues?.resultArray?.filter((result) => String(ques?.question?._id) !== String(result?.question?._id))
-  // }
-
-
+  const wrongAnswersArr = allQues?.userWrongAnswerAll?.map(
+    (item) => item?.option
+  );
 
   //user correctarray
   const correctArray = [];
   const wrongArray = [];
   console.log("all ques", allQues);
 
-
   allQues?.resultArray?.map((item) =>
     item.correct === true
       ? correctArray.push(item.question)
       : wrongArray.push(item.question)
   );
-  console.log("arrayIdCorrect", correctArray)
-  console.log("wrongArrayID", wrongArray)
+  console.log("arrayIdCorrect", correctArray);
+  console.log("wrongArrayID", wrongArray);
   return (
     <div key={allQues._id}>
       {allQues?.allQuestion?.questions?.map((question, i) => (
@@ -38,8 +27,8 @@ function CheckAllAnswersResult({ allQues }) {
               correctArray.includes(question._id)
                 ? "lightgreen"
                 : wrongArray.includes(question._id)
-                  ? "red"
-                  : "gray"
+                ? "red"
+                : "gray"
             }
           >
             {i + 1}. {question.questionText}
@@ -53,8 +42,8 @@ function CheckAllAnswersResult({ allQues }) {
                   option.isCorrect === true
                     ? "green"
                     : wrongAnswersArr.includes(option.option)
-                      ? "red"
-                      : ""
+                    ? "red"
+                    : ""
                 }
               >
                 {option.option}
