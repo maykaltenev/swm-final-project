@@ -5,6 +5,7 @@ module.exports = {
   colors:{
   
        'primary-bg': '#1f293b',
+      'myblue': "#475569"
     
   },
  
