@@ -4,39 +4,48 @@ import axios from "axios";
 import { QuestionContext } from "../Context/QuestionContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
+import { UserContext } from "../Context/UserContext";
 
 function Result() {
   const [result, setResult] = useState("");
   const [allQues, setAllQues] = useState("")
-
+  console.log(allQues.userAnswerPercentage)
   const { javaScriptData, sessionId } = useContext(QuestionContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
-console.log("the session id", sessionId)
 
   const getResult = async () => {
     const result = await axios.post(
       "http://localhost:5000/questions/js/quiz/result",
       { sessionId: sessionId }
     );
+
     return setResult(result);
   };
+  const getUserUpdated = async () => {
+    const update = await axios.post(
+      "http://localhost:5000/user/js/quiz/result",
+      { userId: user._id, sessionId: sessionId, resultPercentage: allQues.userAnswerPercentage, quizType: "javascript" }
+    ).then(data => console.log(data))
+
+  }
   //function for navigating to create quiz session
   const handleTryagain = () => {
     navigate("/createQuiz");
   };
   //function for checking the correct answer and user answer with explanation
-  const handleCheckanswers = async() => {
+  const handleCheckanswers = async () => {
 
-    const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId } ) 
-    console.log("getallquestions from backend",getQuesAndAnswers)
-setAllQues(getQuesAndAnswers.data)
+    const getQuesAndAnswers = await axios.post("http://localhost:5000/questions/js/quiz/result", { sessionId: sessionId })
+    console.log("getallquestions from backend", getQuesAndAnswers)
+    setAllQues(getQuesAndAnswers.data)
   }
-  
-useEffect(() => {
-    getResult() 
-}, [])
 
-console.log("all questions is:", allQues)
+  useEffect(() => {
+    getResult()
+  }, [])
+
+  console.log("all questions is:", allQues)
 
   return (
     <div>
@@ -56,7 +65,8 @@ console.log("all questions is:", allQues)
           </div>
           <button onClick={handleCheckanswers}>Check Answers</button>
           <button onClick={handleTryagain}>Try Again</button>
-          <CheckAllAnswersResult allQues = {allQues}/>
+          <button onClick={getUserUpdated}>UpdateUser</button>
+          <CheckAllAnswersResult allQues={allQues} />
         </div>
       )}
     </div>

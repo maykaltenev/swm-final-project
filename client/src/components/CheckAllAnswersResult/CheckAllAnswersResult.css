@@ -5,18 +5,19 @@
 .lightgreen {
   background-color: lightgreen;
 }
-.lightgreen::after{
-  content: "Correctly Answered"
+.lightgreen::after {
+  content: "Correctly Answered";
 }
 .gray {
   background-color: grey;
-
 }
-.gray::after{
-  content : "Not Answered"
+.gray::after {
+  content: "Not Answered";
+}
+.lightred::after{
+  content: "Wrongly Answered"; 
 }
 .red {
   background-color: rgb(250, 208, 208);
   width: fit-content;
 }
-

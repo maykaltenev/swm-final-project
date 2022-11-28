@@ -11,6 +11,7 @@ import { useEffect } from "react";
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [result, setResult] = useState("");
+
   const {
     currentQuestion,
     setCurrentQuestion,
@@ -40,8 +41,7 @@ function Quiz() {
     console.log(showExplanation);
   };
   const handleResult = async () => {
-    navigate("/result") 
-     
+    navigate("/result");
   };
 
   return (
@@ -66,7 +66,6 @@ function Quiz() {
       ) : (
         ""
       )}
-    
     </>
   );
 }

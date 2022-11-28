@@ -2,6 +2,8 @@ import express from "express";
 import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
+import * as Diff from "diff";
+
 export const createJsQuestions = async (req, res) => {
   try {
     const createQuestion = await javaScript.create(req.body);
@@ -69,7 +71,7 @@ export const createUserResponse = async (req, res) => {
       _id: sessionId,
       "userSolutions.question": question,
     });
-    console.log(answer);
+
     if (session) {
       const updatedSession = await QuizSession.findOneAndUpdate(
         { _id: sessionId, "userSolutions.question": question },
@@ -120,14 +122,14 @@ export const createResult = async (req, res) => {
       );
       const resultArray = [];
 
-      const userCorrectAnswer = []; // 2
-      const userWrongAnswer = [];
-      const allUserAnswers = [...userCorrectAnswer, ...userWrongAnswer]; // 1
+      const userCorrectAnswerAll = []; // 2
+      const userWrongAnswerAll = [];
+
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
         checkResult.userSolutions.map((solutions) => {
-                   // Check if the current questionID is the same a the current solutionID
+          // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
             // All the correct options
             if (
@@ -137,15 +139,17 @@ export const createResult = async (req, res) => {
               const correctOption = question.options.filter(
                 (correct) => correct.isCorrect === true
               ); // 2 // 3 // 1
+              const userCorrectAnswer = []; // 2
+              const userWrongAnswer = [];
 
               question.options.map((questionOption) => {
-                solutions.answer.filter((solutionInput) => {               
+                solutions.answer.filter((solutionInput) => {
 
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
-                      return userCorrectAnswer.push(questionOption);
+                      return userCorrectAnswer.push(questionOption) && userCorrectAnswerAll.push(questionOption);
                     } else {
-                      return userWrongAnswer.push(questionOption);
+                      return userWrongAnswer.push(questionOption) && userWrongAnswerAll.push(questionOption);
                     }
                   }
                 });
@@ -155,9 +159,9 @@ export const createResult = async (req, res) => {
                 solutions.answer.length === correctOption.length
               ) {
                 resultArray.push({
-                  question: question,
+                  question: question._id,
                   correctOptions: correctOption,
-                  userSolutions: allUserAnswers,
+
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -167,9 +171,8 @@ export const createResult = async (req, res) => {
                 });
               } else {
                 resultArray.push({
-                  question: question,
+                  question: question._id,
                   correctOptions: correctOption,
-                  userSolutions: allUserAnswers,
                   userAnswer: {
                     correctUserAnswer: userCorrectAnswer,
                     wrongUserAnswer: userWrongAnswer,
@@ -178,10 +181,67 @@ export const createResult = async (req, res) => {
                   correct: false,
                 });
               }
-            }
-            //! For inputType === "text"
-          } else {
+            } else {
+              // //! For inputType === "text"
+              const userCorrectAnswer = [];
+              const userWrongAnswer = [];
+              // Correct Option
+              const correctOption = question.options[0].option;
+              const correct = (question.options[0].option).trim().toLowerCase()
+              const userInput = (solutions.answer[0]).trim().toLowerCase()
+              if (correct === userInput) {
+                userCorrectAnswer.push(solutions.answer[0])
+              } else {
+                userWrongAnswer.push(solutions.answer[0])
+              }
+              if (
+                userCorrectAnswer.length > 0
+              ) {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
 
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 1,
+                  correct: true,
+                });
+              } else {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 0,
+                  correct: false,
+                });
+              }
+
+              // const result = Diff.diffChars(correct, userInput);
+              // const resultWord = Diff.diffWords(correct, userInput);
+              // const resultBlock = Diff.diffLines(correct, userInput);
+              // const resultSentences = Diff.diffSentences(correct, userInput);
+              // const correctAnswer = [];
+              // const wrongAnswers = [];
+              // let lastCorrectAnswer = [];
+              // let lastWrongAnswer = [];
+              // // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
+              // result.forEach((part) => {
+              //   if ((part.added === undefined && part.removed === undefined)) {
+              //     return correctAnswer.push(userInput)
+              //   } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
+              //     return correctAnswer.push(userInput)
+              //   } else {
+              //     return wrongAnswers.push(userInput)
+              //   }
+              // })
+
+            }
           }
         });
       });
@@ -192,16 +252,16 @@ export const createResult = async (req, res) => {
       const wrongAnswers = resultArray.length - correctAnswers;
 
       const userAnswerPercentage = Math.round(
-        (correctAnswers / resultArray.length) * 100
+        (correctAnswers / allQuestion.questions.length) * 100
       );
       return res.status(200).json({
-        allUserAnswers,
         resultArray,
         allQuestion,
         correctAnswers,
         wrongAnswers,
         userAnswerPercentage,
-        userWrongAnswer,
+        userCorrectAnswerAll,
+        userWrongAnswerAll,
       });
     }
   } catch (error) {
