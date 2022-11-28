@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "../Banner/Banner";
 import Header from "../Header/Header";
+import HomepageContent from "../HomepageContent/HomepageContent";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
 
 <Header/>
 <Banner/>
+<HomepageContent/>
     </div>
   );
 }

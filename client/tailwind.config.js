@@ -10,10 +10,7 @@ module.exports = {
     },
 
     extend: {
-      backgroundImage:  {
-              'banner': "url('/src/assets/cover.png')",
-             
-                },
+     
       colors: {
         "primary-bg": "#1f293b",
         "my-blue": "#475569",
