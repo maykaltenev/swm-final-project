@@ -10,6 +10,9 @@ import QuestionCard from "./components/QuestionCard/QuestionCard";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
+import Home from "./Home/Home";
+
+import "./index.css"
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -17,7 +20,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Register />} />
+      <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
