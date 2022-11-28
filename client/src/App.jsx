@@ -10,9 +10,10 @@ import QuestionCard from "./components/QuestionCard/QuestionCard";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
-import Home from "./Home/Home";
+
 
 import "./index.css"
+import Home from "./components/Home/Home";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);

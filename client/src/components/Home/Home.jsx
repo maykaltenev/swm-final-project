@@ -1,9 +1,11 @@
 import React from "react";
+import Header from "../Header/Header";
 
 function Home() {
   return (
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      Home
+    <div >
+
+<Header/>
     </div>
   );
 }
