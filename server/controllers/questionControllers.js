@@ -2,8 +2,8 @@ import express from "express";
 import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
-export const createJsQuestions = async (req, res) => {
 
+export const createJsQuestions = async (req, res) => {
   try {
     const createQuestion = await javaScript.create(req.body);
     return res
@@ -14,12 +14,9 @@ export const createJsQuestions = async (req, res) => {
   }
 };
 export const removeJsCollection = async (req, res) => {
-
   try {
     const deleted = await javaScript.remove();
-    return res
-      .status(201)
-      .json({ message: "Deleted ", deleted });
+    return res.status(201).json({ message: "Deleted ", deleted });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -34,10 +31,12 @@ export const removeJsCollection = async (req, res) => {
 //     }
 // };
 export const getAllQuestionsBySession = async (req, res) => {
-  const sessionId = req.params.id
+  const sessionId = req.params.id;
   try {
     const data = await QuizSession.findById(sessionId);
-    return res.status(201).json({ message: "All Session Questions found", data });
+    return res
+      .status(201)
+      .json({ message: "All Session Questions found", data });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -71,7 +70,7 @@ export const createUserResponse = async (req, res) => {
       _id: sessionId,
       "userSolutions.question": question,
     });
-    console.log(answer);
+
     if (session) {
       const updatedSession = await QuizSession.findOneAndUpdate(
         { _id: sessionId, "userSolutions.question": question },
@@ -92,7 +91,7 @@ export const createUserResponse = async (req, res) => {
       sessionId,
       {
         $push: {
-          userSolutions: { question, answer }
+          userSolutions: { question, answer },
         },
       },
       { new: true }
@@ -102,7 +101,6 @@ export const createUserResponse = async (req, res) => {
   } catch (error) {
     return res.send(error.message);
   }
-
 };
 
 export const createResult = async (req, res) => {
@@ -122,53 +120,164 @@ export const createResult = async (req, res) => {
         "questions"
       );
       const resultArray = [];
+
+      const userCorrectAnswerAll = []; // 2
+      const userWrongAnswerAll = [];
+
       // Iterate over all the questions object
       allQuestion.questions.map((question) => {
         // Iterate over all the the userSolutions object
-        checkResult.userSolutions.map(solutions => {
+        checkResult.userSolutions.map((solutions) => {
           // Check if the current questionID is the same a the current solutionID
           if (String(solutions.question) === String(question._id)) {
-            // All the correct options 
-            if (question.inputType === "radio" || question.inputType === "checkbox") {
-              const correctOption = question.options.filter(correct => correct.isCorrect === true); // 2 // 3 // 1
-              const userCorrectAnswer = [];  // 2
-              const userWrongAnswer = []; // 1
+            // All the correct options
+            if (
+              question.inputType === "radio" ||
+              question.inputType === "checkbox"
+            ) {
+              const correctOption = question.options.filter(
+                (correct) => correct.isCorrect === true
+              ); // 2 // 3 // 1
+              const userCorrectAnswer = []; // 2
+              const userWrongAnswer = [];
+
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
                   if (String(questionOption._id) === String(solutionInput)) {
                     if (questionOption.isCorrect) {
-                      return userCorrectAnswer.push(questionOption)
+                      return (
+                        userCorrectAnswer.push(questionOption) &&
+                        userCorrectAnswerAll.push(questionOption)
+                      );
                     } else {
-                      return userWrongAnswer.push(questionOption)
+                      return (
+                        userWrongAnswer.push(questionOption) &&
+                        userWrongAnswerAll.push(questionOption)
+                      );
                     }
                   }
-                })
-              })
-              if (userCorrectAnswer.length === correctOption.length && solutions.answer.length === correctOption.length) {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: userCorrectAnswer, wrongUserAnswer: userWrongAnswer }, mark: 1, correct: true })
-              } else {
-                resultArray.push({ question: question._id, correctOptions: correctOption, userAnswer: { correctUserAnswer: userCorrectAnswer, wrongUserAnswer: userWrongAnswer }, mark: 0, correct: false })
-              }
-            }
-            //! For inputType === "text"
-          } else {
+                });
+              });
+              if (
+                userCorrectAnswer.length === correctOption.length &&
+                solutions.answer.length === correctOption.length
+              ) {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
 
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 1,
+                  correct: true,
+                });
+              } else {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 0,
+                  correct: false,
+                });
+              }
+            } else {
+              // //! For inputType === "text"
+              const userCorrectAnswer = [];
+              const userWrongAnswer = [];
+              // Correct Option
+              const correctOption = question.options[0].option;
+              const correct = question.options[0].option.trim().toLowerCase();
+              const userInput = solutions.answer[0].trim().toLowerCase();
+              if (correct === userInput) {
+                userCorrectAnswer.push(solutions.answer[0]);
+              } else {
+                userWrongAnswer.push(solutions.answer[0]);
+              }
+              if (userCorrectAnswer.length > 0) {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 1,
+                  correct: true,
+                });
+              } else {
+                resultArray.push({
+                  question: question._id,
+                  correctOptions: correctOption,
+
+                  userAnswer: {
+                    correctUserAnswer: userCorrectAnswer,
+                    wrongUserAnswer: userWrongAnswer,
+                  },
+                  mark: 0,
+                  correct: false,
+                });
+              }
+
+              // const result = Diff.diffChars(correct, userInput);
+              // const resultWord = Diff.diffWords(correct, userInput);
+              // const resultBlock = Diff.diffLines(correct, userInput);
+              // const resultSentences = Diff.diffSentences(correct, userInput);
+              // const correctAnswer = [];
+              // const wrongAnswers = [];
+              // let lastCorrectAnswer = [];
+              // let lastWrongAnswer = [];
+              // // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
+              // result.forEach((part) => {
+              //   if ((part.added === undefined && part.removed === undefined)) {
+              //     return correctAnswer.push(userInput)
+              //   } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
+              //     return correctAnswer.push(userInput)
+              //   } else {
+              //     return wrongAnswers.push(userInput)
+              //   }
+              // })
+            }
           }
-        })
-      })
+        });
+      });
+
       const correctAnswers = resultArray.reduce((acc, curr) => {
-        return acc + curr.mark
-      }, 0)
+        return acc + curr.mark;
+      }, 0);
       const wrongAnswers = resultArray.length - correctAnswers;
 
       const userAnswerPercentage = Math.round(
-        (correctAnswers / resultArray.length) * 100
+        (correctAnswers / allQuestion.questions.length) * 100
       );
-      return res
-        .status(200)
-        .json({ resultArray, correctAnswers, wrongAnswers, userAnswerPercentage });
+      return res.status(200).json({
+        resultArray,
+        allQuestion,
+        correctAnswers,
+        wrongAnswers,
+        userAnswerPercentage,
+        userCorrectAnswerAll,
+        userWrongAnswerAll,
+      });
     }
   } catch (error) {
     return res.send(error.message);
   }
 };
+//get result
+/* export const getResult = async (req, res) => {
+
+  try {
+    const getQuestions = await javaScript.remove();
+    return res
+      .status(201)
+      .json({ message: "Deleted ", deleted });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}; */

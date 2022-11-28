@@ -1,6 +1,15 @@
 import axios from "axios";
-
 import React, { useContext, useState, useEffect, useRef } from "react";
+
+//simple code editor && highlighting library
+
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css";
+// react icons
+
 import debounce from "lodash.debounce";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
@@ -46,12 +55,11 @@ export default function QuestionCard({
     inputType,
     userInput
   ) => {
+    
     const questionExist = answer?.find((item) => item.questionID === question);
-    console.log("type", inputType);
+
     if (questionExist) {
-      console.log(inputType, "should ber radio");
       if (inputType === "radio") {
-        console.log(inputType, "equal to radio");
         setAnswer((prev) => {
           return prev.map((item) => {
             if (item.questionID === question) {
@@ -68,11 +76,11 @@ export default function QuestionCard({
           });
         });
       } else if (inputType === "text") {
-        console.log("if text", inputType);
         setAnswer((prev) => {
           return prev.map((item) => {
             if (item.questionID === question) {
               addUserAnswerInput(question, userInput, getUser, sessionId);
+
               return {
                 questionID: question,
                 answers: [userInput],
@@ -93,8 +101,6 @@ export default function QuestionCard({
           setAnswer((prev) => {
             return prev.map((item) => {
               if (item.questionID === question) {
-                console.log("insideTheItemID", item.questionID);
-                console.log("insideTheItemID", question);
                 addUserAnswerInput(
                   question,
                   filteredAnswer,
@@ -114,11 +120,8 @@ export default function QuestionCard({
           });
         } else {
           setAnswer((prev) => {
-            console.log("checkQ", question);
             return prev.map((item) => {
-              console.log("check", item);
               if (item.questionID === question) {
-                console.log("add all the prev + the new");
                 addUserAnswerInput(
                   question,
                   [...item.answers, e],
@@ -138,7 +141,6 @@ export default function QuestionCard({
       }
     } else {
       if (inputType !== "text") {
-        console.log("not equal to text", inputType);
         setAnswer((prev) => [...prev, { questionID: question, answers: [e] }]);
         addUserAnswerInput(question, e, getUser, sessionId);
       } else {
@@ -150,10 +152,9 @@ export default function QuestionCard({
       }
     }
   };
-  console.log("after adding answers", answer);
+
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
-    console.log("fromEffectUserInput", userInput?.current?.value);
   }, [answer]);
 
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
@@ -203,8 +204,14 @@ export default function QuestionCard({
       {
         <div key={question?._id}>
           <h5>{question?.questionText}</h5>
-          {question?.image && (
-            <img src={question?.image} alt="" width="400px" />
+          {question?.code && (
+            <div style={{ padding: "1rem", backgroundColor: "" }}>
+              <Editor
+                value={question.code}
+                highlight={(code) => highlight(code, languages.js)}
+                disabled
+              />
+            </div>
           )}
           {question &&
             (marked.includes(question._id) ? (
@@ -220,7 +227,7 @@ export default function QuestionCard({
                   type={question?.inputType}
                   name={question?.inputType}
                   style={{ border: "1px red solid" }}
-                  value={question?.inputType === "text" ? null : option?.option}
+                  value={question?.inputType === "text" ? undefined : option?.option}
                   id={option?._id}
                   ref={userInput}
                   checked={
@@ -232,6 +239,15 @@ export default function QuestionCard({
                       ]?.answers?.includes(option?._id)) ||
                     false
                   }
+                  placeholder={
+                    answer &&
+                    answer[
+                      answer?.findIndex(
+                        (item) => item?.questionID === question?._id
+                      )
+                    ]?.answers[0]
+                  }
+                  maxLength={option?.option?.length}
                   onChange={
                     question.inputType !== "text"
                       ? (e) =>
@@ -253,7 +269,7 @@ export default function QuestionCard({
                               question?.inputType,
                               userInput?.current?.value
                             ),
-                          500
+                          300
                         )
                   }
                 />

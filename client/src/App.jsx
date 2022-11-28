@@ -10,6 +10,7 @@ import QuestionCard from "./components/QuestionCard/QuestionCard";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
+import Result from "./components/Result/Result";
 
 
 import "./index.css"
@@ -27,6 +28,7 @@ function App() {
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
         <Route path="/timer" element={<CountDownTimer />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </div>
   );
