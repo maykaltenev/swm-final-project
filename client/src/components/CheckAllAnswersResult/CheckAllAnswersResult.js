@@ -44,7 +44,7 @@ function CheckAllAnswersResult({ allQues }) {
           >
             {i + 1}. {question.questionText}
           </h5>
-
+          {question?.code}
           <div key={question._id}>
             {question?.options?.map((option, i) => (
               <li

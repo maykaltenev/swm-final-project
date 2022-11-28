@@ -8,12 +8,11 @@ const QuestionContextProvider = ({ children }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [points, setPoints] = useState(0);
-
+  const [allQues, setAllQues] = useState("");
   const getUser = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
-
   const getQuizQuestionsFromLocalStorage = () => {
     const quizQuestions = localStorage.getItem("quizQuestions");
     if (quizQuestions) {
@@ -87,9 +86,20 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const getResult = async (sessionId, data) => {
+    const getQuesAndAnswers = await axios.post(
+      "http://localhost:5000/questions/js/quiz/result",
+      { sessionId: sessionId }
+    );
+    return setAllQues(data);
+  };
+
   return (
     <QuestionContext.Provider
       value={{
+        allQues,
+        setAllQues,
+
         currentQuestion,
         setCurrentQuestion,
         sessionId,
