@@ -20,7 +20,7 @@ function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
 
   return (
-    <div className="App">
+    <div>
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
