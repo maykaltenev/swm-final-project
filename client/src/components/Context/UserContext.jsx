@@ -10,7 +10,9 @@ const UserContextProvider = ({ children }) => {
   //open register form when join us button in header is clicked
   const [openRegisterForm, setOpenRegisterForm] = useState(false)
   //when a user is loggedin after auth
-  const [signedIn, setSignedIn] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState(false)
+//sign in the right user from db
+const [signIn, setSignIn] = useState({})
 
   const navigate = useNavigate();
 
@@ -113,7 +115,7 @@ const UserContextProvider = ({ children }) => {
   }, []);
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer,openRegisterForm, setOpenRegisterForm,signedIn, setSignedIn }}
+      value={{ userData, error, user, handleLogout, getUser, timer,openRegisterForm, setOpenRegisterForm,isSignedIn, setIsSignedIn,signIn, setSignIn }}
     >
       {children}
     </UserContext.Provider>

@@ -1,7 +1,14 @@
 import axios from "axios";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
+import "./Register.css"
 
 export default function Register() {
+  const {
+    openRegisterForm,
+    setOpenRegisterForm,  
+  } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -23,7 +30,7 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div /* className={openRegisterForm ? "show" : "register-container"} */>
       <form onSubmit={handleSubmit}>
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-3 w-full  m-10 font-poppins">
           <p className="title-font text-2xl mb-4">Register</p>
