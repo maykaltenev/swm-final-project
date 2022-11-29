@@ -5,6 +5,7 @@ import Logo from "../../assets/logo.png";
 import { UserContext } from "../Context/UserContext";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import Theme from "../Theme/Theme";
 
 function Header() {
   const {
@@ -53,6 +54,7 @@ function Header() {
           <img className="w-10" src={Logo} alt="" />
           <span className="ml-3 text-xl">MERN-Quiz</span>
         </Link>
+        <Theme/>
         {!user && (
           <button
             className="bg-my-blue font-poppins mx-px px-5 rounded-full text-white py-2"
