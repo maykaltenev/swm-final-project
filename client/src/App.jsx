@@ -7,28 +7,24 @@ import Quiz from "./components/Quiz/Quiz";
 import CountDownTimer from "./components/Timer/Timer";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
 
-
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
 import Result from "./components/Result/Result";
 
-
-import "./index.css"
+import "./index.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
-import UserProfile from "./components/UserProfile/UserProfile"
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
 
   return (
     <div>
-      <Header/>
+      <Header />
       <Routes>
-      <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />

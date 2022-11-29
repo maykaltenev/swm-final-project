@@ -31,7 +31,7 @@ function Header() {
   function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
-        if (!ref.current.contains(event.target)) {
+        if (!ref?.current?.contains(event?.target)) {
           setShowDropMenu(false);
         }
       }

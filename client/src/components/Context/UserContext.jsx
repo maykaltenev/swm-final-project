@@ -8,15 +8,15 @@ const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
   //open register form when join us button in header is clicked
-  const [openRegisterForm, setOpenRegisterForm] = useState(false)
+  const [openRegisterForm, setOpenRegisterForm] = useState(false);
   //when a user is loggedin after auth
-  const [openLoginForm,setOpenLoginForm] = useState(false)
-//sign in the right user from db
-const [signIn, setSignIn] = useState({})
+  const [openLoginForm, setOpenLoginForm] = useState(false);
+  //sign in the right user from db
+  const [signIn, setSignIn] = useState({});
 
   const navigate = useNavigate();
 
-   const userData = async (formData) => {
+  const userData = async (formData) => {
     try {
       await axios
         .post(
@@ -115,18 +115,33 @@ const [signIn, setSignIn] = useState({})
   }, []);
 
   const handleShowRegisterForm = () => {
-    setOpenRegisterForm(true)
-    setOpenLoginForm(false)
-   }
+    setOpenRegisterForm(true);
+    setOpenLoginForm(false);
+  };
 
-   const handleShowLoginForm = () => {
-    setOpenRegisterForm(false) 
-     setOpenLoginForm(true)
-  }
+  const handleShowLoginForm = () => {
+    setOpenRegisterForm(false);
+    setOpenLoginForm(true);
+  };
 
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer,openRegisterForm, setOpenRegisterForm,openLoginForm,setOpenLoginForm,signIn, setSignIn, handleShowRegisterForm,handleShowLoginForm }}
+      value={{
+        userData,
+        error,
+        user,
+        handleLogout,
+        getUser,
+        timer,
+        openRegisterForm,
+        setOpenRegisterForm,
+        openLoginForm,
+        setOpenLoginForm,
+        signIn,
+        setSignIn,
+        handleShowRegisterForm,
+        handleShowLoginForm,
+      }}
     >
       {children}
     </UserContext.Provider>

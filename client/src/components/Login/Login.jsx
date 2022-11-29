@@ -7,14 +7,13 @@ export default function Login() {
     useContext(UserContext);
 
   const handleLogin = async (event) => {
-
     event.preventDefault();
-    /* setOpenLoginForm(false); */
+    setOpenLoginForm(false);
+
     const formData = new FormData(event.target);
     userData(formData);
-
   };
-  
+
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
@@ -35,7 +34,7 @@ export default function Login() {
                 required
               />
             </div>
-            <div class="relative mb-4">
+            <div className="relative mb-4">
               <input
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Password"
@@ -46,7 +45,7 @@ export default function Login() {
                 required
               />
             </div>
-            <button onClick={() => setOpenLoginForm(false)}
+            <button
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
               type="submit"
             >
@@ -55,13 +54,13 @@ export default function Login() {
             <p>
               Don't have an account ?{" "}
               {
-                <Link
+                <button
                   onClick={handleShowRegisterForm}
                   className="text-blue-600 hover:text-primary-bg"
                   variant="contained"
                 >
                   Register
-                </Link>
+                </button>
               }
             </p>
           </div>
