@@ -67,7 +67,19 @@ export const getUserData = async (req, res) => {
     return res.send(error.message);
   }
 };
+//checking
+export const getUserDatas = async (req, res) => {
+  
 
+  try {
+    const userDatas = await User.find();
+
+    return res.status(200).json(userDatas);
+  } catch (error) {
+    return res.send(error.message);
+  }
+};
+/* ----------------------- */
 export const logout = async (req, res, next) => {
   try {
     res

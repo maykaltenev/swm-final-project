@@ -5,6 +5,7 @@ import {
   logout,
   updateQuizTimer,
   getUserData,
+  getUserDatas,
   updateUserQuizResults
 } from "../controllers/userControllers.js";
 const router = Router();
@@ -15,8 +16,11 @@ router.post("/register", registerUser);
 //http://localhost:5000/user/login
 router.post("/login", loginUser);
 
-//http://localhost:5000/user/allUser
+//http://localhost:5000/user/userData
 router.post("/userData", getUserData);
+
+http://localhost:5000/user/userdatas
+router.get("/userdatas", getUserDatas)
 
 //http:localhost:5000/user/logout
 router.get("/logout", logout);

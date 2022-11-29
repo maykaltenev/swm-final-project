@@ -16,6 +16,8 @@ export default function Register() {
  */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setOpenRegisterForm(false) 
+  setOpenLoginForm(true)
     const formData = new FormData(event.target);
     try {
       await axios
@@ -31,11 +33,11 @@ export default function Register() {
     }
   };
 
-  const handleRegistration = () => {
+  /* const handleRegistration = () => {
  setOpenRegisterForm(false) 
   setOpenLoginForm(true)
   }
-  
+   */
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10"> 
@@ -90,7 +92,7 @@ export default function Register() {
             />
           </div>
 
-          <button onClick={handleRegistration}
+          <button 
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
             type="submit"
           >

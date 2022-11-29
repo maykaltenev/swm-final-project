@@ -7,13 +7,14 @@ export default function Login() {
     useContext(UserContext);
 
   const handleLogin = async (event) => {
+
     event.preventDefault();
+    /* setOpenLoginForm(false); */
     const formData = new FormData(event.target);
     userData(formData);
-    setOpenLoginForm(false);
-  };
 
-  const handleLoginForm = () => {};
+  };
+  
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
@@ -45,7 +46,7 @@ export default function Login() {
                 required
               />
             </div>
-            <button
+            <button onClick={() => setOpenLoginForm(false)}
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
               type="submit"
             >
