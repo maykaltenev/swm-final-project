@@ -1,8 +1,11 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+// import OutsideAlerter from "../Alert/Alert";
 import { UserContext } from "../Context/UserContext";
 import Register from "../Register/Register";
+
+
 function Header() {
   const {
     openRegisterForm,
@@ -13,24 +16,34 @@ function Header() {
     signIn,
     setSignIn,
   } = useContext(UserContext);
-  console.log("the user is:", user);
+
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
   const buttonRef = useRef(null);
+  console.log(buttonRef)
 
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
   };
-
-  function useOutsideAlerter(ref) {
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        alert("You clicked outside of me!");
+  function useOutsideCloseDropMenu(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowDropMenu(false)
+        }
       }
-    }
-  }, [ref]);
-}
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  useOutsideCloseDropMenu(buttonRef);
 
   return (
     <div className="container mx-auto flex justify-between p-5 items-center">
@@ -82,6 +95,7 @@ function Header() {
               <Link className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
                 Logout{" "}
               </Link>
+              {/* <OutsideAlerter /> */}
             </div>
           )}
         </div>
