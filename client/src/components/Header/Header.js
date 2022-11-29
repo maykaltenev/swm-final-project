@@ -32,7 +32,8 @@ function Header() {
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
   };
-   /* function useOutsideCloseDropMenu(ref) {
+
+    function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if ( !ref.current.contains(event.target)) {
@@ -45,7 +46,7 @@ function Header() {
       };
     }, [ref]);
   }
-  useOutsideCloseDropMenu(buttonRef);  */
+  useOutsideCloseDropMenu(buttonRef);  
 
   /**
    * Alert if clicked on outside of element
@@ -74,10 +75,10 @@ function Header() {
       {user && 
  
        (
-        <div className="relative">
+        <div  ref={buttonRef} className="relative">
           <img
             onClick={handleDropMenu}
-            ref={buttonRef}
+           
             className="w-7"
             alt=""
             src={user.avatar}
