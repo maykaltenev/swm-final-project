@@ -7,8 +7,6 @@ import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResul
 import { UserContext } from "../Context/UserContext";
 
 function Result() {
-  /* const [result, setResult] = useState(""); */
-  /* const [allQues, setAllQues] = useState(""); */
   const [show, setShow] = useState(false);
   const {
     javaScriptData,

@@ -12,9 +12,11 @@ import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
 import Result from "./components/Result/Result";
 
-
-import "./index.css"
+import "./index.css";
 import Home from "./components/Home/Home";
+import QuizHistory from "./components/QuizHistory/QuizHistory";
+import CheckAllAnswersResult from "./components/CheckAllAnswersResult/CheckAllAnswersResult";
+import ShowResultDetails from "./components/QuizHistory/ShowResultDetails";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -22,13 +24,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
         <Route path="/timer" element={<CountDownTimer />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/quizhistory/*" element={<QuizHistory />} />
+        {/* <Route path="/sh" element={<ShowResultDetails />} /> */}
       </Routes>
     </div>
   );

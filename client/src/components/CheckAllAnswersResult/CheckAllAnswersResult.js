@@ -9,15 +9,13 @@ function CheckAllAnswersResult({ allQues }) {
   //user correctarray
   const correctArray = [];
   const wrongArray = [];
-  console.log("all ques", allQues);
 
   allQues?.resultArray?.map((item) =>
     item.correct === true
       ? correctArray.push(item.question)
       : wrongArray.push(item.question)
   );
-  console.log("arrayIdCorrect", correctArray);
-  console.log("wrongArrayID", wrongArray);
+
   return (
     <div key={allQues._id}>
       {allQues?.allQuestion?.questions?.map((question, i) => (
