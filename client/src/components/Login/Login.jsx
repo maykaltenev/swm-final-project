@@ -4,10 +4,12 @@ import { UserContext } from "../Context/UserContext";
 
 export default function Login() {
   const { userData, error } = useContext(UserContext);
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     userData(formData);
+   
   };
 
   return (

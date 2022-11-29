@@ -36,7 +36,7 @@ const [signIn, setSignIn] = useState({})
           localStorageUser();
         });
       setError("");
-      navigate("/createquiz");
+      navigate("/userprofile");
       return;
     } catch (error) {
       console.log(error);

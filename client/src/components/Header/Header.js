@@ -1,8 +1,10 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+// import OutsideAlerter from "../Alert/Alert";
 import { UserContext } from "../Context/UserContext";
 import Register from "../Register/Register";
+
 function Header() {
   const {
     openRegisterForm,
@@ -12,32 +14,44 @@ function Header() {
     user,
     signIn,
     setSignIn,
+    handleLogout,
   } = useContext(UserContext);
-  console.log("the user is:", user);
+
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
-  const [joinusButton, setJoinusButton] = useState(true);
-console.log("the button is",joinusButton)
+
+  /* const [joinusButton, setJoinusButton] = useState(true);
+
+  if(user){
+    setJoinusButton(!joinusButton)
+  } */
+
   const buttonRef = useRef(null);
+  console.log(buttonRef)
 
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
-     };
-
-/*      const handleJoinusButton = () => {
-      setOpenRegisterForm(true);
-     } */
-
-   function useOutsideAlerter(ref) {
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        alert("You clicked outside of me!");
+  };
+   /* function useOutsideCloseDropMenu(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if ( !ref.current.contains(event.target)) {
+          setShowDropMenu(false)
+        }
       }
-    }
-  }, [ref]);
-} 
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  useOutsideCloseDropMenu(buttonRef);  */
 
+  /**
+   * Alert if clicked on outside of element
+   */
+  // Bind the event listener
+  // Unbind the event listener on clean up
   return (
     <div className="container mx-auto flex justify-between p-5 items-center">
       {openRegisterForm && <Register />}
@@ -84,12 +98,19 @@ console.log("the button is",joinusButton)
                   </div>
                 </div>
               </div>
-              <Link className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out " to="/mycertificates">
+              <Link
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                to="/mycertificates"
+              >
                 My Certificates{" "}
               </Link>
-              <Link onClick = {() => setShowDropMenu(false)} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out " to ="/">
+              <button
+                onClick={handleLogout}
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+              >
                 Logout{" "}
-              </Link>
+              </button>
+              {/* <OutsideAlerter /> */}
             </div>
           )}
         </div>

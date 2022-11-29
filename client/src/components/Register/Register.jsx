@@ -5,7 +5,7 @@ import { UserContext } from "../Context/UserContext";
 import "./Register.css";
 
 export default function Register() {
-  const { openRegisterForm } = useContext(UserContext);
+  const { openRegisterForm,setOpenRegisterForm } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -93,6 +93,7 @@ export default function Register() {
             Already have an account ?{" "}
             {
               <Link
+              onClick={() => setOpenRegisterForm(false)}
                 className="text-blue-600 hover:text-primary-bg"
                 variant="contained"
                 to="/login"
