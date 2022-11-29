@@ -30,7 +30,7 @@ export default function Register() {
   };
 
   return (
-    <div /* className={openRegisterForm ? "show" : "register-container"} */>
+    <div  className={openRegisterForm ? "show" : "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-3 w-full  m-10 font-poppins"} >
       <form onSubmit={handleSubmit}>
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-3 w-full  m-10 font-poppins">
           <p className="title-font text-2xl mb-4">Register</p>
