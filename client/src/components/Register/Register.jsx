@@ -19,7 +19,6 @@ export default function Register() {
           email: formData.get("email"),
           password: formData.get("password"),
         })
-        /* .then(() => dispatch(authActions.login())) */
         .then(navigate("/login"));
     } catch (error) {
       console.log(error);
@@ -27,15 +26,13 @@ export default function Register() {
   };
 
   return (
-    <div
-      className={
-        openRegisterForm
-          ? "show"
-          : "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-3 w-full  m-10 font-poppins"
-      }
-    >
+    /* overlay for register component on top of home component ---homepage */
+    <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10"> 
+    {/* overlay of register component*/}
+    <div className="absolute top-50 left-50 z-30 ">
+   
       <form onSubmit={handleSubmit}>
-        <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-3 w-full  m-10 font-poppins">
+        <div className=" bg-pink-100 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
           <p className="title-font text-2xl mb-4">Register</p>
           <div class="relative mb-4">
             <input
@@ -104,6 +101,7 @@ export default function Register() {
           </p>
         </div>
       </form>
+    </div>
     </div>
   );
 }

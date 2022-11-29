@@ -6,8 +6,6 @@ import HomepageContent from "../HomepageContent/HomepageContent";
 function Home() {
   return (
     <div >
-
-
 <Banner/>
 <HomepageContent/>
     </div>

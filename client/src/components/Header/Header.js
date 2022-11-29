@@ -20,11 +20,9 @@ function Header() {
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
 
-  /* const [joinusButton, setJoinusButton] = useState(true);
+ const [joinusButton, setJoinusButton] = useState(true);
 
-  if(user){
-    setJoinusButton(!joinusButton)
-  } */
+
 
   const buttonRef = useRef(null);
   console.log(buttonRef)
@@ -54,9 +52,8 @@ function Header() {
   // Bind the event listener
   // Unbind the event listener on clean up
   return (
-    <div className="container mx-auto flex justify-between p-5 items-center">
-      {openRegisterForm && <Register />}
-
+    <div className="container ">
+    <div className="mx-auto flex justify-between p-5 items-center"> 
       <Link
         className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         to="/"
@@ -70,10 +67,9 @@ function Header() {
       >
         Join Us!
       </button>
-
       {/* when the user is signedIn */}
-      {user && 
- 
+      {user &&  
+     
        (
         <div  ref={buttonRef} className="relative">
           <img
@@ -117,6 +113,8 @@ function Header() {
         </div>
       )}
     </div>
+       {openRegisterForm && <Register />}
+       </div>
   );
 }
 
