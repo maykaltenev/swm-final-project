@@ -5,9 +5,15 @@ import { UserContext } from "../Context/UserContext";
 import "./Register.css";
 
 export default function Register() {
-  const { openRegisterForm,setOpenRegisterForm } = useContext(UserContext);
+  const {setOpenRegisterForm ,setOpenLoginForm, handleShowLoginForm} = useContext(UserContext);
+
   const navigate = useNavigate();
 
+  /* const handleShowLoginForm = () => {
+    setOpenRegisterForm(false) 
+     setOpenLoginForm(true)
+  }
+ */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -25,6 +31,11 @@ export default function Register() {
     }
   };
 
+  const handleRegistration = () => {
+ setOpenRegisterForm(false) 
+  setOpenLoginForm(true)
+  }
+  
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10"> 
@@ -52,7 +63,7 @@ export default function Register() {
               placeholder="Last name"
               type="text"
               autoComplete="lastName"
-              name="lastName"
+              name="lastNamehandleShowLoginForm"
               required
             />
           </div>
@@ -79,7 +90,7 @@ export default function Register() {
             />
           </div>
 
-          <button
+          <button onClick={handleRegistration}
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
             type="submit"
           >
@@ -90,10 +101,9 @@ export default function Register() {
             Already have an account ?{" "}
             {
               <Link
-              onClick={() => setOpenRegisterForm(false)}
+              onClick={handleShowLoginForm}
                 className="text-blue-600 hover:text-primary-bg"
-                variant="contained"
-                to="/login"
+                variant="contained"              
               >
                 Login
               </Link>

@@ -10,13 +10,13 @@ const UserContextProvider = ({ children }) => {
   //open register form when join us button in header is clicked
   const [openRegisterForm, setOpenRegisterForm] = useState(false)
   //when a user is loggedin after auth
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  const [openLoginForm,setOpenLoginForm] = useState(false)
 //sign in the right user from db
 const [signIn, setSignIn] = useState({})
 
   const navigate = useNavigate();
 
-  const userData = async (formData) => {
+   const userData = async (formData) => {
     try {
       await axios
         .post(
@@ -113,9 +113,20 @@ const [signIn, setSignIn] = useState({})
   useEffect(() => {
     localStorageUser();
   }, []);
+
+  const handleShowRegisterForm = () => {
+    setOpenRegisterForm(true)
+    setOpenLoginForm(false)
+   }
+
+   const handleShowLoginForm = () => {
+    setOpenRegisterForm(false) 
+     setOpenLoginForm(true)
+  }
+
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer,openRegisterForm, setOpenRegisterForm,isSignedIn, setIsSignedIn,signIn, setSignIn }}
+      value={{ userData, error, user, handleLogout, getUser, timer,openRegisterForm, setOpenRegisterForm,openLoginForm,setOpenLoginForm,signIn, setSignIn, handleShowRegisterForm,handleShowLoginForm }}
     >
       {children}
     </UserContext.Provider>
