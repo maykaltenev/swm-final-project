@@ -43,11 +43,6 @@ function Header() {
   }
   useOutsideCloseDropMenu(buttonRef);
 
-  /**
-   * Alert if clicked on outside of element
-   */
-  // Bind the event listener
-  // Unbind the event listener on clean up
   return (
     <div className="container ">
       <div className="mx-auto flex justify-between p-5 items-center">
