@@ -97,6 +97,7 @@ export default function Register() {
               Already have an account ?{" "}
               {
                 <button
+                  onClick={handleShowLoginForm}
                   className="text-blue-600 hover:text-primary-bg"
                   variant="contained"
                 >
