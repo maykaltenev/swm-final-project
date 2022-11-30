@@ -5,12 +5,13 @@ import Logo from "../../assets/logo.png";
 import { UserContext } from "../Context/UserContext";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import Theme from "../Theme/Theme";
-//import useDarkMode from "../DarkMode/DarkMode";
+//import Theme from "../Theme/Theme";
+import useDarkMode from "../DarkMode/DarkMode";
+
 //icons
 import { FaSun, FaMoon } from "react-icons/fa";
 
-function Header({theme,setTheme}) {
+function Header({ theme, setTheme }) {
   const {
     openRegisterForm,
     setOpenRegisterForm,
@@ -24,35 +25,13 @@ function Header({theme,setTheme}) {
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
 
-  const switchTheme = () => {
+  const [darkTheme, setDarkTheme] = useDarkMode();
+  const handleMode = () => setDarkTheme(!darkTheme);
+
+  /*  const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-  }
-  //for darkmode theme
- /*  const [darkTheme, setDarkTheme] = useDarkMode();
-  const handleMode = () => setDarkTheme(!darkTheme); */
-  /* const ThemeIcon = () => {
-    const [darkTheme, setDarkTheme] = useDarkMode();
-
-    const handleMode = () => setDarkTheme(!darkTheme); 
-    return (
-      <span onClick={handleMode}>
-        {darkTheme ? (
-          <FaSun size='24' className='text-gray-500 
-                    mr-3 ml-4
-                    transition duration-300 ease-in-out 
-                    hover:text-pink-400 
-                    cursor-pointer' />
-        ) : (
-          <FaMoon size='24' className='text-gray-500 
-                    mr-3 ml-4
-                    transition duration-300 ease-in-out 
-                    hover:text-pink-400 
-                    cursor-pointer' />
-        )}
-      </span>
-    );
-  };*/
+  } */
 
   const buttonRef = useRef(null);
 
@@ -76,7 +55,7 @@ function Header({theme,setTheme}) {
   useOutsideCloseDropMenu(buttonRef);
 
   return (
-    <div className="container ">
+    <div className="container">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
@@ -125,11 +104,10 @@ function Header({theme,setTheme}) {
                   My Certificates{" "}
                 </Link>
                 <span
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  /* onClick={switchTheme} */
-                 > 
-               {/*   {theme  === "light" ? <FaMoon/> : <FaSun/> }    */}             
-                  <Theme/>
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out  "
+                  onClick={handleMode}
+                >
+                  {darkTheme ? <FaSun /> : <FaMoon />}
                 </span>
 
                 <button
@@ -138,7 +116,6 @@ function Header({theme,setTheme}) {
                 >
                   Logout{" "}
                 </button>
-              
               </div>
             )}
           </div>

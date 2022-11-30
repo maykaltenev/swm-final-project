@@ -21,11 +21,9 @@ import useLocalStorage from "use-local-storage";
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
 
-  const [theme, setTheme] = useLocalStorage("light")
-
   return (
-    <div className="setting-themes" data-theme={theme}>
-      <Header theme={theme} setTheme={setTheme}/>
+    <div  className="dark:bg-blue-500 bg-pink-500 h-screen" >
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/userprofile" element={<UserProfile />} />
