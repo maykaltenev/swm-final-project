@@ -1,5 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
+import {generateToken} from "../helpers/authenticationHelper.js";
 import {
   registerUser,
   loginUser,
@@ -40,7 +41,7 @@ router.patch("/addTimer", updateQuizTimer);
      console.log('from google callback: id is', req.user._id)
  
      // User is the class. req.user is a new User
-     const token = await req.user.generateToken('1d')
+     const token = await generateToken(req.user)
  console.log("the token from google server is:",token)
      res.cookie('cookiename', token)
  

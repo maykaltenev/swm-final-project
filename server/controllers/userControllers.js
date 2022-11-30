@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import passport from "passport"
 import generateToken from "../helpers/authenticationHelper.js";
+
 import User from "../models/user.js";
 dotenv.config();
 /* -----------------------google strategy-------------------------- */
@@ -26,7 +27,7 @@ passport.use(new GoogleStrategy({
     // register the user in db
     // only if the user doesn't exist
     // in db
-
+console.log("the profile is",profile)
     const email = profile._json.email
 
     // check if there is such a user in db
@@ -41,10 +42,14 @@ passport.use(new GoogleStrategy({
 
     // create a new user to insert to the db
     const newUser = new User({
+      firstName:profile._json.given_name,
+      lastName:profile._json.family_name,
         username: profile.id,
         email,
-        pass: email
-    })
+        password:"google"
+      })
+      console.log("saving user",newUser)
+      /*   pass: email */
 
     const savedUser = await newUser.save();
 
