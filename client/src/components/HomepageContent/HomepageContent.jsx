@@ -14,7 +14,7 @@ function HomepageContent() {
       <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Hands-on coding environments
        
       </h1>
-      <p className="mb-8 leading-relaxed">Our mission is to help you improve yourself in MERN stack by practicing our Quizzes. Practice will help you to get rid of fear in attending interviews and you can land your dream Job.</p>
+      <p className="mb-8 leading-relaxed text">Our mission is to help you improve yourself in MERN stack by practicing our Quizzes. Practice will help you to get rid of fear in attending interviews and you can land your dream Job.</p>
      
     </div>
   </div>

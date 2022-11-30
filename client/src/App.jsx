@@ -16,13 +16,16 @@ import "./index.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
+import useLocalStorage from "use-local-storage";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
 
+  const [theme, setTheme] = useLocalStorage("light")
+
   return (
-    <div>
-      <Header />
+    <div className="setting-themes" data-theme={theme}>
+      <Header theme={theme} setTheme={setTheme}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/userprofile" element={<UserProfile />} />
