@@ -7,7 +7,7 @@ import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 import { QuestionContext } from "../Context/QuestionContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-
+import SideBar from "../SideBar/SideBar";
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [result, setResult] = useState("");
@@ -44,7 +44,8 @@ function Quiz() {
 
   return (
     <>
-      <div className="quiz-main-container">
+      <SideBar />
+      <div className="quiz-main-container ml-60">
         <div className="quiz-container">
           <span>{id * 1 + 1}</span>/<span> {javaScriptData.length}</span>
           <div>Points: {points}</div>
@@ -57,13 +58,16 @@ function Quiz() {
         <button onClick={handlePrevious}> Previous</button>
         <button onClick={handleNext}>Next</button>
         <button onClick={handleShowAnswer}>Show Answer</button>
+
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
+        {Number(id) === javaScriptData.length - 1 ? (
+          <button className="mb-80" onClick={getResult}>
+            Submit
+          </button>
+        ) : (
+          ""
+        )}
       </div>
-      {Number(id) === javaScriptData.length - 1 ? (
-        <button onClick={getResult}>Submit</button>
-      ) : (
-        ""
-      )}
     </>
   );
 }

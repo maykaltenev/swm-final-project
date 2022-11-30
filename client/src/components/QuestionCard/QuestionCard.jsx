@@ -55,7 +55,6 @@ export default function QuestionCard({
     inputType,
     userInput
   ) => {
-    
     const questionExist = answer?.find((item) => item.questionID === question);
 
     if (questionExist) {
@@ -227,7 +226,9 @@ export default function QuestionCard({
                   type={question?.inputType}
                   name={question?.inputType}
                   style={{ border: "1px red solid" }}
-                  value={question?.inputType === "text" ? undefined : option?.option}
+                  value={
+                    question?.inputType === "text" ? undefined : option?.option
+                  }
                   id={option?._id}
                   ref={userInput}
                   checked={

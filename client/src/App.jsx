@@ -16,9 +16,9 @@ import "./index.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
-
+import SideBar from "./components/SideBar/SideBar";
 function App() {
-  const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <div>

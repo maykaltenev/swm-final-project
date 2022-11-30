@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 // import OutsideAlerter from "../Alert/Alert";
 import { UserContext } from "../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+
 
 function Header() {
   const {
@@ -16,10 +18,9 @@ function Header() {
     user,
     handleLogout,
   } = useContext(UserContext);
-
+  const navigate = useNavigate();
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
-
   const [joinusButton, setJoinusButton] = useState(true);
 
   const buttonRef = useRef(null);
@@ -60,7 +61,7 @@ function Header() {
         </Link>
         {!user && (
           <button
-            className="bg-my-blue font-poppins mx-px px-5 rounded-full text-white py-2"
+            className="bg-ultramarine-blue font-poppins mx-px px-5 rounded-full text-white py-2"
             onClick={handleShowRegisterForm}
           >
             Join Us!
@@ -78,7 +79,7 @@ function Header() {
             {showDropMenu && (
               <div className="flex flex-col w-60  text-white absolute right-2 top-14 ">
                 <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                  <div className="flex ">
+                  <div className="flex cursor-pointer" onClick={() => navigate("/userprofile")}>
                     <img
                       onClick={handleDropMenu}
                       className="w-7"

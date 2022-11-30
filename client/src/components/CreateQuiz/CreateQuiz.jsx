@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { QuestionContext } from "../Context/QuestionContext";
 import { UserContext } from "../Context/UserContext";
+import SideBar from "../SideBar/SideBar";
 
 function CreateQuiz() {
   const { timer } = useContext(UserContext);
@@ -22,8 +23,14 @@ function CreateQuiz() {
   };
 
   return (
-    <div>
-      <button onClick={handleNewQuiz}>Start New Quiz</button>
+    <div className="ml-20">
+      <SideBar />
+      <button
+        className="bg-ultramarine-blue-2 rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
+        onClick={handleNewQuiz}
+      >
+        Start New Quiz
+      </button>
     </div>
   );
 }
