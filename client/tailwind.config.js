@@ -10,17 +10,18 @@ module.exports = {
     },
 
     extend: {
-     
       colors: {
         "primary-bg": "#1f293b",
         "my-blue": "#475569",
+        "electric": "#29DEF2",
+        "blue-purple": "#5068F2"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
     },
 
-    
+
   },
   plugins: [],
 };

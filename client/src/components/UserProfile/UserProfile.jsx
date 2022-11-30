@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import SideBar from "../SideBar/SideBar";
 function UserProfile() {
   return (
-    <div>UserProfile</div>
-  )
+    <div>
+      <SideBar />
+    </div>
+  );
 }
 
-export default UserProfile
+export default UserProfile;
