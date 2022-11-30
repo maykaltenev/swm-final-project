@@ -28,11 +28,6 @@ function Header({ theme, setTheme }) {
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
 
-  /*  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  } */
-
   const buttonRef = useRef(null);
 
   const handleDropMenu = () => {

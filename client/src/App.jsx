@@ -20,7 +20,6 @@ import useLocalStorage from "use-local-storage";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
-
   return (
     <div  className="dark:bg-blue-500 bg-pink-500 h-screen" >
       <Header />
