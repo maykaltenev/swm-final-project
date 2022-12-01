@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
-
+import { UserContext } from "../Context/UserContext";
+import SideBar from "../SideBar/SideBar";
 function Result() {
   const [show, setShow] = useState(false);
   const { javaScriptData, result, getResult } = useContext(QuestionContext);
@@ -24,8 +25,9 @@ function Result() {
   };
   return (
     <div>
+      <SideBar />
       {result && (
-        <div className="result-card">
+        <div className="result-card ml-40">
           <div>
             <h1>Your Score:{result?.userAnswerPercentage} %</h1>{" "}
           </div>
