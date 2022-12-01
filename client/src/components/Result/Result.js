@@ -24,28 +24,30 @@ function Result() {
     setShow(!show);
   };
   return (
-    <div>
+    <div className="h-screen dark:text-black font-poppins">
+    <div className=" flex justify-center  ml-40 ">
       <SideBar />
       {result && (
-        <div className="result-card ml-40">
-          <div>
-            <h1>Your Score:{result?.userAnswerPercentage} %</h1>{" "}
+        <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-1/2 sm:p-5">
+          <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3 mb-6">
+            <h1 className="font-bold">Your Score:{result?.userAnswerPercentage} %</h1>{" "}
           </div>
-          <div>
+          <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3 mb-6">
             <p>Total Number of Questions: {javaScriptData?.length}</p>
           </div>
-          <div>
+          <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3 mb-6">
             <p>Number of Correct Answers: {result?.correctAnswers}</p>
           </div>
-          <div>
+          <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3 mb-6">
             <p>Number of Wrong Answers: {result?.wrongAnswers}</p>
           </div>
-          {<button onClick={handleCheckAnswers}>Check Answers</button>}
-          <button onClick={handleTryAgain}>Try Again</button>
+          {<button className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2" onClick={handleCheckAnswers}>Check Answers</button>}
+          <button className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2" onClick={handleTryAgain}>Try Again</button>
 
           {show && <CheckAllAnswersResult allQues={result} />}
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -55,13 +55,13 @@ function Quiz() {
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <button className="bg-btn-majorelle-blue" onClick={handlePrevious}> Previous</button>
-        <button className="bg-btn-majorelle-blue" onClick={handleNext}>Next</button>
-        <button className="bg-btn-majorelle-blue" onClick={handleShowAnswer}>Show Answer</button>
+        <button className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2 w-36" onClick={handlePrevious}> Previous</button>
+        <button className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2 w-36" onClick={handleNext}>Next</button>
+       
 
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         {Number(id) === javaScriptData.length - 1 ? (
-          <button className="bg-btn-majorelle-blue mb-80" onClick={getResult}>
+          <button className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2" onClick={getResult}>
             Submit
           </button>
         ) : (
