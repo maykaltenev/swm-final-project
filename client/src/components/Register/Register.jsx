@@ -67,7 +67,7 @@ export default function Register() {
             </div>
             <div className="relative mb-4">
               <input
-                className="w-full  text-black rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full  text-black rounded border border-t-0 border-l-0 border-r-0 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Email"
                 placeholder=" E-mail"
                 type="email"
@@ -78,7 +78,7 @@ export default function Register() {
             </div>
             <div class="relative mb-4">
               <input
-                className="w-full  text-black rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full  text-black rounded border border-t-0 border-l-0 border-r-0 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
                 label="Password"
                 placeholder="Password"
                 type={visible ? "password" : "text"}
