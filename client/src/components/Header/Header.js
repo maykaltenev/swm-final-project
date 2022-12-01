@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/MERN+.png";
 // import OutsideAlerter from "../Alert/Alert";
 import { UserContext } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -58,8 +58,8 @@ function Header({ theme, setTheme }) {
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
           to="/"
         >
-          <img className="w-10" src={Logo} alt="" />
-          <span className="ml-3 text-xl">MERN-Quiz</span>
+          <img className="w-24 sm:w-32" src={Logo} alt="" />
+
         </Link>
         {!user && (
           <button
