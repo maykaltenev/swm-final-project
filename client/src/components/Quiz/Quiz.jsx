@@ -45,10 +45,10 @@ function Quiz() {
   return (
     <>
       <SideBar />
-      <div className="quiz-main-container ml-60">
-        <div className="quiz-container">
-          <span>{id * 1 + 1}</span>/<span> {javaScriptData.length}</span>
-          <div>Points: {points}</div>
+      <div className="ml-60">
+        <div className="">
+          <span >{id * 1 + 1}</span> /<span> {javaScriptData.length}</span>
+         
         </div>
         <QuestionCard
           question={javaScriptData[id]}

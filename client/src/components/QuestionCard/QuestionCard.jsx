@@ -199,12 +199,12 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div>
+    <div className="font-poppins flex flex-col justify-center items-center">
       {
-        <div key={question?._id}>
-          <h5>{question?.questionText}</h5>
+        <div className="bg-transparent rounded-xl shadow-lg  p-3 my-2 sm:w-3/6 " key={question?._id}>
+          <h5 className=" mb-3 my-4 py-1 rounded-md  shadow-md list-none	px-3 ">{question?.questionText}</h5>
           {question?.code && (
-            <div className="bg-nav-raisin-black" style={{ padding: "1rem", backgroundColor: "" }}>
+            <div className="bg-nav-raisin-black mb-3" style={{ padding: "1rem", backgroundColor: "" }}>
               <Editor
                 value={question.code}
                 highlight={(code) => highlight(code, languages.js)}
@@ -214,13 +214,13 @@ export default function QuestionCard({
           )}
           {question &&
             (marked.includes(question._id) ? (
-              <AiFillStar onClick={() => handleMark(question?._id)} />
+              <AiFillStar className="mb-5" onClick={() => handleMark(question?._id)} />
             ) : (
-              <AiOutlineStar onClick={() => handleMark(question?._id)} />
+              <AiOutlineStar className="mb-5" onClick={() => handleMark(question?._id)} />
             ))}
-          <div>
+          <div className="mb-5 ">
             {question?.options.map((option) => (
-              <div key={option?._id}>
+              <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3" key={option?._id}>
                 <input
                   className={style.button}
                   type={question?.inputType}
@@ -279,12 +279,12 @@ export default function QuestionCard({
                 </label>
               </div>
             ))}
-            {showAnswer && <div>{question?.explanation}</div>}
+         {/*    {showAnswer && <div>{question?.explanation}</div>} */}
             <hr />
           </div>
           <CountDownTimer />
         </div>
       }
-    </div>
+      </div>
   );
 }
