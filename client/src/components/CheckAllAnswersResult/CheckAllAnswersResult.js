@@ -27,7 +27,7 @@ function CheckAllAnswersResult({ allQues }) {
         <Fragment>
           <div
             key={i}
-            className=" bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-1/2 sm:p-5 "
+            className=" bg-white rounded-xl shadow-lg  p-3 my-2  sm:p-5 "
           >
             <h5
               className={` ${

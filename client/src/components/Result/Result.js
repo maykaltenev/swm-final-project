@@ -28,7 +28,7 @@ function Result() {
     <div className=" flex justify-center  ml-40 ">
       <SideBar />
       {result && (
-        <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-1/2 sm:p-5">
+        <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-3/4 sm:p-5">
           <div className="my-4 py-1 rounded-md  shadow-md list-none	px-3 mb-6">
             <h1 className="font-bold">Your Score:{result?.userAnswerPercentage} %</h1>{" "}
           </div>

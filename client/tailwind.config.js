@@ -4,6 +4,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+     
+      keyframes:{
+        popup:{
+          'from': { transform: 'translateY(100%)' },
+          'to': { transform: 'translateY(10%)' },
+        },        
+      },
+      animation:{
+        "register-popup":"popup 2s forwards"
+      },
       colors: {
         // dark-mode
         "bg-xiketic": "#15141E",

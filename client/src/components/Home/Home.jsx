@@ -6,7 +6,7 @@ import HomepageContent from "../HomepageContent/HomepageContent";
 
 function Home() {
   return (
-    <div>
+    <div className="dark:text-white dark:bg-bg-xiketic">
       <Link to={"/quizhistory"}>Quiz History</Link>
       <div>
         <Banner />

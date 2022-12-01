@@ -79,8 +79,8 @@ function Header({ theme, setTheme }) {
               src={user.avatar}
             />
             {showDropMenu && (
-              <div className="flex flex-col w-60  text-white absolute right-2 top-14 ">
-                <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <div className="flex flex-col w-60  text-white absolute right-0 top-8">
+                <div className="w-full bg-menu-dark-silver-metallic text-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   <div className="flex cursor-pointer" onClick={() => navigate("/userprofile")}>
                     <img
                       onClick={handleDropMenu}
@@ -95,23 +95,23 @@ function Header({ theme, setTheme }) {
                   </div>
                 </div>
                 <Link
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                  className="w-full bg-nav-raisin-black text-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-pointer"
                   to="/mycertificates"
                 >
                   My Certificates{" "}
                 </Link>
                 <span
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out  "
+                  className="w-full bg-menu-dark-silver-metallic text-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-pointer flex items-center "
                   onClick={handleMode}
                 >
-                  {darkTheme ? <FaSun /> : <FaMoon />}
+                 <span>Color Theme</span> <span className="ml-5">{darkTheme ? <FaSun /> : <FaMoon />}</span>
                 </span>
 
                 <button
                   onClick={handleLogout}
-                  className="bg-btn-majorelle-blue w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                  className="bg-menu-dark-silver-metallic  text-white w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-pointer"
                 >
-                  Logout{" "}
+                  Logout
                 </button>
               </div>
             )}
@@ -119,7 +119,7 @@ function Header({ theme, setTheme }) {
         )}
       </div>
       {/* if the open login form is there show login form */}
-      {(openRegisterForm && <Register />) || (openLoginForm && <Login />)}
+      {(openRegisterForm && <Register />) || (openLoginForm && <Login  />)}
     </div>
   );
 }
