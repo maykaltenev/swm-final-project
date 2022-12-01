@@ -20,7 +20,7 @@ export default function Login() {
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
       {/* overlay of register component*/}
-      <div className="absolute top-50 left-50 z-30 ">
+      <div className="origin-center z-30 animate-popup">
         <form onSubmit={handleLogin}>
           <div className="bg-white  text-black  rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Login</p>
@@ -46,7 +46,7 @@ export default function Login() {
                 name="password"
                 required
               />
-              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
+              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ?<AiOutlineEyeInvisible /> : <AiOutlineEye />  }</span>
             </div>
             <button
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"

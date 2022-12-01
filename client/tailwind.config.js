@@ -6,13 +6,13 @@ module.exports = {
     extend: {
      
       keyframes:{
-        popup:{
+        pop:{
           'from': { transform: 'translateY(100%)' },
           'to': { transform: 'translateY(10%)' },
         },        
       },
       animation:{
-        "register-popup":"popup 2s forwards"
+        "popup":"pop 2s forwards"
       },
       colors: {
         // dark-mode

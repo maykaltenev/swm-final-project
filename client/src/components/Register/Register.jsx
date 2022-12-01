@@ -39,7 +39,7 @@ export default function Register() {
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
       {/* overlay of register component*/}
-      <div className="origin-center animate-register-popup">
+      <div className="origin-center animate-popup">
         <form onSubmit={handleSubmit}>
           <div className="bg-white  text-black  rounded-lg p-8 flex flex-col m-3 m-10 font-poppins ">
             <p className="title-font text-2xl mb-4">Register</p>
