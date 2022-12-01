@@ -9,7 +9,7 @@ export default function Collapsible() {
       <div className="container  w-3/5 rounded border-ultramarine-blue mx-auto bg-gray-400 py-3 px-2">
         {/* JS */}
         <details
-          className="bg-snow shadow rounded mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
+          className="bg-snow shadow h-1/5 rounded mb-4 border-solid "
           open
         >
           <summary
@@ -72,7 +72,7 @@ export default function Collapsible() {
         </details>
         {/* React */}
         <details
-          className="bg-snow shadow rounded group mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
+          className="bg-snow shadow rounded group mb-4 border-solid "
           open
         >
           <summary
