@@ -204,7 +204,7 @@ export default function QuestionCard({
         <div key={question?._id}>
           <h5>{question?.questionText}</h5>
           {question?.code && (
-            <div style={{ padding: "1rem", backgroundColor: "" }}>
+            <div className="bg-nav-raisin-black" style={{ padding: "1rem", backgroundColor: "" }}>
               <Editor
                 value={question.code}
                 highlight={(code) => highlight(code, languages.js)}

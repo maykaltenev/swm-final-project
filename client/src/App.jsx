@@ -23,7 +23,7 @@ function App() {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="dark:bg-oxford bg-primary-bg h-screen">
+    <div className="dark:bg-bg-xiketic bg-text-ghost-white dark:text-text-ghost-white w-screen h-max font-poppins">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

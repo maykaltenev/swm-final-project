@@ -22,12 +22,12 @@ export default function Login() {
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-30 ">
         <form onSubmit={handleLogin}>
-          <div className="bg-pink-100 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className="bg-white  text-black  rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Login</p>
             <p>{error}</p>
             <div class="relative mb-4">
               <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-col"
+                className="w-full  text-black rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Email"
                 placeholder=" E-mail"
                 type="email"
@@ -38,7 +38,7 @@ export default function Login() {
             </div>
             <div className="relative mb-4">
               <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full  text-black rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Password"
                 placeholder="Password"
                 type={visible?"password" :"text"}

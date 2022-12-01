@@ -47,14 +47,14 @@ function QuizHistory() {
 
   return (
     <section className="flex">
-      <div className=" text-gray-300 w-1/5  min-h-screen  rounded-xl drop-shadow-lg my-2">
+      <div className="text-gray-300 w-1/5  min-h-screen  rounded-xl drop-shadow-lg my-2">
         {quizHistory.quizResults &&
           quizHistory.quizResults.map((quiz) => (
             <Fragment key={quiz.sessionId}>
               <div
-                className={`bg-dark-purple sm:h-24 items-center rounded-r-md flex-col-reverse m-px shadow-lg cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
+                className={`bg-card-space-cadet text-ghost-white sm:h-24 items-center rounded-r-md flex-col-reverse m-px shadow-lg cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
                   quiz.sessionId === selected
-                    ? "border-l-4 border-l-green-400 md:border-l-8"
+                    ? "border-l-4 border-l-link-cyber-yellow md:border-l-8"
                     : ""
                 } `}
                 onClick={() => handleShowMore(quiz.sessionId)}
@@ -89,7 +89,7 @@ function QuizHistory() {
             </Fragment>
           ))}
       </div>
-      <div className="g:w-1/2 w-full mb-10 lg:mb-0 ">
+      <div className="dark:text-gray-800 g:w-1/2 w-full mb-10 lg:mb-0 ">
         <CheckAllAnswersResult allQues={result} />
       </div>
     </section>

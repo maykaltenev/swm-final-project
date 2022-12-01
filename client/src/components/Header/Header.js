@@ -52,7 +52,7 @@ function Header({ theme, setTheme }) {
   useOutsideCloseDropMenu(buttonRef);
 
   return (
-    <div className="dark:bg-bg-xiketic container">
+    <div className="container ">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
@@ -63,7 +63,7 @@ function Header({ theme, setTheme }) {
         </Link>
         {!user && (
           <button
-            className="bg-ultramarine-blue font-poppins mx-px px-5 rounded-full text-white py-2"
+            className="bg-btn-majorelle-blue font-poppins mx-px px-5 rounded-full text-white py-2"
             onClick={handleShowRegisterForm}
           >
             Join Us!
@@ -109,7 +109,7 @@ function Header({ theme, setTheme }) {
 
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                  className="bg-btn-majorelle-blue w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
                 >
                   Logout{" "}
                 </button>
