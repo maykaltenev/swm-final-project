@@ -21,7 +21,7 @@ import useLocalStorage from "use-local-storage";
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   return (
-    <div  className="dark:bg-oxford bg-sky-blue h-screen" >
+    <div  className="dark:bg-oxford bg-primary-bg h-screen" >
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

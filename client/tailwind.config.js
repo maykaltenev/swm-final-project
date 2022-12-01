@@ -17,7 +17,7 @@ module.exports = {
         "my-blue": "#475569",
         "oxford": "#1F293B",
         "sky-blue": "#29DEF2",
-        "ultramarine-blue": "#5068F2"
+        "lightmode-button":"#5553ff"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
