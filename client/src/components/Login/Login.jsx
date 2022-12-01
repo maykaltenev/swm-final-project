@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+//image
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export default function Login() {
-  const { userData, error, handleShowRegisterForm, setOpenLoginForm } =
+  const { userData, error, handleShowRegisterForm, setOpenLoginForm,visible, setVisible } =
     useContext(UserContext);
 
   const handleLogin = async (event) => {
@@ -39,11 +41,12 @@ export default function Login() {
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Password"
                 placeholder="Password"
-                type="password"
+                type={visible?"password" :"text"}
                 autoComplete="new-password"
                 name="password"
                 required
               />
+              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
             </div>
             <button
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"

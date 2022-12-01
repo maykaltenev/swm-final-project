@@ -91,15 +91,14 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const getUserUpdated = async (data) => {
-    const update = await axios.post(
-      "http://localhost:5000/user/js/quiz/result",
-      {
+    const update = await axios
+      .post("http://localhost:5000/user/js/quiz/result", {
         userId: getUser._id,
         sessionId: sessionId,
         resultPercentage: data.data.userAnswerPercentage,
         quizType: "javascript",
-      }
-    );
+      })
+      .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
   };
 
   const getResult = async () => {

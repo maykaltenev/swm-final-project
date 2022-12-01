@@ -11,7 +11,6 @@ export const registerUser = async (req, res) => {
     if (userExists) {
       return res.status(409).json({ message: "User is already registered!" });
     }
-
     const createdUser = await User.create({
       firstName,
       lastName,

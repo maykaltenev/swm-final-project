@@ -6,9 +6,13 @@ import { UserContext } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+//import Theme from "../Theme/Theme";
+import useDarkMode from "../DarkMode/DarkMode";
 
+//icons
+import { FaSun, FaMoon } from "react-icons/fa";
 
-function Header() {
+function Header({ theme, setTheme }) {
   const {
     openRegisterForm,
     setOpenRegisterForm,
@@ -21,6 +25,9 @@ function Header() {
   const navigate = useNavigate();
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
+
+  const [darkTheme, setDarkTheme] = useDarkMode();
+  const handleMode = () => setDarkTheme(!darkTheme);
   const [joinusButton, setJoinusButton] = useState(true);
 
   const buttonRef = useRef(null);
@@ -44,13 +51,8 @@ function Header() {
   }
   useOutsideCloseDropMenu(buttonRef);
 
-  /**
-   * Alert if clicked on outside of element
-   */
-  // Bind the event listener
-  // Unbind the event listener on clean up
   return (
-    <div className="container ">
+    <div className="dark:bg-bg-xiketic container  ">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
@@ -77,7 +79,7 @@ function Header() {
               src={user.avatar}
             />
             {showDropMenu && (
-              <div className="flex flex-col w-60  text-white absolute right-2 top-14 ">
+              <div className="flex flex-col w-60 z-20 text-white absolute right-2 top-14 ">
                 <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   <div className="flex cursor-pointer" onClick={() => navigate("/userprofile")}>
                     <img
@@ -98,13 +100,19 @@ function Header() {
                 >
                   My Certificates{" "}
                 </Link>
+                <span
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out  "
+                  onClick={handleMode}
+                >
+                  {darkTheme ? <FaSun /> : <FaMoon />}
+                </span>
+
                 <button
                   onClick={handleLogout}
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
                 >
                   Logout{" "}
                 </button>
-                {/* <OutsideAlerter /> */}
               </div>
             )}
           </div>

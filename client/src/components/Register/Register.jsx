@@ -2,11 +2,13 @@ import axios from "axios";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+//image
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export default function Register() {
-  const { setOpenRegisterForm, setOpenLoginForm, handleShowLoginForm } =
+  const { setOpenRegisterForm, setOpenLoginForm, handleShowLoginForm,visible, setVisible} =
     useContext(UserContext);
-
+ 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -79,11 +81,12 @@ export default function Register() {
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 label="Password"
                 placeholder="Password"
-                type="password"
+                type={visible ? "password" : "text"}
                 autoComplete="new-password"
                 name="password"
                 required
               />
+              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
             </div>
 
             <button

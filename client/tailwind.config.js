@@ -1,14 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
-    screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
-    },
-
     extend: {
       colors: {
         // dark-mode
@@ -25,6 +19,7 @@ module.exports = {
         "oxford-blue": "#1f293b",
         "sonic-silver": "#6F86A5",
         "ultramarine-blue": "#5068F2",
+        "dark-purple": "#081a51",
         // current best-combo
         "black-choral": "#475569",
         "spanish-gray": "#BABABA",
@@ -44,8 +39,6 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
       },
     },
-
-
   },
   plugins: [],
 };

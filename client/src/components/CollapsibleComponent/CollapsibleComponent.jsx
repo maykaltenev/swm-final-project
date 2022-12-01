@@ -4,12 +4,12 @@ import { HiLightningBolt, HiOutlineLightningBolt } from "react-icons/hi";
 // import { FaLightningBoltIcon } from "react-icons/fa";
 export default function Collapsible() {
   return (
-    <div className="ml-16 bg-gray-300 text-gray-800 min-h-screen ">
+    <div className=" bg-gray-300 text-gray-800 min-h-screen ">
       <h1 className="text-center">Welcome to the user page!</h1>
-      <div className="container  rounded border-ultramarine-blue mx-auto bg-gray-400 py-3 px-2">
+      <div className="container  w-3/5 rounded border-ultramarine-blue mx-auto bg-gray-400 py-3 px-2">
         {/* JS */}
         <details
-          className="bg-snow shadow  rounded mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
+          className="bg-snow shadow rounded mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
           open
         >
           <summary

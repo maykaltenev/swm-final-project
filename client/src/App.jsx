@@ -14,24 +14,30 @@ import Result from "./components/Result/Result";
 
 import "./index.css";
 import Home from "./components/Home/Home";
+import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
 import SideBar from "./components/SideBar/SideBar";
 function App() {
+  const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   const { user } = useContext(UserContext);
 
   return (
-    <div className="relative max-w-7xl m-auto">
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/mypage/:id" element={<Quiz />} />
-        <Route path="/createquiz" element={<CreateQuiz />} />
-        <Route path="/timer" element={<CountDownTimer />} />
-        <Route path="/result" element={<Result />} />
-      </Routes>
+    <div className="w-full flex justify-center dark:bg-bg-xiketic">
+      <div className="relative w-3/4">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/mypage/:id" element={<Quiz />} />
+          <Route path="/createquiz" element={<CreateQuiz />} />
+          <Route path="/timer" element={<CountDownTimer />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/quizhistory" element={<QuizHistory />} />
+        </Routes>
+      </div>
     </div>
   );
 }

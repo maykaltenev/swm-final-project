@@ -23,7 +23,7 @@ function CreateQuiz() {
   };
 
   return (
-    <div className="ml-20">
+    <div>
       <SideBar />
       <button
         className="bg-ultramarine-blue-2 rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
