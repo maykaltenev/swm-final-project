@@ -27,6 +27,7 @@ export default function SideBar() {
         </span>
       </div>
       <div
+        onClick={() => navigate("/userprofile")}
         className="relative flex items-center justify-center 
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-sonic-silver text-ultramarine-blue text-lg

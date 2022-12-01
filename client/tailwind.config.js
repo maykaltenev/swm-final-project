@@ -28,7 +28,8 @@ module.exports = {
         "blue-green": "#6CB0A8",
         "persian-indigo": "#290773",
         "prussian-blue": "#333F54",
-        "ultramarine-blue-2": "#677CF4"
+        "ultramarine-blue-2": "#677CF4",
+        "cornflower-blue": "#7D88FF"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
