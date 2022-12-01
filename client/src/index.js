@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./components/Context/UserContext";
 import { QuestionContextProvider } from "./components/Context/QuestionContext";
 
+import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
