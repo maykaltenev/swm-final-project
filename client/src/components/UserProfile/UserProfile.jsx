@@ -3,7 +3,7 @@ import Collapsible from "../CollapsibleComponent/CollapsibleComponent";
 import SideBar from "../SideBar/SideBar";
 function UserProfile() {
   return (
-    <div>
+    <div className="relative">
       <SideBar />
       <Collapsible />
     </div>

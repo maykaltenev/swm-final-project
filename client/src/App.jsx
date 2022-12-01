@@ -21,8 +21,9 @@ function App() {
   const { user } = useContext(UserContext);
 
   return (
-    <div>
+    <div className="relative max-w-7xl m-auto">
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/userprofile" element={<UserProfile />} />
