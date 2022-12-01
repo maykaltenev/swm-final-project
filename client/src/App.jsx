@@ -17,7 +17,6 @@ import Home from "./components/Home/Home";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
-import useLocalStorage from "use-local-storage";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
