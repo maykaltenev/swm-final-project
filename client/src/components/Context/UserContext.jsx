@@ -7,6 +7,15 @@ const UserContext = createContext(null);
 const UserContextProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
+  //open register form when join us button in header is clicked
+  const [openRegisterForm, setOpenRegisterForm] = useState(false);
+  //when a user is loggedin after auth
+  const [openLoginForm, setOpenLoginForm] = useState(false);
+  //sign in the right user from db
+  const [signIn, setSignIn] = useState({});
+   //for eye icon in password
+   const [visible, setVisible] = useState(false);
+
   const navigate = useNavigate();
 
   const userData = async (formData) => {
@@ -29,7 +38,7 @@ const UserContextProvider = ({ children }) => {
           localStorageUser();
         });
       setError("");
-      navigate("/createquiz");
+      navigate("/userprofile");
       return;
     } catch (error) {
       console.log(error);
@@ -106,9 +115,36 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     localStorageUser();
   }, []);
+
+  const handleShowRegisterForm = () => {
+    setOpenRegisterForm(true);
+    setOpenLoginForm(false);
+  };
+
+  const handleShowLoginForm = () => {
+    setOpenRegisterForm(false);
+    setOpenLoginForm(true);
+  };
+
   return (
     <UserContext.Provider
-      value={{ userData, error, user, handleLogout, getUser, timer }}
+      value={{
+        userData,
+        error,
+        user,
+        handleLogout,
+        getUser,
+        timer,
+        openRegisterForm,
+        setOpenRegisterForm,
+        openLoginForm,
+        setOpenLoginForm,
+        signIn,
+        setSignIn,
+        handleShowRegisterForm,
+        handleShowLoginForm,
+        visible, setVisible
+      }}
     >
       {children}
     </UserContext.Provider>

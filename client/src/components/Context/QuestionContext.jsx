@@ -117,7 +117,6 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  console.log("result.userAnswerPercentage", result.userAnswerPercentage);
 
   return (
     <QuestionContext.Provider

@@ -15,16 +15,20 @@ import Result from "./components/Result/Result";
 import "./index.css";
 import Home from "./components/Home/Home";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
+import Header from "./components/Header/Header";
+import UserProfile from "./components/UserProfile/UserProfile";
+import useLocalStorage from "use-local-storage";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
-
   return (
-    <div className="App">
+    <div  className="dark:bg-oxford bg-primary-bg h-screen" >
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />
         <Route path="/timer" element={<CountDownTimer />} />

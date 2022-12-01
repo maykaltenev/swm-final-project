@@ -4,7 +4,7 @@ import User from "../models/user.js";
 
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-
+  console.log(firstName, lastName, email, password)
   const hashedPassword = await bcrypt.hash(password, 11);
   try {
     const userExists = await User.findOne({ email: email });
@@ -18,6 +18,7 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
+    console.log(createdUser)
     return res.status(201).json({ message: "User created", createdUser });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -67,7 +68,19 @@ export const getUserData = async (req, res) => {
     return res.send(error.message);
   }
 };
+//checking
+export const getUserDatas = async (req, res) => {
 
+
+  try {
+    const userDatas = await User.find();
+
+    return res.status(200).json(userDatas);
+  } catch (error) {
+    return res.send(error.message);
+  }
+};
+/* ----------------------- */
 export const logout = async (req, res, next) => {
   try {
     res
