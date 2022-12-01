@@ -11,15 +11,24 @@ module.exports = {
 
     extend: {
       colors: {
-        // current best-combo
+        // dark-mode
+        "bg-xiketic": "#15141E",
+        "card-space-cadet": "#202033",
+        "nav-raisin-black": "#2B2B33",
+        "dark-raisin-black": "#1E1E27",
+        "btn-majorelle-blue": "#5855D8",
+        "text-ghost-white": "#F0EFF3",
+        "menu-dark-silver-metallic": "#A6A4AD",
+        "menu-silver-metallic": "#B5B3BB",
+        "link-violet-blue": "#7170D9",
+        "link-cyber-yellow": "#FFD51C",
         "oxford-blue": "#1f293b",
-        "sky-blue": "#29DEF2",
+        "sonic-silver": "#6F86A5",
         "ultramarine-blue": "#5068F2",
         // current best-combo
         "black-choral": "#475569",
         "spanish-gray": "#BABABA",
-        "sonic-silver":
-          "#6F86A5",
+        "sky-blue": "#29DEF2",
         "snow":
           "#FFFBFC",
         "cerulean-blue":

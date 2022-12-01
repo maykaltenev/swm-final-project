@@ -4,7 +4,7 @@ import User from "../models/user.js";
 
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-  console.log(firstName, lastName, email, password)
+
   const hashedPassword = await bcrypt.hash(password, 11);
   try {
     const userExists = await User.findOne({ email: email });
@@ -113,7 +113,6 @@ export const updateQuizTimer = async (req, res) => {
 };
 export const updateUserQuizResults = async (req, res) => {
   const { userId, sessionId, resultPercentage, quizType } = req.body;
-  console.log(resultPercentage);
   try {
     const session = await User.findOne({
       _id: userId,

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function SideBar() {
   const navigate = useNavigate();
   return (
-    <div className="fixed top-20 left-0 h-screen w-16 md:w-18m-0flex lg:w-20 flex-col bg-oxford-blue text-white shadow-l">
+    <div className="fixed top-20 left-0 h-screen w-16 md:w-18m-0 flex lg:w-20 flex-col bg-oxford-blue text-white shadow-l">
       <div
         onClick={() => navigate("/createquiz")}
         className="relative flex items-center justify-center 
