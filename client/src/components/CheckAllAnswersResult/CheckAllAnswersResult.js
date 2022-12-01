@@ -1,4 +1,9 @@
 import React, { Fragment, useState } from "react";
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css";
 import "./CheckAllAnswersResult.css";
 
 function CheckAllAnswersResult({ allQues }) {
@@ -37,7 +42,15 @@ function CheckAllAnswersResult({ allQues }) {
             >
               {i + 1}. {question.questionText}
             </h5>
-
+            {question?.code && (
+              <div style={{ padding: "1rem", backgroundColor: "" }}>
+                <Editor
+                  value={question.code}
+                  highlight={(code) => highlight(code, languages.js)}
+                  disabled
+                />
+              </div>
+            )}
             <div key={question._id}>
               {question?.options?.map((option, i) => (
                 <li
