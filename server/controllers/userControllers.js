@@ -1,7 +1,56 @@
+import dotenv from "dotenv";
+import passport from "passport"
 import bcrypt from "bcrypt";
 import generateToken from "../helpers/authenticationHelper.js";
 import User from "../models/user.js";
+dotenv.config();
+/* -----------------------google strategy-------------------------- */
 
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+console.log('strategy is', GoogleStrategy)
+// initialize googlestrategy. syntax ({options}, callback function)
+console.log("DB USER", process.env.DB_USER)
+console.log("GOOGLE_CLIENT_ID",process.env.GOOGLE_CLIENT_ID)
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: '/user/google/callback',
+    proxy: true
+}, async (accessToken, refreshToken, profile, cb)=> {
+    // console.log('inside strategy instance: accessToken', accessToken)
+    // console.log('inside strategy instance: refreshToken', refreshToken)
+    console.log('inside strategy instance: profile', profile)
+    // console.log('inside strategy instance: cb', cb)
+
+    // register the user in db
+    // only if the user doesn't exist
+    // in db
+
+    const email = profile._json.email
+
+    // check if there is such a user in db
+    const user = await User.findOne({email})
+
+    // if there is such user then return it
+    // we need to create a token in the db
+    // if the user is in our db
+    // the cb function adds the user
+    // or whatever we return to the req.user
+    if (user) return cb(null, user);
+
+    // create a new user to insert to the db
+    const newUser = new User({
+        username: profile.id,
+        email,
+        pass: email
+    })
+
+    const savedUser = await newUser.save();
+
+    return cb(null, savedUser)
+}))
+/* -----------------------google strategy-------------------------- */
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
