@@ -18,13 +18,14 @@ import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
 import SideBar from "./components/SideBar/SideBar";
+import QuizCard from "./components/QuizCard/QuizCard";
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   const { user } = useContext(UserContext);
 
   return (
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
-      <div className="relative w-3/4">
+      <div className="relative sm:w-3/4">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,6 +38,7 @@ function App() {
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
         </Routes>
+        <QuizCard />
       </div>
     </div>
   );

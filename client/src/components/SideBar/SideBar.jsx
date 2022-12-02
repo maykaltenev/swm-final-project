@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 export default function SideBar() {
   const navigate = useNavigate();
   return (
-    <div className="fixed top-0 left-0 h-screen w-16 md:w-18m-0 flex lg:w-20 flex-col bg-oxford-blue text-white shadow-l">
+    <div className="flex sticky top-20 bg-oxford-blue bg-opacity-50 border-b-4 border-y-ultramarine-blue p-2 sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col sm:bg-oxford-blue text-white shadow-l z-40">
       <div
         onClick={() => navigate("/")}
         className="relative flex items-center justify-center 
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-sonic-silver text-ultramarine-blue text-lg
-        hover:bg-cerulean-blue hover:text-snow
+        bg-javascript-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group"
@@ -36,8 +36,8 @@ export default function SideBar() {
         onClick={() => navigate("/createquiz")}
         className="relative flex items-center justify-center 
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-sonic-silver text-ultramarine-blue text-lg
-        hover:bg-cerulean-blue hover:text-snow
+        bg-javascript-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group"
@@ -57,8 +57,8 @@ export default function SideBar() {
         onClick={() => navigate("/userprofile")}
         className="relative flex items-center justify-center 
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-sonic-silver text-ultramarine-blue text-lg
-        hover:bg-cerulean-blue hover:text-snow
+        bg-javascript-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group"
@@ -76,12 +76,12 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/quizhistory")}
         className="relative flex items-center justify-center 
-         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-         bg-sonic-silver text-ultramarine-blue text-lg
-         hover:bg-cerulean-blue hover:text-snow
-         rounded-3xl hover:rounded-xl
-         transition-all duration-300 ease-linear
-         cursor-pointer group"
+        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        bg-javascript-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        rounded-3xl hover:rounded-xl
+        transition-all duration-300 ease-linear
+        cursor-pointer group"
       >
         <ArchiveIcon className="w-10 h-12" />
         <span

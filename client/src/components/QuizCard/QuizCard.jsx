@@ -6,10 +6,10 @@ import { VscCircleFilled, VscCircleOutline } from "react-icons/vsc";
 
 export default function QuizCard() {
   return (
-    <div className="container mb-6 dark:text-snow w-3/4 px-4 py-26 mx-auto ">
-      <div className="flex flex-wrap -m-4  ">
+    <div className="container flex mb-6 dark:text-snow py-26 ">
+      <div className="flex flex-wrap">
         {/* JavaScript */}
-        <div className="group p-4 md:w-1/3 ">
+        <div className="group p-4 sm:w-1/3">
           <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -49,7 +49,7 @@ export default function QuizCard() {
           </div>
         </div>
         {/* React */}
-        <div className="group p-4 md:w-1/3 ">
+        <div className="group p-4 sm:w-1/3">
           <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -89,7 +89,7 @@ export default function QuizCard() {
           </div>
         </div>
         {/* Node */}
-        <div className="group p-4 md:w-1/3 ">
+        <div className="group p-4 sm:w-1/3">
           <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"

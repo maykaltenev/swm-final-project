@@ -52,7 +52,7 @@ function Header({ theme, setTheme }) {
   useOutsideCloseDropMenu(buttonRef);
 
   return (
-    <div className="dark:bg-bg-xiketic container  ">
+    <div className="dark:bg-bg-xiketic container ">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
