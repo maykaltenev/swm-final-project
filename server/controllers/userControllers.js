@@ -42,7 +42,7 @@ passport.use(
         lastName: profile._json.family_name,
         username: profile.id,
         email,
-        password: "google",
+        password: process.env.password,
       });
       console.log("saving user", newUser);
       /*   pass: email */
@@ -53,7 +53,6 @@ passport.use(
     }
   )
 );
-
 /* -----------------------google strategy-------------------------- */
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;

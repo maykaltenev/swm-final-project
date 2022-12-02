@@ -61,7 +61,8 @@ router.post("/js/quiz/result", updateUserQuizResults);
      console.log('from glogin: id is', req.params.id)
  
      const user = await User.findById(req.params.id)/* .select('-__v -password') */
- 
+     console.log("the user in backend",user)
      res.send({success: true, user})
+     
  })
 export default router;

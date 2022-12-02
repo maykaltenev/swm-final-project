@@ -110,7 +110,7 @@ export default function Register() {
               }
             </p>
 
-          <a href='/user/google'><img src={GoogleLogo} alt=''/></a>
+          <a href='/user/google'><img src={GoogleLogo} width="230px" alt=''/></a>
           </div>
         </form>
       </div>

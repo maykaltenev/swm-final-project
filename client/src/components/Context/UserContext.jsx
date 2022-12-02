@@ -144,7 +144,8 @@ const UserContextProvider = ({ children }) => {
         setSignIn,
         handleShowRegisterForm,
         handleShowLoginForm,
-        visible, setVisible
+        visible, setVisible,
+        localStorageUser
       }}
     >
       {children}
