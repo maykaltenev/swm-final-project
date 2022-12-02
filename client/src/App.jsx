@@ -17,7 +17,9 @@ import Home from "./components/Home/Home";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
+import GLogin from "./components/GLogin/GLogin";
 import SideBar from "./components/SideBar/SideBar";
+
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   const { user } = useContext(UserContext);
@@ -29,6 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/glogin/:id" element={<GLogin />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/mypage/:id" element={<Quiz />} />
         <Route path="/createquiz" element={<CreateQuiz />} />

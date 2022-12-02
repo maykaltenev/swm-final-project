@@ -132,6 +132,7 @@ const UserContextProvider = ({ children }) => {
         userData,
         error,
         user,
+        setUser,
         handleLogout,
         getUser,
         timer,
