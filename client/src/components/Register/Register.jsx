@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 //image
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import GoogleLogo from "../../assets/googlesignin.png"
 
 export default function Register() {
   const { setOpenRegisterForm, setOpenLoginForm, handleShowLoginForm,visible, setVisible} =
@@ -108,6 +109,8 @@ export default function Register() {
                 </button>
               }
             </p>
+
+          <a href='/user/google'><img src={GoogleLogo} alt=''/></a>
           </div>
         </form>
       </div>

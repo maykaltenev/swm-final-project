@@ -10,7 +10,9 @@
     "mongoose": "^6.7.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "puppeteer": "^19.2.2"
+    "puppeteer": "^19.2.2",
+    "http-proxy-middleware": "^2.0.6",
+    "passport-google-oauth20": "^2.0.0"
   },
   "type": "module",
   "scripts": {
