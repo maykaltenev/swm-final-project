@@ -8,9 +8,12 @@ export default function GLogin() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
+  
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("/user/glogin/" + id);
+      const options = {withCredentials : true} // to get the cookies---
+
+      const response = await axios.get("/user/glogin/" + id,options);
 
       console.log("response:", response);
       if (response.data.success) {
