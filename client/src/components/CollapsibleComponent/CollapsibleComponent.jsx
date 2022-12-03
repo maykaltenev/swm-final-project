@@ -48,7 +48,7 @@ export default function Collapsible() {
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
                     Start your journey with the JavaScript Path
                   </h2>
-                  <p clasNames="leading-relaxed bg-">
+                  <p className="leading-relaxed bg-">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorem vero impedit adipisci eius, accusamus culpa,
                     distinctio illum atque sunt rerum facere ex quia delectus
@@ -104,7 +104,7 @@ export default function Collapsible() {
                   >
                     <title>React Logo</title>
                     <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
-                    <g stroke="#61dafb" stroke-width="1" fill="none">
+                    <g stroke="#61dafb" strokeWidth="1" fill="none">
                       <ellipse rx="11" ry="4.2" />
                       <ellipse rx="11" ry="4.2" transform="rotate(60)" />
                       <ellipse rx="11" ry="4.2" transform="rotate(120)" />

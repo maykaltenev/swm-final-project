@@ -4,6 +4,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+
       colors: {
         // dark-mode
         "bg-xiketic": "#15141E",
