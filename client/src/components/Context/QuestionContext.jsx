@@ -4,19 +4,26 @@ import { useNavigate } from "react-router-dom";
 
 const QuestionContext = createContext(null);
 
+// const [points, setPoints] = useState(0);
 const QuestionContextProvider = ({ children }) => {
+  /* setting state for the current question */
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
-  const [points, setPoints] = useState(0);
-
+  /* setting state for questions from local storage */
+  const [javaScriptData, setJavaScriptData] = useState(
+    getQuizQuestionsFromLocalStorage()
+  );
+  /* setting state for session id */
+  const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
+  /* getting the user from the local storage */
   const getUser = JSON.parse(localStorage.getItem("user"));
-
+  /* creating a state to get the result of the user */
   const [result, setResult] = useState("");
+  /* state for marked and unmarked  */
+  const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
-
   const getQuizQuestionsFromLocalStorage = () => {
     const quizQuestions = localStorage.getItem("quizQuestions");
     if (quizQuestions) {
@@ -25,10 +32,7 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-  const [javaScriptData, setJavaScriptData] = useState(
-    getQuizQuestionsFromLocalStorage()
-  );
-
+/* quiz questions from local storage rendered only once with use effect */
   useEffect(() => {
     getQuizQuestionsFromLocalStorage();
   }, []);
@@ -42,7 +46,6 @@ const QuestionContextProvider = ({ children }) => {
       return "";
     }
   };
-  const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
 
   // Get Marked Questions
   const getMarkedFromLocalStorage = () => {
@@ -53,10 +56,9 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-  const [marked, setMarked] = useState(getMarkedFromLocalStorage());
-
+/* function to create a quiz session */
   const handleCreateNewSession = async () => {
-    navigate(`/mypage/${currentQuestion}`);
+     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(
@@ -99,8 +101,9 @@ const QuestionContextProvider = ({ children }) => {
         quizType: "javascript",
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
-  };
-
+  }; /* setPoints,
+  points,
+ */
   const getResult = async () => {
     try {
       const result = await axios
@@ -136,8 +139,8 @@ const QuestionContextProvider = ({ children }) => {
         handleCreateNewSession,
         setJavaScriptData,
         javaScriptData,
-        setPoints,
-        points,
+        /* setPoints,
+        points, */
       }}
     >
       {children}
