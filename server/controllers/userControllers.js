@@ -54,44 +54,54 @@ passport.use(
   )
 );
 /* -----------------------google strategy-------------------------- */
+/* ----------------------------registering a new user--------------------------- */
 export const registerUser = async (req, res) => {
+  // get the user details from register form from frontend
   const { firstName, lastName, email, password } = req.body;
-
+/* once password is received, hash the passsword and save */
   const hashedPassword = await bcrypt.hash(password, 11);
   try {
+    /* check if the user exist already with the unique email */
     const userExists = await User.findOne({ email: email });
     if (userExists) {
+      /* if user already exist, send a message that user already exist */
       return res.status(409).json({ message: "User is already registered!" });
     }
+    /* if the user email doesn't exist in db , create a new user with firstname,lastname,email,hashedpassword */
     const createdUser = await User.create({
       firstName,
       lastName,
       email,
       password: hashedPassword,
     });
-    console.log(createdUser);
     return res.status(201).json({ message: "User created", createdUser });
-  } catch (error) {
+  } catch (error) { // if user creation is not successful, respond it with error message
     return res.status(500).json({ message: error.message });
   }
 };
-
+/* ----------------------------login user who is already registered--------------------------- */
 export const loginUser = async (req, res) => {
+  /* enter email and password from client */
   const { email, password } = req.body;
-  try {
+  try { // check for correctness of email & password, if it is not correct send an error message
     if (!email || !password) {
       return res
         .status(400)
         .json({ message: "Please provide email and password" });
     }
+    /* if the user enters correct email and password, check the user in db */
     const user = await User.findOne({ email }).select("+password");
+    /* if there is no user with given email */
     if (!user) {
+      /* send reply, user not found */
       return res.status(400).json({ message: " user not found" });
     }
-
+/* compare the password  from the user and the stored password of the user in db*/
     const checkPassword = await bcrypt.compare(password, user.password);
+    /* if the password matches, generate a token with JWT stratergy */
     if (checkPassword) {
       const token = await generateToken(user);
+      /* once the token is generated, store it in cookie, the user details */
       return res
         .status(200)
         .cookie("jwt", token, {
@@ -100,17 +110,17 @@ export const loginUser = async (req, res) => {
           sameSite: false,
         })
         .json({ user });
-    } else {
+    } else { /* send error message, no access granted */
       return res.status(400).json({ message: "No access granted" });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
-
+/* ----------------------------getting the user data with his id--------------------------- */
 export const getUserData = async (req, res) => {
   const { id } = req.body;
-
+/* find the user details with his id */
   try {
     const userData = await User.findOne({ _id: id });
 
@@ -119,7 +129,7 @@ export const getUserData = async (req, res) => {
     return res.send(error.message);
   }
 };
-//checking
+/* ----------------------------getting all the users--------------------------- */
 export const getUserDatas = async (req, res) => {
   try {
     const userDatas = await User.find();
@@ -129,8 +139,9 @@ export const getUserDatas = async (req, res) => {
     return res.send(error.message);
   }
 };
-/* ----------------------- */
+/* ----------------------------logging out the user--------------------------- */
 export const logout = async (req, res, next) => {
+  /* clear the cookies which has the user data */
   try {
     res
       .clearCookie("jwt", {
@@ -143,14 +154,15 @@ export const logout = async (req, res, next) => {
     res.send(error);
   }
 };
-
+/* ----------------------------updating the quiz timer--------------------------- */
 export const updateQuizTimer = async (req, res) => {
+  //get the user id, start time and end time
   const { start, end, id } = req.body;
-
+/* set the quiz timer for the user, find by user id and update the quiz timer */
   try {
     const addQuizTimer = await User.findByIdAndUpdate(
       id,
-      { $set: { "quizTimer.start": start, "quizTimer.end": end } },
+      { $set: { "quizTimer.start": start, "quizTimer.end": end } }, 
       { new: true }
     );
     if (!addQuizTimer) return;
@@ -160,8 +172,10 @@ export const updateQuizTimer = async (req, res) => {
     return res.status(404).json({ message: error });
   }
 };
+/* ----------------------------update the quiz results for the user--------------------------- */
 export const updateUserQuizResults = async (req, res) => {
   const { userId, sessionId, resultPercentage, quizType } = req.body;
+  /* finding the user by id and update the session Id */
   try {
     const session = await User.findOne({
       _id: userId,
@@ -173,7 +187,7 @@ export const updateUserQuizResults = async (req, res) => {
     if (session) {
       return;
     }
-
+/* push the result of the user by user id and update */
     const updateUserQuizResult = await User.findByIdAndUpdate(
       userId,
       {
