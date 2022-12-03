@@ -8,18 +8,10 @@ const QuestionContext = createContext(null);
 const QuestionContextProvider = ({ children }) => {
   /* setting state for the current question */
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  /* setting state for questions from local storage */
-  const [javaScriptData, setJavaScriptData] = useState(
-    getQuizQuestionsFromLocalStorage()
-  );
-  /* setting state for session id */
-  const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
   /* getting the user from the local storage */
   const getUser = JSON.parse(localStorage.getItem("user"));
   /* creating a state to get the result of the user */
   const [result, setResult] = useState("");
-  /* state for marked and unmarked  */
-  const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
   const navigate = useNavigate();
 
@@ -32,7 +24,11 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-/* quiz questions from local storage rendered only once with use effect */
+  /* setting state for questions from local storage */
+  const [javaScriptData, setJavaScriptData] = useState(
+    getQuizQuestionsFromLocalStorage()
+  );
+  /* quiz questions from local storage rendered only once with use effect */
   useEffect(() => {
     getQuizQuestionsFromLocalStorage();
   }, []);
@@ -46,7 +42,8 @@ const QuestionContextProvider = ({ children }) => {
       return "";
     }
   };
-
+  /* setting state for session id */
+  const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
   // Get Marked Questions
   const getMarkedFromLocalStorage = () => {
     const marked = localStorage.getItem("marked");
@@ -56,9 +53,12 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-/* function to create a quiz session */
+  /* state for marked and unmarked  */
+  const [marked, setMarked] = useState(getMarkedFromLocalStorage());
+
+  /* function to create a quiz session */
   const handleCreateNewSession = async () => {
-     navigate(`/mypage/${currentQuestion}`);
+    navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(

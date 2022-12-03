@@ -43,7 +43,6 @@ router.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 /* call back function for google server to display the result ,once the google server has info */
-
 router.get(
   "/google/callback",
   passport.authenticate("google", {
@@ -52,7 +51,6 @@ router.get(
   }),
   async (req, res) => {
     console.log("from google callback: id is", req.user._id);
-
     // User is the class. req.user is a new User
     //if the user is true from google server, our app create a token using jwt stratergy
     const token = await generateToken(req.user);
