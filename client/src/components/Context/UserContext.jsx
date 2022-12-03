@@ -1,11 +1,16 @@
-import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import addMinutes from "date-fns/addMinutes";
 
 const UserContext = createContext(null);
+
 const UserContextProvider = ({ children }) => {
+
+  const navigate = useNavigate();
+  //to display if there is error
   const [error, setError] = useState("");
+  //creating state for the user
   const [user, setUser] = useState("");
   //open register form when join us button in header is clicked
   const [openRegisterForm, setOpenRegisterForm] = useState(false);
@@ -16,8 +21,7 @@ const UserContextProvider = ({ children }) => {
    //for eye icon in password
    const [visible, setVisible] = useState(false);
 
-  const navigate = useNavigate();
-
+/* collect user details from login form and send to backend */
   const userData = async (formData) => {
     try {
       await axios
@@ -30,44 +34,46 @@ const UserContextProvider = ({ children }) => {
           {
             withCredentials: true,
           }
-        )
+        )/* once user details collected from login form, set the user details in local storage */
         .then((data) =>
           localStorage.setItem("user", JSON.stringify(data.data.user))
-        )
+        )/* once stored in local storage, call the local storage function */
         .then(() => {
           localStorageUser();
         });
-      setError("");
-      navigate("/userprofile");
+      setError(""); /* clear the error state */
+      navigate("/userprofile"); /* navigate the user to his profile page */
       return;
-    } catch (error) {
+    } catch (error) { /* if the user details doesn't match with the database throw error*/
       console.log(error);
       setError(" The email address or password is incorrect ");
     }
   };
+  /* handlong the logout function */
   const handleLogout = async () => {
     try {
       await axios
-        .get("http://localhost:5000/user/logout", {
+        .get("http://localhost:5000/user/logout", { /* get the details of user from db */
           withCredentials: true,
         })
-        .then(() => {
+        .then(() => {  /* then reset the state of the user */
           setUser("");
         })
-        .then(localStorage.clear("user"))
-        .then(() => navigate("/"));
-    } catch (error) {
+        .then(localStorage.clear("user")) // clear the user from local storage
+        .then(() => navigate("/")); // navigate to home page
+    } catch (error) { /* throw error if it doesn't match */
       console.log(error);
     }
   };
+  /* function to get the user details from localstorage */
   const localStorageUser = () => {
+    /* get user details from local storage */
     const user = JSON.parse(localStorage.getItem("user"));
-
+    /* set the user details into user state */
     setUser(user);
-
     return;
   };
-
+/* setting the user and his id and setting the quiz timer in local storage */
   const getUser = async () => {
     try {
       await axios
@@ -78,19 +84,22 @@ const UserContextProvider = ({ children }) => {
             withCredentials: true,
           }
         )
-        .then((data) =>
+        .then((data) =>                 /* setting the quiz time for the user*/
           localStorage.setItem("quizTime", JSON.stringify(data.data.quizTimer))
         )
         .then(() => {
-          localStorageUser();
+          localStorageUser();   /* get the user details */
         });
       return;
     } catch (error) {
       console.log(error);
     }
   };
+  /* timer function */
   const timer = async () => {
+    /* current date */
     const date = new Date();
+    /* user's id */
     const id = user?._id;
 
     try {
