@@ -88,7 +88,7 @@ const UserContextProvider = ({ children }) => {
           localStorage.setItem("quizTime", JSON.stringify(data.data.quizTimer))
         )
         .then(() => {
-          localStorageUser();   /* get the user details */
+          localStorageUser();   /* get the user details for the quiz session*/
         });
       return;
     } catch (error) {
@@ -102,40 +102,40 @@ const UserContextProvider = ({ children }) => {
     /* user's id */
     const id = user?._id;
 
-    try {
+    try {    /* update the timer of the user for the current quiz/session*/
       await axios
         .patch(
           "http://localhost:5000/user/addTimer",
           {
             id: id,
-            start: date,
-            end: addMinutes(date, 10),
+            start: date,  // setting current date and time to start the quiz
+            end: addMinutes(date, 10), //setting the time to end in 10 min for the quiz(real time)
           },
           {
-            withCredentials: true,
+            withCredentials: true, // check if the user exists and stored in db 
           }
         )
-        .then(() => getUser());
-    } catch (error) {
+        .then(() => getUser()); // if yes, get the user 
+    } catch (error) { 
       console.log(error);
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {  // render the user details once from the local storage
     localStorageUser();
   }, []);
-
+/* function to show and close the register form , login form */
   const handleShowRegisterForm = () => {
     setOpenRegisterForm(true);
     setOpenLoginForm(false);
   };
-
+/* function to show and close the register form , login form */
   const handleShowLoginForm = () => {
     setOpenRegisterForm(false);
     setOpenLoginForm(true);
   };
 
-  return (
+  return ( /* setting all the values in user context (global) */
     <UserContext.Provider
       value={{
         userData,
