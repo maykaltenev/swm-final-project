@@ -49,7 +49,7 @@ function QuizHistory() {
   return (
     <>
       <SideBar />
-      <section className="flex">
+      <section className="flex min-h-screen">
         <div className=" text-gray-300 sm:w-1/4  min-h-screen  rounded-xl drop-shadow-lg my-2">
           {quizHistory.quizResults &&
             quizHistory.quizResults.map((quiz) => (
@@ -81,7 +81,7 @@ function QuizHistory() {
                       alt="quiz"
                     />
                   </div>
-                  <div className="sm:ml-1">
+                  <div className="sm:ml-1 z-20">
                     <h4 className="text-xs sm:text-base">{`Result: ${quiz?.resultPercentage}`}</h4>
                     <h6 className="hidden sm:block">
                       {" "}

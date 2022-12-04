@@ -89,12 +89,15 @@ export default function BannerTiles() {
                   </div>
                 </div>
               </div>
-              <div className="w-2/5  flex-col sm:flex-row justify-between  ">
-                <button className="rounded bg-link-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
+              <div className="w-2/5 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
+                {/* <button className="rounded bg-link-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
+                  Start Journey
+                </button> */}
+                <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-link-cyber-yellow px-6 py-3 text-base text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey
                 </button>
-                <button className=" rounded  bg-ultramarine-blue sm:py-4 sm:py-2 px-12  text-center font-medium text-link-cyber-yellow hover:bg-ultramarine-blue-2">
-                  Evaluate Skills
+                <button className="rounded md:w-2/4  md:p-3 font-medium inline-flex w-full sm:w-1/3   items-center justify-center bg-ultramarine-blue px-6 py-3 text-link-cyber-yellow hover:bg-ultramarine-blue-2  bg-link-cyber-yellow  ">
+                  Test Skills
                 </button>
               </div>
             </div>
