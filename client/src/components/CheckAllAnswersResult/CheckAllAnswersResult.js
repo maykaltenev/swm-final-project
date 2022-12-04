@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -10,7 +10,9 @@ function CheckAllAnswersResult({ allQues }) {
   const wrongAnswersArr = allQues?.userWrongAnswerAll?.map(
     (item) => item?.option
   );
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //user correctarray
   const correctArray = [];
   const wrongArray = [];

@@ -34,7 +34,6 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/mypage/:id" element={<Quiz />} />
           <Route path="/createquiz" element={<CreateQuiz />} />
-          <Route path="/timer" element={<CountDownTimer />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
         </Routes>

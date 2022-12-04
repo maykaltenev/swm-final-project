@@ -18,6 +18,7 @@ function Result() {
 
   useEffect(() => {
     getResult();
+    window.scrollTo(0, 0);
   }, []);
 
   const handleCheckAnswers = () => {

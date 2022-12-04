@@ -12,7 +12,6 @@ import SideBar from "../SideBar/SideBar";
 function QuizHistory() {
   const [result, setResult] = useState("");
   const [selected, setSelected] = useState("");
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -27,7 +26,7 @@ function QuizHistory() {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
-  console.log("qiz", quizHistory);
+
   const handleShowMore = async (sessionId) => {
     try {
       const result = await axios
