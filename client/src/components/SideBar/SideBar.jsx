@@ -19,7 +19,23 @@ export default function SideBar() {
   const handleDropMenu = () => {
     setShowAsideMenu(!showAsideMenu);
   };
-  useOutsideCloseDropMenu(asideRef, setShowAsideMenu);
+
+  function useOutsideCloseDropMenu(ref, setShowAsideMenu, scrolling) {
+    useEffect(() => {
+      if (!scrolling) return;
+      function handleClickOutside(event) {
+        if (!ref?.current?.contains(event?.target)) {
+          setShowAsideMenu(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref, scrolling]);
+  }
+
+  useOutsideCloseDropMenu(asideRef, setShowAsideMenu, scrolling);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
