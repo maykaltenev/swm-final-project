@@ -1,0 +1,236 @@
+[
+  {
+    "questionText": "Which of the following statement is correct?",
+    "options": [
+      { "option": "js is Server Side Language.", "isCorrect": true },
+      { "option": "js is the Client Side Language.", "isCorrect": false },
+      {
+        "option": "js is both Server Side and Client Side Language.",
+        "isCorrect": false
+      },
+      { "option": "None of the above", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "A is the correct option. Node.js is Server Side Language.",
+    "code": "",
+    "questionNumber": 1,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": "Which of the following command is used to start a REPL session?",
+    "options": [
+      { "option": "$ node", "isCorrect": true },
+      { "option": "$ node start", "isCorrect": false },
+      {
+        "option": "$ node repl",
+        "isCorrect": false
+      },
+      { "option": "$ node console", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": " A is the correct option. We can start REPL simply by running node on shell/console without any argument.",
+    "code": "",
+    "questionNumber": 2,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " What does the REPL stand for?",
+    "options": [
+      {
+        "option": "REPL stands for 'Read Eval Print Loop.'",
+        "isCorrect": true
+      },
+      {
+        "option": "REPL stands for 'Research Eval Program Learn.'",
+        "isCorrect": false
+      },
+      {
+        "option": "REPL stands for 'Read Earn Point Learn.'",
+        "isCorrect": false
+      },
+      {
+        "option": "REPL stands for 'Read Eval Point Loop.'",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": " A is the correct option. REPL stands for 'Read Eval Print Loop'.",
+    "code": "",
+    "questionNumber": 3,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " In which language is Node.js written?",
+    "options": [
+      {
+        "option": "JavaScript",
+        "isCorrect": false
+      },
+      {
+        "option": "C",
+        "isCorrect": false
+      },
+      {
+        "option": "C++",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the above",
+        "isCorrect": true
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "D is the correct option. Node.js is a cross-platform, back-end JavaScript runtime environment written in JavaScript, C, C++, and CoffeeScript language.",
+    "code": "",
+    "questionNumber": 4,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " Which of the following command is used to install the Node.js express module?",
+    "options": [
+      {
+        "option": "$ npm install express",
+        "isCorrect": true
+      },
+      {
+        "option": "$ node install express",
+        "isCorrect": false
+      },
+      {
+        "option": "$ install express",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": " A is the correct option. The $ npm install express command is used to install the Node.js express module.",
+    "code": "",
+    "questionNumber": 5,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " What is Callback?",
+    "options": [
+      {
+        "option": "The callback is a technique in which a method calls back the caller method.",
+        "isCorrect": false
+      },
+      {
+        "option": "The callback is an asynchronous equivalent for a function.",
+        "isCorrect": true
+      },
+      {
+        "option": "Both of the above.",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the above.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "B is the correct option. The callback is an asynchronous equivalent for a function.",
+    "code": "",
+    "questionNumber": 6,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "Which of the following     extension is used to save the Node.js files?",
+    "options": [
+      {
+        "option": ".js",
+        "isCorrect": true
+      },
+      {
+        "option": ".node",
+        "isCorrect": false
+      },
+      {
+        "option": ".java",
+        "isCorrect": false
+      },
+      {
+        "option": ".txt",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "A is the correct option. The '.js' extension is used to save the Node.js files.",
+    "code": "",
+    "questionNumber": 7,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "The Node.js modules can be exposed using:",
+    "options": [
+      {
+        "option": "expose",
+        "isCorrect": false
+      },
+      {
+        "option": "module",
+        "isCorrect": false
+      },
+      {
+        "option": "exports",
+        "isCorrect": true
+      },
+      {
+        "option": "All of the above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "C is the correct option. The Node.js modules can be exposed using module.exports.",
+    "code": "",
+    "questionNumber": 8,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": " Which of the following module is not a built-in node module?",
+    "options": [
+      {
+        "option": "expose",
+        "isCorrect": false
+      },
+      {
+        "option": "module",
+        "isCorrect": false
+      },
+      {
+        "option": "exports",
+        "isCorrect": true
+      },
+      {
+        "option": "All of the above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "C is the correct option. The Node.js modules can be exposed using module.exports.",
+    "code": "",
+    "questionNumber": 9,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  }
+]
