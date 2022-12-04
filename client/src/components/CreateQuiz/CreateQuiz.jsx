@@ -26,7 +26,6 @@ function CreateQuiz() {
   }, []);
   return (
     <div>
-      <SideBar />
       <button
         className="bg-ultramarine-blue-2 rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
         onClick={handleNewQuiz}
