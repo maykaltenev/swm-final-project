@@ -27,7 +27,7 @@ export const QuestionsSchema = new Schema({
   questionType: {
     type: String,
     required: [true, "question should have questionType"],
-    enum: ["javascript", "react", "nodejs", "mongodb"],
+    enum: ["javascript", "react", "nodejs", "mongodb", "express"],
   },
   inputType: {
     type: String,
