@@ -13,6 +13,9 @@ function QuizHistory() {
   const [result, setResult] = useState("");
   const [selected, setSelected] = useState("");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const getQuizHistoryFromLocalStorage = () => {
     const quizHistory = localStorage.getItem("user");
     if (quizHistory) {

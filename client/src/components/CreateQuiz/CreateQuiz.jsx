@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { QuestionContext } from "../Context/QuestionContext";
 import { UserContext } from "../Context/UserContext";
@@ -21,7 +21,9 @@ function CreateQuiz() {
     handleCreateNewSession();
     timer();
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <SideBar />

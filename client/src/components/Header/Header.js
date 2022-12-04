@@ -11,7 +11,6 @@ import useDarkMode from "../DarkMode/DarkMode";
 
 //icons
 import { FaSun, FaMoon } from "react-icons/fa";
-import SideBar from "../SideBar/SideBar";
 
 function Header({ theme, setTheme }) {
   const {
@@ -61,7 +60,6 @@ function Header({ theme, setTheme }) {
   return (
     <div className="dark:bg-bg-xiketic container ">
       <div className="mx-auto flex justify-between p-5 items-center">
-
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
           to="/"

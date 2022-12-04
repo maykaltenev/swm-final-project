@@ -40,13 +40,13 @@ export default function SideBar() {
   return (
     <div
       ref={asideRef}
-      className={`sticky  top-20  md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-50`}
+      className={`sticky  
+      ${scrolling ? "top-0 md:top-20" : "top-20 "} 
+       md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-50`}
       onClick={handleDropMenu}
     >
       <div
-        className={`${
-          showAsideMenu ? "relative absolute" : "absolute sm:relative"
-        } 
+        className={`${showAsideMenu ? "relative " : "absolute sm:relative"} 
          sm:hidden flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
@@ -63,7 +63,7 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/")}
         className={`${
-          showAsideMenu ? "relative absolute" : " absolute sm:relative"
+          showAsideMenu ? "relative " : " absolute sm:relative"
         } flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
@@ -103,7 +103,7 @@ export default function SideBar() {
         text-snow bg-black-choral
         text-xs font-bold
         transition-all duration-125 scale-0 md:origin-left 
-  ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
+${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Start Quiz
         </span>
@@ -148,8 +148,10 @@ export default function SideBar() {
           className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
         text-snow bg-black-choral
         text-xs font-bold
-        transition-all duration-125 scale-0 md:origin-left 
-  ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
+        transition-all duration-125 scale-0 md:origin-left ${
+          showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"
+        }
+`}
         >
           History
         </span>
