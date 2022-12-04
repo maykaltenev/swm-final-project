@@ -1,0 +1,422 @@
+[
+  {
+    "questionText": "Amongst which of the following is / are true about MongoDB?",
+    "options": [
+      {
+        "option": "MongoDB is a cross-platform database",
+        "isCorrect": false
+      },
+      {
+        "option": "Document oriented database",
+        "isCorrect": false
+      },
+      {
+        "option": "High performance database",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": true
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "D A database is a physical container for storing information about collections. A separate set of files is created on the file system for each database. MongoDB is a document database that is designed to be simple to develop and scale with the needs of modern applications. MongoDB is a document-oriented database that is available on a variety of platforms and offers high performance, high availability, and easy scalability. MongoDB is built around the concepts of collection and document storage.        ",
+    "code": "",
+    "questionNumber": 1,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " The data model available within MongoDB allows us to represent ___.",
+    "options": [
+      {
+        "option": "Hierarchical relationships",
+        "isCorrect": false
+      },
+      {
+        "option": "Able to handle complex structures",
+        "isCorrect": false
+      },
+      {
+        "option": "Both A. and B.",
+        "isCorrect": true
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "The data model provided by MongoDB makes it easier to represent hierarchical relationships, to store arrays, and to store other more complicated structures. It is very easy to scale up and down the MongoDB environments. Companies all over the world have defined clusters, with some of them running 100 or more nodes and containing hundreds of thousands of documents in the database at any given time.",
+    "code": "",
+    "questionNumber": 2,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": " A record in MongoDB is a ___.",
+    "options": [
+      {
+        "option": "Document",
+        "isCorrect": true
+      },
+      {
+        "option": "Table",
+        "isCorrect": false
+      },
+      {
+        "option": "Application",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "A record in MongoDB is a document, which is a data structure composed of field and value pairs that represents a single instance of the database. Documents in MongoDB are similar to JSON objects in appearance. Other documents, arrays of documents, and arrays of arrays of documents may be used as values in fields.",
+    "code": "",
+    "questionNumber": 3,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": "MongoDB stores documents in ___.",
+    "options": [
+      {
+        "option": "Store",
+        "isCorrect": false
+      },
+      {
+        "option": "Collections",
+        "isCorrect": true
+      },
+      {
+        "option": "Indexes",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "MongoDB stores documents in collections. Collections in relational databases are analogous to tables in a relational database. A collection is a collection of MongoDB documents that have been grouped together. Documents within a collection can have a variety of different fields assigned to them. In a relational database system, a collection is equivalent to a table in terms of functionality. Within a single database, there is a collection of items.",
+    "code": "",
+    "questionNumber": 4,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": "The Collections screen ___ the existing collections.",
+    "options": [
+      {
+        "option": "Lists",
+        "isCorrect": true
+      },
+      {
+        "option": "Package",
+        "isCorrect": false
+      },
+      {
+        "option": "Network",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "The Collections screen displays a list of all of the collections and views that are currently active in the selected database. Each list item contains the name of the collection or view, as well as other general information about the collection or view. It is possible to access the Collections screen for a database from the Databases screen by either selecting a Database Name in the main Databases view or by selecting a database from the left navigation pane.",
+    "code": "",
+    "questionNumber": 5,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "beginner"
+  },
+  {
+    "questionText": "The Collections screen displays ___ for each collection in the selected database.",
+    "options": [
+      {
+        "option": "Collection name",
+        "isCorrect": false
+      },
+      {
+        "option": "Number of documents in the collection",
+        "isCorrect": false
+      },
+      {
+        "option": "Both A. and B.",
+        "isCorrect": true
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "The collections screen displays each collection in the selected database's name and the number of documents that are contained within the collection.",
+    "code": "",
+    "questionNumber": 6,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "A document is a set of ___.",
+    "options": [
+      {
+        "option": "Key-value pairs",
+        "isCorrect": true
+      },
+      {
+        "option": "Application pairs",
+        "isCorrect": false
+      },
+      {
+        "option": "Activity pair set",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "A document is a collection of key-value pairs that are stored together. Documents have a dynamic schema that changes over time. Using a dynamic schema, documents in the same collection do not all need to have the same set of fields or structure, and the same common fields across multiple documents in a collection may contain different types of data.",
+    "code": "",
+    "questionNumber": 7,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "Amongst which of the following is / are true about the authentication ___.",
+    "options": [
+      {
+        "option": "It is a process of verifying the identity of a client",
+        "isCorrect": true
+      },
+      {
+        "option": "It is a process of verifying network",
+        "isCorrect": false
+      },
+      {
+        "option": "It is a process of verifying the database",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "Authentication refers to the process of determining the identity of a customer. Authentication and authorization are required by MongoDB when access control, also known as authorization, is enabled. This ensures that only authorized clients are granted access. Clients can use a variety of authentication mechanisms to verify their identity in MongoDB, all of which are supported. With the help of these mechanisms, MongoDB can be integrated with your existing authentication system.",
+    "code": "",
+    "questionNumber": 8,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "Amongst which of the following is / are the client and user authentication mechanisms in MongoDB.",
+    "options": [
+      {
+        "option": "SCRAM-SHA-1",
+        "isCorrect": false
+      },
+      {
+        "option": "MongoDB Challenge and Response (MONGODB-CR)",
+        "isCorrect": false
+      },
+      {
+        "option": "Both A. and B.",
+        "isCorrect": true
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "The reason for this is that MongoDB supports a variety of authentication mechanisms. SCRAM-SHA-1, X.509 Certificate Authentication, MongoDB Challenge and Response (MONGODB-CR), LDAP proxy authentication, and Kerberos authentication are some of the client and user authentication mechanisms available.",
+    "code": "",
+    "questionNumber": 9,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "The document structure is more in line with how developers construct their ___.",
+    "options": [
+      {
+        "option": "Network and security",
+        "isCorrect": false
+      },
+      {
+        "option": "Classes and objects",
+        "isCorrect": true
+      },
+      {
+        "option": "Tables and relations",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "It is more in line with the way developers construct classes and objects in their respective programming languages. Developers will frequently claim that their classes do not consist of rows and columns, but instead have a clear structure consisting of key-value pairs.",
+    "code": "",
+    "questionNumber": 10,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "Cursor is a pointer to the result set of a ___.",
+    "options": [
+      {
+        "option": "Query",
+        "isCorrect": true
+      },
+      {
+        "option": "Table",
+        "isCorrect": false
+      },
+      {
+        "option": "Dataset",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "The cursor is a pointer to the result set of a query, as explained above. In order to retrieve results, clients can iterate through a cursor. In this case, the Cursor is a MongoDB Collection of the document that is returned as a result of the find method being executed. By default, it is automatically executed as a loop, which is undesirable. We can, on the other hand, request a specific index document from the cursor that was returned. It works in the same way as a pointer those points to a specific index value in a database.",
+    "code": "",
+    "questionNumber": 11,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": " Field is a name-value pair in a ___.",
+    "options": [
+      {
+        "option": "Attribute",
+        "isCorrect": false
+      },
+      {
+        "option": "Table",
+        "isCorrect": false
+      },
+      {
+        "option": "Document",
+        "isCorrect": true
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "A field in a document is a name-value pair that contains information. There are zero or more fields in a document. Fields in relational databases are analogous to columns in traditional databases. In MongoDB, each document stored in a collection is identified by a unique _id field, which serves as the collection's primary key. If the _id field is not present in an inserted document, the MongoDB driver creates an ObjectId for the _id field by generating it automatically.",
+    "code": "",
+    "questionNumber": 12,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "MongoDB supports searching by ___.",
+    "options": [
+      {
+        "option": "Field",
+        "isCorrect": false
+      },
+      {
+        "option": "Range queries",
+        "isCorrect": false
+      },
+      {
+        "option": "Regular expression searches",
+        "isCorrect": false
+      },
+      {
+        "option": "All of the mentioned above",
+        "isCorrect": true
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "Ad hoc queries in MongoDB are supported by searching by field, range queries, and regular expression searches, among other search options. In order to return specific fields within documents, queries can be created. Ad-hoc queries are those that were not anticipated when the database was being built. Consequently, MongoDB provides ad-hoc query support, which distinguishes it from other databases in this situation. Ad-hoc queries are updated in real time, resulting in a significant improvement in the performance of the system.",
+    "code": "",
+    "questionNumber": 13,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": " Indexes can be created to improve the performance of searches within ___.",
+    "options": [
+      {
+        "option": "MongoDB",
+        "isCorrect": false
+      },
+      {
+        "option": "NoSQL",
+        "isCorrect": false
+      },
+      {
+        "option": "Both A. and B.",
+        "isCorrect": true
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "Indexes can be created in MongoDB to improve the performance of searches in the database. Any field in a MongoDB document can be indexed, including the document's name. When using MongoDB, indexes are used to speed up the execution of queries. Due to the lack of indexes, MongoDB is forced to perform a collection scan, which is to say it must scan each and every document in a collection, in order to select the documents that match the query statement. Whenever a query is associated with an appropriate index, MongoDB can use the index to reduce the number of documents that must be inspected by the query.",
+    "code": "",
+    "questionNumber": 14,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "  NoSQL is not a ___.",
+    "options": [
+      {
+        "option": "Relational database",
+        "isCorrect": true
+      },
+      {
+        "option": "Network database",
+        "isCorrect": false
+      },
+      {
+        "option": "Communication set",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the mentioned above",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "NoSQL is not the same as a relational database, as explained above. Because all records are not restricted by the same column names and types that have been defined across the entire table, it allows for greater flexibility. The following example will give you a better understanding of what NoSQL is.",
+    "code": "",
+    "questionNumber": 15,
+    "inputType": "radio",
+    "questionType": "mongodb",
+    "difficultyLevel": "advanced"
+  }
+]

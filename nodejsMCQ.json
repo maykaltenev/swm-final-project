@@ -209,15 +209,127 @@
     "questionText": " Which of the following module is not a built-in node module?",
     "options": [
       {
-        "option": "expose",
+        "option": "zlib",
         "isCorrect": false
       },
       {
-        "option": "module",
+        "option": "https",
         "isCorrect": false
       },
       {
-        "option": "exports",
+        "option": "dgram",
+        "isCorrect": false
+      },
+      {
+        "option": "fsread",
+        "isCorrect": true
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": " D is the correct option. The 'fsread' is not a built-in node module.",
+    "code": "",
+    "questionNumber": 9,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": " Which of the following method of fs module is used to get file information?",
+    "options": [
+      {
+        "option": "fs.open(path, flags[, mode], callback)",
+        "isCorrect": false
+      },
+      {
+        "option": "fs.stat(path, callback)",
+        "isCorrect": true
+      },
+      {
+        "option": "fs.readFile(path, flags[, mode], callback)",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the above.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "B is the correct option. The fs.stat(path, callback) method is used to get information about a file.",
+    "code": "",
+    "questionNumber": 10,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "intermediate"
+  },
+  {
+    "questionText": "What does the fs module stand for?",
+    "options": [
+      {
+        "option": "File Service",
+        "isCorrect": false
+      },
+      {
+        "option": "File System",
+        "isCorrect": true
+      },
+      {
+        "option": "File Store",
+        "isCorrect": false
+      },
+      {
+        "option": "File Sharing",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": " B is the correct option. The fs module stands for File System.",
+    "code": "",
+    "questionNumber": 11,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "Which of the following method of fs module is used to truncate a file?",
+    "options": [
+      {
+        "option": "fs.delete(fd, len, callback)",
+        "isCorrect": false
+      },
+      {
+        "option": "fs.remove(fd, len, callback)",
+        "isCorrect": false
+      },
+      {
+        "option": "fs.ftruncate(fd, len, callback)",
+        "isCorrect": true
+      },
+      {
+        "option": "None of the above.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "C is the correct option. The fs.ftruncate(fd, len, callback) method is used to truncate a file.",
+    "code": "",
+    "questionNumber": 12,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "Which of the following template engines can be used with Node.js?",
+    "options": [
+      {
+        "option": "Jade",
+        "isCorrect": false
+      },
+      {
+        "option": "Vash",
+        "isCorrect": false
+      },
+      {
+        "option": "Handlebars",
         "isCorrect": true
       },
       {
@@ -226,11 +338,67 @@
       }
     ],
     "correctOptions": 1,
-    "explanation": "C is the correct option. The Node.js modules can be exposed using module.exports.",
+    "explanation": "C is the correct option. Handlebars are the template engines that can be used with Node.js.",
     "code": "",
-    "questionNumber": 9,
+    "questionNumber": 13,
     "inputType": "radio",
     "questionType": "nodejs",
-    "difficultyLevel": "intermediate"
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "Which of the following code print the platform of operating system?",
+    "options": [
+      {
+        "option": "console.log('platform : ' + os.platform);",
+        "isCorrect": false
+      },
+      {
+        "option": "console.log('platform : ' + os.platform());",
+        "isCorrect": true
+      },
+      {
+        "option": "console.log('platform : ' + os.getPlatform());",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the above.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "B is the correct option. The os.platform() returns the operating system platform.",
+    "code": "",
+    "questionNumber": 14,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "advanced"
+  },
+  {
+    "questionText": "Which of the following method is used to return the current working directory of the process?",
+    "options": [
+      {
+        "option": "cwd();",
+        "isCorrect": true
+      },
+      {
+        "option": "vwd();",
+        "isCorrect": false
+      },
+      {
+        "option": "pwd();",
+        "isCorrect": false
+      },
+      {
+        "option": "None of the above.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "A is the correct option. The process.cwd() method is used to return the current working directory of the process.",
+    "code": "",
+    "questionNumber": 15,
+    "inputType": "radio",
+    "questionType": "nodejs",
+    "difficultyLevel": "advanced"
   }
 ]
