@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function QuestionCircles({ setCurrentQuestion }) {
   const { javaScriptData, marked } = useContext(QuestionContext);
   const navigate = useNavigate();
+  /* handling the index of the question */
   const handleChangeIndex = (i) => {
     navigate(`/mypage/${i}`);
     console.log(i);

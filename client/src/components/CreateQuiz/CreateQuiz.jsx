@@ -8,16 +8,15 @@ function CreateQuiz() {
   const { timer } = useContext(UserContext);
   const { handleCreateNewSession, setMarked, setSessionId, setJavaScriptData } =
     useContext(QuestionContext);
+    /* function to handle new quiz session---clear the local storage */
   const handleNewQuiz = () => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
-
     setMarked([]);
     setSessionId("");
     setJavaScriptData([]);
-
     handleCreateNewSession();
     timer();
   };

@@ -25,17 +25,15 @@ function Header({ theme, setTheme }) {
   const navigate = useNavigate();
   //to show the dropmenu
   const [showDropMenu, setShowDropMenu] = useState(false);
-
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
   const [joinusButton, setJoinusButton] = useState(true);
-
   const buttonRef = useRef(null);
-
+/* function for the user dropdown menu  */
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
   };
-
+/* function to close the dropdown menu when user clicks on the window (outside dropdown menu) */
   function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -69,7 +67,7 @@ function Header({ theme, setTheme }) {
             Join Us!
           </button>
         )}
-        {/* when the user is signedIn */}
+        {/* when the user is signedIn  show the user dashboard*/}
         {user && (
           <div ref={buttonRef} className="relative">
             <img
@@ -118,7 +116,7 @@ function Header({ theme, setTheme }) {
           </div>
         )}
       </div>
-      {/* if the open login form is there show login form */}
+      {/* if the user click join us button then show register form or login form */}
       {(openRegisterForm && <Register />) || (openLoginForm && <Login />)}
     </div>
   );

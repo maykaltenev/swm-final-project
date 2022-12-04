@@ -25,19 +25,20 @@ function Quiz() {
   } = useContext(QuestionContext);
 
   const { id } = useParams();
-
+/* handling the previous question */
   const handlePrevious = () => {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 > 0 ? id * 1 - 1 : id}`);
   };
   const navigate = useNavigate();
+  /* handling the next question */
   const handleNext = () => {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 < javaScriptData.length - 1 ? id * 1 + 1 : id}`);
   };
+  /* handling the explation once the button is clicked */
   const handleShowAnswer = (e) => {
     e.preventDefault();
-
     setShowExplanation((showExplanation) => !showExplanation);
     console.log(showExplanation);
   };

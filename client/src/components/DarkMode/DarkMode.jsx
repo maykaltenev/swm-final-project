@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+/* using local storage for dark mode theme */
 const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -25,7 +25,7 @@ const useLocalStorage = (key, initialValue) => {
   };
   return [storedValue, setValue];
 };
-
+/* function to enable darkmode class */
 const useDarkMode = () => {
   const [enabled, setEnabled] = useLocalStorage("dark-theme");
   const isEnabled = typeof enabledState === "undefined" && enabled;

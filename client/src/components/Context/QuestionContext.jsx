@@ -56,7 +56,7 @@ const QuestionContextProvider = ({ children }) => {
   /* state for marked and unmarked  */
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
-  /* function to create a quiz session */
+  /* function to create a quiz session ,store the quiz sessions , session id on the local storage & then get it from local local storage*/
   const handleCreateNewSession = async () => {
     navigate(`/mypage/${currentQuestion}`);
     try {
@@ -92,6 +92,7 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* updating the result of the user by the session id on the local storage */
   const getUserUpdated = async (data) => {
     const update = await axios
       .post("http://localhost:5000/user/js/quiz/result", {
@@ -101,9 +102,8 @@ const QuestionContextProvider = ({ children }) => {
         quizType: "javascript",
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
-  }; /* setPoints,
-  points,
- */
+  }; 
+  /* get the result from db */
   const getResult = async () => {
     try {
       const result = await axios

@@ -36,8 +36,8 @@ export default function QuestionCard({
   } = useContext(QuestionContext);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
-
-  const userInput = useRef(null);
+    const userInput = useRef(null);
+    /* getting answers from local storage */
   const getAnswersFromLocalStorage = () => {
     const answer = localStorage.getItem("answers");
     if (answer) {
@@ -47,6 +47,7 @@ export default function QuestionCard({
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
+  /* getting the user inputted answer */
   const handleUserAnswer = (
     question,
     e,
@@ -54,7 +55,7 @@ export default function QuestionCard({
     sessionId,
     inputType,
     userInput
-  ) => {
+  ) => { //check if question exist on the answer array
     const questionExist = answer?.find((item) => item.questionID === question);
 
     if (questionExist) {
@@ -155,7 +156,7 @@ export default function QuestionCard({
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
   }, [answer]);
-
+/* update the user inputted answer to db */
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios.patch(
@@ -172,7 +173,7 @@ export default function QuestionCard({
       console.log("error adding comment", error);
     }
   };
-
+/* for marking the question with respect to id */
   const handleMark = (id) => {
     const alreadyMarked = marked?.includes(id);
 
@@ -202,7 +203,9 @@ export default function QuestionCard({
     <div>
       {
         <div key={question?._id}>
+          {/* display question text */}
           <h5>{question?.questionText}</h5>
+          {/* if there is code, display it too */}
           {question?.code && (
             <div style={{ padding: "1rem", backgroundColor: "" }}>
               <Editor
@@ -212,6 +215,7 @@ export default function QuestionCard({
               />
             </div>
           )}
+          {/* if there is question , then show the mark symbol */}
           {question &&
             (marked.includes(question._id) ? (
               <AiFillStar onClick={() => handleMark(question?._id)} />
@@ -219,11 +223,12 @@ export default function QuestionCard({
               <AiOutlineStar onClick={() => handleMark(question?._id)} />
             ))}
           <div>
+            {/* display the options */}
             {question?.options.map((option) => (
               <div key={option?._id}>
                 <input
                   className={style.button}
-                  type={question?.inputType}
+                  type={question?.inputType} //display the input type according to enum type
                   name={question?.inputType}
                   style={{ border: "1px red solid" }}
                   value={
@@ -248,7 +253,7 @@ export default function QuestionCard({
                       )
                     ]?.answers[0]
                   }
-                  maxLength={option?.option?.length}
+                  maxLength={option?.option?.length} /* allowing users to type the text wrt correct option length */
                   onChange={
                     question.inputType !== "text"
                       ? (e) =>
@@ -260,7 +265,7 @@ export default function QuestionCard({
                             question?.inputType,
                             userInput?.current?.value
                           )
-                      : debounce(
+                      : debounce( 
                           (e) =>
                             handleUserAnswer(
                               question?._id,

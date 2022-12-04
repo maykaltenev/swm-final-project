@@ -11,7 +11,6 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setOpenLoginForm(false);
-
     const formData = new FormData(event.target);
     userData(formData);
   };
