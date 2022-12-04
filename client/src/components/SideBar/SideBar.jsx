@@ -25,6 +25,8 @@ export default function SideBar() {
       if (window.scrollY > 100) {
         handleScrolling(true);
         setShowAsideMenu(false);
+      } else if (window.scrollY < 100) {
+        setShowAsideMenu(true);
       } else {
         handleScrolling(false);
       }
@@ -58,14 +60,15 @@ export default function SideBar() {
       //   window.scrollY + 20
       // }]
       ref={asideRef}
-      className={`sticky  top-20  md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-50`}
+      className={`sticky  top-20  md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-60`}
       onClick={handleDropMenu}
     >
       <div
-        className={`${showAsideMenu ? "relative " : "absolute sm:relative"} 
-        ${
-          width ? "relative" : "hidden"
-        }test sm:hidden flex items-center justify-center
+        className={`${
+          showAsideMenu ? "relative absolute" : "absolute sm:relative"
+        } 
+
+         sm:hidden flex items-center justify-center
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
@@ -92,10 +95,11 @@ export default function SideBar() {
       >
         <AiFillStar className="w-10 h-12" />
         <span
-          className="absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
-          text-snow bg-black-choral
-          text-xs font-bold
-          transition-all duration-125 scale-0 md:origin-left group-hover:scale-125"
+          className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
+         text-snow bg-black-choral
+         text-xs font-bold
+         transition-all duration-125 scale-0 md:origin-left 
+   ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Home
         </span>
@@ -116,10 +120,11 @@ export default function SideBar() {
         <RocketIcon className="w-10 h-12" />
 
         <span
-          className="absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
-          text-snow bg-black-choral
-          text-xs font-bold
-          transition-all duration-125 scale-0 md:origin-left group-hover:scale-125"
+          className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
+        text-snow bg-black-choral
+        text-xs font-bold
+        transition-all duration-125 scale-0 md:origin-left 
+  ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Start Quiz
         </span>
@@ -127,8 +132,8 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/userprofile")}
         className={`${
-          showAsideMenu ? "relative" : "absolute grid sm:relative"
-        } flex items-center justify-center
+          showAsideMenu ? "relative" : "absolute grid sm:relative "
+        } flex items-center justify-center 
         h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
@@ -138,10 +143,11 @@ export default function SideBar() {
       >
         <LayersIcon className="w-10 h-12" />
         <span
-          className="absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
+          className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
           text-snow bg-black-choral
           text-xs font-bold
-          transition-all duration-125 scale-0 md:origin-left group-hover:scale-125"
+          transition-all duration-125 scale-0 md:origin-left 
+    ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Path
         </span>
@@ -160,10 +166,11 @@ export default function SideBar() {
       >
         <ArchiveIcon className="w-10 h-12" />
         <span
-          className="absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
-      text-snow bg-black-choral
-      text-xs font-bold
-      transition-all duration-125 scale-0 md:origin-left group-hover:scale-125"
+          className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
+        text-snow bg-black-choral
+        text-xs font-bold
+        transition-all duration-125 scale-0 md:origin-left 
+  ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           History
         </span>
