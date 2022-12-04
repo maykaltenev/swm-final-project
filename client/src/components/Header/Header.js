@@ -11,13 +11,12 @@ import useDarkMode from "../DarkMode/DarkMode";
 
 //icons
 import { FaSun, FaMoon } from "react-icons/fa";
+import SideBar from "../SideBar/SideBar";
 
 function Header({ theme, setTheme }) {
   const {
     openRegisterForm,
-    setOpenRegisterForm,
     openLoginForm,
-    setOpenLoginForm,
     handleShowRegisterForm,
     user,
     handleLogout,
@@ -28,13 +27,19 @@ function Header({ theme, setTheme }) {
 
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
-  const [joinusButton, setJoinusButton] = useState(true);
+
 
   const buttonRef = useRef(null);
 
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
+
   };
+  const handleUserNavigateToUserProfileFromAvatar = () => {
+    setShowDropMenu(!showDropMenu);
+    navigate("/userprofile")
+  };
+
 
   function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
@@ -51,9 +56,12 @@ function Header({ theme, setTheme }) {
   }
   useOutsideCloseDropMenu(buttonRef);
 
+
+
   return (
     <div className="dark:bg-bg-xiketic container ">
       <div className="mx-auto flex justify-between p-5 items-center">
+
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
           to="/"
@@ -61,6 +69,7 @@ function Header({ theme, setTheme }) {
           <img className="w-24 sm:w-32" src={Logo} alt="" />
 
         </Link>
+
         {!user && (
           <button
             className="bg-ultramarine-blue font-poppins mx-px px-5 rounded-full text-white py-2"
@@ -79,11 +88,10 @@ function Header({ theme, setTheme }) {
               src={user.avatar}
             />
             {showDropMenu && (
-              <div className="flex flex-col w-60 z-20 text-white absolute right-2 top-14 ">
+              <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-14 ">
                 <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                  <div className="flex cursor-pointer" onClick={() => navigate("/userprofile")}>
+                  <div className="flex cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
                     <img
-                      onClick={handleDropMenu}
                       className="w-7"
                       alt=""
                       src={user.avatar}

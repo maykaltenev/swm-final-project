@@ -14,7 +14,7 @@ export default function SideBar() {
   // const [show, handleShow] = useState(true);
   const [showAsideMenu, setShowAsideMenu] = useState(true);
   const [scrolling, handleScrolling] = useState(false);
-  const [width, setWidth] = useState(false);
+
   const asideRef = useRef(null);
   const handleDropMenu = () => {
     setShowAsideMenu(!showAsideMenu);
@@ -36,40 +36,19 @@ export default function SideBar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [showAsideMenu]);
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 670) {
-        console.log(window.innerWidth);
-        setWidth(true);
-      } else {
-        setWidth(false);
-      }
-    };
-    console.log(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [width]);
-  //test
-  console.log("w", width);
 
   return (
     <div
-      // className={`sticky  top-[${
-      //   window.scrollY + 20
-      // }]
       ref={asideRef}
-      className={`sticky  top-20  md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-60`}
+      className={`sticky  top-20  md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-50`}
       onClick={handleDropMenu}
     >
       <div
         className={`${
           showAsideMenu ? "relative absolute" : "absolute sm:relative"
         } 
-
          sm:hidden flex items-center justify-center
-        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
@@ -86,7 +65,7 @@ export default function SideBar() {
         className={`${
           showAsideMenu ? "relative absolute" : " absolute sm:relative"
         } flex items-center justify-center
-        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
@@ -108,9 +87,9 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/createquiz")}
         className={`${
-          showAsideMenu ? "relative" : "absolute grid sm:relative"
+          showAsideMenu ? "relative" : "absolute  sm:relative"
         } flex items-center justify-center
-        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
@@ -132,9 +111,9 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/userprofile")}
         className={`${
-          showAsideMenu ? "relative" : "absolute grid sm:relative "
+          showAsideMenu ? "relative" : "absolute  sm:relative "
         } flex items-center justify-center 
-        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
@@ -155,9 +134,9 @@ export default function SideBar() {
       <div
         onClick={() => navigate("/quizhistory")}
         className={`${
-          showAsideMenu ? "relative" : "absolute grid sm:relative"
+          showAsideMenu ? "relative" : "absolute sm:relative"
         } flex items-center justify-center
-        h-12 w-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
         bg-javascript-yellow text-ultramarine-blue-2 text-lg
         hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
         rounded-3xl hover:rounded-xl
