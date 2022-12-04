@@ -1,0 +1,255 @@
+[
+  {
+    "questionText": "Which of the following command is used to create react-js-app ?",
+    "options": [
+      { "option": "npx create-react-app appname", "isCorrect": true },
+      { "option": "npm install create-react-app", "isCorrect": false },
+      { "option": "npx install create-react-app -g", "isCorrect": false },
+      { "option": "install - l create-react-app", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The correct syntax for installing react app is npx create-react-app app name where app name is the name of the app you want to create.",
+    "code": "",
+    "questionNumber": 1,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "react"
+  },
+  {
+    "questionText": "In React.js which one of the following is used to create a class for Inheritance ?",
+    "options": [
+      { "option": "Create", "isCorrect": false },
+      { "option": "Extends", "isCorrect": true },
+      { "option": "Inherits", "isCorrect": false },
+      { "option": "Delete", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The meaning of Extends in react.js is to create a class for the Inheritance So the correct answer is Extend.",
+    "code": "",
+    "questionNumber": 2,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which one of the following also known as Conditional Expression:",
+    "options": [
+      { "option": "3000", "isCorrect": true },
+      { "option": "8080", "isCorrect": false },
+      { "option": "5000", "isCorrect": false },
+      { "option": "3030", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The default port number in which react application runs are 3000.",
+    "code": "",
+    "questionNumber": 3,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following valid component return type of React ?",
+    "options": [
+      { "option": "2", "isCorrect": false },
+      { "option": "5", "isCorrect": false },
+      { "option": "1", "isCorrect": true },
+      { "option": "3", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The only valid component return type of React. The return type in React is by render() function.",
+    "code": "",
+    "questionNumber": 4,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following is a way to handle data in React.js ?",
+    "options": [
+      { "option": "State & Props", "isCorrect": true },
+      { "option": "Services & Components", "isCorrect": false },
+      { "option": "State & Services", "isCorrect": false },
+      { "option": "State & Component", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "State and Props are ways to handle data in React.js where the state is mutable and props are unchangeable",
+    "code": "",
+    "questionNumber": 5,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following is must for the API in React.js ?",
+    "options": [
+      { "option": "SetinitialComponent", "isCorrect": false },
+      { "option": "renderComponent", "isCorrect": true },
+      { "option": "render", "isCorrect": false },
+      { "option": "All of the above", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The renderComponent is not a function that is used as API for the React.js.",
+    "code": "",
+    "questionNumber": 6,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following is true regarding Babel ?",
+    "options": [
+      { "option": "Compiler", "isCorrect": false },
+      { "option": "Transpilar", "isCorrect": false },
+      { "option": "Both of the above", "isCorrect": true },
+      { "option": "None of the above", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "Babel is both compiler and Transpiler which is used to run the react.js application.",
+    "code": "",
+    "questionNumber": 7,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "react"
+  },
+  {
+    "questionText": "In React.js, how we can pass the data from one component to another in React.js ?",
+    "options": [
+      { "option": "SetState", "isCorrect": false },
+      { "option": "Render with arguments", "isCorrect": false },
+      { "option": "Props", "isCorrect": true },
+      { "option": "PropTypes", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "Props can help to pass the data from one component from another in react.js. Props are un-mutable so that they cant be changed.",
+    "code": "",
+    "questionNumber": 8,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following function is true about changing the state in React.js ?",
+    "options": [
+      { "option": "this.State{}", "isCorrect": false },
+      { "option": "this.setState", "isCorrect": true },
+      { "option": "this.setChangeState", "isCorrect": false },
+      { "option": "All of the above", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The this.setState is used for changing the state in React.js whenever the state changes in react then it re-render the component in the browser.",
+    "code": "",
+    "questionNumber": 9,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "react"
+  },
+
+  {
+    "questionText": "Which of the following method is true about referring parent class in React.js ? ",
+    "options": [
+      { "option": "self()", "isCorrect": false },
+      { "option": "inherits()", "isCorrect": false },
+      { "option": "this()", "isCorrect": false },
+      { "option": "super()", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "The super() is a method in which referring the parent class in react.js. It is the way for calling the constructor in React.js.",
+    "code": "",
+    "questionNumber": 10,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following is used to render components in web pages ?",
+    "options": [
+      { "option": "DOM_render()", "isCorrect": false },
+      { "option": "render()", "isCorrect": true },
+      { "option": "ReactDOM_render()", "isCorrect": false },
+      { "option": "transfer()", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The render() is a method in React.js which is used to transfer the component from one page to another.",
+    "code": "",
+    "questionNumber": 11,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which function in React.js is invoked before a component gets its props reassigned ?",
+    "options": [
+      { "option": "componentWillRecieveProps()", "isCorrect": true },
+      { "option": "componentWillStopProps()", "isCorrect": false },
+      { "option": "componentWillControlProps()", "isCorrect": false },
+      { "option": "componentRecieveProps()", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The componentWillRecieveProps() is a function in React.js which is independent of States. It is invoked when props are assigned.",
+    "code": "",
+    "questionNumber": 12,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which of the following is true about key props ?",
+    "options": [
+      { "option": "'Key' props are used to look beauty", "isCorrect": false },
+      {
+        "option": "'Key' prop is a way to identify the newly added element",
+        "isCorrect": true
+      },
+      { "option": "It is one type of attribute of HTML", "isCorrect": false },
+      { "option": "It is not used in the array", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The key props in React.js are used for creating lists of elements in React. Keys Pops are used in React.js to check which items in the list are needed to be changed, updated, or deleted.",
+    "code": "",
+    "questionNumber": 13,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "react"
+  },
+  {
+    "questionText": " What is the best definition of React.js ?",
+    "options": [
+      { "option": "Server-side Framework", "isCorrect": false },
+      { "option": "User-interface framework", "isCorrect": false },
+      {
+        "option": "A Library for building interaction interfaces",
+        "isCorrect": true
+      },
+      { "option": "None of These", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The best definition from all of the above options is A Library for building interactive interfaces. React is Frontend Framework for creating awesome User Interface.",
+    "code": "",
+    "questionNumber": 14,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "react"
+  },
+  {
+    "questionText": "Which below function in React.js is used to get the DOM node when the component is rendered ? ",
+    "options": [
+      { "option": "renderDOM()", "isCorrect": false },
+      { "option": "componentAtNode()", "isCorrect": false },
+      { "option": "getDOMNode()", "isCorrect": false },
+      { "option": "findDOMNode()", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "The findDOMNode() function in React.js is used to get the DOM node when the component is rendered. It takes a single parameter as a component.",
+    "code": "",
+    "questionNumber": 15,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "react"
+  }
+]

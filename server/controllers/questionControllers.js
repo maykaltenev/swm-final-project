@@ -54,7 +54,6 @@ export const createQuizSession = async (req, res) => {
     });
 
     if (!newQuizSession) return;
-
     return res
       .status(200)
       .json({ message: "New Quiz Session Created", newQuizSession });

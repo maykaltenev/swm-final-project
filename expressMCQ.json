@@ -1,0 +1,274 @@
+[
+  {
+    "questionText": "Who is credited as the developer of Express.js?",
+    "options": [
+      { "option": "Larry wall", "isCorrect": false },
+      { "option": "Rich Hickey", "isCorrect": false },
+      { "option": "TJ Holowaychuk", "isCorrect": true },
+      { "option": "Rob Pike", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "TJ Holowaychuk is credited as the developer of Express.js.",
+    "code": "",
+    "questionNumber": 1,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following are the core features of the Express framework?",
+    "options": [
+      {
+        "option": "It allows us to set up middleware to respond to HTTP Requests.",
+        "isCorrect": false
+      },
+      {
+        "option": "It defines a routing table that can work as per HTTP Method and URL.",
+        "isCorrect": false
+      },
+      {
+        "option": "It is used to render the HTML pages dynamically.",
+        "isCorrect": false
+      },
+      { "option": "All of the above.", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "All of the above are the core features of the Express framework.",
+    "code": "",
+    "questionNumber": 2,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "express"
+  },
+  {
+    "questionText": "In which of the following year was Express.js initially released?",
+    "options": [
+      { "option": "November 2010", "isCorrect": true },
+      { "option": "November 2011", "isCorrect": false },
+      { "option": "December 2010", "isCorrect": false },
+      { "option": "December 2011", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "Express.js was initially released in November, 2010.",
+    "code": "",
+    "questionNumber": 3,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "express"
+  },
+  {
+    "questionText": "What is the way to store local variables that can be accessed within the application?",
+    "options": [
+      { "option": "Using Config file", "isCorrect": false },
+      { "option": "Using database", "isCorrect": false },
+      { "option": "Using app.locals", "isCorrect": true },
+      { "option": "Using app.storage", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "We can store local variables that can be accessed within the application by using app.locals.",
+    "code": "",
+    "questionNumber": 4,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "express"
+  },
+  {
+    "questionText": "In combination with a request method, root paths define the endpoints at which requests can be made. Which of the following are valid forms of route path?",
+    "options": [
+      { "option": "strings", "isCorrect": false },
+      { "option": "string patterns", "isCorrect": false },
+      { "option": "regular expressions", "isCorrect": false },
+      { "option": "All of the above", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "All of the above are valid forms of the route path.",
+    "code": "",
+    "questionNumber": 5,
+    "inputType": "radio",
+    "difficultyLevel": "beginner",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Where are the captured values populated regarding the route parameters?",
+    "options": [
+      { "option": "req.data", "isCorrect": false },
+      { "option": "app.locals", "isCorrect": false },
+      { "option": "req.params", "isCorrect": true },
+      { "option": "All of the above", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The captured values are populated at req.params",
+    "code": "",
+    "questionNumber": 6,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "express"
+  },
+  {
+    "questionText": "How is it possible to create chainable route handlers for a route path in Express.js?",
+    "options": [
+      { "option": "Using app.route()", "isCorrect": true },
+      { "option": "Using app.routes()", "isCorrect": false },
+      { "option": "BUsing app.router()", "isCorrect": false },
+      { "option": "Using app.routing()", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "By using app.route() method, we can create chainable route handlers for a route path in Express.js.",
+    "code": "",
+    "questionNumber": 7,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following function arguments are available to Express.js Route handlers?",
+    "options": [
+      { "option": "req - the request object", "isCorrect": false },
+      { "option": "res - the response object", "isCorrect": false },
+      { "option": "next", "isCorrect": false },
+      { "option": "All of the above", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "All of the above function arguments are available to Express.js Route handlers.",
+    "code": "",
+    "questionNumber": 8,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "express"
+  },
+  {
+    "questionText": "In Express.js, the method app.all(path, callback [, callback ...]) can accept all HTTP methods:",
+    "options": [
+      { "option": "True", "isCorrect": false },
+      { "option": "False", "isCorrect": false },
+      { "option": "Insufficient data", "isCorrect": true },
+      { "option": "None of the above", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The statement that In Express.js, the method app.all(path, callback [, callback ...]) can accept all HTTP methods is true.",
+    "code": "",
+    "questionNumber": 9,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "express"
+  },
+
+  {
+    "questionText": "Which of the following is a middleware in Express.js? ",
+    "options": [
+      { "option": "function(req){ }", "isCorrect": false },
+      { "option": "method(req){ }", "isCorrect": false },
+      { "option": "function(req,res,next){ }", "isCorrect": true },
+      { "option": "method(req,res,next){ }", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The function(req,res,next){ } is a middleware in Express.js.",
+    "code": "",
+    "questionNumber": 10,
+    "inputType": "radio",
+    "difficultyLevel": "intermediate",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following is the correct statement in the context of Express.js?",
+    "options": [
+      {
+        "option": "Express is a minimal and flexible Node.js web application framework.",
+        "isCorrect": true
+      },
+      {
+        "option": "Express is a minimal and flexible React.js web application framework.",
+        "isCorrect": false
+      },
+      {
+        "option": "Express is a minimal and flexible Redux.js web application framework.",
+        "isCorrect": false
+      },
+      {
+        "option": "Express is a minimal and flexible Angular.js web application framework.",
+        "isCorrect": false
+      }
+    ],
+    "correctOptions": 1,
+    "explanation": "Express is a minimal and flexible Node.js web application framework. It is an open-source framework developed and maintained by the Node.js Foundation and used to provide a robust set of features for web and mobile applications.",
+    "code": "",
+    "questionNumber": 11,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following is the correct syntax to use Express.js in Node?",
+    "options": [
+      { "option": "var = require('express')();", "isCorrect": false },
+      { "option": "var_require('express')();", "isCorrect": false },
+      { "option": "var app = require('express')();", "isCorrect": true },
+      { "option": "None of the above.", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+
+    "explanation": "The syntax var app = require('express')(); is used to assemble Express.js with Node.",
+    "code": "",
+    "questionNumber": 12,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following is true about key props ?",
+    "options": [
+      { "option": "'Key' props are used to look beauty", "isCorrect": false },
+      {
+        "option": "'Key' prop is a way to identify the newly added element",
+        "isCorrect": true
+      },
+      { "option": "It is one type of attribute of HTML", "isCorrect": false },
+      { "option": "It is not used in the array", "isCorrect": false }
+    ],
+    "correctOptions": 1,
+    "explanation": "The key props in React.js are used for creating lists of elements in React. Keys Pops are used in React.js to check which items in the list are needed to be changed, updated, or deleted.",
+    "code": "",
+    "questionNumber": 13,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "express"
+  },
+  {
+    "questionText": "What of the fowling is a Templating Engine in Express.js?",
+    "options": [
+      { "option": "Pug", "isCorrect": false },
+      { "option": "EJS", "isCorrect": false },
+      {
+        "option": "Mustache",
+        "isCorrect": false
+      },
+      { "option": "All of the above.", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "A template engine basically helps us to use the static template files with minimal code. At runtime, the template engine replaces all the variables with actual values at the client-side.",
+    "code": "",
+    "questionNumber": 14,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "express"
+  },
+  {
+    "questionText": "Which of the following facilitates us to create a skeleton for a web application easily? ",
+    "options": [
+      { "option": "Authentication", "isCorrect": false },
+      { "option": "APIs", "isCorrect": false },
+      { "option": "Debugging", "isCorrect": false },
+      { "option": "Scaffolding", "isCorrect": true }
+    ],
+    "correctOptions": 1,
+    "explanation": "Scaffolding facilitates us to create a skeleton for a web application easily.",
+    "code": "",
+    "questionNumber": 15,
+    "inputType": "radio",
+    "difficultyLevel": "advanced",
+    "questionType": "express"
+  }
+]
