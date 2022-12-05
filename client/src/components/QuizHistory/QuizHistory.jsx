@@ -50,7 +50,6 @@ function QuizHistory() {
 
   return (
     <>
-      <SideBar />
       <section className="flex min-h-screen">
         <div className=" text-gray-300 sm:w-1/4  min-h-screen  rounded-xl drop-shadow-lg my-2">
           {quizHistory.quizResults &&

@@ -9,7 +9,6 @@ function UserProfile() {
   }, []);
   return (
     <div className="relative">
-      <SideBar />
       <QuizCard />
       <Collapsible />
     </div>

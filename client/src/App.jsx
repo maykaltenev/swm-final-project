@@ -27,6 +27,7 @@ function App() {
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4">
         <Header />
+        {user && <SideBar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
