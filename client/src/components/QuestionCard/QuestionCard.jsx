@@ -15,7 +15,6 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
-import CountDownTimer from "../Timer/Timer";
 
 //styles
 import style from "./Question.module.css";
@@ -56,7 +55,6 @@ export default function QuestionCard({
     userInput
   ) => {
     const questionExist = answer?.find((item) => item.questionID === question);
-
     if (questionExist) {
       if (inputType === "radio") {
         setAnswer((prev) => {
@@ -199,10 +197,12 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div>
+    <div className="border-2 border-pink-500 sm:w-1/2">
       {
         <div key={question?._id}>
-          <h5>{question?.questionText}</h5>
+          <h5 className="border-2 rounded-md  p-2 my-4">
+            {question?.questionText}
+          </h5>
           {question?.code && (
             <div style={{ padding: "1rem", backgroundColor: "" }}>
               <Editor
@@ -220,69 +220,76 @@ export default function QuestionCard({
             ))}
           <div>
             {question?.options.map((option) => (
-              <div key={option?._id}>
-                <input
-                  className={style.button}
-                  type={question?.inputType}
-                  name={question?.inputType}
-                  style={{ border: "1px red solid" }}
-                  value={
-                    question?.inputType === "text" ? undefined : option?.option
-                  }
-                  id={option?._id}
-                  ref={userInput}
-                  checked={
-                    (answer &&
-                      answer[
-                        answer?.findIndex(
-                          (item) => item?.questionID === question?._id
-                        )
-                      ]?.answers?.includes(option?._id)) ||
-                    false
-                  }
-                  placeholder={
-                    answer &&
-                    answer[
-                      answer?.findIndex(
-                        (item) => item?.questionID === question?._id
-                      )
-                    ]?.answers[0]
-                  }
-                  maxLength={option?.option?.length}
-                  onChange={
-                    question.inputType !== "text"
-                      ? (e) =>
-                          handleUserAnswer(
-                            question?._id,
-                            e.target?.id,
-                            getUser?._id,
-                            sessionId,
-                            question?.inputType,
-                            userInput?.current?.value
+              <ul class=" text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
+                  <div className="flex items-center pl-3" key={option?._id}>
+                    <input
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  dark:focus:ring-blue-600 dark:ring-offset-gray-700  dark:bg-gray-600 dark:border-gray-500   "
+                      type={question?.inputType}
+                      name={question?.inputType}
+                      value={
+                        question?.inputType === "text"
+                          ? undefined
+                          : option?.option
+                      }
+                      id={option?._id}
+                      ref={userInput}
+                      checked={
+                        (answer &&
+                          answer[
+                            answer?.findIndex(
+                              (item) => item?.questionID === question?._id
+                            )
+                          ]?.answers?.includes(option?._id)) ||
+                        false
+                      }
+                      placeholder={
+                        answer &&
+                        answer[
+                          answer?.findIndex(
+                            (item) => item?.questionID === question?._id
                           )
-                      : debounce(
-                          (e) =>
-                            handleUserAnswer(
-                              question?._id,
-                              e.target?.id,
-                              getUser?._id,
-                              sessionId,
-                              question?.inputType,
-                              userInput?.current?.value
-                            ),
-                          300
-                        )
-                  }
-                />
-                <label htmlFor={option?.option}>
-                  {question.inputType === "text" ? "" : option?.option}
-                </label>
-              </div>
+                        ]?.answers[0]
+                      }
+                      maxLength={option?.option?.length}
+                      onChange={
+                        question.inputType !== "text"
+                          ? (e) =>
+                              handleUserAnswer(
+                                question?._id,
+                                e.target?.id,
+                                getUser?._id,
+                                sessionId,
+                                question?.inputType,
+                                userInput?.current?.value
+                              )
+                          : debounce(
+                              (e) =>
+                                handleUserAnswer(
+                                  question?._id,
+                                  e.target?.id,
+                                  getUser?._id,
+                                  sessionId,
+                                  question?.inputType,
+                                  userInput?.current?.value
+                                ),
+                              300
+                            )
+                      }
+                    />
+                    <label
+                      className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
+                      htmlFor={option?._id}
+                    >
+                      {question.inputType === "text" ? "" : option?.option}
+                    </label>
+                  </div>
+                </li>
+              </ul>
             ))}
             {showAnswer && <div>{question?.explanation}</div>}
             <hr />
           </div>
-          <CountDownTimer />
         </div>
       }
     </div>

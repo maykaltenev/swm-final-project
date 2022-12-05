@@ -10,15 +10,10 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div
-      style={{
-        marginTop: "2rem",
-        width: "25rem",
-        height: "25rem",
-      }}
-    >
+    <div className="flex flex-wrap">
       {questionData.map((question, i) => (
         <a
+          className=" w-2 h-4"
           style={{
             textDecoration: "none",
             cursor: "pointer",
