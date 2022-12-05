@@ -62,7 +62,10 @@ function Quiz() {
 
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         {Number(id) === questionData.length - 1 ? (
-          <button className="mb-80" onClick={getResult}>
+          <button
+            className="mb-80"
+            onClick={() => getResult(questionData[0]?.questionType)}
+          >
             Submit
           </button>
         ) : (

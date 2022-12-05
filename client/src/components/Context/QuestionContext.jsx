@@ -101,18 +101,19 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const getUserUpdated = async (data) => {
+  const getUserUpdated = async (data, questionType) => {
+    console.log(data);
     const update = await axios
       .post("http://localhost:5000/user/quiz/result", {
         userId: getUser._id,
         sessionId: sessionId,
         resultPercentage: data.data.userAnswerPercentage,
-        quizType: "javascript",
+        quizType: questionType,
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
   };
 
-  const getResult = async () => {
+  const getResult = async (questionType) => {
     try {
       const result = await axios
         .post("http://localhost:5000/questions/quiz/result", {
@@ -120,7 +121,7 @@ const QuestionContextProvider = ({ children }) => {
         })
         .then((data) => {
           setResult(data.data);
-          getUserUpdated(data);
+          getUserUpdated(data, questionType);
         });
       navigate("/result");
       return;

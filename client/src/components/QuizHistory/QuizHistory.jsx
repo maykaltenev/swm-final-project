@@ -47,7 +47,7 @@ function QuizHistory() {
     getQuizHistoryFromLocalStorage();
     handleShowMore();
   }, []);
-
+  console.log(quizHistory.quizResults);
   return (
     <>
       <section className="flex min-h-screen">
@@ -75,7 +75,7 @@ function QuizHistory() {
                           ? expressimg
                           : quiz?.quizType === "mongodb"
                           ? mongodbimg
-                          : quiz?.quizType === "node"
+                          : quiz?.quizType === "nodejs"
                           ? nodeimg
                           : ""
                       }
