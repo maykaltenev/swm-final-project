@@ -10,9 +10,7 @@ const QuestionContextProvider = ({ children }) => {
   const [points, setPoints] = useState(0);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
-
   const [result, setResult] = useState("");
-
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
