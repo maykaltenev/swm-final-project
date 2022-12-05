@@ -54,7 +54,7 @@ function Quiz() {
         {Number(id) === javaScriptData.length - 1 ? (
           <button
             className="mb-80"
-            onClick={getResult(javaScriptData[0]?.questionType)}
+            onClick={() => getResult(javaScriptData[0]?.questionType)}
           >
             Submit
           </button>

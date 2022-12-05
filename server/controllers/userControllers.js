@@ -110,11 +110,14 @@ export const updateQuizTimer = async (req, res) => {
 };
 export const updateUserQuizResults = async (req, res) => {
   const { userId, sessionId, resultPercentage, quizType } = req.body;
+  console.log(quizType);
   try {
     const session = await User.findOne({
       _id: userId,
       "quizResults.sessionId": sessionId,
     });
+
+    // to prevent pushing to the same session again after submitting.
 
     if (session) {
       return;
