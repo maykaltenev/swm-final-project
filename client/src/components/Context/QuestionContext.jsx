@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const QuestionContext = createContext(null);
 
@@ -29,10 +30,6 @@ const QuestionContextProvider = ({ children }) => {
     getQuizQuestionsFromLocalStorage()
   );
 
-  useEffect(() => {
-    getQuizQuestionsFromLocalStorage();
-  }, []);
-
   // Get the Session ID from localStorage
   const getSessionIdFromLocalStorage = () => {
     const sessionId = localStorage.getItem("sessionId");
@@ -44,6 +41,9 @@ const QuestionContextProvider = ({ children }) => {
   };
   const [sessionId, setSessionId] = useState(getSessionIdFromLocalStorage());
 
+  useEffect(() => {
+    getQuizQuestionsFromLocalStorage();
+  }, [sessionId]);
   // Get Marked Questions
   const getMarkedFromLocalStorage = () => {
     const marked = localStorage.getItem("marked");
@@ -54,15 +54,18 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
+  const { timer } = useContext(UserContext);
 
-  const handleCreateNewSession = async () => {
+  const handleCreateNewSession = async (questionType) => {
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/js/createQuiz",
+          `http://localhost:5000/questions/createQuiz`,
+
           {
             user: getUser._id,
+            questionType: questionType,
           },
           {
             withCredentials: true,
@@ -85,31 +88,30 @@ const QuestionContextProvider = ({ children }) => {
         )
         .then(() => {
           setSessionId(JSON.parse(localStorage.getItem("sessionId")));
-        });
-    } catch (error) {
-      console.log(error);
-    }
+        })
+        .then(() => timer());
+    } catch (error) {}
   };
-  const getUserUpdated = async (data) => {
+  const getUserUpdated = async (data, questionType) => {
     const update = await axios
       .post("http://localhost:5000/user/js/quiz/result", {
         userId: getUser._id,
         sessionId: sessionId,
         resultPercentage: data.data.userAnswerPercentage,
-        quizType: "javascript",
+        quizType: questionType,
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
   };
 
-  const getResult = async () => {
+  const getResult = async (questionType) => {
     try {
       const result = await axios
-        .post("http://localhost:5000/questions/js/quiz/result", {
+        .post(`http://localhost:5000/questions/quiz/result`, {
           sessionId: sessionId,
         })
         .then((data) => {
           setResult(data.data);
-          getUserUpdated(data);
+          getUserUpdated(data, questionType);
         });
       navigate("/result");
       return;

@@ -3,7 +3,7 @@ import { QuestionData } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
 
-export const createJsQuestions = async (req, res) => {
+export const createQuestions = async (req, res) => {
   try {
     const createQuestion = await QuestionData.create(req.body);
     return res
@@ -42,9 +42,9 @@ export const getAllQuestionsBySession = async (req, res) => {
   }
 };
 export const createQuizSession = async (req, res) => {
-  const { user, userSolution } = req.body;
+  const { user, userSolution, questionType } = req.body;
 
-  const questions = await questionData.find();
+  const questions = await QuestionData.find({ questionType: questionType });
 
   try {
     const newQuizSession = await QuizSession.create({

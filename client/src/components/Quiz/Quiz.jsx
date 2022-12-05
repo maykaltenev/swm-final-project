@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
+
 // Import Components
 import QuestionCard from "../QuestionCard/QuestionCard";
 import QuestionCircles from "../QuestionsCircles/QuestionCircles";
@@ -7,24 +7,14 @@ import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 import { QuestionContext } from "../Context/QuestionContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import SideBar from "../SideBar/SideBar";
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [result, setResult] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const {
-    getResult,
-    currentQuestion,
-    setCurrentQuestion,
-    getQuestions,
-    handleCreateNewSession,
-    javaScriptData,
-    points,
-    sessionId,
-    setSessionId,
-  } = useContext(QuestionContext);
+  const { getResult, setCurrentQuestion, javaScriptData, points } =
+    useContext(QuestionContext);
 
   const { id } = useParams();
 
@@ -62,7 +52,10 @@ function Quiz() {
 
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         {Number(id) === javaScriptData.length - 1 ? (
-          <button className="mb-80" onClick={getResult}>
+          <button
+            className="mb-80"
+            onClick={getResult(javaScriptData[0].questionType)}
+          >
             Submit
           </button>
         ) : (

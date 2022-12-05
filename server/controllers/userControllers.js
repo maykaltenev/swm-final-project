@@ -17,7 +17,7 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
-    console.log(createdUser)
+
     return res.status(201).json({ message: "User created", createdUser });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -69,8 +69,6 @@ export const getUserData = async (req, res) => {
 };
 //checking
 export const getUserDatas = async (req, res) => {
-
-
   try {
     const userDatas = await User.find();
 
@@ -118,8 +116,6 @@ export const updateUserQuizResults = async (req, res) => {
       "quizResults.sessionId": sessionId,
     });
 
-    console.log(session);
-
     if (session) {
       return;
     }
@@ -131,7 +127,7 @@ export const updateUserQuizResults = async (req, res) => {
           quizResults: {
             sessionId,
             resultPercentage,
-            quizType,
+            quizType: questionType,
             createdOn: Date.now(),
           },
         },
@@ -139,7 +135,6 @@ export const updateUserQuizResults = async (req, res) => {
       { new: true }
     );
 
-    console.log(updateUserQuizResult);
     return res.status(200).json(updateUserQuizResult);
   } catch (error) {
     return res.send(error);

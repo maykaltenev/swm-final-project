@@ -2,9 +2,13 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Context/UserContext";
 import { differenceInSeconds } from "date-fns";
+import { QuestionContext } from "../Context/QuestionContext";
+import { useLocation } from "react-router-dom";
 
 function CountDownTimer() {
   const { timer } = useContext(UserContext);
+
+  const { sessionId } = useContext(QuestionContext);
 
   const getQuizTimeFromLocalStorage = () => {
     const quizTime = localStorage.getItem("quizTime");
@@ -15,12 +19,16 @@ function CountDownTimer() {
     }
   };
   const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
+
+  console.log(quizTime);
+
   const date = new Date();
   const duration = 600;
 
   useEffect(() => {
     getQuizTimeFromLocalStorage();
   }, []);
+
   const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
 
   const formatRemainingTime = (time) => {

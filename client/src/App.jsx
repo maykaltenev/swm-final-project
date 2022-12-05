@@ -38,7 +38,6 @@ function App() {
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
         </Routes>
-        <QuizCard />
       </div>
     </div>
   );

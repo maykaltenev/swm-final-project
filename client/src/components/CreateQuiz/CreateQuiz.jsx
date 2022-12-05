@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 
 import { QuestionContext } from "../Context/QuestionContext";
 import { UserContext } from "../Context/UserContext";
-import SideBar from "../SideBar/SideBar";
 
 function CreateQuiz() {
   const { timer } = useContext(UserContext);
@@ -17,7 +16,6 @@ function CreateQuiz() {
     setMarked([]);
     setSessionId("");
     setJavaScriptData([]);
-
     handleCreateNewSession();
     timer();
   };

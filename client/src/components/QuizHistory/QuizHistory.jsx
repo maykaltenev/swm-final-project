@@ -7,7 +7,6 @@ import mongodbimg from "../../assets/mongodbimg.png";
 import jsimg from "../../assets/jsimg.png";
 import expressimg from "../../assets/expressimg.png";
 import nodeimg from "../../assets/nodeimg.png";
-import SideBar from "../SideBar/SideBar";
 
 function QuizHistory() {
   const [result, setResult] = useState("");
@@ -55,6 +54,7 @@ function QuizHistory() {
           {quizHistory.quizResults &&
             quizHistory.quizResults.map((quiz) => (
               <Fragment key={quiz.sessionId}>
+                {console.log(quiz)}
                 <div
                   className={`bg-dark-purple sm:h-24 items-center rounded-r-md flex-col-reverse m-px shadow-lg cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
                     quiz.sessionId === selected
@@ -75,7 +75,7 @@ function QuizHistory() {
                           ? expressimg
                           : quiz?.quizType === "mongodb"
                           ? mongodbimg
-                          : quiz?.quizType === "node"
+                          : quiz?.quizType === "nodejs"
                           ? nodeimg
                           : ""
                       }
