@@ -25,7 +25,6 @@ function Result() {
   };
   return (
     <div>
-      <SideBar />
       {result && (
         <div className="result-card">
           <div>

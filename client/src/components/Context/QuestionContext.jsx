@@ -53,14 +53,15 @@ const QuestionContextProvider = ({ children }) => {
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
 
-  const handleCreateNewSession = async () => {
+  const handleCreateNewSession = async (questionType) => {
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/js/createQuiz",
+          "http://localhost:5000/questions/createQuiz",
           {
             user: getUser._id,
+            questionType: questionType,
           },
           {
             withCredentials: true,
