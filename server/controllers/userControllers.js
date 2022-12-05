@@ -127,7 +127,7 @@ export const updateUserQuizResults = async (req, res) => {
           quizResults: {
             sessionId,
             resultPercentage,
-            quizType: questionType,
+            quizType,
             createdOn: Date.now(),
           },
         },
