@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import JavaScriptPic from "../../assets/cards/pc-yellow.png";
 import ReactPic from "../../assets/cards/pc-red.png";
 import NodePic from "../../assets/cards/pc-green.png";
 import { VscCircleFilled, VscCircleOutline } from "react-icons/vsc";
-
+import { QuestionContext } from "../Context/QuestionContext";
 export default function QuizCard() {
+  const { handleNewQuiz } = useContext(QuestionContext);
   return (
     <div className="container flex mb-6 dark:text-snow py-26 ">
       <div className="flex flex-wrap">
@@ -38,7 +39,10 @@ export default function QuizCard() {
                   </div>
                   <span className="text-xs text-center">Intermediate</span>
                 </div>
-                <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">
+                <button
+                  onClick={() => handleNewQuiz("javascript")}
+                  className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue"
+                >
                   Start Quiz
                 </button>
               </div>
@@ -75,7 +79,10 @@ export default function QuizCard() {
                   </div>
                   <span className="text-xs text-center">Beginner</span>
                 </div>
-                <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">
+                <button
+                  onClick={() => handleNewQuiz("react")}
+                  className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue"
+                >
                   Start Quiz
                 </button>
               </div>
@@ -112,7 +119,10 @@ export default function QuizCard() {
                   </div>
                   <span className="text-xs text-center">Beginner</span>
                 </div>
-                <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">
+                <button
+                  onClick={() => handleNewQuiz("nodejs")}
+                  className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue"
+                >
                   Start Quiz
                 </button>
               </div>
