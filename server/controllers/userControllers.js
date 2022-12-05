@@ -9,11 +9,12 @@ dotenv.config();
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
 // initialize googlestrategy. syntax ({options}, callback function)
-
+console.log("client id is:",process.env.GOOGLE_CLIENT_ID)
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
+     
+       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/user/google/callback",
       proxy: true,
