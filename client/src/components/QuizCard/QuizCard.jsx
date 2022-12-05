@@ -10,8 +10,8 @@ export default function QuizCard() {
     <div className="container flex mb-6 dark:text-snow py-26 ">
       <div className="flex flex-wrap">
         {/* JavaScript */}
-        <div className="p-4 sm:w-1/3">
-          <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
+        <div className="p-4 sm:w-1/3 ">
+          <div className="hover:shadow-xl  hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src={JavaScriptPic}
@@ -51,7 +51,7 @@ export default function QuizCard() {
         </div>
         {/* React */}
         <div className=" p-4 sm:w-1/3">
-          <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
+          <div className="hover:shadow-xl hover:scale-105 transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src={ReactPic}
@@ -91,7 +91,7 @@ export default function QuizCard() {
         </div>
         {/* Node */}
         <div className=" p-4 sm:w-1/3">
-          <div className="h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
+          <div className="hover:shadow-xl hover:scale-105 transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src={NodePic}

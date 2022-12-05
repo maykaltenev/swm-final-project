@@ -10,19 +10,12 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div className="flex flex-wrap">
+    <div className="h-1/4 grid grid-cols-6 border-2 sm:grid-cols-8 sm:g-1 ">
       {questionData.map((question, i) => (
         <a
-          className=" w-2 h-4"
+          className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center m-3 "
           style={{
-            textDecoration: "none",
-            cursor: "pointer",
             backgroundColor: marked.includes(question?._id) ? "lightgray" : "",
-            border: "1px black solid",
-            borderRadius: "50%",
-            width: "4rem",
-            height: "4rem",
-            padding: "0.3rem",
           }}
           key={question?._id}
           onClick={() => handleChangeIndex(i)}

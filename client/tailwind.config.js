@@ -7,6 +7,9 @@ module.exports = {
       zIndex: {
         "100": "100"
       },
+      fontSize: {
+        sm: '0.7rem'
+      },
       colors: {
         // dark-mode
         "bg-xiketic": "#15141E",
@@ -18,7 +21,7 @@ module.exports = {
         "menu-dark-silver-metallic": "#A6A4AD",
         "menu-silver-metallic": "#B5B3BB",
         "link-violet-blue": "#7170D9",
-        "link-cyber-yellow": "#FFD51C",
+        "cyber-yellow": "#FFD51C",
         "oxford-blue": "#1f293b",
         "sonic-silver": "#6F86A5",
         "ultramarine-blue": "#5068F2",

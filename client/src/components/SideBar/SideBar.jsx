@@ -51,8 +51,8 @@ export default function SideBar() {
         className={`${showAsideMenu ? "relative " : "absolute sm:relative"} 
          sm:hidden flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-javascript-yellow text-ultramarine-blue-2 text-lg
-        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group z-50`}
@@ -68,8 +68,8 @@ export default function SideBar() {
           showAsideMenu ? "relative " : " absolute sm:relative"
         } flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-javascript-yellow text-ultramarine-blue-2 text-lg
-        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group z-20`}
@@ -92,8 +92,8 @@ export default function SideBar() {
           showAsideMenu ? "relative" : "absolute  sm:relative"
         } flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-javascript-yellow text-ultramarine-blue-2 text-lg
-        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group z-20`}
@@ -116,8 +116,8 @@ ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
           showAsideMenu ? "relative" : "absolute  sm:relative "
         } flex items-center justify-center 
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-javascript-yellow text-ultramarine-blue-2 text-lg
-        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group z-20`}
@@ -139,8 +139,8 @@ ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
           showAsideMenu ? "relative" : "absolute sm:relative"
         } flex items-center justify-center
         h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
-        bg-javascript-yellow text-ultramarine-blue-2 text-lg
-        hover:bg-ultramarine-blue-2  hover:text-javascript-yellow
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
         rounded-3xl hover:rounded-xl
         transition-all duration-300 ease-linear
         cursor-pointer group `}

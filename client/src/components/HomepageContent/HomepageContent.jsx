@@ -14,7 +14,7 @@ function HomepageContent() {
               src={Stream}
             />
           </div>
-          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16 border-2 flex align-center flex-col  bg-oxford-blue  rounded-xl border-y border-link-cyber-yellow">
+          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16 border-2 flex align-center flex-col  bg-oxford-blue  rounded-xl border-y border-cyber-yellow">
             <div className="flex flex-col text-center items-center">
               <h1 className="title-font sm:w-2/4 sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
                 Hands-on coding environments
@@ -31,7 +31,7 @@ function HomepageContent() {
 
       <div className="text-gray-600 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center justify-center">
-          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16  align-center flex-col  bg-oxford-blue  rounded-xl border-y border-link-cyber-yellow">
+          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16  align-center flex-col  bg-oxford-blue  rounded-xl border-y border-cyber-yellow">
             <div className="flex flex-col text-center items-center">
               <h1 className="title-font sm:w-2/4 sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
                 Hands-on coding environments

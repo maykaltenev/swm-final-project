@@ -197,7 +197,7 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="border-2 border-pink-500 sm:w-1/2">
+    <div className="border-2 mb-4 bg-indigo-300 bg-gray-200 w-full sm:w-1/2">
       {
         <div key={question?._id}>
           <h5 className="border-2 rounded-md  p-2 my-4">
@@ -206,6 +206,7 @@ export default function QuestionCard({
           {question?.code && (
             <div style={{ padding: "1rem", backgroundColor: "" }}>
               <Editor
+                style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
                 value={question.code}
                 highlight={(code) => highlight(code, languages.js)}
                 disabled

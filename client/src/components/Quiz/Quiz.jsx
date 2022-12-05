@@ -50,13 +50,13 @@ function Quiz() {
         <span>{id * 1 + 1}</span>/<span> {questionData.length}</span>
         <div>Points: {points}</div>
       </div>
-      <div className="container p-12 bg-spanish-gray sm:flex sm:flex-row sm:flex-wrap sm:justify-between items-center border-red-500 border-2">
+      <div className="container h-screen sm:p-12 bg-spanish-gray sm:flex sm:flex-row sm:flex-wrap sm:justify-between items-center border-red-500 border-2">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="flex sm:flex-col sm:flex-row border-2 border-indigo-700 w-1/2">
+        <div className="flex h-full w-full flex-row sm:flex-col sm:flex-row border-2 border-indigo-700 sm:w-1/2">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>

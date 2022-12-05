@@ -13,7 +13,7 @@ export default function BannerTiles() {
     <div className="relative overflow-hidden poppins">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48 ">
         <div className=" relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          <div className="sm:max-w-lg bg-oxford-blue p-14 rounded-xl border-y border-link-cyber-yellow">
+          <div className="sm:max-w-lg bg-oxford-blue p-14 rounded-xl border-y border-cyber-yellow">
             <h1 className="font text-4xl font-bold tracking-tight text-ultramarine-blue-2 sm:text-6xl">
               MERN+ is never minus!
             </h1>
@@ -90,13 +90,13 @@ export default function BannerTiles() {
                 </div>
               </div>
               <div className="w-2/5 w-3/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
-                {/* <button className="rounded bg-link-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
+                {/* <button className="rounded bg-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey
                 </button> */}
-                <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-link-cyber-yellow px-6 py-3 text-base text-dark-raisin-black hover:bg-javascript-yellow ">
+                <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow ">
                   Start Journey
                 </button>
-                <button className="rounded md:w-2/4  md:p-3 font-medium inline-flex w-full sm:w-1/3   items-center justify-center bg-ultramarine-blue px-6 py-3 text-link-cyber-yellow hover:bg-ultramarine-blue-2  bg-link-cyber-yellow  ">
+                <button className="rounded md:w-2/4  md:p-3 font-medium inline-flex w-full sm:w-1/3   items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                   Test Skills
                 </button>
               </div>
