@@ -7,7 +7,7 @@ import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
 function Result() {
   const [show, setShow] = useState(false);
-  const { javaScriptData, result, getResult } = useContext(QuestionContext);
+  const { questionData, result, getResult } = useContext(QuestionContext);
 
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function Result() {
             <h1>Your Score:{result?.userAnswerPercentage} %</h1>{" "}
           </div>
           <div>
-            <p>Total Number of Questions: {javaScriptData?.length}</p>
+            <p>Total Number of Questions: {questionData?.length}</p>
           </div>
           <div>
             <p>Number of Correct Answers: {result?.correctAnswers}</p>

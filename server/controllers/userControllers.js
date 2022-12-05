@@ -6,7 +6,7 @@ import User from "../models/user.js";
 dotenv.config();
 /* -----------------------google strategy-------------------------- */
 
-import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+// import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
 // initialize googlestrategy. syntax ({options}, callback function)
 
@@ -161,13 +161,13 @@ export const updateQuizTimer = async (req, res) => {
 };
 export const updateUserQuizResults = async (req, res) => {
   const { userId, sessionId, resultPercentage, quizType } = req.body;
+  console.log("test", quizType)
   try {
     const session = await User.findOne({
       _id: userId,
       "quizResults.sessionId": sessionId,
     });
-
-
+    // if session exist stop execution in order to avoid duplication of session
     if (session) {
       return;
     }
@@ -187,7 +187,7 @@ export const updateUserQuizResults = async (req, res) => {
       { new: true }
     );
 
-    console.log(updateUserQuizResult);
+
     return res.status(200).json(updateUserQuizResult);
   } catch (error) {
     return res.send(error);

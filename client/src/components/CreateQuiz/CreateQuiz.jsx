@@ -8,7 +8,7 @@ import SideBar from "../SideBar/SideBar";
 function CreateQuiz() {
   const { timer } = useContext(UserContext);
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
-  const { handleCreateNewSession, setMarked, setSessionId, setJavaScriptData } =
+  const { handleCreateNewSession, setMarked, setSessionId, setQuestionData } =
     useContext(QuestionContext);
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
@@ -18,7 +18,7 @@ function CreateQuiz() {
 
     setMarked([]);
     setSessionId("");
-    setJavaScriptData([]);
+    setQuestionData([]);
 
     handleCreateNewSession(chosenQuestionType);
     timer();

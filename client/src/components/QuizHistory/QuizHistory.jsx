@@ -30,7 +30,7 @@ function QuizHistory() {
   const handleShowMore = async (sessionId) => {
     try {
       const result = await axios
-        .post("http://localhost:5000/questions/js/quiz/result", {
+        .post("http://localhost:5000/questions/quiz/result", {
           sessionId: sessionId,
         })
         .then((data) => {
@@ -47,7 +47,7 @@ function QuizHistory() {
     getQuizHistoryFromLocalStorage();
     handleShowMore();
   }, []);
-
+  console.log(quizHistory.quizResults);
   return (
     <>
       <section className="flex min-h-screen">
@@ -75,7 +75,7 @@ function QuizHistory() {
                           ? expressimg
                           : quiz?.quizType === "mongodb"
                           ? mongodbimg
-                          : quiz?.quizType === "node"
+                          : quiz?.quizType === "nodejs"
                           ? nodeimg
                           : ""
                       }

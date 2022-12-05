@@ -1,7 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import User from "../models/user.js"
-import {generateToken} from "../helpers/authenticationHelper.js";
+import { generateToken } from "../helpers/authenticationHelper.js";
 import {
   registerUser,
   loginUser,
@@ -31,38 +31,38 @@ router.get("/logout", logout);
 //http:localhost:5000/user/addTimer
 router.patch("/addTimer", updateQuizTimer);
 
-//http://localhost:5000/user/js/quiz/result
-router.post("/js/quiz/result", updateUserQuizResults);
+//http://localhost:5000/user/quiz/result
+router.post("/quiz/result", updateUserQuizResults);
 
 /**
  * GOOGLE LOGIN PATHS
  */
 
- router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}))
+//  router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}))
 
 
- router.get('/google/callback', passport.authenticate('google', {
-     failureRedirect: '/user/google/failure',
-     session: false
- }), async (req, res) => {
- 
-     console.log('from google callback: id is', req.user._id)
- 
-     // User is the class. req.user is a new User
-     const token = await generateToken(req.user)
- console.log("the token from google server is:",token)
-     res.cookie('cookiename', token)
- 
-     res.redirect('http://localhost:3000/glogin/' + req.user._id)
- })
- 
- router.get('/glogin/:id', async (req, res) => {
- 
-     console.log('from glogin: id is', req.params.id)
- 
-     const user = await User.findById(req.params.id)/* .select('-__v -password') */
-     console.log("the user in backend",user)
-     res.send({success: true, user})
-     
- })
+//  router.get('/google/callback', passport.authenticate('google', {
+//      failureRedirect: '/user/google/failure',
+//      session: false
+//  }), async (req, res) => {
+
+//      console.log('from google callback: id is', req.user._id)
+
+//      // User is the class. req.user is a new User
+//      const token = await generateToken(req.user)
+//  console.log("the token from google server is:",token)
+//      res.cookie('cookiename', token)
+
+//      res.redirect('http://localhost:3000/glogin/' + req.user._id)
+//  })
+
+//  router.get('/glogin/:id', async (req, res) => {
+
+//      console.log('from glogin: id is', req.params.id)
+
+//      const user = await User.findById(req.params.id)/* .select('-__v -password') */
+//      console.log("the user in backend",user)
+//      res.send({success: true, user})
+
+//  })
 export default router;

@@ -23,7 +23,7 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-  const [javaScriptData, setJavaScriptData] = useState(
+  const [questionData, setQuestionData] = useState(
     getQuizQuestionsFromLocalStorage()
   );
 
@@ -60,7 +60,7 @@ const QuestionContextProvider = ({ children }) => {
 
     setMarked([]);
     setSessionId("");
-    setJavaScriptData([]);
+    setQuestionData([]);
 
     handleCreateNewSession(chosenQuestionType);
     timer();
@@ -92,7 +92,7 @@ const QuestionContextProvider = ({ children }) => {
           )
         )
         .then(() =>
-          setJavaScriptData(JSON.parse(localStorage.getItem("quizQuestions")))
+          setQuestionData(JSON.parse(localStorage.getItem("quizQuestions")))
         )
         .then(() => {
           setSessionId(JSON.parse(localStorage.getItem("sessionId")));
@@ -101,26 +101,27 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const getUserUpdated = async (data) => {
+  const getUserUpdated = async (data, questionType) => {
+    console.log(data);
     const update = await axios
-      .post("http://localhost:5000/user/js/quiz/result", {
+      .post("http://localhost:5000/user/quiz/result", {
         userId: getUser._id,
         sessionId: sessionId,
         resultPercentage: data.data.userAnswerPercentage,
-        quizType: "javascript",
+        quizType: questionType,
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
   };
 
-  const getResult = async () => {
+  const getResult = async (questionType) => {
     try {
       const result = await axios
-        .post("http://localhost:5000/questions/js/quiz/result", {
+        .post("http://localhost:5000/questions/quiz/result", {
           sessionId: sessionId,
         })
         .then((data) => {
           setResult(data.data);
-          getUserUpdated(data);
+          getUserUpdated(data, questionType);
         });
       navigate("/result");
       return;
@@ -146,8 +147,8 @@ const QuestionContextProvider = ({ children }) => {
         getSessionIdFromLocalStorage,
         getQuizQuestionsFromLocalStorage,
         handleCreateNewSession,
-        setJavaScriptData,
-        javaScriptData,
+        setQuestionData,
+        questionData,
         setPoints,
         points,
       }}

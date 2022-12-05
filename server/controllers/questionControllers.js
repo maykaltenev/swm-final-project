@@ -24,8 +24,8 @@ export const removeJsCollection = async (req, res) => {
 
 // export const getAllJSQuestions = async (req, res) => {
 //     try {
-//         const javascript = await javaScript.find();
-//         return res.status(201).json({ message: "JavaScript Questions found", javascript });
+//         const QuestionData = await QuestionData.find();
+//         return res.status(201).json({ message: "JavaScript Questions found", QuestionData });
 //     } catch (error) {
 //         return res.status(500).json({ message: error.message });
 //     }
@@ -223,25 +223,6 @@ export const createResult = async (req, res) => {
                   correct: false,
                 });
               }
-
-              // const result = Diff.diffChars(correct, userInput);
-              // const resultWord = Diff.diffWords(correct, userInput);
-              // const resultBlock = Diff.diffLines(correct, userInput);
-              // const resultSentences = Diff.diffSentences(correct, userInput);
-              // const correctAnswer = [];
-              // const wrongAnswers = [];
-              // let lastCorrectAnswer = [];
-              // let lastWrongAnswer = [];
-              // // (part.removed && part.count <= 1 || part.added && part.count <= 1) ? correctAnswer.push(userInput) :
-              // result.forEach((part) => {
-              //   if ((part.added === undefined && part.removed === undefined)) {
-              //     return correctAnswer.push(userInput)
-              //   } else if (((part.removed && part.count < 2) || (part.added && part.count < 2))) {
-              //     return correctAnswer.push(userInput)
-              //   } else {
-              //     return wrongAnswers.push(userInput)
-              //   }
-              // })
             }
           }
         });
@@ -273,7 +254,7 @@ export const createResult = async (req, res) => {
 /* export const getResult = async (req, res) => {
 
   try {
-    const getQuestions = await javaScript.remove();
+    const getQuestions = await QuestionData.remove();
     return res
       .status(201)
       .json({ message: "Deleted ", deleted });

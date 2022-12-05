@@ -20,7 +20,7 @@ function Quiz() {
     setCurrentQuestion,
     getQuestions,
     handleCreateNewSession,
-    javaScriptData,
+    questionData,
     points,
     sessionId,
     setSessionId,
@@ -35,7 +35,7 @@ function Quiz() {
   const navigate = useNavigate();
   const handleNext = () => {
     setCurrentQuestion(id);
-    navigate(`/mypage/${id * 1 < javaScriptData.length - 1 ? id * 1 + 1 : id}`);
+    navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
   };
   const handleShowAnswer = (e) => {
     e.preventDefault();
@@ -48,11 +48,11 @@ function Quiz() {
     <>
       <div className="quiz-main-container ml-60">
         <div className="quiz-container">
-          <span>{id * 1 + 1}</span>/<span> {javaScriptData.length}</span>
+          <span>{id * 1 + 1}</span>/<span> {questionData.length}</span>
           <div>Points: {points}</div>
         </div>
         <QuestionCard
-          question={javaScriptData[id]}
+          question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
@@ -61,8 +61,11 @@ function Quiz() {
         <button onClick={handleShowAnswer}>Show Answer</button>
 
         <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
-        {Number(id) === javaScriptData.length - 1 ? (
-          <button className="mb-80" onClick={getResult}>
+        {Number(id) === questionData.length - 1 ? (
+          <button
+            className="mb-80"
+            onClick={() => getResult(questionData[0]?.questionType)}
+          >
             Submit
           </button>
         ) : (

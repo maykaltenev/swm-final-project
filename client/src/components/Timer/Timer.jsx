@@ -17,12 +17,11 @@ function CountDownTimer() {
   const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
   const date = new Date();
   const duration = 600;
+  const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
 
   useEffect(() => {
     getQuizTimeFromLocalStorage();
   }, []);
-  const timeDifference = differenceInSeconds(new Date(quizTime?.end), date);
-
   const formatRemainingTime = (time) => {
     let minutes = Math.floor((time % 3600) / 60);
     let seconds = time % 60;

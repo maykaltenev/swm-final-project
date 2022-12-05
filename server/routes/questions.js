@@ -12,16 +12,16 @@ import {
 
 const router = Router();
 
-//http://localhost:5000/questions/js
-router.post("/js", createJsQuestions);
+//http://localhost:5000/questions/createallquestions
+router.post("/createallquestions", createJsQuestions);
 //http://localhost:5000/questions/js
 // router.get("/js", getAllJSQuestions);
 http://localhost:5000/questions/createQuiz
 router.post("/createQuiz", createQuizSession);
-// http://localhost:5000/questions/js/quiz
-router.patch("/js/quiz", createUserResponse);
-//http://localhost:5000/questions/js/quiz/result
-router.post("/js/quiz/result", createResult);
+// http://localhost:5000/questions/quiz
+router.patch("/quiz", createUserResponse);
+//http://localhost:5000/questions/quiz/result
+router.post("/quiz/result", createResult);
 //http://localhost:5000/questions/js/quiz/delete
 router.delete("/js/quiz/delete", removeJsCollection)
 // http://localhost:5000/questions/js/sessionID/:id
