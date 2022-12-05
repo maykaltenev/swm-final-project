@@ -23,7 +23,7 @@ const QuestionContextProvider = ({ children }) => {
       return [];
     }
   };
-  const [javaScriptData, setJavaScriptData] = useState(
+  const [questionData, setQuestionData] = useState(
     getQuizQuestionsFromLocalStorage()
   );
 
@@ -60,7 +60,7 @@ const QuestionContextProvider = ({ children }) => {
 
     setMarked([]);
     setSessionId("");
-    setJavaScriptData([]);
+    setQuestionData([]);
 
     handleCreateNewSession(chosenQuestionType);
     timer();
@@ -92,7 +92,7 @@ const QuestionContextProvider = ({ children }) => {
           )
         )
         .then(() =>
-          setJavaScriptData(JSON.parse(localStorage.getItem("quizQuestions")))
+          setQuestionData(JSON.parse(localStorage.getItem("quizQuestions")))
         )
         .then(() => {
           setSessionId(JSON.parse(localStorage.getItem("sessionId")));
@@ -146,8 +146,8 @@ const QuestionContextProvider = ({ children }) => {
         getSessionIdFromLocalStorage,
         getQuizQuestionsFromLocalStorage,
         handleCreateNewSession,
-        setJavaScriptData,
-        javaScriptData,
+        setQuestionData,
+        questionData,
         setPoints,
         points,
       }}

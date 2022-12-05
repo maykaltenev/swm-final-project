@@ -3,7 +3,7 @@ import { QuestionContext } from "../Context/QuestionContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function QuestionCircles({ setCurrentQuestion }) {
-  const { javaScriptData, marked } = useContext(QuestionContext);
+  const { questionData, marked } = useContext(QuestionContext);
   const navigate = useNavigate();
   const handleChangeIndex = (i) => {
     navigate(`/mypage/${i}`);
@@ -17,7 +17,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
         height: "25rem",
       }}
     >
-      {javaScriptData.map((question, i) => (
+      {questionData.map((question, i) => (
         <a
           style={{
             textDecoration: "none",
