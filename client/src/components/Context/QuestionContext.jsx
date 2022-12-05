@@ -103,7 +103,7 @@ const QuestionContextProvider = ({ children }) => {
   };
   const getUserUpdated = async (data) => {
     const update = await axios
-      .post("http://localhost:5000/user/js/quiz/result", {
+      .post("http://localhost:5000/user/quiz/result", {
         userId: getUser._id,
         sessionId: sessionId,
         resultPercentage: data.data.userAnswerPercentage,
@@ -115,7 +115,7 @@ const QuestionContextProvider = ({ children }) => {
   const getResult = async () => {
     try {
       const result = await axios
-        .post("http://localhost:5000/questions/js/quiz/result", {
+        .post("http://localhost:5000/questions/quiz/result", {
           sessionId: sessionId,
         })
         .then((data) => {

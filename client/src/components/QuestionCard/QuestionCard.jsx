@@ -159,7 +159,7 @@ export default function QuestionCard({
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios.patch(
-        "http://localhost:5000/questions/js/quiz",
+        "http://localhost:5000/questions/quiz",
         {
           question,
           answer,

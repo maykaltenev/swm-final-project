@@ -28,6 +28,6 @@ router.get("/logout", logout);
 //http:localhost:5000/user/addTimer
 router.patch("/addTimer", updateQuizTimer);
 
-//http://localhost:5000/user/js/quiz/result
-router.post("/js/quiz/result", updateUserQuizResults);
+//http://localhost:5000/user/quiz/result
+router.post("/quiz/result", updateUserQuizResults);
 export default router;
