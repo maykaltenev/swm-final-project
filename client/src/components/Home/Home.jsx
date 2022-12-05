@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import Banner from "../Banner/Banner";
+import BannerTiles from "../BannerTiles/BannerTiles";
 import HomepageContent from "../HomepageContent/HomepageContent";
+import SideBar from "../SideBar/SideBar";
 
 function Home() {
   return (
     <div>
-      <Link to={"/quizhistory"}>Quiz History</Link>
       <div>
-        <Banner />
+        {/* <Banner />
+         */}
+        <BannerTiles />
         <HomepageContent />
       </div>
     </div>

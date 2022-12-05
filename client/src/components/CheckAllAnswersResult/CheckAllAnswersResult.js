@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -10,7 +10,9 @@ function CheckAllAnswersResult({ allQues }) {
   const wrongAnswersArr = allQues?.userWrongAnswerAll?.map(
     (item) => item?.option
   );
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //user correctarray
   const correctArray = [];
   const wrongArray = [];
@@ -27,16 +29,15 @@ function CheckAllAnswersResult({ allQues }) {
         <Fragment>
           <div
             key={i}
-            className=" bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-1/2 sm:p-5 "
+            className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/6 sm:p-5 "
           >
             <h5
-              className={` ${
-                correctArray.includes(question._id)
-                  ? "border-2 border-green-400 rounded-md bg-green-50 p-2 my-4"
-                  : wrongArray.includes(question._id)
+              className={` ${correctArray.includes(question._id)
+                ? "border-2 border-green-400 rounded-md bg-green-50 p-2 my-4"
+                : wrongArray.includes(question._id)
                   ? "border-2 rounded-md border-red-400 bg-red-50 p-2 my-4"
                   : "border-2 rounded-md border-gray-400 bg-gray-300 p-2 my-4"
-              }
+                }
                 
                `}
             >
@@ -55,13 +56,12 @@ function CheckAllAnswersResult({ allQues }) {
               {question?.options?.map((option, i) => (
                 <li
                   key={i}
-                  className={` my-4 py-1 rounded-md  shadow-md list-none	px-3  ${
-                    option.isCorrect === true
-                      ? "bg-green-200"
-                      : wrongAnswersArr.includes(option.option)
+                  className={` my-4 py-1 rounded-md  shadow-md list-none	px-3  ${option.isCorrect === true
+                    ? "bg-green-200"
+                    : wrongAnswersArr.includes(option.option)
                       ? "bg-red-200"
                       : ""
-                  }`}
+                    }`}
                 >
                   {option.option}
                 </li>

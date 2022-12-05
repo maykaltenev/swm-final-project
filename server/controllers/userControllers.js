@@ -69,7 +69,6 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
-    console.log(createdUser);
     return res.status(201).json({ message: "User created", createdUser });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -168,7 +167,6 @@ export const updateUserQuizResults = async (req, res) => {
       "quizResults.sessionId": sessionId,
     });
 
-    console.log(session);
 
     if (session) {
       return;

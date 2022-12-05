@@ -7,7 +7,7 @@ import {
     createResult,
     removeJsCollection,
     getAllQuestionsBySession,
-  
+
 } from "../controllers/questionControllers.js";
 
 const router = Router();
@@ -16,8 +16,8 @@ const router = Router();
 router.post("/js", createJsQuestions);
 //http://localhost:5000/questions/js
 // router.get("/js", getAllJSQuestions);
-http://localhost:5000/questions/js/createQuiz
-router.post("/js/createQuiz", createQuizSession);
+http://localhost:5000/questions/createQuiz
+router.post("/createQuiz", createQuizSession);
 // http://localhost:5000/questions/js/quiz
 router.patch("/js/quiz", createUserResponse);
 //http://localhost:5000/questions/js/quiz/result

@@ -4,19 +4,17 @@ import { HiLightningBolt, HiOutlineLightningBolt } from "react-icons/hi";
 // import { FaLightningBoltIcon } from "react-icons/fa";
 export default function Collapsible() {
   return (
-    <div className="ml-16 bg-gray-300 text-gray-800 min-h-screen ">
-      <h1 className="text-center">Welcome to the user page!</h1>
-      <div className="container  rounded border-ultramarine-blue mx-auto bg-gray-400 py-3 px-2">
+    <div className="text-gray-800 min-h-screen flex flex-col items-center  ">
+      <div className="container rounded border-ultramarine-blue sm:w-3/5 py-3 px-2">
         {/* JS */}
         <details
-          className="bg-snow shadow  rounded mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
+          className="bg-snow shadow h-2/4 rounded mb-4 border-solid "
           open
         >
           <summary
             className="list-none flex flex-wrap items-center cursor-pointer
     focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
-    rounded group-open:rounded-b-none group-open:z-[1] relative
-    "
+    rounded group-open:rounded-b-none group-open:z-[1] relative"
           >
             <h3 className="flex flex-1 p-4 font-semibold ">Java Script</h3>
             <div className="flex w-10 items-center justify-center">
@@ -50,7 +48,7 @@ export default function Collapsible() {
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
                     Start your journey with the JavaScript Path
                   </h2>
-                  <p clasNames="leading-relaxed bg-">
+                  <p className="leading-relaxed bg-">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorem vero impedit adipisci eius, accusamus culpa,
                     distinctio illum atque sunt rerum facere ex quia delectus
@@ -72,7 +70,7 @@ export default function Collapsible() {
         </details>
         {/* React */}
         <details
-          className="bg-snow shadow rounded group mb-4 border-solid border-l-8 hover:border-ultramarine-blue"
+          className="bg-snow shadow rounded group mb-4 border-solid "
           open
         >
           <summary
@@ -106,7 +104,7 @@ export default function Collapsible() {
                   >
                     <title>React Logo</title>
                     <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
-                    <g stroke="#61dafb" stroke-width="1" fill="none">
+                    <g stroke="#61dafb" strokeWidth="1" fill="none">
                       <ellipse rx="11" ry="4.2" />
                       <ellipse rx="11" ry="4.2" transform="rotate(60)" />
                       <ellipse rx="11" ry="4.2" transform="rotate(120)" />

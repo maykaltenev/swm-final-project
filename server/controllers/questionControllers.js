@@ -1,11 +1,11 @@
 import express from "express";
-import { javaScript, react, nodeJs, mongoDB } from "../models/questions.js";
+import { QuestionData } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
 
 export const createJsQuestions = async (req, res) => {
   try {
-    const createQuestion = await javaScript.create(req.body);
+    const createQuestion = await QuestionData.create(req.body);
     return res
       .status(201)
       .json({ message: "Question created", createQuestion });
@@ -15,7 +15,7 @@ export const createJsQuestions = async (req, res) => {
 };
 export const removeJsCollection = async (req, res) => {
   try {
-    const deleted = await javaScript.remove();
+    const deleted = await QuestionData.remove();
     return res.status(201).json({ message: "Deleted ", deleted });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -42,9 +42,9 @@ export const getAllQuestionsBySession = async (req, res) => {
   }
 };
 export const createQuizSession = async (req, res) => {
-  const { user, userSolution } = req.body;
+  const { user, userSolution, questionType } = req.body;
 
-  const questions = await javaScript.find();
+  const questions = await QuestionData.find({ questionType: questionType });
 
   try {
     const newQuizSession = await QuizSession.create({

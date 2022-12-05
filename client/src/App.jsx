@@ -19,26 +19,27 @@ import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
 import GLogin from "./components/GLogin/GLogin";
 import SideBar from "./components/SideBar/SideBar";
-
+import QuizCard from "./components/QuizCard/QuizCard";
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   const { user } = useContext(UserContext);
 
   return (
-    <div className="dark:bg-oxford bg-primary-bg h-screen">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/glogin/:id" element={<GLogin />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/mypage/:id" element={<Quiz />} />
-        <Route path="/createquiz" element={<CreateQuiz />} />
-        <Route path="/timer" element={<CountDownTimer />} />
-        <Route path="/result" element={<Result />} />
-        <Route path="/quizhistory" element={<QuizHistory />} />
-      </Routes>
+    <div className="w-full flex justify-center dark:bg-bg-xiketic">
+      <div className="relative sm:w-3/4">
+        <Header />
+        {user && <SideBar />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/mypage/:id" element={<Quiz />} />
+          <Route path="/createquiz" element={<CreateQuiz />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/quizhistory" element={<QuizHistory />} />
+        </Routes>
+      </div>
     </div>
   );
 }

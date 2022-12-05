@@ -1,18 +1,16 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { UserContext } from "./UserContext";
 const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
+  const { timer } = useContext(UserContext);
   const [points, setPoints] = useState(0);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
-
   const [result, setResult] = useState("");
-
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
@@ -54,15 +52,28 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
+  const handleNewQuiz = (chosenQuestionType) => {
+    localStorage.removeItem("marked");
+    localStorage.removeItem("quizQuestions");
+    localStorage.removeItem("sessionId");
+    localStorage.removeItem("answers");
 
-  const handleCreateNewSession = async () => {
+    setMarked([]);
+    setSessionId("");
+    setJavaScriptData([]);
+
+    handleCreateNewSession(chosenQuestionType);
+    timer();
+  };
+  const handleCreateNewSession = async (questionType) => {
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/js/createQuiz",
+          "http://localhost:5000/questions/createQuiz",
           {
             user: getUser._id,
+            questionType: questionType,
           },
           {
             withCredentials: true,
@@ -123,6 +134,7 @@ const QuestionContextProvider = ({ children }) => {
       value={{
         getResult,
         /* getUserUpdated, */
+        handleNewQuiz,
         result,
         currentQuestion,
         setCurrentQuestion,

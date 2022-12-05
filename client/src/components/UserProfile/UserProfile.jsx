@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Collapsible from "../CollapsibleComponent/CollapsibleComponent";
+
+import QuizCard from "../QuizCard/QuizCard";
 import SideBar from "../SideBar/SideBar";
 function UserProfile() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <>
-      <div>UserProfile</div>
-      <div>
-        <SideBar />
-        <Collapsible />
-      </div>
-    </>
+    <div className="relative">
+      <QuizCard />
+      <Collapsible />
+    </div>
   );
 }
 
