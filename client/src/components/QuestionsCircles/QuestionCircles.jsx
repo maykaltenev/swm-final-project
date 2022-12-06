@@ -10,7 +10,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div className="h-1/4 grid grid-cols-6 border-2 sm:grid-cols-8 sm:g-1 ">
+    <div className="h-1/4 grid grid-cols-6 sm:grid-cols-8 sm:g-1 mx-2 ">
       {questionData.map((question, i) => (
         <a
           className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center m-3 "

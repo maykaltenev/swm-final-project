@@ -11,7 +11,7 @@ export default function QuizCard() {
       <div className="flex flex-wrap">
         {/* JavaScript */}
         <div className="p-4 sm:w-1/3 ">
-          <div className="hover:shadow-xl  hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
+          <div className="hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden ">
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src={JavaScriptPic}
