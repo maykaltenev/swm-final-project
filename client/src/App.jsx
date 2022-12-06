@@ -21,6 +21,10 @@ import GLogin from "./components/GLogin/GLogin";
 import SideBar from "./components/SideBar/SideBar";
 import QuizCard from "./components/QuizCard/QuizCard";
 import Landing from "./components/CodeEditor/Landing";
+import { MyDocument } from "./components/Certificate/Certificate";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+
+//import PSPDFKit from "../node_modules/pspdfkit";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -29,8 +33,10 @@ function App() {
   return (
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4">
-        <Landing />
+        {/* <Landing /> */}
         <Header />
+      
+
         {user && <SideBar />}
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,20 +1,25 @@
 import axios from "axios";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useContext } from "react";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
-
+import { UserContext } from "../Context/UserContext";
 import reactimg from "../../assets/reactimg.png";
 import mongodbimg from "../../assets/mongodbimg.png";
 import jsimg from "../../assets/jsimg.png";
 import expressimg from "../../assets/expressimg.png";
 import nodeimg from "../../assets/nodeimg.png";
 import SideBar from "../SideBar/SideBar";
+import {MyDocument} from "../Certificate/Certificate"
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 function QuizHistory() {
   const [result, setResult] = useState("");
   const [selected, setSelected] = useState("");
+  const{user}= useContext(UserContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const getQuizHistoryFromLocalStorage = () => {
     const quizHistory = localStorage.getItem("user");
     if (quizHistory) {
@@ -26,7 +31,7 @@ function QuizHistory() {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
-
+console.log(quizHistory)
   const handleShowMore = async (sessionId) => {
     try {
       const result = await axios
@@ -90,13 +95,21 @@ function QuizHistory() {
                     </h6>
                   </div>
                 </div>
+                
+                <PDFDownloadLink document={<MyDocument date={new Date(quiz?.createdOn).toUTCString()} inputType={quiz?.quizType} sessionId={quiz.sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/> } fileName="somename.pdf">
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading document..." : "Download now!"
+          }
+        </PDFDownloadLink> 
               </Fragment>
+
             ))}
         </div>
         <div className="g:w-1/2 w-full mb-10 lg:mb-0 ">
           <CheckAllAnswersResult allQues={result} />
         </div>
       </section>
+     
     </>
   );
 }

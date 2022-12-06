@@ -75,11 +75,9 @@ function Quiz() {
         >
           Next
         </button>
-        {/* <button onClick={handleShowAnswer}>Show Answer</button> */}
-      </div>
-      {Number(id) === questionData.length - 1 ? (
+        {Number(id) === questionData.length - 1 ? (
         <button
-          className="mb-80"
+        className="w-28  py-2 border-2 text-cyber-yellow bg-ultramarine-blue-2 rounded"
           onClick={() => getResult(questionData[0]?.questionType)}
         >
           Submit
@@ -87,6 +85,9 @@ function Quiz() {
       ) : (
         ""
       )}
+      
+      </div>
+      
     </div>
   );
 }

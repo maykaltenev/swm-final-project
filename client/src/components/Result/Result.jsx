@@ -5,10 +5,12 @@ import { QuestionContext } from "../Context/QuestionContext";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
 import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
+
+
 function Result() {
   const [show, setShow] = useState(false);
-  const { questionData, result, getResult } = useContext(QuestionContext);
-
+  const { questionData, result, getResult,sessionId } = useContext(QuestionContext);
+const{user}= useContext(UserContext);
   const navigate = useNavigate();
 
   //function for navigating to create quiz session
@@ -23,6 +25,7 @@ function Result() {
   const handleCheckAnswers = () => {
     setShow(!show);
   };
+  console.log("the result is",result)
   return (
     <div>
       {result && (
@@ -43,6 +46,9 @@ function Result() {
           <button onClick={handleTryAgain}>Try Again</button>
 
           {show && <CheckAllAnswersResult allQues={result} />}
+
+          {/*  <MyDocument date={} inputType={} sessionId={sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/>  */}
+        
         </div>
       )}
     </div>
