@@ -20,6 +20,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import GLogin from "./components/GLogin/GLogin";
 import SideBar from "./components/SideBar/SideBar";
 import QuizCard from "./components/QuizCard/QuizCard";
+import Landing from "./components/CodeEditor/Landing";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -28,6 +29,7 @@ function App() {
   return (
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4">
+        <Landing />
         <Header />
         {user && <SideBar />}
         <Routes>
