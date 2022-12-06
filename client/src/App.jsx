@@ -20,6 +20,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import GLogin from "./components/GLogin/GLogin";
 import SideBar from "./components/SideBar/SideBar";
 import QuizCard from "./components/QuizCard/QuizCard";
+
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
   const { user } = useContext(UserContext);

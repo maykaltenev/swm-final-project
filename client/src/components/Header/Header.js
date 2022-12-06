@@ -27,18 +27,15 @@ function Header({ theme, setTheme }) {
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
 
-
   const buttonRef = useRef(null);
 
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
-
   };
   const handleUserNavigateToUserProfileFromAvatar = () => {
     setShowDropMenu(!showDropMenu);
     navigate("/userprofile")
   };
-
 
   function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
@@ -55,8 +52,6 @@ function Header({ theme, setTheme }) {
   }
   useOutsideCloseDropMenu(buttonRef);
 
-
-
   return (
     <div className="dark:bg-bg-xiketic container ">
       <div className="mx-auto flex justify-between p-5 items-center">
@@ -65,7 +60,6 @@ function Header({ theme, setTheme }) {
           to="/"
         >
           <img className="w-24 sm:w-32" src={Logo} alt="" />
-
         </Link>
 
         {!user && (
