@@ -96,9 +96,9 @@ console.log(quizHistory)
                   </div>
                 </div>
                 
-                <PDFDownloadLink document={<MyDocument date={new Date(quiz?.createdOn).toUTCString()} inputType={quiz?.quizType} sessionId={quiz.sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/> } fileName="somename.pdf">
+                <PDFDownloadLink document={<MyDocument date={new Date(quiz?.createdOn).toUTCString()} inputType={quiz?.quizType} sessionId={quiz.sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/> } fileName="certificate.pdf">
           {({ blob, url, loading, error }) =>
-            loading ? "Loading document..." : "Download now!"
+            loading ? "Loading document..." : <button>Download now!</button>
           }
         </PDFDownloadLink> 
               </Fragment>
