@@ -197,10 +197,10 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="border-2 mb-4 bg-indigo-300 bg-gray-200 w-full sm:w-1/2">
+    <div className="border-2 mb-4 bg-menu-dark-silver-metallic bg-gray-100 w-full sm:w-1/2">
       {
         <div key={question?._id}>
-          <h5 className="border-2 rounded-md  p-2 my-4">
+          <h5 className="border-2 shadow-xl rounded-md dark:text-snow p-2 my-4">
             {question?.questionText}
           </h5>
           {question?.code && (
