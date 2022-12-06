@@ -9,13 +9,7 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
     setValue(value);
     onChange("code", value);
   };
-  /* 
-  useEffect(
-    (code) => {
-      handleEditorChange(code);
-    },
-    [code]
-  ); */
+
   return (
     <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
       <Editor
@@ -24,8 +18,16 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
         language={language || "javascript"}
         value={value}
         theme={theme}
-        defaultValue="// some comment"
+        defaultValue={code}
         onChange={handleEditorChange}
+        options={{
+          wordWrap: "on",
+          folding: false,
+          lineNumbersMinChars: 3,
+          fontSize: 16,
+          scrollBeyondLastLine: false,
+          automaticLayout: true,
+        }}
       />
     </div>
   );
