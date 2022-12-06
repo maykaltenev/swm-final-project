@@ -19,11 +19,45 @@ const styles = StyleSheet.create({
     padding: 10,
     flexGrow: 1,
   },
-  border: {
+  pageBorder: {
     border: "solid",
-    borderColor: "red",
-    borderWidth: "20",
+    borderColor: "Black",
+    borderWidth: "5",
   },
+  certificateBorder: {
+    margin: "20",
+    border: "solid",
+    borderColor: "gray",
+    borderWidth: "2",
+  },
+  imageWidth: {
+    width: "50",
+    height: "50",
+  },
+  heading: {
+    fontWeight: "bold",
+  },
+  flex: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  lineSpacing: {
+    lineHeight: "2",
+    margin:"25",
+  },
+  header: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    margin: "50",
+  },
+  textSpacing:{
+    lineHeight:"2",
+    lineSpacing:"3",
+    margin:"25",
+    marginBottom: "200",
+  }
 });
 
 export const MyDocument = ({
@@ -35,35 +69,35 @@ export const MyDocument = ({
 }) => {
   return (
     <Document>
-      <Page size="A4" style={styles.border}>
-        <Image src={Logo}></Image>
-        <View className="text-center">
-          <Text className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
-            Certificate of Completion
-          </Text>
-        </View>
+      <Page size="A4">
+        <View style={styles.certificateBorder}>
+          <View style={styles.header}>
+            <Image style={styles.imageWidth} src={Logo}></Image>
+            <Text style={styles.heading }>
+              Certificate of Completion
+            </Text>
+          </View>
 
-        <View>
-          <Text className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            This is to certify that {name} has successfully completed the
-            requirements and has the knowledge and skills to be recognized as{" "}
-            {inputType} Developer
-          </Text>
-        </View>
-        <View>
-          <Text className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Certification Id: {sessionId}
-          </Text>
-        </View>
-        <View>
-          <Text className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Date of Issue: {date}
-          </Text>
-        </View>
-        <View>
-          <Text className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Percentage Scored is: {percentage} %
-          </Text>
+          <View>
+            <Text style={styles.textSpacing}>
+              This is to certify that {name} has successfully completed the
+              requirements and has the knowledge and skills to be recognized as{" "}
+              {inputType} Developer
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.lineSpacing}>
+              Certification Id: {sessionId}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.lineSpacing}>Date of Issue: {date}</Text>
+          </View>
+          <View>
+            <Text style={styles.lineSpacing}>
+              Percentage Scored is: {percentage} %
+            </Text>
+          </View>
         </View>
       </Page>
     </Document>
