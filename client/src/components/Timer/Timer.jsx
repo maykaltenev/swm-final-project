@@ -49,12 +49,12 @@ function CountDownTimer() {
   };
 
   return (
-    <div className="flex my-6 w-1/2 mx-2">
-      <div className="timer-wrapper text-sm">
+    <div className=" flex my-6 w-1/2 mx-2">
+      <div className="timer-wrapper text-sm  rounded-full  border-2 border-cyber-yellow">
         <CountdownCircleTimer
           isPlaying
           size={130}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+          colors={["#5068F2", "#5855D8", "#FFD51C", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
           duration={duration}
           initialRemainingTime={timeDifference}

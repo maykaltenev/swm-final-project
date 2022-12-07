@@ -45,48 +45,48 @@ function Quiz() {
   };
 
   return (
-    <div className="container border-2 text-snow border-green-400 w-screen sm:w-fit sm:flex flex-col ">
-      <div className="dark:bg-oxford-blue text-xl w-full px-5">
+    <div className="container h-screen dark:text-snow  w-screen sm:w-full sm:flex flex-col justify-around ">
+      <div className="dark:bg-oxford-blue dark:text-snow text-xl w-full px-5">
         <span> {id * 1 + 1} </span>/<span> {questionData.length}</span>
       </div>
-      <div className="container h-1/2 sm:p-12 bg-spanish-gray sm:flex sm:flex-row sm:flex-wrap sm:justify-between items-center border-red-500 border-2">
+      <div className="flex flex-col w-screen h-[90vh] sm:p-12 sm:h-3/4 sm:items-center sm:justify-between sm:flex sm:flex-row ">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="flex w-full flex-row sm:flex-col sm:flex-row border-4 dark:bg-oxford-blue dark:text-snow text-l sm:w-1/2">
+        <div className="container shadow-3xl text-l flex flex-row items-center sm:flex-col sm:flex-row dark:bg-dark-raisin-black dark:text-snow sm:w-1/2">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>
       </div>
-
-      <div className="flex justify-around">
-        <button
-          className="w-28 py-2 border-2 text-cyber-yellow bg-ultramarine-blue-2 rounded"
-          onClick={handlePrevious}
-        >
-          {" "}
-          Previous
-        </button>
-        <button
-          className="w-28  py-2 border-2 text-cyber-yellow bg-ultramarine-blue-2 rounded"
-          onClick={handleNext}
-        >
-          Next
-        </button>
-        {/* <button onClick={handleShowAnswer}>Show Answer</button> */}
+      <div className="flex justify-around mt-4 ">
+        <div className="flex justify-start">
+          <button
+            className="w-28 py-2 text-snow bg-btn-majorelle-blue rounded border-snow border-t-2 mx-4"
+            onClick={handlePrevious}
+          >
+            {" "}
+            Previous
+          </button>
+          <button
+            className="w-28 py-2 text-snow bg-btn-majorelle-blue border-snow border-t-2 rounded"
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        </div>
+        {Number(id) === questionData.length - 1 ? (
+          <button
+            className="w-28 py-2 border-t-2 bg-cerulean-blue text-snow rounded"
+            onClick={() => getResult(questionData[0]?.questionType)}
+          >
+            Submit
+          </button>
+        ) : (
+          ""
+        )}
       </div>
-      {Number(id) === questionData.length - 1 ? (
-        <button
-          className="mb-80"
-          onClick={() => getResult(questionData[0]?.questionType)}
-        >
-          Submit
-        </button>
-      ) : (
-        ""
-      )}
     </div>
   );
 }

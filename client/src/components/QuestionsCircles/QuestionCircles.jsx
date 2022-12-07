@@ -10,18 +10,18 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div className="h-1/4 grid grid-cols-6 sm:grid-cols-8 sm:g-1 mx-2 ">
+    <div className="border-t-2 grid grid-cols-6 gap-1 sm:grid-cols-8 sm:g-1 p-4 ">
       {questionData.map((question, i) => (
-        <a
+        <div
           className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center m-3 "
           style={{
-            backgroundColor: marked.includes(question?._id) ? "lightgray" : "",
+            backgroundColor: marked.includes(question?._id) ? "#5855D8" : "",
           }}
           key={question?._id}
           onClick={() => handleChangeIndex(i)}
         >
           {i + 1}
-        </a>
+        </div>
       ))}
     </div>
   );

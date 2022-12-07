@@ -197,35 +197,42 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="border-2 mb-4 bg-menu-dark-silver-metallic bg-gray-100 w-full sm:w-1/2">
+    <div className="relative shadow-5xl h-5/6 mr-3 bg-dark-raisin-black w-screen  ">
       {
-        <div key={question?._id}>
-          <h5 className="border-2 shadow-xl rounded-md dark:text-snow p-2 my-4">
-            {question?.questionText}
-          </h5>
-          {question?.code && (
-            <div style={{ padding: "1rem", backgroundColor: "" }}>
-              <Editor
-                style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
-                value={question.code}
-                highlight={(code) => highlight(code, languages.js)}
-                disabled
-              />
-            </div>
-          )}
-          {question &&
-            (marked.includes(question._id) ? (
-              <AiFillStar onClick={() => handleMark(question?._id)} />
-            ) : (
-              <AiOutlineStar onClick={() => handleMark(question?._id)} />
-            ))}
-          <div>
+        <div className="h-[70%]" key={question?._id}>
+          <span className="text-3xl absolute right-4 top-4 flex items-self-end">
+            {question &&
+              (marked.includes(question._id) ? (
+                <AiFillStar onClick={() => handleMark(question?._id)} />
+              ) : (
+                <AiOutlineStar onClick={() => handleMark(question?._id)} />
+              ))}
+          </span>
+          <div className="h-3/5 min-h-[0%] ">
+            <h5 className="shadow-4xl w-fit dark:border-snow dark:border-t-2 dark:border-l-2 bg-git-box rounded-md dark:text-snow p-2 m-4">
+              {question?.questionText}
+            </h5>
+            {question?.code && (
+              <div>
+                <Editor
+                  style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
+                  value={question.code}
+                  highlight={(code) => highlight(code, languages.js)}
+                  disabled
+                />
+              </div>
+            )}
+          </div>
+          <div className="grid sm:grid-cols-2 grid-col-1 gap-1 sm:gap-8">
             {question?.options.map((option) => (
-              <ul class=" text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-                  <div className="flex items-center pl-3" key={option?._id}>
+              <ul className="text-m mr-2 rounded-lg border-top-1 dark:border-snow dark:border-t-2 dark:border-l-2   ">
+                <li className=" rounded-t-lg    ">
+                  <div
+                    className="shadow-3xl bg-git-box leading-loose flex sm:items-center pl-3 "
+                    key={option?._id}
+                  >
                     <input
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  dark:focus:ring-blue-600 dark:ring-offset-gray-700  dark:bg-gray-600 dark:border-gray-500   "
+                      className=" dark:focus:ring-blue-600"
                       type={question?.inputType}
                       name={question?.inputType}
                       value={
@@ -279,7 +286,7 @@ export default function QuestionCard({
                       }
                     />
                     <label
-                      className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
+                      className="text-white py-3 ml-4 w-full  "
                       htmlFor={option?._id}
                     >
                       {question.inputType === "text" ? "" : option?.option}
@@ -289,7 +296,6 @@ export default function QuestionCard({
               </ul>
             ))}
             {showAnswer && <div>{question?.explanation}</div>}
-            <hr />
           </div>
         </div>
       }
