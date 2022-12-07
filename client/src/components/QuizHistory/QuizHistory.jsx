@@ -86,7 +86,7 @@ function QuizHistory() {
                     <h4 className="text-xs sm:text-base">{`Result: ${quiz?.resultPercentage}`}</h4>
                     <h6 className="hidden sm:block">
                       {" "}
-                      {new Date(quiz?.createdOn).toUTCString()}
+                      {new Date(quiz?.createdOn).toLocaleString("de-DE")}
                     </h6>
                   </div>
                 </div>

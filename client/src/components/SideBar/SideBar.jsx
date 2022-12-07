@@ -114,7 +114,7 @@ ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
       </div>
 
       <div
-        onClick={() => navigate("/userprofile")}
+        onClick={() => navigate("/path")}
         className={`${
           showAsideMenu ? "relative" : "absolute  sm:relative "
         } flex items-center justify-center 
