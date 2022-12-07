@@ -45,32 +45,32 @@ function Quiz() {
   };
 
   return (
-    <div className="container h-screen  dark:text-snow w-screen sm:w-full sm:flex flex-col justify-around ">
-      <div className="dark:bg-oxford-blue dark:text-snow text-xl w-full px-5">
+    <div className="container h-screen rounded-3xl  dark:text-snow w-screen sm:w-full sm:flex flex-col justify-around ">
+      <div className="shadow-6xl dark:bg-dark-raisin-black dark:text-snow rounded text-xl w-full px-5">
         <span> {id * 1 + 1} </span>/<span> {questionData.length}</span>
       </div>
-      <div className="flex flex-col w-screen sm:h-[70%] sm:w-[100%] h-[85vh] sm:p-12 sm:justify-between  sm:flex sm:flex-row ">
+      <div className="flex  flex-col w-screen sm:shadow-6xl sm:rounded-3xl sm:h-[70%] sm:w-[100%] h-[85vh] sm:p-12 sm:justify-between  sm:flex sm:flex-row ">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="container h-[25vh] w-screen sm:w-[35%] sm:h-full text-sm flex items-center sm:flex-col sm:flex-row dark:bg-dark-raisin-black dark:text-snow p-2">
+        <div className="container h-[25vh] w-screen shadow-3xl sm:rounded-3xl sm:w-[35%] sm:h-full text-sm flex items-center sm:flex-col sm:justify-evenly dark:bg-dark-raisin-black dark:text-snow p-2">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>
       </div>
-      <div className="flex space-x-4 mt-8 ">
+      <div className="flex space-x-4 mt-4 ">
         <div className="flex   ">
           <button
-            className="w-28 py-2 text-snow bg-btn-majorelle-blue rounded border-snow border-t-2 mx-4"
+            className="w-28 py-2 text-snow bg-btn-majorelle-blue rounded-lg border-snow border-t-2 mx-4"
             onClick={handlePrevious}
           >
             {" "}
             Previous
           </button>
           <button
-            className="w-28 py-2 text-snow bg-btn-majorelle-blue border-snow border-t-2 rounded"
+            className="w-28 py-2 text-snow bg-btn-majorelle-blue border-snow border-t-2  rounded-lg"
             onClick={handleNext}
           >
             Next
@@ -78,7 +78,7 @@ function Quiz() {
         </div>
         {Number(id) === questionData.length - 1 ? (
           <button
-            className="w-28 py-2  border-t-2 bg-cerulean-blue text-snow rounded"
+            className="w-28 py-2  border-t-2 bg-cerulean-blue text-snow rounded-lg"
             onClick={() => getResult(questionData[0]?.questionType)}
           >
             Submit

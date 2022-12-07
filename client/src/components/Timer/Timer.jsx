@@ -41,17 +41,17 @@ function CountDownTimer() {
     }
 
     return (
-      <div className="timer">
-        <div className="text">Remaining time</div>
+      <div className="timer text-center">
         <div className="value">{formatRemainingTime(remainingTime)}</div>
       </div>
     );
   };
 
   return (
-    <div className="flex w-1/2 ">
-      <div className="timer-wrapper text-sm  rounded-full  border-2 border-cyber-yellow">
+    <div className="flex sm:py-6 sm:m-2 sm:shadow-3xl sm:rounded-xl sm:w-5/6 sm:mb-4 dark:sm:bg-dark-raisin-black sm:justify-center">
+      <div className="timer-wrapper sm:dark:bg-bg-xiketic text-m  rounded-full sm:shadow-3xl border-cyber-yellow">
         <CountdownCircleTimer
+          className=""
           isPlaying
           size={130}
           colors={["#5068F2", "#5855D8", "#FFD51C", "#A30000"]}

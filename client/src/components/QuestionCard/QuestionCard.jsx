@@ -208,7 +208,7 @@ export default function QuestionCard({
                 <AiOutlineStar onClick={() => handleMark(question?._id)} />
               ))}
           </span>
-          <div className="h-[45%] sm:h-[70%] ">
+          <div className="h-[40%] sm:h-[70%] ">
             <h5 className="shadow-5xl sm:p-8 sm:text-lg  sm:mt-10 w-fit dark:border-snow dark:border-t-2 dark:border-l-2 bg-git-box rounded-md dark:text-snow p-2 m-4">
               {question?.questionText}
             </h5>

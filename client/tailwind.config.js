@@ -22,7 +22,7 @@ module.exports = {
         "228": '52rem',
       },
       boxShadow: {
-        '3xl': "4px 4px 0px 0px #0d1117",
+        '3xl': "8px 8px 0px 0px #0d1117",
         '4xl': "4px 4px 0px 0px #FFD51C",
         '5xl': "4px 4px 0px 0px #5855D8",
         '6xl': "4px 4px 0px 0px #252a31",
