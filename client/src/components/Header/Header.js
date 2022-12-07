@@ -75,20 +75,20 @@ function Header({ theme, setTheme }) {
           <div ref={buttonRef} className="relative">
             <img
               onClick={handleDropMenu}
-              className="w-7"
+              className="pointer w-14 h-14 border-4 rounded-full  p-1 flex justify-center items-center "
               alt=""
               src={user.avatar}
             />
             {showDropMenu && (
-              <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-14 ">
+              <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-20 font-poppins text-base">
                 <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                  <div className="flex cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
+                  <div className="flex justify-start items-center cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
                     <img
-                      className="w-7"
+                      className="pointer w-14 h-14 border-4 rounded-full flex justify-center items-center"
                       alt=""
                       src={user.avatar}
                     />
-                    <div className="ml-4">
+                    <div className="ml-5 " >
                       {user?.firstName?.charAt(0).toUpperCase() +
                         user?.firstName?.slice(1)}{" "}
                     </div>
