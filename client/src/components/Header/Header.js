@@ -64,7 +64,7 @@ function Header({ theme, setTheme }) {
 
         {!user && (
           <button
-            className="bg-ultramarine-blue font-poppins mx-px px-5 rounded-full text-white py-2"
+            className="bg-ultramarine-blue font-poppins mx-px px-5 text-white py-2"
             onClick={handleShowRegisterForm}
           >
             Join Us!
