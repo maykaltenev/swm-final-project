@@ -11,7 +11,7 @@ import Quiz from "./components/Quiz/Quiz";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Result from "./components/Result/Result";
-//import MyDocument from "./components/MyDocument/MyDocument";
+import MyDocument from "./components/MyDocument/MyDocument";
 import "./index.css";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <Route path="/createquiz" element={<CreateQuiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
-        {/*   <Route path="/mycertificates" element={<MyDocument />} /> */}
+           <Route path="/mycertificates" element={<MyDocument />} /> 
         </Routes>
       </div>
     </div>

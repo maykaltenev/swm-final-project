@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Document,
   Page,
@@ -78,6 +78,7 @@ export const Certificate = ({
   percentage,
   inputTypeImage,
 }) => {
+  
   return (
     <>
       <Document>
