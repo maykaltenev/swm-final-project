@@ -46,6 +46,9 @@ const{user}= useContext(UserContext);
     setShow(!show);
   };
   console.log("the result is",result)
+  console.log("the quiz history is:",quizHistory)
+  console.log("last",quizHistory?.quizResults[quizHistory?.quizResults?.length -1])
+ 
   return (
     <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center ">
       {result && (
@@ -66,28 +69,21 @@ const{user}= useContext(UserContext);
           <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow " onClick={handleCheckAnswers}>Check Answers</button>
           <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue " onClick={handleTryAgain}>Try Again</button>
           </div>
-          {show && <CheckAllAnswersResult allQues={result} />}
+          {show && <CheckAllAnswersResult allQues={result} />}    
+          {/* display the certificate message only if the percentage score is greater than equal to 80 */}  
 
-        {/*   {quizHistory.quizResults &&
-            quizHistory.quizResults.map((quiz) => (
-              quiz.resultPercentage ? "Congrats You are eligible for a Certificate":""))
-            } */}
-          
-           
           {result?.userAnswerPercentage >=15 ? (
             <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
               <h5>Congrats!! You won a Certificate!!!</h5>
               <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
-            <p>For: {quizHistory.quizResults && quizHistory?.quizResults?.quizType}</p>
+            <p>For: {quizHistory?.quizResults?.quizType}</p>
                  </div>
           <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
-            <p>Date: {quizHistory.quizResults && quizHistory?.quizResults?.createdOn}</p>
+            <p>Date: {quizHistory[quizHistory.length -1]?.quizResults && quizHistory[quizHistory.length -1]?.quizResults?.createdOn}</p>
           </div>
               <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "> Certificate Preview</button>
             </div>
-          )
-     
-         
+          )          
           :
           ""}
         </div>
@@ -97,6 +93,10 @@ const{user}= useContext(UserContext);
 }
 
 export default Result;
+  {/*   {quizHistory.quizResults &&
+            quizHistory.quizResults.map((quiz) => (
+              quiz.resultPercentage ? "Congrats You are eligible for a Certificate":""))
+            } */}
 /*  <>
   <PDFViewer>
    <Certificate
