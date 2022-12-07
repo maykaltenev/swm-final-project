@@ -6,53 +6,53 @@ import User from "../models/user.js";
 dotenv.config();
 /* -----------------------google strategy-------------------------- */
 
-// import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-
+ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+ console.log('strategy is', GoogleStrategy)
 // initialize googlestrategy. syntax ({options}, callback function)
-
-// passport.use(
-//   new GoogleStrategy(
-//     {
-//       clientID: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//       callbackURL: "/user/google/callback",
-//       proxy: true,
-//     },
-//     async (accessToken, refreshToken, profile, cb) => {
-//       console.log("inside strategy instance: profile", profile);
+console.log("clientId",process.env.GOOGLE_CLIENT_ID)
+ passport.use(
+   new GoogleStrategy(
+     {
+       clientID: process.env.GOOGLE_CLIENT_ID,
+       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+       callbackURL: "/user/google/callback",
+       proxy: true,
+     },
+     async (accessToken, refreshToken, profile, cb) => {
+       console.log("inside strategy instance: profile", profile);
 //       // register the user in db
 //       // only if the user doesn't exist
 //       // in db
-//       console.log("the profile is", profile);
-//       const email = profile._json.email;
+      console.log("the profile is", profile);
+      const email = profile._json.email;
 
-//       // check if there is such a user in db
-//       const user = await User.findOne({ email });
+      // check if there is such a user in db
+      const user = await User.findOne({ email });
 
-//       // if there is such user then return it
-//       // we need to create a token in the db
-//       // if the user is in our db
-//       // the cb function adds the user
-//       // or whatever we return to the req.user
-//       if (user) return cb(null, user);
+     /*  if there is such user then return it
+      we need to create a token in the db
+      if the user is in our db
+      the cb function adds the user
+      or whatever we return to the req.user */
+      if (user) return cb(null, user);
 
-//       // create a new user to insert to the db
-//       const newUser = new User({
-//         firstName: profile._json.given_name,
-//         lastName: profile._json.family_name,
-//         username: profile.id,
-//         email,
-//         password: process.env.password,
-//       });
-//       console.log("saving user", newUser);
-//       /*   pass: email */
+      //create a new user to insert to the db
+      const newUser = new User({
+        firstName: profile._json.given_name,
+        lastName: profile._json.family_name,
+        username: profile.id,
+        email,
+        password: "google",
+      });
+      console.log("saving user", newUser);
+      /*   pass: email */
 
-//       const savedUser = await newUser.save();
+      const savedUser = await newUser.save();
 
-//       return cb(null, savedUser);
-//     }
-//   )
-// );
+      return cb(null, savedUser);
+    }
+  )
+ );
 /* -----------------------google strategy-------------------------- */
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
