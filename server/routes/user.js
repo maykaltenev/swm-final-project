@@ -53,10 +53,10 @@ router.post("/quiz/result", updateUserQuizResults);
   console.log("the token from google server is:",token)
       res.cookie('cookiename', token)
 
-      res.redirect('http://localhost:3000/glogin/' + req.user._id)
+      res.redirect('http://localhost:3000/userprofile/' + req.user._id)
   })
 
-  router.get('/glogin/:id', async (req, res) => {
+  router.get('/userprofile/:id', async (req, res) => {
 
       console.log('from glogin: id is', req.params.id)
 

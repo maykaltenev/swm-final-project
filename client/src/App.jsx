@@ -6,7 +6,7 @@ import SideBar from "./components/SideBar/SideBar";
 import Header from "./components/Header/Header";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
-import GLogin from "./components/GLogin/GLogin";
+//import GLogin from "./components/GLogin/GLogin";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Quiz from "./components/Quiz/Quiz";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
@@ -28,7 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/glogin/:id" element={<GLogin />} />
+          <Route path="/userprofile/:id" element={<UserProfile />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/mypage/:id" element={<Quiz />} />
           <Route path="/createquiz" element={<CreateQuiz />} />
