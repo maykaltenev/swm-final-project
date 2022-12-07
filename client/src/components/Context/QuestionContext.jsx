@@ -81,10 +81,11 @@ const QuestionContextProvider = ({ children }) => {
     getQuizTimeFromLocalStorage();
     setTimeDifference(600);
 
-    handleCreateNewSession(chosenQuestionType);
+    handleCreateNewSession(chosenQuestionType, level);
     timer();
   };
-  const handleCreateNewSession = async (questionType) => {
+  const handleCreateNewSession = async (questionType, level) => {
+    console.log(level);
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
@@ -93,6 +94,7 @@ const QuestionContextProvider = ({ children }) => {
           {
             user: getUser._id,
             questionType: questionType,
+            level: level,
           },
           {
             withCredentials: true,
