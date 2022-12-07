@@ -163,24 +163,24 @@ function Result() {
             {certificates && <PDFViewer><Certificate
                 date={quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].createdOn} 
+                ]?.createdOn} 
                 inputType={quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].quizType} 
+                ]?.quizType} 
                 sessionId={quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].sessionId}
+                ]?.sessionId}
                  name={`${user.firstName} ${user.lastName } `} 
                  percentage={quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].resultPercentage}
+                ]?.resultPercentage}
                  inputTypeImage={quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].quizType === "javascript"
+                ]?.quizType === "javascript"
                 ? jsimg
                 : quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
-                ].quizType === "react"
+                ]?.quizType === "react"
                 ? reactimg
                 : quizHistory?.quizResults[
                   quizHistory?.quizResults?.length - 1
