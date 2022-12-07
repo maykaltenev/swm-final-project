@@ -29,7 +29,6 @@ function App() {
   return (
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4">
-        <Landing />
         <Header />
         {user && <SideBar />}
         <Routes>
@@ -41,6 +40,7 @@ function App() {
           <Route path="/createquiz" element={<CreateQuiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
+          <Route path="/codechallenge" element={<Landing />} />
         </Routes>
       </div>
     </div>

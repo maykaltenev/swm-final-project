@@ -15,7 +15,7 @@ import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
 
-import { randomChallenge } from "./randomChallenge";
+import { randomChallenge } from "../../utils/randomChallenge";
 
 const Landing = () => {
   const [code, setCode] = useState(randomChallenge());
@@ -186,7 +186,6 @@ const Landing = () => {
         pauseOnHover
       />
 
-      <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
       <div className="flex flex-row">
         <div className="px-4 py-2">
           <LanguagesDropdown onSelectChange={onSelectChange} />

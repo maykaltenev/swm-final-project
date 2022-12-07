@@ -4,7 +4,9 @@ import {
   LayersIcon,
   ArchiveIcon,
   StarFilledIcon,
+  CodeIcon,
 } from "@radix-ui/react-icons";
+
 import useOutsideCloseDropMenu from "../../utils/helper";
 import { VscCircleFilled } from "react-icons/vsc";
 import { AiFillStar } from "react-icons/ai";
@@ -110,6 +112,7 @@ ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
           Start Quiz
         </span>
       </div>
+
       <div
         onClick={() => navigate("/userprofile")}
         className={`${
@@ -131,6 +134,30 @@ ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
     ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Path
+        </span>
+      </div>
+      <div
+        onClick={() => navigate("/codechallenge")}
+        className={`${
+          showAsideMenu ? "relative" : "absolute  sm:relative"
+        } flex items-center justify-center
+        h-10 w-10 md:w-14 md:h-14 lg:w-16 lg:h-16 mt-2 mb-2 mx-auto shadow-lg p-2
+        bg-cyber-yellow text-ultramarine-blue-2 text-lg
+        hover:bg-ultramarine-blue-2  hover:text-cyber-yellow
+        rounded-3xl hover:rounded-xl
+        transition-all duration-300 ease-linear
+        cursor-pointer group z-20`}
+      >
+        <CodeIcon className="w-10 h-12" />
+
+        <span
+          className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
+        text-snow bg-black-choral
+        text-xs font-bold
+        transition-all duration-125 scale-0 md:origin-left 
+${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
+        >
+          Code Challenge
         </span>
       </div>
       <div
