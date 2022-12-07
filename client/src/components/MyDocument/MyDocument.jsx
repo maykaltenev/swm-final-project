@@ -57,7 +57,7 @@ const MyDocument = () => {
         {quizHistory.quizResults &&
           quizHistory.quizResults.map((quiz) =>
             quiz.resultPercentage ? (
-              <div className="p-4 sm:w-5/6 hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex justify-around items-center">
+              <div className="p-4 sm:w-5/6 hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex justify-around items-center mb-5">
                 <img
                   className="m-5"
                   width="150"
