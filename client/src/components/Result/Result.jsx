@@ -13,6 +13,7 @@ import mongodbimg from "../../assets/mongodbimg.png";
 import jsimg from "../../assets/jsimg.png";
 import expressimg from "../../assets/expressimg.png";
 import nodeimg from "../../assets/nodeimg.png";
+import Popup from "../Popup/Popup";
 
 function Result() {
   const [show, setShow] = useState(false);
@@ -46,77 +47,49 @@ const{user}= useContext(UserContext);
   };
   console.log("the result is",result)
   return (
-    <div>
+    <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center ">
       {result && (
-        <div className="result-card">
-          <div>
-            <h1>Your Score:{result?.userAnswerPercentage} %</h1>{" "}
+        <div className="p-4 sm:w-3/6 hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
+            <h1>Your Score: <b>{result?.userAnswerPercentage}  %</b> </h1>{" "}
           </div>
-          <div>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
             <p>Total Number of Questions: {questionData?.length}</p>
           </div>
-          <div>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
             <p>Number of Correct Answers: {result?.correctAnswers}</p>
           </div>
-          <div>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
             <p>Number of Wrong Answers: {result?.wrongAnswers}</p>
           </div>
-          {<button onClick={handleCheckAnswers}>Check Answers</button>}
-          <button onClick={handleTryAgain}>Try Again</button>
-
+          <div className="flex">
+          <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow " onClick={handleCheckAnswers}>Check Answers</button>
+          <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue " onClick={handleTryAgain}>Try Again</button>
+          </div>
           {show && <CheckAllAnswersResult allQues={result} />}
 
-          {quizHistory.quizResults &&
+        {/*   {quizHistory.quizResults &&
             quizHistory.quizResults.map((quiz) => (
-              quiz.resultPercentage ? 
-              <>
-               <PDFViewer>
-                <Certificate
-                date={quiz.createdOn} 
-                inputType={quiz.quizType} 
-                sessionId={quiz.sessionId}
-                 name={`${user.firstName} ${user.lastName } `} 
-                 percentage={quiz.resultPercentage}
-                 inputTypeImage={quiz?.quizType === "javascript"
-                ? jsimg
-                : quiz?.quizType === "react"
-                ? reactimg
-                : quiz?.quizType === "express"
-                ? expressimg
-                : quiz?.quizType === "mongodb"
-                ? mongodbimg
-                : quiz?.quizType === "nodejs"
-                ? nodeimg
-                : ""}
-                />
-                 </PDFViewer>
-              <PDFDownloadLink document={<Certificate
-                date={quiz.createdOn} 
-                inputType={quiz.quizType.charAt(0).toUpperCase() + quiz.quizType.slice(1)} 
-             inputTypeImage={quiz?.quizType === "javascript"
-             ? jsimg
-             : quiz?.quizType === "react"
-             ? reactimg
-             : quiz?.quizType === "express"
-             ? expressimg
-             : quiz?.quizType === "mongodb"
-             ? mongodbimg
-             : quiz?.quizType === "nodejs"
-             ? nodeimg
-             : ""}
-                sessionId={quiz.sessionId}
-                 name={`${user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)} ${user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) } `} 
-                 percentage={quiz.resultPercentage}/> } fileName="certificate.pdf">
-          {({ blob, url, loading, error }) =>
-            loading ? "Loading document..." : <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">Download now!</button>
-          }
-        </PDFDownloadLink> </>
-             :
-             ""
+              quiz.resultPercentage ? "Congrats You are eligible for a Certificate":""))
+            } */}
+          
            
-            ))
-            }
-           
+          {result?.userAnswerPercentage >=15 ? (
+            <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
+              <h5>Congrats!! You won a Certificate!!!</h5>
+              <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
+            <p>For: {quizHistory.quizResults && quizHistory?.quizResults?.quizType}</p>
+                 </div>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5" >
+            <p>Date: {quizHistory.quizResults && quizHistory?.quizResults?.createdOn}</p>
+          </div>
+              <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "> Certificate Preview</button>
+            </div>
+          )
+     
+         
+          :
+          ""}
         </div>
       )}
     </div>
@@ -124,3 +97,45 @@ const{user}= useContext(UserContext);
 }
 
 export default Result;
+/*  <>
+  <PDFViewer>
+   <Certificate
+   date={quiz.createdOn} 
+   inputType={quiz.quizType} 
+   sessionId={quiz.sessionId}
+    name={`${user.firstName} ${user.lastName } `} 
+    percentage={quiz.resultPercentage}
+    inputTypeImage={quiz?.quizType === "javascript"
+   ? jsimg
+   : quiz?.quizType === "react"
+   ? reactimg
+   : quiz?.quizType === "express"
+   ? expressimg
+   : quiz?.quizType === "mongodb"
+   ? mongodbimg
+   : quiz?.quizType === "nodejs"
+   ? nodeimg
+   : ""}
+   />
+    </PDFViewer>
+ <PDFDownloadLink document={<Certificate
+   date={quiz.createdOn} 
+   inputType={quiz.quizType.charAt(0).toUpperCase() + quiz.quizType.slice(1)} 
+inputTypeImage={quiz?.quizType === "javascript"
+? jsimg
+: quiz?.quizType === "react"
+? reactimg
+: quiz?.quizType === "express"
+? expressimg
+: quiz?.quizType === "mongodb"
+? mongodbimg
+: quiz?.quizType === "nodejs"
+? nodeimg
+: ""}
+   sessionId={quiz.sessionId}
+    name={`${user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)} ${user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) } `} 
+    percentage={quiz.resultPercentage}/> } fileName="certificate.pdf">
+{({ blob, url, loading, error }) =>
+loading ? "Loading document..." : <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">Download now!</button>
+}
+</PDFDownloadLink> </> */
