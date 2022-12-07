@@ -12,11 +12,15 @@ const styles = StyleSheet.create({
     padding: 10,
     flexGrow: 1,
   },
+  document:{
+    /* maxHeight: "1200", */
+    overflowY: "auto" 
+  }
 });
 
 // Create Document Component
 const MyDocument = () => (
-  <Document>
+  <Document style={styles.document}>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Text>Section #1</Text>

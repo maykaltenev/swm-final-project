@@ -5,6 +5,8 @@ import { QuestionContext } from "../Context/QuestionContext";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
 import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
+import {MyDocument} from "../Certificate/Certificate"
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 
 function Result() {
@@ -12,6 +14,18 @@ function Result() {
   const { questionData, result, getResult,sessionId } = useContext(QuestionContext);
 const{user}= useContext(UserContext);
   const navigate = useNavigate();
+
+  const getQuizHistoryFromLocalStorage = () => {
+    const quizHistory = localStorage.getItem("user");
+    if (quizHistory) {
+      return JSON.parse(localStorage.getItem("user"));
+    } else {
+      return [];
+    }
+  };
+  const [quizHistory, setQuizHistory] = useState(
+    getQuizHistoryFromLocalStorage
+  );
 
   //function for navigating to create quiz session
   const handleTryAgain = () => {
@@ -47,8 +61,34 @@ const{user}= useContext(UserContext);
 
           {show && <CheckAllAnswersResult allQues={result} />}
 
-          {/*  <MyDocument date={} inputType={} sessionId={sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/>  */}
-        
+          {quizHistory.quizResults &&
+            quizHistory.quizResults.map((quiz) => (
+              quiz.resultPercentage ? 
+              <>
+              ( <PDFViewer>
+                <MyDocument 
+                date={quiz.createdOn} 
+                inputType={quiz.quizType} 
+                sessionId={quiz.sessionId}
+                 name={`${user.firstName} ${user.lastName } `} 
+                 percentage={quiz.resultPercentage}/>
+                 </PDFViewer>
+              <PDFDownloadLink document={<MyDocument 
+                date={quiz.createdOn} 
+                inputType={quiz.quizType} 
+                sessionId={quiz.sessionId}
+                 name={`${user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)} ${user.lastName } `} 
+                 percentage={quiz.resultPercentage}/> } fileName="certificate.pdf">
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading document..." : <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">Download now!</button>
+          }
+        </PDFDownloadLink> )  </>
+             :
+             ""
+           
+            ))
+            }
+           
         </div>
       )}
     </div>
