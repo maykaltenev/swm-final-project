@@ -5,7 +5,7 @@ import { QuestionContext } from "../Context/QuestionContext";
 import CheckAllAnswersResult from "../CheckAllAnswersResult/CheckAllAnswersResult";
 import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
-import {MyDocument} from "../Certificate/Certificate"
+import {Certificate} from "../Certificate/Certificate"
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 //images
 import reactimg from "../../assets/reactimg.png";
@@ -71,7 +71,7 @@ const{user}= useContext(UserContext);
               quiz.resultPercentage ? 
               <>
                <PDFViewer>
-                <MyDocument 
+                <Certificate
                 date={quiz.createdOn} 
                 inputType={quiz.quizType} 
                 sessionId={quiz.sessionId}
@@ -90,7 +90,7 @@ const{user}= useContext(UserContext);
                 : ""}
                 />
                  </PDFViewer>
-              <PDFDownloadLink document={<MyDocument 
+              <PDFDownloadLink document={<Certificate
                 date={quiz.createdOn} 
                 inputType={quiz.quizType.charAt(0).toUpperCase() + quiz.quizType.slice(1)} 
              inputTypeImage={quiz?.quizType === "javascript"

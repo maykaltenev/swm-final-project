@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export const MyDocument = ({
+export const Certificate = ({
   name,
   inputType,
   sessionId,

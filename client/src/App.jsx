@@ -1,29 +1,18 @@
-/* import "./App.css"; */
+import { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
+import { UserContext } from "./components/Context/UserContext";
+import Home from "./components/Home/Home";
+import SideBar from "./components/SideBar/SideBar";
+import Header from "./components/Header/Header";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
-import { Route, Routes } from "react-router-dom";
-//import QuestionCard from "./components/QuestionCard/QuestionCard";
-import Quiz from "./components/Quiz/Quiz";
-import CountDownTimer from "./components/Timer/Timer";
-import QuestionCard from "./components/QuestionCard/QuestionCard";
-
-import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
-import { useContext } from "react";
-import { UserContext } from "./components/Context/UserContext";
-import Result from "./components/Result/Result";
-import "./index.css";
-import Home from "./components/Home/Home";
-import QuizHistory from "./components/QuizHistory/QuizHistory";
-import Header from "./components/Header/Header";
 import UserProfile from "./components/UserProfile/UserProfile";
-import GLogin from "./components/GLogin/GLogin";
-import SideBar from "./components/SideBar/SideBar";
-import QuizCard from "./components/QuizCard/QuizCard";
-import Landing from "./components/CodeEditor/Landing";
-import { MyDocument } from "./components/Certificate/Certificate";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-
-//import PSPDFKit from "../node_modules/pspdfkit";
+import Quiz from "./components/Quiz/Quiz";
+import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
+import QuizHistory from "./components/QuizHistory/QuizHistory";
+import Result from "./components/Result/Result";
+//import MyDocument from "./components/MyDocument/MyDocument";
+import "./index.css";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -32,10 +21,7 @@ function App() {
   return (
     <div className="w-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4">
-        {/* <Landing /> */}
         <Header />
-      
-
         {user && <SideBar />}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -46,7 +32,7 @@ function App() {
           <Route path="/createquiz" element={<CreateQuiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
-          <Route path="/mycertificates" element={<MyDocument />} />
+        {/*   <Route path="/mycertificates" element={<MyDocument />} /> */}
         </Routes>
       </div>
     </div>
