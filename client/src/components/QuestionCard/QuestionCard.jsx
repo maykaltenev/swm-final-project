@@ -197,9 +197,9 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="relative shadow-5xl h-5/6 mr-3 bg-dark-raisin-black w-screen  ">
+    <div className="relative h-full mr-3 bg-dark-raisin-black w-screen sm:w-4/5 ">
       {
-        <div className="h-[70%]" key={question?._id}>
+        <div className="h-4/6" key={question?._id}>
           <span className="text-3xl absolute right-4 top-4 flex items-self-end">
             {question &&
               (marked.includes(question._id) ? (
@@ -208,14 +208,14 @@ export default function QuestionCard({
                 <AiOutlineStar onClick={() => handleMark(question?._id)} />
               ))}
           </span>
-          <div className="h-3/5 min-h-[0%] ">
+          <div className="h-[70%] sm:h-[90%] sm:w-">
             <h5 className="shadow-4xl w-fit dark:border-snow dark:border-t-2 dark:border-l-2 bg-git-box rounded-md dark:text-snow p-2 m-4">
               {question?.questionText}
             </h5>
             {question?.code && (
               <div>
                 <Editor
-                  style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
+                  style={{ marginLeft: 35, fontSize: 12, lineHeight: 2.5 }}
                   value={question.code}
                   highlight={(code) => highlight(code, languages.js)}
                   disabled
@@ -223,10 +223,10 @@ export default function QuestionCard({
               </div>
             )}
           </div>
-          <div className="grid sm:grid-cols-2 grid-col-1 gap-1 sm:gap-8">
+          <div className="grid text-sm sm:text-base sm:w-[100%]  sm:grid-cols-2 grid-col-1 gap-2 sm:gap-8 ">
             {question?.options.map((option) => (
-              <ul className="text-m mr-2 rounded-lg border-top-1 dark:border-snow dark:border-t-2 dark:border-l-2   ">
-                <li className=" rounded-t-lg    ">
+              <ul className="text-m mr-2 rounded-lg border-top-1 dark:border-snow dark:border-t-2 dark:border-l-2 ">
+                <li className="rounded-t-lg">
                   <div
                     className="shadow-3xl bg-git-box leading-loose flex sm:items-center pl-3 "
                     key={option?._id}
@@ -286,7 +286,7 @@ export default function QuestionCard({
                       }
                     />
                     <label
-                      className="text-white py-3 ml-4 w-full  "
+                      className="text-white py-2 ml-4 w-full  "
                       htmlFor={option?._id}
                     >
                       {question.inputType === "text" ? "" : option?.option}

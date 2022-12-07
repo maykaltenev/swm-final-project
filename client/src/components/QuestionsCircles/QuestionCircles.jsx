@@ -10,12 +10,12 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div className="border-t-2 grid grid-cols-6 gap-1 sm:grid-cols-8 sm:g-1 p-4 ">
+    <div className="w-fit shadow-4xl rounded-3xl grid grid-cols-4 gap-3 sm:grid-cols-8 sm:g-1  dark:bg-git-nav border-t-4 border-r-4 border-git-nav pt-4 py-2 mr-6">
       {questionData.map((question, i) => (
         <div
-          className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center m-3 "
+          className="pointer  w-4 h-4 p-4 border-4 rounded-full p-3 flex justify-center items-center "
           style={{
-            backgroundColor: marked.includes(question?._id) ? "#5855D8" : "",
+            borderColor: marked.includes(question?._id) ? "yellow" : "",
           }}
           key={question?._id}
           onClick={() => handleChangeIndex(i)}

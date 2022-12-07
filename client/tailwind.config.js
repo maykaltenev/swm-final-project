@@ -8,7 +8,7 @@ module.exports = {
         "100": "100"
       },
       fontSize: {
-        sm: '0.7rem'
+        sm: '0.8rem'
       },
       height: {
         "128": "32rem",

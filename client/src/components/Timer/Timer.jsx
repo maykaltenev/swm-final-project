@@ -49,7 +49,7 @@ function CountDownTimer() {
   };
 
   return (
-    <div className=" flex my-6 w-1/2 mx-2">
+    <div className="flex w-1/2 ">
       <div className="timer-wrapper text-sm  rounded-full  border-2 border-cyber-yellow">
         <CountdownCircleTimer
           isPlaying

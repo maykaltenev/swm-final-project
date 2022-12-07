@@ -45,17 +45,17 @@ function Quiz() {
   };
 
   return (
-    <div className="container h-screen dark:text-snow  w-screen sm:w-full sm:flex flex-col justify-around ">
+    <div className="container h-screen dark:text-snow w-screen sm:w-full sm:flex flex-col justify-around border-2">
       <div className="dark:bg-oxford-blue dark:text-snow text-xl w-full px-5">
         <span> {id * 1 + 1} </span>/<span> {questionData.length}</span>
       </div>
-      <div className="flex flex-col w-screen h-[90vh] sm:p-12 sm:h-3/4 sm:items-center sm:justify-between sm:flex sm:flex-row ">
+      <div className="flex flex-col w-screen h-[85vh] sm:p-12 sm:items-center sm:justify-between sm:flex sm:flex-row ">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="container shadow-3xl text-l flex flex-row items-center sm:flex-col sm:flex-row dark:bg-dark-raisin-black dark:text-snow sm:w-1/2">
+        <div className="container h-[25vh] w-screen sm:w-full text-sm flex items-center sm:flex-col sm:flex-row dark:bg-dark-raisin-black dark:text-snow p-2">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>
