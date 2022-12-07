@@ -7,7 +7,12 @@ import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
 import {MyDocument} from "../Certificate/Certificate"
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-
+//images
+import reactimg from "../../assets/reactimg.png";
+import mongodbimg from "../../assets/mongodbimg.png";
+import jsimg from "../../assets/jsimg.png";
+import expressimg from "../../assets/expressimg.png";
+import nodeimg from "../../assets/nodeimg.png";
 
 function Result() {
   const [show, setShow] = useState(false);
@@ -65,24 +70,47 @@ const{user}= useContext(UserContext);
             quizHistory.quizResults.map((quiz) => (
               quiz.resultPercentage ? 
               <>
-              ( <PDFViewer>
+               <PDFViewer>
                 <MyDocument 
                 date={quiz.createdOn} 
                 inputType={quiz.quizType} 
                 sessionId={quiz.sessionId}
                  name={`${user.firstName} ${user.lastName } `} 
-                 percentage={quiz.resultPercentage}/>
+                 percentage={quiz.resultPercentage}
+                 inputTypeImage={quiz?.quizType === "javascript"
+                ? jsimg
+                : quiz?.quizType === "react"
+                ? reactimg
+                : quiz?.quizType === "express"
+                ? expressimg
+                : quiz?.quizType === "mongodb"
+                ? mongodbimg
+                : quiz?.quizType === "nodejs"
+                ? nodeimg
+                : ""}
+                />
                  </PDFViewer>
               <PDFDownloadLink document={<MyDocument 
                 date={quiz.createdOn} 
-                inputType={quiz.quizType} 
+                inputType={quiz.quizType.charAt(0).toUpperCase() + quiz.quizType.slice(1)} 
+             inputTypeImage={quiz?.quizType === "javascript"
+             ? jsimg
+             : quiz?.quizType === "react"
+             ? reactimg
+             : quiz?.quizType === "express"
+             ? expressimg
+             : quiz?.quizType === "mongodb"
+             ? mongodbimg
+             : quiz?.quizType === "nodejs"
+             ? nodeimg
+             : ""}
                 sessionId={quiz.sessionId}
-                 name={`${user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)} ${user.lastName } `} 
+                 name={`${user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)} ${user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) } `} 
                  percentage={quiz.resultPercentage}/> } fileName="certificate.pdf">
           {({ blob, url, loading, error }) =>
             loading ? "Loading document..." : <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">Download now!</button>
           }
-        </PDFDownloadLink> )  </>
+        </PDFDownloadLink> </>
              :
              ""
            

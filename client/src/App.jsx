@@ -11,7 +11,6 @@ import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import { useContext } from "react";
 import { UserContext } from "./components/Context/UserContext";
 import Result from "./components/Result/Result";
-
 import "./index.css";
 import Home from "./components/Home/Home";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
@@ -47,6 +46,7 @@ function App() {
           <Route path="/createquiz" element={<CreateQuiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
+          <Route path="/mycertificates" element={<MyDocument />} />
         </Routes>
       </div>
     </div>

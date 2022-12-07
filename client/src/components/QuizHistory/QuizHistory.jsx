@@ -96,12 +96,7 @@ console.log(quizHistory)
                     </h6>
                   </div>
                 </div>
-                
-                {/* <PDFDownloadLink document={<MyDocument date={new Date(quiz?.createdOn).toUTCString()} inputType={quiz?.quizType} sessionId={quiz.sessionId} name={`${user.firstName} ${user.lastName } `} percentage={result.userAnswerPercentage}/> } fileName="certificate.pdf">
-          {({ blob, url, loading, error }) =>
-            loading ? "Loading document..." : <button className="pointer-cursor bg-btn-majorelle-blue border-2 border-bg-menu-dark-silver-metallic py-2 px-6 rounded hover:bg-link-violet-blue">Download now!</button>
-          }
-        </PDFDownloadLink>  */}
+             
               </Fragment>
 
             ))}
