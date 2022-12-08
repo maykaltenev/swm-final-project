@@ -11,7 +11,7 @@ export default function QuizCard() {
   const { handleNewQuiz } = useContext(QuestionContext);
 
   const { level } = useParams();
-  console.log(level);
+
   return (
     <div className="container flex mb-6 dark:text-snow py-26 ">
       <div className="flex flex-wrap">

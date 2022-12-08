@@ -19,7 +19,6 @@ export default function Collapsible() {
       <div className="container rounded border-ultramarine-blue sm:w-3/5 py-3 px-2">
         {/* JS */}
         <details
-          onClick={() => handleClick("beginner")}
           className="bg-snow shadow h-2/4 rounded mb-4 border-solid "
           open
         >
@@ -39,7 +38,10 @@ export default function Collapsible() {
               ></div>
             </div>
           </summary>
-          <div className="p-6 hover:bg-gray-200">
+          <div
+            onClick={() => handleClick("beginner")}
+            className="p-6 hover:bg-gray-200"
+          >
             <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
               <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
@@ -114,7 +116,7 @@ export default function Collapsible() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0 ">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
-                    Start your journey with the Mern Stack Path for beginner
+                    Start your journey with the Mern Stack Path for Intermediate
                   </h2>
                   <p className="leading-relaxed bg-">
                     MERN stack is a collection of technologies that enables
@@ -176,7 +178,7 @@ export default function Collapsible() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0 ">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
-                    Start your journey with the Mern Stack Path for beginner
+                    Start your journey with the Mern Stack Path for Advanced
                   </h2>
                   <p className="leading-relaxed bg-">
                     There are many good reasons to use the MERN Stack. For
