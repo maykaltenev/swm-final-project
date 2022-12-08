@@ -29,16 +29,16 @@ function CountDownTimer() {
     }
 
     return (
-      <div className="timer">
-        <div className="text">Remaining time</div>
+      <div className="timer sm:text-3xl">
+        <div className="text"></div>
         <div className="value">{formatRemainingTime(remainingTime)}</div>
       </div>
     );
   };
 
   return (
-    <div className="flex my-6 w-1/2">
-      <div className="timer-wrapper text-sm">
+    <div className="flex my-6 w-1/2  dark:text-text-ghost-white">
+      <div className="timer-wrapper  text-sm">
         <CountdownCircleTimer
           isPlaying
           size={130}

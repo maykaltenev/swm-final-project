@@ -36,28 +36,40 @@ function Quiz() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen w-screen">
-      <div className="">
+    <div className="flex flex-col min-h-screen w-screen sm:w-full sm:h-[75%]   dark:bg-dark-raisin-black">
+      <div className="dark:border-git-box rounded-3xl ml-3 text-text-ghost-white">
         <span>{id * 1 + 1}</span>/<span> {questionData.length}</span>
       </div>
-      <div className=" relative g:w-1/2 h-full w-full mb-10 lg:mb-0">
+      <div className="border-2 sm:w-full  h-full w-full mb-10 lg:mb-0 md:flex sm:h-[75%] dark:bg-dark-raisin-black">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="flex h-full w-full flex-row sm:flex-col sm:flex-row sm:w-1/2">
+        <div className="flex h-full  p-2 w-full flex-row sm:flex-col sm:w-2/3 sm:h-[90%] sm:items-center sm:justify-evenly border-2">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>
-        <div>
-          <button onClick={handlePrevious}> Previous</button>
-          <button onClick={handleNext}>Next</button>
-          {/* <button onClick={handleShowAnswer}>Show Answer</button> */}
+      </div>
+      <div className="flex w-full border justify-evenly sm:w-3/4">
+        <div className="flex border justify-around">
+          <button
+            className="mr-2  w-36 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+            onClick={handlePrevious}
+          >
+            {" "}
+            Previous
+          </button>
+          <button
+            className="w-36  px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+            onClick={handleNext}
+          >
+            Next
+          </button>
         </div>
         {Number(id) === questionData.length - 1 ? (
           <button
-            className="mb-80"
+            className="inline-block px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
             onClick={() => getResult(questionData[0]?.questionType)}
           >
             Submit

@@ -10,10 +10,10 @@ export default function QuestionCircles({ setCurrentQuestion }) {
     console.log(i);
   };
   return (
-    <div className="h-1/4 grid grid-cols-6 border-2 sm:grid-cols-8 sm:g-1 ">
+    <div className="flex items-center grid grid-cols-6 sm:grid-cols-3 sm:g-1 sm:h-[25%] border-2 dark:text-text-ghost-white sm:w-3/4 sm:h-1/2 sm:align-center">
       {questionData.map((question, i) => (
         <a
-          className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center m-3 "
+          className="pointer w-4 h-4 border-4 rounded-full p-3 flex justify-center items-center "
           style={{
             backgroundColor: marked.includes(question?._id) ? "lightgray" : "",
           }}
