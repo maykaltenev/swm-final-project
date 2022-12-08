@@ -197,102 +197,103 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="border-2 mb-4 bg-indigo-300 bg-gray-200 w-full sm:w-1/2">
-      {
-        <div key={question?._id}>
-          <h5 className="border-2 rounded-md  p-2 my-4">
-            {question?.questionText}
-          </h5>
-          {question?.code && (
-            <div style={{ padding: "1rem", backgroundColor: "" }}>
-              <Editor
-                style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
-                value={question.code}
-                highlight={(code) => highlight(code, languages.js)}
-                disabled
-              />
-            </div>
-          )}
-          {question &&
-            (marked.includes(question._id) ? (
-              <AiFillStar onClick={() => handleMark(question?._id)} />
-            ) : (
-              <AiOutlineStar onClick={() => handleMark(question?._id)} />
-            ))}
-          <div>
-            {question?.options.map((option) => (
-              <ul class=" text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-                  <div className="flex items-center pl-3" key={option?._id}>
-                    <input
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  dark:focus:ring-blue-600 dark:ring-offset-gray-700  dark:bg-gray-600 dark:border-gray-500   "
-                      type={question?.inputType}
-                      name={question?.inputType}
-                      value={
-                        question?.inputType === "text"
-                          ? undefined
-                          : option?.option
-                      }
-                      id={option?._id}
-                      ref={userInput}
-                      checked={
-                        (answer &&
-                          answer[
-                            answer?.findIndex(
-                              (item) => item?.questionID === question?._id
-                            )
-                          ]?.answers?.includes(option?._id)) ||
-                        false
-                      }
-                      placeholder={
-                        answer &&
-                        answer[
-                          answer?.findIndex(
-                            (item) => item?.questionID === question?._id
-                          )
-                        ]?.answers[0]
-                      }
-                      maxLength={option?.option?.length}
-                      onChange={
-                        question.inputType !== "text"
-                          ? (e) =>
-                              handleUserAnswer(
-                                question?._id,
-                                e.target?.id,
-                                getUser?._id,
-                                sessionId,
-                                question?.inputType,
-                                userInput?.current?.value
-                              )
-                          : debounce(
-                              (e) =>
-                                handleUserAnswer(
-                                  question?._id,
-                                  e.target?.id,
-                                  getUser?._id,
-                                  sessionId,
-                                  question?.inputType,
-                                  userInput?.current?.value
-                                ),
-                              300
-                            )
-                      }
-                    />
-                    <label
-                      className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
-                      htmlFor={option?._id}
-                    >
-                      {question.inputType === "text" ? "" : option?.option}
-                    </label>
-                  </div>
-                </li>
-              </ul>
-            ))}
-            {showAnswer && <div>{question?.explanation}</div>}
-            <hr />
+    <div
+      key={question?._id}
+      className=" w-full relative h-full  flex flex-col justify-center items-center "
+    >
+      <div className="absolute top-1 right-3 text-xl border-2 rounded-full">
+        {question &&
+          (marked.includes(question._id) ? (
+            <AiFillStar onClick={() => handleMark(question?._id)} />
+          ) : (
+            <AiOutlineStar onClick={() => handleMark(question?._id)} />
+          ))}
+      </div>
+      <div className="flex flex-col justify-start align-center w-[98%] h-[30vh]">
+        <h1 className="border-2 border-gray-200 shadow-xl w-full h-[45%] align-center p-4 py-6  text-justify">
+          {question?.questionText}
+        </h1>
+        {question?.code && (
+          <div className="border-2 border-red-500 h-[55%] flex items-center pointer ">
+            <Editor
+              style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
+              value={question.code}
+              highlight={(code) => highlight(code, languages.js)}
+              disabled
+            />
           </div>
-        </div>
-      }
+        )}
+      </div>
+      <div className="w-[99%] grid grid-cols-1 gap-1 p-2">
+        {question?.options.map((option) => (
+          <ul class=" font-base text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <li class="w-full rounded-t-lg border-b border-gray-400 dark:border-gray-600">
+              <div className="flex items-center pl-3" key={option?._id}>
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  dark:focus:ring-blue-600 dark:ring-offset-gray-700  dark:bg-gray-600 dark:border-gray-500   "
+                  type={question?.inputType}
+                  name={question?.inputType}
+                  value={
+                    question?.inputType === "text" ? undefined : option?.option
+                  }
+                  id={option?._id}
+                  ref={userInput}
+                  checked={
+                    (answer &&
+                      answer[
+                        answer?.findIndex(
+                          (item) => item?.questionID === question?._id
+                        )
+                      ]?.answers?.includes(option?._id)) ||
+                    false
+                  }
+                  placeholder={
+                    answer &&
+                    answer[
+                      answer?.findIndex(
+                        (item) => item?.questionID === question?._id
+                      )
+                    ]?.answers[0]
+                  }
+                  maxLength={option?.option?.length}
+                  onChange={
+                    question.inputType !== "text"
+                      ? (e) =>
+                          handleUserAnswer(
+                            question?._id,
+                            e.target?.id,
+                            getUser?._id,
+                            sessionId,
+                            question?.inputType,
+                            userInput?.current?.value
+                          )
+                      : debounce(
+                          (e) =>
+                            handleUserAnswer(
+                              question?._id,
+                              e.target?.id,
+                              getUser?._id,
+                              sessionId,
+                              question?.inputType,
+                              userInput?.current?.value
+                            ),
+                          300
+                        )
+                  }
+                />
+                <label
+                  className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
+                  htmlFor={option?._id}
+                >
+                  {question.inputType === "text" ? "" : option?.option}
+                </label>
+              </div>
+            </li>
+          </ul>
+        ))}
+        {showAnswer && <div>{question?.explanation}</div>}
+        <hr />
+      </div>
     </div>
   );
 }

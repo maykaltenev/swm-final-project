@@ -41,7 +41,6 @@ function Result() {
           </div>
           {<button onClick={handleCheckAnswers}>Check Answers</button>}
           <button onClick={handleTryAgain}>Try Again</button>
-
           {show && <CheckAllAnswersResult allQues={result} />}
         </div>
       )}
