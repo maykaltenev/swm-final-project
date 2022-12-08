@@ -11,8 +11,8 @@ import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import Logo from "../../assets/MERN+.png";
 // Create styles
 const styles = StyleSheet.create({
-  page: {  
-    overflowX: "hidden"
+  page: {
+    overflowX: "hidden",
   },
   section: {
     margin: 10,
@@ -51,22 +51,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     margin: "50",
-    fontWeight:"900"
+    fontWeight: "900",
   },
-  textSpacing: {    
+  textSpacing: {
     lineHeight: "2",
     lineSpacing: "3",
     margin: "25",
-   
   },
-  inputTypeImageStyle:{
-    width:"150",
-    height:"150",
+  inputTypeImageStyle: {
+    width: "150",
+    height: "150",
     display: "block",
     marginLeft: "auto",
-    marginRight: "auto",   
-    marginBottom:"70"
-  }
+    marginRight: "auto",
+    marginBottom: "70",
+  },
 });
 
 export const Certificate = ({
@@ -77,26 +76,27 @@ export const Certificate = ({
   percentage,
   inputTypeImage,
 }) => {
-   
   return (
-    <div >
-      <Document >
-        <Page  size="A4">
+    <>
+      <Document>
+        <Page size="A4">
           <View style={styles.certificateBorder}>
             <View style={styles.header}>
               <Image style={styles.imageWidth} src={Logo}></Image>
               <Text style={styles.heading}>Certificate of Completion</Text>
             </View>
-
             <View>
               <Text style={styles.textSpacing}>
                 This is to certify that {name} has successfully completed the
                 requirements and has the knowledge and skills to be recognized
                 as {inputType} Developer
               </Text>
-              <Image src={inputTypeImage} style={styles.inputTypeImageStyle}></Image>
+              <Image
+                src={inputTypeImage}
+                style={styles.inputTypeImageStyle}
+              ></Image>
             </View>
-            
+
             <View>
               <Text style={styles.lineSpacing}>
                 Certification Id: {sessionId}
@@ -113,6 +113,6 @@ export const Certificate = ({
           </View>
         </Page>
       </Document>
-    </div>
+    </>
   );
 };
