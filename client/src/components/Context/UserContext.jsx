@@ -13,8 +13,8 @@ const UserContextProvider = ({ children }) => {
   const [openLoginForm, setOpenLoginForm] = useState(false);
   //sign in the right user from db
   const [signIn, setSignIn] = useState({});
-   //for eye icon in password
-   const [visible, setVisible] = useState(false);
+  //for eye icon in password
+  const [visible, setVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const UserContextProvider = ({ children }) => {
           localStorageUser();
         });
       setError("");
-      navigate("/userprofile");
+      navigate("/");
       return;
     } catch (error) {
       console.log(error);
@@ -144,8 +144,9 @@ const UserContextProvider = ({ children }) => {
         setSignIn,
         handleShowRegisterForm,
         handleShowLoginForm,
-        visible, setVisible,
-        localStorageUser
+        visible,
+        setVisible,
+        localStorageUser,
       }}
     >
       {children}

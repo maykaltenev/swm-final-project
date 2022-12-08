@@ -9,16 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { defineTheme } from "../../lib/defineTheme";
 import useKeyPress from "../../hooks/useKeyPress";
-
 import OutputWindow from "./OutputWindow";
 import CustomInput from "./CustomInput";
 import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
-import CodeDropdown from "./CodeDropDown";
+
+import { randomChallenge } from "../../utils/randomChallenge";
 
 const Landing = () => {
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState(randomChallenge());
+
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
@@ -32,8 +33,6 @@ const Landing = () => {
     console.log("selected Option...", sl);
     setLanguage(sl);
   };
-
-  console.log("code", code);
 
   useEffect(() => {
     if (enterPress && ctrlPress) {
@@ -187,20 +186,16 @@ const Landing = () => {
         pauseOnHover
       />
 
-      <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
-      <div className="flex flex-row">
-        <div className="px-4 py-2">
+      <div className="flex flex-row ">
+        <div className="px-4 py-2 ">
           <LanguagesDropdown onSelectChange={onSelectChange} />
         </div>
         <div className="px-4 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </div>
-        <div className="px-4 py-2">
-          <CodeDropdown setCode={setCode} />
-        </div>
       </div>
-      <div className="flex flex-row space-x-4 items-start px-4 py-4">
-        <div className="flex flex-col w-full h-full justify-start items-end">
+      <div className="flex flex-col justify-center sm:flex-row space-x-4 items-start px-4 py-4">
+        <div className="flex flex-col w-screen h-full justify-start items-end">
           <CodeEditorWindow
             code={code}
             onChange={onChange}
@@ -209,7 +204,7 @@ const Landing = () => {
           />
         </div>
 
-        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
+        <div className="right-container justify-center flex flex-shrink-0 sm:w-[30%] flex-col w-5/6 ">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
             <CustomInput

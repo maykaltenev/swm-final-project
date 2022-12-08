@@ -161,7 +161,7 @@ export const updateQuizTimer = async (req, res) => {
 };
 export const updateUserQuizResults = async (req, res) => {
   const { userId, sessionId, resultPercentage, quizType } = req.body;
-  console.log("test", quizType)
+
   try {
     const session = await User.findOne({
       _id: userId,
@@ -186,7 +186,6 @@ export const updateUserQuizResults = async (req, res) => {
       },
       { new: true }
     );
-
 
     return res.status(200).json(updateUserQuizResult);
   } catch (error) {

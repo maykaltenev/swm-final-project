@@ -2,15 +2,20 @@ import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { differenceInSeconds } from "date-fns";
 const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
+  // States
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const { timer } = useContext(UserContext);
   const [points, setPoints] = useState(0);
 
   const getUser = JSON.parse(localStorage.getItem("user"));
   const [result, setResult] = useState("");
+
+  const [timeOver, setTimeOver] = useState(false);
+
   const navigate = useNavigate();
 
   // Get Quiz Questions from localStorage
@@ -52,20 +57,40 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
-  const handleNewQuiz = (chosenQuestionType) => {
+
+  const getQuizTimeFromLocalStorage = () => {
+    const quizTime = localStorage.getItem("quizTime");
+    if (quizTime) {
+      return JSON.parse(localStorage.getItem("quizTime"));
+    } else {
+      return "";
+    }
+  };
+  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
+
+  const date = new Date();
+  const duration = 600;
+  const [timeDifference, setTimeDifference] = useState(
+    differenceInSeconds(new Date(quizTime?.end), date)
+  );
+  console.log("timeOver", timeOver);
+  const handleNewQuiz = (chosenQuestionType, level) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
 
+    setTimeOver(false);
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
+    getQuizTimeFromLocalStorage();
+    setTimeDifference(duration);
 
-    handleCreateNewSession(chosenQuestionType);
+    handleCreateNewSession(chosenQuestionType, level);
     timer();
   };
-  const handleCreateNewSession = async (questionType) => {
+  const handleCreateNewSession = async (questionType, level) => {
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
@@ -74,6 +99,7 @@ const QuestionContextProvider = ({ children }) => {
           {
             user: getUser._id,
             questionType: questionType,
+            level: level,
           },
           {
             withCredentials: true,
@@ -129,10 +155,18 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-
+  const handleTimeOver = () => {
+    setTimeOver(true);
+  };
   return (
     <QuestionContext.Provider
       value={{
+        timeOver,
+        handleTimeOver,
+        duration,
+        quizTime,
+        timeDifference,
+        setTimeDifference,
         getResult,
         /* getUserUpdated, */
         handleNewQuiz,
