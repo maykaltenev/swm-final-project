@@ -23,11 +23,11 @@ console.log("quiz history in viewcer",quizHistory)
       <h1 className="text-center text-xl dark:text-snow mb-5">
         <b>My Certificates</b>
       </h1>
-        {quizHistory.quizResults &&
-            quizHistory.quizResults.map((quiz) => ( 
+        {quizHistory?.quizResults &&
+            quizHistory?.quizResults?.slice().reverse().map((quiz) => ( 
            
          <MyDocument user={user} quiz={quiz} />
-        )).sort()}
+        ))}
     </>
   );
 }

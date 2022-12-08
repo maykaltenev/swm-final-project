@@ -58,8 +58,8 @@ console.log(quizHistory)
     <>
       <section className="flex min-h-screen">
         <div className=" text-gray-300 sm:w-1/4  min-h-screen  rounded-xl drop-shadow-lg my-2">
-          {quizHistory.quizResults &&
-            quizHistory.quizResults.map((quiz) => (
+          {quizHistory?.quizResults &&
+            quizHistory?.quizResults?.slice().reverse().map((quiz) => (
               <Fragment key={quiz.sessionId}>
                 <div
                   className={`bg-dark-purple sm:h-24 items-center rounded-r-md flex-col-reverse m-px shadow-lg cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
