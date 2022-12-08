@@ -197,10 +197,13 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="relative h-full sm:w-[65%]  w-screen  mr-3 bg-dark-raisin-black sm:shadow-6xl">
+    <div className="relative h-full rounded-2xl sm:border-t-2 sm:border-b-4 md:w-[55%]border-nav-raisin-black  w-screen  sm:w-[65%] lg:w-[75%] mr-3 bg-dark-raisin-black sm:shadow-6xl">
       {
-        <div className="h-full" key={question?._id}>
-          <span className="text-3xl  absolute right-4 top-4 flex items-self-end">
+        <div
+          className="h-full flex flex-col justify-evenly"
+          key={question?._id}
+        >
+          <span className="text-3xl absolute right-4 top-4 flex items-self-end">
             {question &&
               (marked.includes(question._id) ? (
                 <AiFillStar onClick={() => handleMark(question?._id)} />
