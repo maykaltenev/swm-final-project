@@ -48,6 +48,7 @@ const MyDocument = () => {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
+  console.log("the quiz result is:",quizHistory)
   return (
     <div className="font-poppins ">
       <h1 className="text-center text-xl dark:text-snow mb-5">
@@ -134,10 +135,8 @@ const MyDocument = () => {
                         <p className="mb-5">
                           Attempted date :{" "}
                           {new Date(
-                            quizHistory?.quizResults[
-                              quizHistory?.quizResults?.length - 1
-                            ].createdOn
-                          ).toLocaleString("de-DE")}{" "}
+                            quiz.createdOn
+                           ).toLocaleString("de-DE")}{" "}
                         </p>
                         <button className="rounded md:w-3/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                           Download now!
