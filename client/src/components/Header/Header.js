@@ -58,7 +58,7 @@ function Header({ theme, setTheme }) {
 
 
   return (
-    <div className="dark:bg-bg-xiketic container ">
+    <div className="dark:bg-bg-xiketic container shadow-5xl my-2 border-2 border-b-8 border-l-6 rounded-2xl dark:border-nav-raisin-black">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
