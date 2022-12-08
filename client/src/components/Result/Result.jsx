@@ -15,8 +15,9 @@ import expressimg from "../../assets/expressimg.png";
 import nodeimg from "../../assets/nodeimg.png";
 
 function Result() {
-  const [show, setShow] = useState(false); 
-  const { questionData, result, getResult, sessionId } = useContext(QuestionContext);
+  const [show, setShow] = useState(false);
+  const { questionData, result, getResult, sessionId } =
+    useContext(QuestionContext);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   /* getting the quiz history details attached to the user from the local storage */
@@ -44,14 +45,14 @@ function Result() {
 
   //function to hanlde preview button
   const handleViewCertificate = () => {
-    navigate("/mycertificates")
+    navigate("/mycertificates");
   };
 
   /* to display once the result when this page */
   useEffect(() => {
     getResult();
   }, []);
-  
+
   return (
     <>
       <h1 className="text-center text-xl dark:text-snow ">
@@ -155,9 +156,9 @@ function Result() {
                   className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
                 >
                   {" "}
-                 View Certificate
+                  View Certificate
                 </button>
-              </div>           
+              </div>
             </>
           ) : (
             ""

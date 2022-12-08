@@ -8,7 +8,28 @@ module.exports = {
         "100": "100"
       },
       fontSize: {
-        sm: '0.7rem'
+        sm: '0.8rem'
+      },
+      height: {
+        "128": "32rem",
+        "152": "38rem",
+        "184": "46rem",
+        "228": "52rem",
+      },
+      maxHeight: {
+        "152": "38rem",
+        '128': '32rem',
+        "228": '52rem',
+      },
+      boxShadow: {
+        '3xl': "8px 8px 0px 0px #0d1117",
+        '4xl': "4px 4px 0px 0px #FFD51C",
+        '5xl': "4px 4px 0px 0px #5855D8",
+        '6xl': "6px 6px 0px 0px #252a31",
+        '7xl': "4px 4px 0px 0px #475569",
+        '8xl': "8px 8px 0px 0px #633EF4",
+        '9xl': "14px 14px 0px 0px #D3D2DB",
+
       },
       colors: {
         // dark-mode
@@ -40,7 +61,18 @@ module.exports = {
         "prussian-blue": "#333F54",
         "ultramarine-blue-2": "#677CF4",
         "cornflower-blue": "#7D88FF",
-        "javascript-yellow": "#F0DB4F"
+        "javascript-yellow": "#F0DB4F",
+        //git
+        "git-nav": "#161b22",
+        "git-box": "#252a31",
+        "git-background": "#0d1117",
+        //
+        "magnolia": "F6F4FE",
+        "han-purple": "#5832F3",
+        "han-purple-200": "#633EF4",
+        "han-purple-300": "#532BF3",
+        "lavender-web": "#E3DFFF",
+        "cool-gray": "#818AA3",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

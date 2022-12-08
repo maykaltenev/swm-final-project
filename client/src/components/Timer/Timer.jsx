@@ -30,20 +30,20 @@ function CountDownTimer() {
     }
 
     return (
-      <div className="timer">
-        <div className="text">Remaining time</div>
-        <div className="value">{formatRemainingTime(remainingTime)}</div>
+      <div className="timer sm:text-2xl  ">
+        <div className="text  "></div>
+        <div className=" ">{formatRemainingTime(remainingTime)}</div>
       </div>
     );
   };
 
   return (
-    <div className="flex my-6 w-1/2 mx-2">
-      <div className="timer-wrapper text-sm">
+    <div className=" flex my-2 w-1/2 justify-center dark:text-text-ghost-white">
+      <div className=" rounded-full timer-wrapper text-xl sm:text-sm ">
         <CountdownCircleTimer
           isPlaying
-          size={130}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+          size={110}
+          colors={["#5855D8", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
           duration={duration}
           initialRemainingTime={timeDifference}
