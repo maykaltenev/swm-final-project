@@ -16,14 +16,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
 
-//styles
-import style from "./Question.module.css";
-
-export default function QuestionCard({
-  question,
-  showAnswer,
-  currentQuestion,
-}) {
+export default function QuestionCard({ question, showAnswer }) {
   //Context
   const {
     sessionId,

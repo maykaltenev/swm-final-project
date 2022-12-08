@@ -7,7 +7,6 @@ import mongodbimg from "../../assets/mongodbimg.png";
 import jsimg from "../../assets/jsimg.png";
 import expressimg from "../../assets/expressimg.png";
 import nodeimg from "../../assets/nodeimg.png";
-import SideBar from "../SideBar/SideBar";
 
 function QuizHistory() {
   const [result, setResult] = useState("");

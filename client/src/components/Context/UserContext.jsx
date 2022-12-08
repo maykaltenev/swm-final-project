@@ -38,7 +38,7 @@ const UserContextProvider = ({ children }) => {
           localStorageUser();
         });
       setError("");
-      navigate("/userprofile");
+      navigate("/");
       return;
     } catch (error) {
       console.log(error);

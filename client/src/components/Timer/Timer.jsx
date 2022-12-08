@@ -1,14 +1,11 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../Context/UserContext";
-import { differenceInSeconds } from "date-fns";
+import { useContext } from "react";
+
 import { QuestionContext } from "../Context/QuestionContext";
 
 function CountDownTimer() {
-  const { timer } = useContext(UserContext);
-  const { timeDifference } = useContext(QuestionContext);
-
-  const duration = 600;
+  const { timeDifference, duration, handleTimeOver } =
+    useContext(QuestionContext);
 
   const formatRemainingTime = (time) => {
     let minutes = Math.floor((time % 3600) / 60);
@@ -24,8 +21,12 @@ function CountDownTimer() {
   };
 
   const renderTime = ({ remainingTime }) => {
-    if (remainingTime && timeDifference <= 0) {
-      return <div className="timer">Too late...</div>;
+    if (remainingTime <= 0) {
+      return handleTimeOver();
+
+      {
+        /* <div className="timer">Too late...</div>; */
+      }
     }
 
     return (
