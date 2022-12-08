@@ -47,23 +47,23 @@ function Quiz() {
   return (
     <div
       className="container sm:border-t-2 sm:border-b-4 border-t-24 bg-ghost-white-300
-   border-ghost-white-100 dark:border-nav-raisin-black h-screen rounded-xl dark:text-snow w-screen sm:w-full sm:flex flex-col bg-ghost-white justify-around dark:bg-card-space-cadet"
+   border-ghost-white-100 dark:border-nav-raisin-black h-screen rounded-xl dark:text-snow w-screen sm:w-full sm:flex flex-col bg-ghost-white justify-around dark:bg-card-space-cadet "
     >
-      <div className="dark:shadow-6xl shadow-8xl rounded-xl my-4 bg-ghost-white-200 sm:border-t-2 sm:border-b-4 border-nav-raisin-black dark:bg-dark-raisin-black dark:text-snow rounded text-xl w-full px-5    ">
+      <div className="dark:shadow-6xl shadow-8xl rounded-xl my-4 bg-ghost-white-200 sm:border-t-2 sm:border-b-4 border-nav-raisin-black dark:bg-dark-raisin-black dark:text-snow rounded  w-full px-5    ">
         <span> {id * 1 + 1} </span>/<span> {questionData.length}</span>
       </div>
-      <div className="flex border-t-2 border-l-2 border-ghost-white flex-col w-screen sm:shadow-6xl sm:rounded-3xl sm:h-[100%] sm:w-[100%] h-[85vh]  sm:p-12 sm:justify-between  sm:flex sm:flex-row ">
+      <div className="flex border-t-2 border-ghost-white flex-col w-screen sm:shadow-6xl sm:rounded-3xl sm:h-[100%] sm:w-[100%] h-[85vh] sm:p-12 sm:justify-between  sm:flex sm:flex-row ">
         <QuestionCard
           question={questionData[id]}
           showExplanation={showExplanation}
           currentQuestion={id}
         />
-        <div className="container h-[25vh] w-screen dark:shadow-3xl shadow-7xl sm:w-[35%] md:w-[35%]  sm:h-full text-sm border-white-ghost-300 flex items-center sm:flex-col sm:justify-evenly dark:bg-dark-raisin-black dark:text-snow p-2 lg:w-[25%] lg:h-[90%] rounded-3xl">
+        <div className="container h-[25vh] w-screen dark:shadow-3xl shadow-7xl sm:w-[35%] md:w-[35%]  sm:h-full text-sm border-white-ghost-300 flex items-center sm:flex-col sm:justify-evenly dark:bg-dark-raisin-black dark:text-snow p-2 lg:w-[45%] lg:h-[90%] rounded-3xl">
           <CountDownTimer />
           <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
         </div>
       </div>
-      <div className=" flex border-t-2 border-white-ghost-200  dark:border-nav-raisin-black space-x-4 mt-8 ">
+      <div className=" flex dark:border-nav-raisin-black space-x-4 mt-8 sm:m-0 ">
         <div className="flex   ">
           <button
             className="pointer w-28 sm:w-36 py-2 text-snow bg-btn-majorelle-blue rounded-lg border-ghost-white-300   hover:bg-han-purple border-t-2 mx-4"
@@ -73,7 +73,7 @@ function Quiz() {
             Previous
           </button>
           <button
-            className="pointe rw-28 sm:w-36 py-2 text-snow bg-btn-majorelle-blue hover:bg-han-purple border-ghost-white-100 border-t-2  rounded-lg"
+            className="pointe w-28 sm:w-36 py-2 text-snow bg-btn-majorelle-blue hover:bg-han-purple border-ghost-white-100 border-t-2  rounded-lg"
             onClick={handleNext}
           >
             Next
