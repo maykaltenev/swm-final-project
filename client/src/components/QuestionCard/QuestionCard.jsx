@@ -15,7 +15,12 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
-
+// Images
+import reactimg from "../../assets/reactimg.png";
+import mongodbimg from "../../assets/mongodbimg.png";
+import jsimg from "../../assets/jsimg.png";
+import expressimg from "../../assets/expressimg.png";
+import nodeimg from "../../assets/nodeimg.png";
 export default function QuestionCard({
   question,
   showAnswer,
@@ -206,12 +211,12 @@ export default function QuestionCard({
             <AiOutlineStar onClick={() => handleMark(question?._id)} />
           ))}
       </div>
-      <div className="flex flex-col justify-start align-center w-[98%] h-[30vh] sm:w-[90%] p">
-        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4 lg:py-0 lg:p-2 text-justify ">
+      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] p">
+        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4 lg:py-0  text-justify  ">
           {question?.questionText}
         </h1>
-        {question?.code && (
-          <div className="h-[55%] flex items-center pointer">
+        {question?.code ? (
+          <div className="h-[55%] items-center pointer">
             <Editor
               style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
               value={question.code}
@@ -219,6 +224,24 @@ export default function QuestionCard({
               disabled
             />
           </div>
+        ) : (
+          <img
+            className="w-2/5 ml-28 h-[55%] sm:h-[55%] sm:w-[25%] lg:w-[45%] sm:ml-42 "
+            src={
+              question?.questionType === "javascript"
+                ? jsimg
+                : question?.questionType === "react"
+                ? reactimg
+                : question?.questionType === "express"
+                ? expressimg
+                : question?.questionType === "mongodb"
+                ? mongodbimg
+                : question?.questionType === "nodejs"
+                ? nodeimg
+                : ""
+            }
+            alt="quiz"
+          />
         )}
       </div>
       <div className="w-[99%] sm:w-[85%]  grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">

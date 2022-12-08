@@ -7,6 +7,12 @@ import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 import { QuestionContext } from "../Context/QuestionContext";
 import { useNavigate, useParams } from "react-router-dom";
 import CountDownTimer from "../Timer/Timer";
+//Images
+import reactimg from "../../assets/reactimg.png";
+import mongodbimg from "../../assets/mongodbimg.png";
+import jsimg from "../../assets/jsimg.png";
+import expressimg from "../../assets/expressimg.png";
+import nodeimg from "../../assets/nodeimg.png";
 
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
@@ -37,9 +43,28 @@ function Quiz() {
 
   return (
     <div className="flex flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
-      <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box ">
-        <span className=" ">{id * 1 + 1}</span>/
-        <span> {questionData.length}</span>
+      <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
+        <div>
+          <span className=" ">{id * 1 + 1}</span>/
+          <span> {questionData.length}</span>
+        </div>
+        <img
+          className="h-8 w-8 ml-5 sm:h-10 sm:w-10 sm:m-2 "
+          src={
+            questionData[id]?.questionType === "javascript"
+              ? jsimg
+              : questionData[id]?.questionType === "react"
+              ? reactimg
+              : questionData[id]?.questionType === "express"
+              ? expressimg
+              : questionData[id]?.questionType === "mongodb"
+              ? mongodbimg
+              : questionData[id]?.questionType === "nodejs"
+              ? nodeimg
+              : ""
+          }
+          alt="quiz"
+        />
       </div>
       <div className="sm:w-full h-full w-full mb-10 lg:mb-0 md:flex sm:h-[75%] dark:bg-dark-raisin-black">
         <QuestionCard
