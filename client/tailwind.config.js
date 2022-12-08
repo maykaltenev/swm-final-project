@@ -25,8 +25,11 @@ module.exports = {
         '3xl': "8px 8px 0px 0px #0d1117",
         '4xl': "4px 4px 0px 0px #FFD51C",
         '5xl': "4px 4px 0px 0px #5855D8",
-        '6xl': "4px 4px 0px 0px #252a31",
+        '6xl': "6px 6px 0px 0px #252a31",
         '7xl': "4px 4px 0px 0px #475569",
+        '8xl': "8px 8px 0px 0px #633EF4",
+        '9xl': "14px 14px 0px 0px #D3D2DB",
+
       },
       colors: {
         // dark-mode
@@ -35,7 +38,12 @@ module.exports = {
         "nav-raisin-black": "#2B2B33",
         "dark-raisin-black": "#1E1E27",
         "btn-majorelle-blue": "#5855D8",
-        "text-ghost-white": "#F0EFF3",
+        "ghost-white": "#F0EFF3",
+        "ghost-white-200": "#E9E8ED",
+        "ghost-white-300": "#D3D2DB",
+        "ghost-white-500": "#85829B",
+        "ghost-white-600": "#67647D",
+        "ghost-white-700": "#4B495B",
         "menu-dark-silver-metallic": "#A6A4AD",
         "menu-silver-metallic": "#B5B3BB",
         "link-violet-blue": "#7170D9",
@@ -64,6 +72,13 @@ module.exports = {
         "git-box": "#252a31",
         "git-text": "#252a31",
         "git-background": "#0d1117",
+        //
+        "magnolia": "F6F4FE",
+        "han-purple": "#5832F3",
+        "han-purple-200": "#633EF4",
+        "han-purple-300": "#532BF3",
+        "lavender-web": "#E3DFFF",
+        "cool-gray": "#818AA3"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

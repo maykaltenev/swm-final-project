@@ -48,8 +48,8 @@ function CountDownTimer() {
   };
 
   return (
-    <div className="flex sm:py-6 sm:m-2 sm:shadow-3xl sm:rounded-xl sm:w-5/6 sm:mb-4 dark:sm:bg-dark-raisin-black sm:justify-center">
-      <div className="timer-wrapper sm:dark:bg-bg-xiketic text-m  rounded-full sm:shadow-3xl border-cyber-yellow">
+    <div className="flex sm:py-6 sm:m-2 sm:shadow-3xl sm:rounded-xl dark:bg-card-space-cadet sm:bg-han-purple sm:w-5/6 sm:mb-4 dark:sm:bg-dark-raisin-black sm:justify-center ">
+      <div className="timer-wrapper lg:text-3xl dark:bg-bg-xiketic  text-m bg-ghost-white rounded-full sm:shadow-3xl border-cyber-yellow">
         <CountdownCircleTimer
           className=""
           isPlaying

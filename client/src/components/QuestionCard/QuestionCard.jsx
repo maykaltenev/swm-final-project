@@ -197,10 +197,11 @@ export default function QuestionCard({
   }, []);
 
   return (
-    <div className="relative h-full rounded-2xl sm:border-t-2 sm:border-b-4 md:w-[55%]border-nav-raisin-black  w-screen  sm:w-[65%] lg:w-[75%] mr-3 bg-dark-raisin-black sm:shadow-6xl">
+    <div className="relative h-full rounded-2xl sm:border-t-2 sm:border-b-4 md:w-[55%]dark:border-nav-raisin-black w-screen  sm:w-[65%] lg:w-[75%] mr-3 dark:bg-dark-raisin-black bg-magnolia dark:sm:shadow-6xl sm:shadow-7xl border-ghost-white-100">
       {
         <div
-          className="h-full flex flex-col justify-evenly"
+          className="h-full flex flex-col justify-evenly 
+           border-ghost-white-300"
           key={question?._id}
         >
           <span className="text-3xl absolute right-4 top-4 flex items-self-end">
@@ -211,8 +212,14 @@ export default function QuestionCard({
                 <AiOutlineStar onClick={() => handleMark(question?._id)} />
               ))}
           </span>
-          <div className="h-[40%] sm:h-[70%] ">
-            <h5 className="shadow-5xl sm:p-8 sm:text-lg  sm:mt-10 w-fit dark:border-snow dark:border-t-2 dark:border-l-2 bg-git-box rounded-md dark:text-snow p-2 m-4">
+          <div className="[40%] sm:h-[70%] ">
+            <h5
+              className="shadow-3xl dark:shadow-5xl sm:p-8 sm:text-lg  sm:mt-10 w-fit dark:border-snow dark:border-t-4 dark:border-l-2 dark:bg-git-box 
+              border-b-4
+              border-r-2
+              rounded-3xl
+            border-btn-majorelle-blue bg-han-purple rounded-md text-snow p-2 m-4"
+            >
               {question?.questionText}
             </h5>
             {question?.code && (
@@ -226,12 +233,12 @@ export default function QuestionCard({
               </div>
             )}
           </div>
-          <div className="grid text-sm sm:text-base sm:grid-cols-2 grid-col-1 gap-2 sm:gap-2">
+          <div className="grid text-sm sm:text-base sm:grid-cols-2 grid-col-1 gap-2 sm:gap-2  ">
             {question?.options.map((option) => (
-              <ul className="sm:text-base text-m mr-2 sm:min-h-[80%] sm:min-w-[90%] sm:m-0 rounded-lg border-top-1 dark:border-snow dark:border-t-2 dark:border-l-2 ">
+              <ul className="sm:text-base text-m mr-2 sm:min-h-[80%] sm:min-w-[90%] sm:m-0 rounded-lg dark:border-snow dark:border-t-2 dark:border-l-2  bg-han-purple">
                 <li className="rounded-t-lg  ">
                   <div
-                    className=" shadow-3xl bg-git-box  leading-loose flex sm:items-center pl-6 "
+                    className=" border-b-2 border-r-2 rounded-l border-btn-majorelle-blue bg-han-purple shadow-3xl dark:shadow-3xl dark:bg-git-box  leading-loose flex sm:items-center pl-6 "
                     key={option?._id}
                   >
                     <input
@@ -289,7 +296,7 @@ export default function QuestionCard({
                       }
                     />
                     <label
-                      className="sm:text-base p-2 text-left sm:leading-[2rem] text-white ml-4 w-full sm:h-fit sm:w-fit"
+                      className="  sm:text-base p-2 text-left sm:leading-[2rem] text-white ml-4 w-full sm:h-fit sm:w-fit"
                       htmlFor={option?._id}
                     >
                       {question.inputType === "text" ? "" : option?.option}

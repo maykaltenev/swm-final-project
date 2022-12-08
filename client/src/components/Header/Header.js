@@ -58,7 +58,7 @@ function Header({ theme, setTheme }) {
 
 
   return (
-    <div className="dark:bg-bg-xiketic container shadow-5xl my-2 border-2 border-b-8 border-l-6 rounded-2xl dark:border-nav-raisin-black">
+    <div className="dark:bg-bg-xiketic bg-ghost-white-300 container dark:shadow-5xl  border-2 border-b-8 border-l-6 rounded-2xl border-ghost-white-100 dark:border-nav-raisin-black shadow-8xl mb-1">
       <div className="mx-auto flex justify-between p-5 items-center">
         <Link
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
@@ -70,7 +70,7 @@ function Header({ theme, setTheme }) {
 
         {!user && (
           <button
-            className="bg-ultramarine-blue font-poppins mx-px px-5 rounded-full text-white py-2"
+            className="bg-ultramarine-blue font-poppins mx-px px-5  text-white py-2"
             onClick={handleShowRegisterForm}
           >
             Join Us!
