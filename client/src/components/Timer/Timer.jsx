@@ -29,7 +29,7 @@ function CountDownTimer() {
     }
 
     return (
-      <div className="timer sm:text-3xl">
+      <div className="timer sm:text-2xl ">
         <div className="text"></div>
         <div className="value">{formatRemainingTime(remainingTime)}</div>
       </div>
@@ -37,11 +37,11 @@ function CountDownTimer() {
   };
 
   return (
-    <div className="flex my-6 w-1/2  dark:text-text-ghost-white">
-      <div className="timer-wrapper  text-sm">
+    <div className="flex my-2 w-1/2 justify-center dark:text-text-ghost-white">
+      <div className="timer-wrapper sm:text-sm">
         <CountdownCircleTimer
           isPlaying
-          size={130}
+          size={110}
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
           duration={duration}

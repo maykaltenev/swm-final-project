@@ -199,7 +199,7 @@ export default function QuestionCard({
   return (
     <div
       key={question?._id}
-      className=" w-full relative h-full flex flex-col justify-center items-center sm:justify-evenly sm:w-full p-2 "
+      className="w-full sm:w-[80%] lg:w-[60%] lg:p-12 relative h-full flex flex-col justify-center items-center sm:justify-evenly p-2"
     >
       <div className="pointer absolute top-1 right-3 sm:top-2 sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white">
         {question &&
@@ -209,12 +209,12 @@ export default function QuestionCard({
             <AiOutlineStar onClick={() => handleMark(question?._id)} />
           ))}
       </div>
-      <div className="flex flex-col justify-start align-center w-[98%] h-[30vh] sm:w-[90%] p-2 ">
-        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-4 py-6 text-justify">
+      <div className="flex flex-col justify-start align-center w-[98%] h-[30vh] sm:w-[90%] p-2">
+        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-4 py-6 text-justify  ">
           {question?.questionText}
         </h1>
         {question?.code && (
-          <div className=" h-[55%] flex items-center pointer ">
+          <div className="h-[55%] flex items-center pointer">
             <Editor
               style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
               value={question.code}
@@ -224,9 +224,9 @@ export default function QuestionCard({
           </div>
         )}
       </div>
-      <div className=" w-[99%] sm:w-[90%] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">
+      <div className="w-[99%] sm:w-[85%] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">
         {question?.options.map((option) => (
-          <ul class=" dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav leading-none text-justify text-gray-900 bg-white rounded-lg  border-gray-200 dark:bg-git-box dark:border-gray-200 dark:text-magnolia py-4">
+          <ul class=" border-2 dark:border-git-nav leading-none text-justify text-gray-900 rounded-lg border-gray-200 dark:bg-btn-majorelle-blue dark:text-text-ghost-white sm:py-2 ">
             <li class="sm:p-3 w-full rounded-t-lg  border-gray-400 dark:border-gray-600">
               <div className="flex items-center pl-3" key={option?._id}>
                 <input
@@ -282,7 +282,7 @@ export default function QuestionCard({
                   }
                 />
                 <label
-                  className="ml-2  font-sm  text-gray-900 dark:text-gray-300"
+                  className="ml-2 font-sm text-gray-900 dark:text-gray-300"
                   htmlFor={option?._id}
                 >
                   {question.inputType === "text" ? "" : option?.option}
