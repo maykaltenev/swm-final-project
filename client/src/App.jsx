@@ -10,7 +10,7 @@ import Quiz from "./components/Quiz/Quiz";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Result from "./components/Result/Result";
-
+import UserProfile from "./components/UserProfile/UserProfile";
 import "./index.css";
 import ViewCertificate from "./components/ViewCertificate/ViewCertificate";
 import "./index.css";
@@ -30,6 +30,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/userprofile/:id" element={<UserProfile />} />
+          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/path" element={<UserPath />} />
           <Route path="/path/:level" element={<QuizCard />} />
