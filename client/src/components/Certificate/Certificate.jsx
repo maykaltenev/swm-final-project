@@ -11,9 +11,8 @@ import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import Logo from "../../assets/MERN+.png";
 // Create styles
 const styles = StyleSheet.create({
-  page: {
-    flexDirection: "row",
-    backgroundColor: "#E4E4E4",
+  page: {  
+    overflowX: "hidden"
   },
   section: {
     margin: 10,
@@ -78,11 +77,11 @@ export const Certificate = ({
   percentage,
   inputTypeImage,
 }) => {
-  
+   
   return (
-    <>
-      <Document>
-        <Page size="A4">
+    <div >
+      <Document >
+        <Page  size="A4">
           <View style={styles.certificateBorder}>
             <View style={styles.header}>
               <Image style={styles.imageWidth} src={Logo}></Image>
@@ -114,6 +113,6 @@ export const Certificate = ({
           </View>
         </Page>
       </Document>
-    </>
+    </div>
   );
 };

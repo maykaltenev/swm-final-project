@@ -78,7 +78,7 @@ const MyDocument = () => {
                   alt=""
                 />
                 <PDFViewer>
-                  <Certificate
+                  <Certificate                  
                     date={quiz.createdOn}
                     inputType={quiz.quizType}
                     sessionId={quiz.sessionId}
@@ -133,10 +133,11 @@ const MyDocument = () => {
                     ) : (
                       <div>
                         <p className="mb-5">
-                          Attempted date :{" "}
+                          Attempted On :{" "}
                           {new Date(
                             quiz.createdOn
-                           ).toLocaleString("de-DE")}{" "}
+                           ).toLocaleString("de-DE")}
+                           {/* let sortedCars1 = cars.sort((a, b) => new Date(...a.initialRegistration.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse())); */}
                         </p>
                         <button className="rounded md:w-3/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                           Download now!
@@ -157,13 +158,4 @@ const MyDocument = () => {
 
 export default MyDocument;
 
-{
-  /*  <Document style={styles.document}>
-  <Page size="A4" style={styles.page}>
-    <View style={styles.section}>
-      <Text>Section #1</Text>
-    </View>
-   
-  </Page>
-</Document>  */
-}
+
