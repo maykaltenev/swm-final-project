@@ -42,9 +42,12 @@ export const getAllQuestionsBySession = async (req, res) => {
   }
 };
 export const createQuizSession = async (req, res) => {
-  const { user, userSolution, questionType } = req.body;
+  const { user, userSolution, questionType, level } = req.body;
 
-  const questions = await QuestionData.find({ questionType: questionType });
+  const questions = await QuestionData.find({
+    questionType: questionType,
+    difficultyLevel: level,
+  });
 
   try {
     const newQuizSession = await QuizSession.create({

@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { differenceInSeconds } from "date-fns";
 const QuestionContext = createContext(null);
 
 const QuestionContextProvider = ({ children }) => {
@@ -52,7 +53,23 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
-  const handleNewQuiz = (chosenQuestionType) => {
+
+  const getQuizTimeFromLocalStorage = () => {
+    const quizTime = localStorage.getItem("quizTime");
+    if (quizTime) {
+      return JSON.parse(localStorage.getItem("quizTime"));
+    } else {
+      return "";
+    }
+  };
+  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
+  const date = new Date();
+
+  const [timeDifference, setTimeDifference] = useState(
+    differenceInSeconds(new Date(quizTime?.end), date)
+  );
+
+  const handleNewQuiz = (chosenQuestionType, level) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
@@ -61,11 +78,14 @@ const QuestionContextProvider = ({ children }) => {
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
+    getQuizTimeFromLocalStorage();
+    setTimeDifference(600);
 
-    handleCreateNewSession(chosenQuestionType);
+    handleCreateNewSession(chosenQuestionType, level);
     timer();
   };
-  const handleCreateNewSession = async (questionType) => {
+  const handleCreateNewSession = async (questionType, level) => {
+    console.log(level);
     navigate(`/mypage/${currentQuestion}`);
     try {
       await axios
@@ -74,6 +94,7 @@ const QuestionContextProvider = ({ children }) => {
           {
             user: getUser._id,
             questionType: questionType,
+            level: level,
           },
           {
             withCredentials: true,
@@ -133,6 +154,9 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
+        quizTime,
+        timeDifference,
+        setTimeDifference,
         getResult,
         /* getUserUpdated, */
         handleNewQuiz,

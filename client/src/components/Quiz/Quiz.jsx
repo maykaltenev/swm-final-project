@@ -5,26 +5,17 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import QuestionCircles from "../QuestionsCircles/QuestionCircles";
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CountDownTimer from "../Timer/Timer";
-import SideBar from "../SideBar/SideBar";
+
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
-  const [result, setResult] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const {
-    getResult,
-    currentQuestion,
-    setCurrentQuestion,
-    getQuestions,
-    handleCreateNewSession,
-    questionData,
-    points,
-    sessionId,
-    setSessionId,
-  } = useContext(QuestionContext);
+  const { getResult, setCurrentQuestion, questionData, points } =
+    useContext(QuestionContext);
 
   const { id } = useParams();
 

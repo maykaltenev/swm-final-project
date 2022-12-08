@@ -9,39 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { defineTheme } from "../../lib/defineTheme";
 import useKeyPress from "../../hooks/useKeyPress";
-
 import OutputWindow from "./OutputWindow";
 import CustomInput from "./CustomInput";
 import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
-import CodeDropdown from "./CodeDropDown";
-import Select from "react-select";
-import { customStyles } from "../../constants/customStyles";
+
+import { randomChallenge } from "../../utils/randomChallenge";
 
 const Landing = () => {
-  const initialCode = `
-  /**
-   * Given an array of numbers, create a new array where:
-   * - each even numbers is multiplied by 100
-   * - each odd number is replaced by -1
-   *
-   * For example:
-   *
-   * [1, 2, 3, 4] => [-1, 200, -1, 400]
-   *
-   */
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
-  const transformNumbers = function (number) {
-    /* WRITE YOUR CODE HERE */
-    
-    
-  };
-  console.log(numbers.map(transformNumbers));
-  `;
+  const [code, setCode] = useState(randomChallenge());
 
-  const [code, setCode] = useState(initialCode);
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
@@ -55,8 +33,6 @@ const Landing = () => {
     console.log("selected Option...", sl);
     setLanguage(sl);
   };
-
-  console.log("code", code);
 
   useEffect(() => {
     if (enterPress && ctrlPress) {
@@ -195,73 +171,6 @@ const Landing = () => {
       progress: undefined,
     });
   };
-  const javascriptDefault = [
-    {
-      label: "Map",
-      value: `
-  /**
-   * Given an array of numbers, create a new array where:
-   * - each even numbers is multiplied by 100
-   * - each odd number is replaced by -1
-   *
-   * For example:
-   *
-   * [1, 2, 3, 4] => [-1, 200, -1, 400]
-   *
-   */
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
-  const transformNumbers = function (number) {
-    /* WRITE YOUR CODE HERE */
-    
-    
-  };
-  console.log(numbers.map(transformNumbers));
-  `,
-    },
-    {
-      label: "Closure",
-      value: `
-  /* 
-      1. Complete the code below to have a function that returns the number of times
-      it's been called.
-      
-      For example:
-      - when you run it the first time, it should return 1
-      - the second time, it should return 2
-      - then 3
-      - and so on
-  
-      Hint: you don't need to use loops
-  */
-  
-  function myCounter() { 
-     /* WRITE YOUR CODE HERE */
-  }
-  
-  console.log(myCounter()); // 1
-  console.log(myCounter()); // 2
-  console.log(myCounter()); // 3
-  `,
-    },
-    {
-      label: "Array method",
-      value: `/* Write the function camelize(str) that changes 
-    dash-separated words like “my-short-string” into 
-    camel-cased “myShortString”.
-  */
-  
-  function camelize(str) {
-    /* WRITE YOUR CODE HERE */
-  
-  }
-  
-  
-  console.log(camelize("background-color"))
-   console.log(camelize("list-style-image"))
-  console.log(camelize("-webkit-transition"))`,
-    },
-  ];
 
   return (
     <>
@@ -277,26 +186,16 @@ const Landing = () => {
         pauseOnHover
       />
 
-      <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
-      <div className="flex flex-row">
-        <div className="px-4 py-2">
+      <div className="flex flex-row ">
+        <div className="px-4 py-2 ">
           <LanguagesDropdown onSelectChange={onSelectChange} />
         </div>
         <div className="px-4 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </div>
-        <div className="px-4 py-2">
-          <Select
-            placeholder={`Choose a challenge`}
-            options={javascriptDefault}
-            styles={customStyles}
-            defaultValue={javascriptDefault}
-            onChange={(selectedOption) => setCode(selectedOption.value)}
-          />
-        </div>
       </div>
-      <div className="flex flex-row space-x-4 items-start px-4 py-4">
-        <div className="flex flex-col w-full h-full justify-start items-end">
+      <div className="flex flex-col justify-center sm:flex-row space-x-4 items-start px-4 py-4">
+        <div className="flex flex-col w-screen h-full justify-start items-end">
           <CodeEditorWindow
             code={code}
             onChange={onChange}
@@ -305,7 +204,7 @@ const Landing = () => {
           />
         </div>
 
-        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
+        <div className="right-container justify-center flex flex-shrink-0 sm:w-[30%] flex-col w-5/6 ">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
             <CustomInput

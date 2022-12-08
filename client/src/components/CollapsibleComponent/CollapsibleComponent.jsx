@@ -1,8 +1,19 @@
 import React from "react";
 
 import { HiLightningBolt, HiOutlineLightningBolt } from "react-icons/hi";
-// import { FaLightningBoltIcon } from "react-icons/fa";
+
+import mongodbimg from "../../assets/mongodb.svg";
+import nodejsimg from "../../assets/nodejs.svg";
+import mern from "../../assets/MERN-logo.png";
+import { useNavigate } from "react-router-dom";
+
 export default function Collapsible() {
+  const navigate = useNavigate();
+
+  const handleClick = (level) => {
+    navigate(`/path/${level}`);
+  };
+
   return (
     <div className="text-gray-800 min-h-screen flex flex-col items-center  ">
       <div className="container rounded border-ultramarine-blue sm:w-3/5 py-3 px-2">
@@ -16,7 +27,9 @@ export default function Collapsible() {
     focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
     rounded group-open:rounded-b-none group-open:z-[1] relative"
           >
-            <h3 className="flex flex-1 p-4 font-semibold ">Java Script</h3>
+            <h3 className="flex flex-1 p-4 font-semibold ">
+              Mern Stack for beginner
+            </h3>
             <div className="flex w-10 items-center justify-center">
               <div
                 className="border-8 border-transparent border-l-gray-600 ml-2
@@ -25,7 +38,10 @@ export default function Collapsible() {
               ></div>
             </div>
           </summary>
-          <div className="p-6 hover:bg-gray-200">
+          <div
+            onClick={() => handleClick("beginner")}
+            className="p-6 hover:bg-gray-200"
+          >
             <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
               <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
@@ -34,25 +50,20 @@ export default function Collapsible() {
                 1
               </div>
               <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div className="flex-shrink-0 w-24 h-24 bg-ultramarine-blue text-gray-800 rounded-full inline-flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    preserveAspectRatio="xMinYMin meet"
-                  >
-                    <path d="M0 0h256v256H0V0z" fill="#F7DF1E" />
-                    <path d="M67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371 7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259-19.245 0-30.416-9.967-36.087-21.996M152.381 211.354l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607 9.969 0 16.325-4.984 16.325-11.858 0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257 0-18.044 13.747-31.792 35.228-31.792 15.294 0 26.292 5.328 34.196 19.247L210.29 147.43c-4.125-7.389-8.591-10.31-15.465-10.31-7.046 0-11.514 4.468-11.514 10.31 0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804 0 21.654-17.012 33.51-39.867 33.51-22.339 0-36.774-10.654-43.819-24.574" />
-                  </svg>
+                <div className="flex-shrink-0 w-24 h-24 text-gray-800 rounded-full inline-flex items-center justify-center">
+                  <img src={mern} alt="mern logo" />
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0 ">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
-                    Start your journey with the JavaScript Path
+                    Start your journey with the Mern Stack Path for beginner
                   </h2>
                   <p className="leading-relaxed bg-">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorem vero impedit adipisci eius, accusamus culpa,
-                    distinctio illum atque sunt rerum facere ex quia delectus
-                    perspiciatis ipsa eos beatae odio voluptas.
+                    MERN is one of several variations of the MEAN stack (MongoDB
+                    Express Angular Node), where the traditional Angular.js
+                    front-end framework is replaced with React.js. Other
+                    variants include MEVN (MongoDB, Express, Vue, Node), and
+                    really any front-end JavaScript framework can work. Ready to
+                    take the next step? Start your journey
                   </p>
 
                   <div className="mt-4 ">
@@ -68,8 +79,129 @@ export default function Collapsible() {
             </div>
           </div>
         </details>
-        {/* React */}
         <details
+          className="bg-snow shadow h-2/4 rounded mb-4 border-solid "
+          open
+        >
+          <summary
+            className="list-none flex flex-wrap items-center cursor-pointer
+    focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
+    rounded group-open:rounded-b-none group-open:z-[1] relative"
+          >
+            <h3 className="flex flex-1 p-4 font-semibold ">
+              Mern Stack for Intermediate
+            </h3>
+            <div className="flex w-10 items-center justify-center">
+              <div
+                className="border-8 border-transparent border-l-gray-600 ml-2
+        group-open:rotate-90 transition-transform origin-left
+        "
+              ></div>
+            </div>
+          </summary>
+          <div
+            onClick={() => handleClick("intermediate")}
+            className="p-6 hover:bg-gray-200"
+          >
+            <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
+              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
+              </div>
+              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-spanish-gray text-ultramarine-blue relative z-10 top-30  title-font font-medium text-m ">
+                2
+              </div>
+              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div className="flex-shrink-0 w-24 h-24 text-gray-800 rounded-full inline-flex items-center justify-center">
+                  <img src={mern} alt="mern logo" />
+                </div>
+                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0 ">
+                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
+                    Start your journey with the Mern Stack Path for Intermediate
+                  </h2>
+                  <p className="leading-relaxed bg-">
+                    MERN stack is a collection of technologies that enables
+                    faster application development. It is used by developers
+                    worldwide. The main purpose of using MERN stack is to
+                    develop apps using JavaScript only. This is because the four
+                    technologies that make up the technology stack are all
+                    JS-based. Thus, if one knows JavaScript (and JSON), the
+                    backend, frontend, and database can be operated easily.
+                  </p>
+
+                  <div className="mt-4 ">
+                    <span className="text-bold text-l mt-2">Level:</span>
+                    <div className="mt-4 flex w-fit hover:border-x-8 rounded border-min border-cornflower-blue  ">
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue  " />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+        <details
+          className="bg-snow shadow h-2/4 rounded mb-4 border-solid "
+          open
+        >
+          <summary
+            className="list-none flex flex-wrap items-center cursor-pointer
+    focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
+    rounded group-open:rounded-b-none group-open:z-[1] relative"
+          >
+            <h3 className="flex flex-1 p-4 font-semibold ">
+              Mern Stack for Advanced
+            </h3>
+            <div className="flex w-10 items-center justify-center">
+              <div
+                className="border-8 border-transparent border-l-gray-600 ml-2
+        group-open:rotate-90 transition-transform origin-left
+        "
+              ></div>
+            </div>
+          </summary>
+          <div
+            onClick={() => handleClick("advanced")}
+            className="p-6 hover:bg-gray-200"
+          >
+            <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
+              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
+              </div>
+              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-spanish-gray text-ultramarine-blue relative z-10 top-30  title-font font-medium text-m ">
+                3
+              </div>
+              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div className="flex-shrink-0 w-24 h-24 text-gray-800 rounded-full inline-flex items-center justify-center">
+                  <img src={mern} alt="mern logo" />
+                </div>
+                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0 ">
+                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
+                    Start your journey with the Mern Stack Path for Advanced
+                  </h2>
+                  <p className="leading-relaxed bg-">
+                    There are many good reasons to use the MERN Stack. For
+                    example, it allows the creation of a 3-tier architecture
+                    that includes frontend, backend, and database using
+                    JavaScript and JSON.
+                  </p>
+
+                  <div className="mt-4 ">
+                    <span className="text-bold text-l mt-2">Level:</span>
+                    <div className="mt-4 flex w-fit hover:border-x-8 rounded border-min border-cornflower-blue  ">
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue  " />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+        {/* React */}
+        {/* <details
           className="bg-snow shadow rounded group mb-4 border-solid "
           open
         >
@@ -116,10 +248,13 @@ export default function Collapsible() {
                     Start your journey with the ReactJS Path
                   </h2>
                   <p className="leading-relaxed bg-">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorem vero impedit adipisci eius, accusamus culpa,
-                    distinctio illum atque sunt rerum facere ex quia delectus
-                    perspiciatis ipsa eos beatae odio voluptas.
+                    React.js, more commonly known as React, is a free,
+                    open-source JavaScript library. It works best to build user
+                    interfaces by combining sections of code (components) into
+                    full websites. Originally built by Facebook, Meta and the
+                    open-source community now maintain it. you can build your
+                    entire site in React or just use one single React component
+                    on one page.
                   </p>
 
                   <div className="mt-4 ">
@@ -134,7 +269,189 @@ export default function Collapsible() {
               </div>
             </div>
           </div>
-        </details>
+        </details> */}
+        {/* Expressjs */}
+        {/* <details
+          className="bg-snow shadow rounded group mb-4 border-solid "
+          open
+        >
+          <summary
+            className="list-none flex flex-wrap items-center cursor-pointer
+    focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
+    rounded group-open:rounded-b-none group-open:z-[1] relative
+    "
+          >
+            <h3 className="flex flex-1 p-4 font-semibold ">Express Js</h3>
+            <div className="flex w-10 items-center justify-center">
+              <div
+                className="border-8 border-transparent border-l-gray-600 ml-2
+        group-open:rotate-90 transition-transform origin-left
+        "
+              ></div>
+            </div>
+          </summary>
+          <div className="p-6 hover:bg-gray-200">
+            <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
+              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
+              </div>
+              <div className="flex-shrink-0  w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-spanish-gray text-ultramarine-blue relative z-10 top-30 title-font font-medium text-xs ">
+                2
+              </div>
+              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div className="flex-shrink-0 w-24 h-24 rounded-full inline-flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#000000"
+                    viewBox="0 0 50 50"
+                    width="60px"
+                    height="60px"
+                  >
+                    <path d="M49.729 11h-.85c-1.051 0-2.041.49-2.68 1.324l-8.7 11.377-8.7-11.377C28.162 11.49 27.171 11 26.121 11h-.85l10.971 14.346L25.036 40h.85c1.051 0 2.041-.49 2.679-1.324L37.5 26.992l8.935 11.684C47.073 39.51 48.063 40 49.114 40h.85L38.758 25.346 49.729 11zM21.289 34.242c-2.554 3.881-7.582 5.87-12.389 4.116C4.671 36.815 2 32.611 2 28.109L2 27h12v0h11l0-4.134c0-6.505-4.818-12.2-11.295-12.809C6.273 9.358 0 15.21 0 22.5l0 5.573c0 5.371 3.215 10.364 8.269 12.183 6.603 2.376 13.548-1.17 15.896-7.256 0 0 0 0 0 0h-.638C22.616 33 21.789 33.481 21.289 34.242zM2 22.5C2 16.71 6.71 12 12.5 12S23 16.71 23 22.5V25H2V22.5z" />
+                  </svg>{" "}
+                </div>
+                <div className="shrink-2 sm:pl-6 mt-6 sm:mt-0 ">
+                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
+                    Start your journey with the Express JS Path
+                  </h2>
+                  <p className="leading-relaxed bg-">
+                    ExpressJS is considered as minimal as well as flexible web
+                    application framework of Node.js which gives robust features
+                    for use of the web as well as mobile applications. ExpressJS
+                    is also considered as an open source framework and it was
+                    developed and maintained by the foundation of NodeJS.
+                  </p>
+
+                  <div className="mt-4 ">
+                    <span className="text-bold text-l mt-2">Level:</span>
+                    <div className="mt-4 flex w-fit hover:border-x-8 rounded border-min border-cornflower-blue  ">
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue  " />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details> */}
+        {/* nodejs */}
+        {/*  <details
+          className="bg-snow shadow rounded group mb-4 border-solid "
+          open
+        >
+          <summary
+            className="list-none flex flex-wrap items-center cursor-pointer
+    focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
+    rounded group-open:rounded-b-none group-open:z-[1] relative
+    "
+          >
+            <h3 className="flex flex-1 p-4 font-semibold ">NodeJS</h3>
+            <div className="flex w-10 items-center justify-center">
+              <div
+                className="border-8 border-transparent border-l-gray-600 ml-2
+        group-open:rotate-90 transition-transform origin-left
+        "
+              ></div>
+            </div>
+          </summary>
+          <div className="p-6 hover:bg-gray-200">
+            <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
+              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
+              </div>
+              <div className="flex-shrink-0  w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-spanish-gray text-ultramarine-blue relative z-10 top-30 title-font font-medium text-xs ">
+                2
+              </div>
+              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div className="flex-shrink-0 w-24 h-24 rounded-full inline-flex items-center justify-center">
+                  <img src={nodejsimg} alt="nodejs icon" />
+                </div>
+                <div className="shrink-2 sm:pl-6 mt-6 sm:mt-0 ">
+                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
+                    Start your journey with the NodeJS Path
+                  </h2>
+                  <p className="leading-relaxed bg-">
+                    Node.js is an open-source server environment,
+                    cross-platform, and runs on Windows, Linux, Unix, and macOS.
+                    Node.js is a back-end JavaScript runtime environment, that
+                    runs on the V8 JavaScript Engine and executes JavaScript
+                    code outside a web browser.
+                  </p>
+
+                  <div className="mt-4 ">
+                    <span className="text-bold text-l mt-2">Level:</span>
+                    <div className="mt-4 flex w-fit hover:border-x-8 rounded border-min border-cornflower-blue  ">
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue  " />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details> */}
+        {/* mongoDB */}
+        {/*    <details
+          className="bg-snow shadow rounded group mb-4 border-solid "
+          open
+        >
+          <summary
+            className="list-none flex flex-wrap items-center cursor-pointer
+    focus-visible:outline-none focus-visible:ring focus-visible:ring-ultramarine-blue
+    rounded group-open:rounded-b-none group-open:z-[1] relative
+    "
+          >
+            <h3 className="flex flex-1 p-4 font-semibold ">MongoDB</h3>
+            <div className="flex w-10 items-center justify-center">
+              <div
+                className="border-8 border-transparent border-l-gray-600 ml-2
+        group-open:rotate-90 transition-transform origin-left
+        "
+              ></div>
+            </div>
+          </summary>
+          <div className="p-6 hover:bg-gray-200">
+            <div className="flex relative pt-10 pb-20 sm:items-center text md:w-2/3 mx-auto cursor-pointer">
+              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div className="h-full w-2  bg-ultramarine-blue pointer-events-none"></div>
+              </div>
+              <div className="flex-shrink-0  w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-spanish-gray text-ultramarine-blue relative z-10 top-30 title-font font-medium text-xs ">
+                2
+              </div>
+              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div className="flex-shrink-0 w-24 h-24 rounded-full inline-flex items-center justify-center">
+                  <img src={mongodbimg} alt="mongodb logo" className="  " />
+                </div>
+                <div className="shrink-2 sm:pl-6 mt-6 sm:mt-0 ">
+                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl ">
+                    Start your journey with the MongoDB Path
+                  </h2>
+                  <p className="leading-relaxed bg-">
+                    MongoDB is a document-oriented NoSQL database used for high
+                    volume data storage. Instead of using tables and rows as in
+                    the traditional relational databases, MongoDB makes use of
+                    collections and documents. Documents consist of key-value
+                    pairs which are the basic unit of data in MongoDB.
+                    Collections contain sets of documents and function which is
+                    the equivalent of relational database tables. MongoDB is a
+                    database which came into light around the mid-2000s.
+                  </p>
+
+                  <div className="mt-4 ">
+                    <span className="text-bold text-l mt-2">Level:</span>
+                    <div className="mt-4 flex w-fit hover:border-x-8 rounded border-min border-cornflower-blue  ">
+                      <HiLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue " />
+                      <HiOutlineLightningBolt className="w-5 h-5  text-ultramarine-blue  " />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details> */}
       </div>
     </div>
   );
