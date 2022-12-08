@@ -14,6 +14,7 @@ import QuizHistory from "./components/QuizHistory/QuizHistory";
 import Result from "./components/Result/Result";
 import MyDocument from "./components/MyDocument/MyDocument";
 import "./index.css";
+import ViewCertificate from "./components/ViewCertificate/ViewCertificate";
 
 function App() {
   const { currentQuestion, setCurrentQuestion } = useContext(UserContext);
@@ -34,7 +35,7 @@ function App() {
           <Route path="/createquiz" element={<CreateQuiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/quizhistory" element={<QuizHistory />} />
-           <Route path="/mycertificates" element={<MyDocument />} /> 
+           <Route path="/mycertificates" element={<ViewCertificate />} /> 
         </Routes>
       </div>
     </div>
