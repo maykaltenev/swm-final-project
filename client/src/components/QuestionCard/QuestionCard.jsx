@@ -201,7 +201,7 @@ export default function QuestionCard({
       key={question?._id}
       className="w-full sm:w-[80%] lg:w-[60%] lg:p-12 relative h-full flex flex-col justify-center items-center sm:justify-evenly p-2"
     >
-      <div className="pointer absolute top-1 right-3 sm:top-2 sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white">
+      <div className="pointer absolute top-1 right-3 sm:top-2 sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white bg-cyber-yellow text-git-box">
         {question &&
           (marked.includes(question._id) ? (
             <AiFillStar onClick={() => handleMark(question?._id)} />
@@ -210,7 +210,7 @@ export default function QuestionCard({
           ))}
       </div>
       <div className="flex flex-col justify-start align-center w-[98%] h-[30vh] sm:w-[90%] p-2">
-        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-4 py-6 text-justify  ">
+        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-4 py-6 lg:py-0 lg:p-2 text-justify  ">
           {question?.questionText}
         </h1>
         {question?.code && (
@@ -224,13 +224,13 @@ export default function QuestionCard({
           </div>
         )}
       </div>
-      <div className="w-[99%] sm:w-[85%] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">
+      <div className="w-[99%] sm:w-[85%]  grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">
         {question?.options.map((option) => (
-          <ul class=" border-2 dark:border-git-nav leading-none text-justify text-gray-900 rounded-lg border-gray-200 dark:bg-btn-majorelle-blue dark:text-text-ghost-white sm:py-2 ">
+          <ul class="py-2 sm:py-0 shadow-xl border-2 dark:border-git-nav leading-none text-justify text-gray-900 rounded-lg border-gray-200 dark:bg-btn-majorelle-blue dark:text-text-ghost-white sm:py-2 ">
             <li class="sm:p-3 w-full rounded-t-lg  border-gray-400 dark:border-gray-600">
               <div className="flex items-center pl-3" key={option?._id}>
                 <input
-                  className="w-4 h-4 sm:w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:focus:ring-blue-600 dark:ring-offset-gray-700  dark:bg-gray-600 dark:border-gray-500 "
+                  className="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:bg-gray-600 dark:border-gray-500 "
                   type={question?.inputType}
                   name={question?.inputType}
                   value={
@@ -282,7 +282,7 @@ export default function QuestionCard({
                   }
                 />
                 <label
-                  className="ml-2 font-sm text-gray-900 dark:text-gray-300"
+                  className="ml-2 font-sm text-gray-900  dark:text-gray-300"
                   htmlFor={option?._id}
                 >
                   {question.inputType === "text" ? "" : option?.option}
