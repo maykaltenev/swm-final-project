@@ -14,7 +14,7 @@ function Quiz() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { getResult, setCurrentQuestion, questionData, points } =
+  const { getResult, setCurrentQuestion, questionData, timeOver } =
     useContext(QuestionContext);
 
   const { id } = useParams();
