@@ -24,19 +24,24 @@ function CreateQuiz() {
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
   const { handleCreateNewSession, setMarked, setSessionId, setQuestionData } =
     useContext(QuestionContext);
+
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
-
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
-
     handleCreateNewSession(chosenQuestionType);
     timer();
   };
+
+  // handle onChange event of the dropdown
+const onSelection = (data) => {
+  console.log("e",data)
+}
+
   const handleChangeOption = (e) => {
     console.log(e.target.value);
     if (e.target.value === "") return;
@@ -46,9 +51,6 @@ function CreateQuiz() {
     window.scrollTo(0, 0);
   }, []);
   console.log("the value of selected option in create quiz is", checkboxValue);
-
-
-
   return (
     <div className="flex justify-around">
       <Multiselect
@@ -59,7 +61,7 @@ function CreateQuiz() {
         onKeyPressFn={function noRefCheck() {}}
         onRemove={function noRefCheck() {}}
         onSearch={function noRefCheck() {}}
-        onSelect={function noRefCheck() {}}
+        onSelect={onSelection}    
         options={[
           {
             label: "React",
