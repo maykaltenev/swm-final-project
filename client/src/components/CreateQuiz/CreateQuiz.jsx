@@ -40,7 +40,7 @@ function CreateQuiz() {
   console.log("the value of selected option in create quiz is", checkboxValue)
   return (
     <div className = "flex justify-around">
-      <div className="font-poppins">
+     <div className="font-poppins">
       <CheckboxDropdownComponent
           displayText="Select your own Stack"
           options={options}
@@ -57,18 +57,54 @@ function CreateQuiz() {
            setCheckboxValue(filteredOptions);
           }}
           value={checkboxValue}
-         /*  displayTags */
-         /*  isStrict={false} */
-        />
-      </div>
+          />
+      </div> 
+          {/*  displayTags 
+           isStrict={false} */} 
       <select onChange={handleChangeOption}>
         <option value={""}>Select</option>
-        <option value="react">React</option>
+        <optgroup label="React">
+        <option value="react"><input type="checkbox" />React Beginner</option>
+        </optgroup>
         <option value="nodejs">Nodejs</option>
         <option value="javascript">JavaScript</option>
         <option value="express">Express</option>
         <option value="mongodb">MongoDB</option>
       </select>
+      <select onChange={handleChangeOption}>
+  <option value={""}>Select</option>
+  <optgroup label="React">
+    <option value="react"><input type="checkbox" />React Beginner</option>
+  </optgroup>
+  <option value="nodejs">Nodejs</option>
+  <option value="javascript">JavaScript</option>
+  <option value="express">Express</option>
+  <option value="mongodb">MongoDB</option>
+</select>
+      <select>
+      <optiongroup label="Fruits">
+        <option>
+          <input type="checkbox" /> Apple
+        </option>
+        <option>
+          <input type="checkbox" /> Orange
+        </option>
+        <option>
+          <input type="checkbox" /> Banana
+        </option>
+      </optiongroup>
+      <optiongroup label="Vegetables">
+        <option>
+          <input type="checkbox" /> Carrot
+        </option>
+        <option>
+          <input type="checkbox" /> Broccoli
+        </option>
+        <option>
+          <input type="checkbox" /> Spinach
+        </option>
+      </optiongroup>
+    </select>
       <button
         disabled={selectedQuestionType === ""}
         className="bg-ultramarine-blue-2 rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
