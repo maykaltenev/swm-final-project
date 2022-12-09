@@ -73,7 +73,7 @@ export const createMixQuizSession = async (req, res) => {
     ["react", "advanced"],
     ["nodejs", "beginner"],
   ];
-  console.log("the length is:", mixQuestionTypes.length);
+  /*   console.log("the length is:", mixQuestionTypes.length); */
   if (mixQuestionTypes.length === 1) {
     const questions = await QuestionData.find({
       questionType: mixQuestionTypes[0][0],
@@ -84,21 +84,31 @@ export const createMixQuizSession = async (req, res) => {
     const firstLevel = mixQuestionTypes[0][1];
     const secondType = mixQuestionTypes[1][0];
     const secondLevel = mixQuestionTypes[1][1];
-    console.log("f1 type", firstType);
-    console.log("f2 type", firstType);
-    console.log("f1 type", firstType);
 
     const questions = await QuestionData.find({
       $or: [
-        { $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }] },
         {
-          $and: [{ questionType: secondType }, { difficultyLevel: secondLevel }],
+          $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }],
         },
-      ], 
-      
-
+        {
+          $and: [
+            { questionType: secondType },
+            { difficultyLevel: secondLevel },
+          ],
+        },
+      ],
     });
-    console.log("questions mix", questions);
+    //console.log("questions mix", questions);
+    console.log("ques len", questions.length);
+    const mixQuestionResultArray = [];
+    while (mixQuestionResultArray.length < 10) {
+      let randomQues = Math.floor(Math.random() * questions.length);
+      if (!mixQuestionResultArray.includes(randomQues)) {
+        mixQuestionResultArray.push(randomQues);
+      }
+    }
+    console.log("mixarray", mixQuestionResultArray);
+    console.log("mixarrayl", mixQuestionResultArray.length);
   }
 
   /* try {
