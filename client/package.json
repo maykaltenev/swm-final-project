@@ -15,6 +15,7 @@
     "prismjs": "^1.29.0",
     "pspdfkit": "^2022.5.2",
     "react": "^17.0.2",
+    "react-checkbox-dropdown": "^1.0.0",
     "react-countdown-circle-timer": "^3.0.9",
     "react-dom": "^17.0.2",
     "react-icons": "^4.7.1",
