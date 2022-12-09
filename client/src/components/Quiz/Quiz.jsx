@@ -28,7 +28,7 @@ function Quiz() {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
   };
-
+console.log("questionData", questionData)
   return (
     <div className="relative">
       {
