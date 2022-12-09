@@ -28,14 +28,35 @@ function Quiz() {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
   };
-  const handleShowAnswer = (e) => {
-    e.preventDefault();
-
-    setShowExplanation((showExplanation) => !showExplanation);
-    console.log(showExplanation);
-  };
-
+console.log("questionData", questionData)
   return (
+    <div className="relative">
+      {
+        <div
+          className={
+            timeOver
+              ? " w-full h-full bg-gray-300 bg-opacity-60 border-2  absolute"
+              : ""
+          }
+        >
+          {timeOver && (
+            <div className=" w-full h-full flex items-center  justify-center ">
+              <div className="z-50 w-4/5 h-1/4  flex flex-col items-center  justify-center border-2  rounded-xl shadow-lg  p-3 my-2 sm:w-2/5 sm:h-1/5  sm:p-5  bg-white">
+                <p className=" text-center p-2 sm:my-2 w-full   rounded-xl">
+                  Time is Over Please submit the quiz
+                </p>
+                <button
+                  className="my-2 sm:my-4  border-2 text-white bg-red-500  rounded-xl  w-1/3 h-1/3 "
+                  onClick={() => getResult(questionData[0]?.questionType)}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      }
+
     <div className="flex flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
       <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box ">
         <span className=" ">{id * 1 + 1}</span>/
@@ -79,9 +100,12 @@ function Quiz() {
             Submit
           </button>
         ) : (
-          <div></div>
+          <div>
+
+          </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

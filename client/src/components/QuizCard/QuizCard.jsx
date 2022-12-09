@@ -7,6 +7,7 @@ import JavaScriptPic from "../../assets/cards/pc-blue.png";
 import { VscCircleFilled, VscCircleOutline } from "react-icons/vsc";
 import { QuestionContext } from "../Context/QuestionContext";
 import { useParams } from "react-router-dom";
+
 export default function QuizCard() {
   const { handleNewQuiz } = useContext(QuestionContext);
 
