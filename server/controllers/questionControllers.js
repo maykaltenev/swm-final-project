@@ -65,6 +65,59 @@ export const createQuizSession = async (req, res) => {
     return res.send(error.message);
   }
 };
+/* controller for mix-questions
+ */
+export const createMixQuizSession = async (req, res) => {
+  //const { user, userSolution, questionType, level } = req.body;
+  const mixQuestionTypes = [
+    ["react", "advanced"],
+    ["nodejs", "beginner"],
+  ];
+  console.log("the length is:", mixQuestionTypes.length);
+  if (mixQuestionTypes.length === 1) {
+    const questions = await QuestionData.find({
+      questionType: mixQuestionTypes[0][0],
+      difficultyLevel: mixQuestionTypes[0][1],
+    });
+  } else if (mixQuestionTypes.length === 2) {
+    const firstType = mixQuestionTypes[0][0];
+    const firstLevel = mixQuestionTypes[0][1];
+    const secondType = mixQuestionTypes[1][0];
+    const secondLevel = mixQuestionTypes[1][1];
+    console.log("f1 type", firstType);
+    console.log("f2 type", firstType);
+    console.log("f1 type", firstType);
+
+    const questions = await QuestionData.find({
+      $and: [
+        { $or: [{ questionType: firstType }, { difficultyLevel: firstLevel }] },
+        {
+          $or: [{ questionType: secondType }, { difficultyLevel: secondLevel }],
+        },
+      ], 
+      
+
+    });
+    console.log("questions mix", questions);
+  }
+
+  /* try {
+    const newQuizSession = await QuizSession.create({
+      user,
+      questions,
+      userSolution,
+    });
+
+    if (!newQuizSession) return;
+ */
+  /*  return res
+      .status(200)
+      .json({ message: "New Quiz Session Created", questions }); */
+  /* } catch (error) {
+    return res.send(error.message);
+  } */
+};
+
 export const createUserResponse = async (req, res) => {
   try {
     const { answer, user, question, sessionId } = req.body;

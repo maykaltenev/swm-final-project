@@ -38,8 +38,9 @@ function CreateQuiz() {
   };
 
   // handle onChange event of the dropdown
-const onSelection = (data) => {
-  console.log("e",data)
+const onSelection = (data) => { 
+  const dataValue = data.map(item => item.value.toLowerCase().split(" "))
+  console.log("e",dataValue)
 }
 
   const handleChangeOption = (e) => {
