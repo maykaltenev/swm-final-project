@@ -89,10 +89,10 @@ export const createMixQuizSession = async (req, res) => {
     console.log("f1 type", firstType);
 
     const questions = await QuestionData.find({
-      $and: [
-        { $or: [{ questionType: firstType }, { difficultyLevel: firstLevel }] },
+      $or: [
+        { $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }] },
         {
-          $or: [{ questionType: secondType }, { difficultyLevel: secondLevel }],
+          $and: [{ questionType: secondType }, { difficultyLevel: secondLevel }],
         },
       ], 
       
