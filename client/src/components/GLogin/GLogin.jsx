@@ -14,7 +14,7 @@ export default function GLogin() {
     const response = await axios
       .get("/user/glogin/" + id, options)
       .then((data) =>
-        localStorage.setItem("user", JSON.stringify(data?.data?.user))
+        localStorage?.setItem("user", JSON.stringify(data?.data?.user))
       )
       .then(() => {
         localStorageUser();
