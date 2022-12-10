@@ -46,21 +46,21 @@ router.post("/quiz/result", updateUserQuizResults);
       session: false
   }), async (req, res) => {
 
-      console.log('from google callback: id is', req.user._id)
+      console.log('from google callback: id is', req?.user?._id)
 
       // User is the class. req.user is a new User
-      const token = await generateToken(req.user)
+      const token = await generateToken(req?.user)
   console.log("the token from google server is:",token)
       res.cookie('cookiename', token)
 
-      res.redirect('http://localhost:3000/userprofile/' + req.user._id)
+      res.redirect('http://localhost:3000/userprofile/' + req?.user?._id)
   })
 
   router.get('/userprofile/:id', async (req, res) => {
 
-      console.log('from glogin: id is', req.params.id)
+  /*   console.log('from glogin: id is', req.params.id) */
 
-      const user = await User.findById(req.params.id)/* .select('-__v -password') */
+      const user = await User.findById(req?.params?.id)/* .select('-__v -password') */
       console.log("the user in backend",user)
      res.send({success: true, user})
 
