@@ -15,12 +15,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 // Context
 import { QuestionContext } from "../Context/QuestionContext";
-// Images
-import reactimg from "../../assets/reactimg.png";
-import mongodbimg from "../../assets/mongodbimg.png";
-import jsimg from "../../assets/jsimg.png";
-import expressimg from "../../assets/expressimg.png";
-import nodeimg from "../../assets/nodeimg.png";
+
 export default function QuestionCard({
   question,
   showAnswer,
@@ -201,9 +196,9 @@ export default function QuestionCard({
   return (
     <div
       key={question?._id}
-      className="w-full sm:w-[80%] lg:w-[60%] lg:p-12 relative h-full flex flex-col justify-center items-center sm:justify-evenly p-2"
+      className="w-full sm:w-[100%] shadow-2xl rounded-3xl lg:w-[65%] h-full lg:p-12 relative flex flex-col justify-center items-center sm:justify-evenly p-2 "
     >
-      <div className=" pointer absolute top-1 right-3 sm:top-2 sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white bg-cyber-yellow text-git-box">
+      <div className="pointer absolute top-1 right-3 sm:top-2   sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white bg-cyber-yellow text-git-box">
         {question &&
           (marked.includes(question._id) ? (
             <AiFillStar onClick={() => handleMark(question?._id)} />
@@ -211,11 +206,12 @@ export default function QuestionCard({
             <AiOutlineStar onClick={() => handleMark(question?._id)} />
           ))}
       </div>
+
       <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] p">
         <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4 lg:py-0  text-justify  ">
           {question?.questionText}
         </h1>
-        {question?.code ? (
+        {question?.code && (
           <div className="h-[55%] items-center pointer">
             <Editor
               style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
@@ -224,95 +220,72 @@ export default function QuestionCard({
               disabled
             />
           </div>
-        ) : (
-          <img
-            className="w-2/5 ml-28 h-[55%] sm:h-[55%] sm:w-[25%] lg:w-[45%] sm:ml-42 "
-            src={
-              question?.questionType === "javascript"
-                ? jsimg
-                : question?.questionType === "react"
-                ? reactimg
-                : question?.questionType === "express"
-                ? expressimg
-                : question?.questionType === "mongodb"
-                ? mongodbimg
-                : question?.questionType === "nodejs"
-                ? nodeimg
-                : ""
-            }
-            alt="quiz"
-          />
         )}
       </div>
-      <div className="w-[99%] sm:w-[85%]  grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-2 p-2 ">
-        {question?.options.map((option) => (
-          <ul class="py-2 sm:py-0 shadow-xl border-2 dark:border-git-nav leading-none text-justify text-gray-900 rounded-lg border-gray-200 dark:bg-btn-majorelle-blue dark:text-text-ghost-white sm:py-2 ">
-            <li class="sm:p-3 w-full rounded-t-lg  border-gray-400 dark:border-gray-600">
-              <div className="flex items-center pl-3" key={option?._id}>
-                <input
-                  className="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:bg-gray-600 dark:border-gray-500 "
-                  type={question?.inputType}
-                  name={question?.inputType}
-                  value={
-                    question?.inputType === "text" ? undefined : option?.option
-                  }
-                  id={option?._id}
-                  ref={userInput}
-                  checked={
-                    (answer &&
-                      answer[
-                        answer?.findIndex(
-                          (item) => item?.questionID === question?._id
-                        )
-                      ]?.answers?.includes(option?._id)) ||
-                    false
-                  }
-                  placeholder={
-                    answer &&
-                    answer[
-                      answer?.findIndex(
-                        (item) => item?.questionID === question?._id
+      <ul className="w-[99%] md:w-[100%] h-full grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
+        {question?.options.map((option, i) => (
+          <li className="w-full border">
+            <input
+              className="hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:bg-gray-600 dark:border-gray-500 "
+              type={question?.inputType}
+              name={question?.inputType}
+              value={
+                question?.inputType === "text" ? undefined : option?.option
+              }
+              id={option?._id}
+              ref={userInput}
+              checked={
+                (answer &&
+                  answer[
+                    answer?.findIndex(
+                      (item) => item?.questionID === question?._id
+                    )
+                  ]?.answers?.includes(option?._id)) ||
+                false
+              }
+              placeholder={
+                answer &&
+                answer[
+                  answer?.findIndex(
+                    (item) => item?.questionID === question?._id
+                  )
+                ]?.answers[0]
+              }
+              maxLength={option?.option?.length}
+              onChange={
+                question.inputType !== "text"
+                  ? (e) =>
+                      handleUserAnswer(
+                        question?._id,
+                        e.target?.id,
+                        getUser?._id,
+                        sessionId,
+                        question?.inputType,
+                        userInput?.current?.value
                       )
-                    ]?.answers[0]
-                  }
-                  maxLength={option?.option?.length}
-                  onChange={
-                    question.inputType !== "text"
-                      ? (e) =>
-                          handleUserAnswer(
-                            question?._id,
-                            e.target?.id,
-                            getUser?._id,
-                            sessionId,
-                            question?.inputType,
-                            userInput?.current?.value
-                          )
-                      : debounce(
-                          (e) =>
-                            handleUserAnswer(
-                              question?._id,
-                              e.target?.id,
-                              getUser?._id,
-                              sessionId,
-                              question?.inputType,
-                              userInput?.current?.value
-                            ),
-                          300
-                        )
-                  }
-                />
-                <label
-                  className="ml-2 font-sm text-gray-900  dark:text-gray-300"
-                  htmlFor={option?._id}
-                >
-                  {question.inputType === "text" ? "" : option?.option}
-                </label>
-              </div>
-            </li>
-          </ul>
+                  : debounce(
+                      (e) =>
+                        handleUserAnswer(
+                          question?._id,
+                          e.target?.id,
+                          getUser?._id,
+                          sessionId,
+                          question?.inputType,
+                          userInput?.current?.value
+                        ),
+                      300
+                    )
+              }
+            />
+            <label
+              for={option?._id}
+              className="w-full p-4 md:py-6 md:px-8  inline-flex shadow-6xl justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              {question.inputType === "text" ? "" : option?.option}
+            </label>
+          </li>
         ))}
-        {showAnswer && <div>{question?.explanation}</div>}
-      </div>
+      </ul>
     </div>
   );
 }
