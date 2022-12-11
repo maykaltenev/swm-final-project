@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css";
+import "../../../src/prism.css"
 import "./CheckAllAnswersResult.css";
 
 function CheckAllAnswersResult({ allQues }) {

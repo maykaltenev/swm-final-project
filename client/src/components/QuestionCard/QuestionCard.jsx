@@ -7,7 +7,8 @@ import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css";
+// import "prismjs/themes/prism.css";
+import "../../../src/prism.css";
 // react icons
 
 import debounce from "lodash.debounce";
@@ -208,27 +209,32 @@ export default function QuestionCard({
           ))}
       </div>
 
-      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] ">
-        <h1 className="bg-text-ghost-white dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4  text-justify ">
+      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] mb-2">
+        <h1 className="bg-text-ghost-white text-gray-500 dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4  text-justify ">
           {question?.questionText}
         </h1>
         {question?.code && (
-          <div className="h-[55%] items-center pointer">
+          <div className="mt-1h-[55%] items-center pointer bg-git-nav dark:bg-jet text-red-500 dark:text-btn-majorelle-blue">
             <Editor
-              style={{ marginLeft: 35, fontSize: 12, lineHeight: 1.5 }}
-              value={question.code}
+              style={{
+                marginLeft: 45,
+                fontSize: 15,
+                lineHeight: 1.5,
+              }}
+              value={question?.code}
               highlight={(code) => highlight(code, languages.js)}
               disabled
             />
           </div>
         )}
+        {question?.inputType === "checkbox" && (
+          <div className="mt-4 text-btn-majorelle-blue dark:text-cyber-yellow flex rounded-md px-1 w-full items-center justify-center mb-1">
+            <HiOutlineLightBulb className="text-xl" />
+            <div>more than one answers </div>
+          </div>
+        )}
       </div>
-      {question?.inputType === "checkbox" && (
-        <div className="dark:text-cyber-yellow flex rounded-md px-1 w-full items-center justify-center mb-1">
-          <HiOutlineLightBulb className="text-xl" />
-          <div>more than one </div>
-        </div>
-      )}
+
       <ul className="w-[99%] md:w-[100%] h-full md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
         {question?.options.map((option, i) => (
           <li className="w-full  md:h-[14vh]">

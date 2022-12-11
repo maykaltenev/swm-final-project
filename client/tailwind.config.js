@@ -76,7 +76,8 @@ module.exports = {
         "han-purple-300": "#532BF3",
         "lavender-web": "#E3DFFF",
         "cool-gray": "#818AA3",
-        "white": "rgb(255,255,255)"
+        "white": "rgb(255,255,255)",
+        "jet": "#2D2D2D"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
