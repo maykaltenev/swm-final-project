@@ -37,6 +37,8 @@ module.exports = {
         "card-space-cadet": "#202033",
         "nav-raisin-black": "#2B2B33",
         "nav-raisin-black-2": "#2C2C3A",
+        "nav-raisin-black-3": "#353546",
+        "nav-raisin-black-4": "#3D3D51",
         "dark-raisin-black": "#1E1E27",
         "btn-majorelle-blue": "#5855D8",
         "text-ghost-white": "#F0EFF3",

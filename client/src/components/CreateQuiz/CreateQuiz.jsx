@@ -38,10 +38,10 @@ function CreateQuiz() {
   };
 
   // handle onChange event of the dropdown
-const onSelection = (data) => { 
-  const dataValue = data.map(item => item.value.toLowerCase().split(" "))
-  console.log("e",dataValue)
-}
+  const onSelection = (data) => {
+    const dataValue = data.map((item) => item.value.toLowerCase().split(" "));
+    console.log("e", dataValue);
+  };
 
   const handleChangeOption = (e) => {
     console.log(e.target.value);
@@ -55,14 +55,14 @@ const onSelection = (data) => {
   return (
     <div className="flex justify-around">
       <Multiselect
-      placeholder="Select only 3"
+        placeholder="Select only 3"
         selectionLimit="3"
         displayValue="value"
         groupBy="label"
         onKeyPressFn={function noRefCheck() {}}
         onRemove={function noRefCheck() {}}
         onSearch={function noRefCheck() {}}
-        onSelect={onSelection}    
+        onSelect={onSelection}
         options={[
           {
             label: "React",
@@ -113,11 +113,11 @@ const onSelection = (data) => {
             value: "MongoDB Advanced",
           },
         ]}
-        showCheckbox        
+        showCheckbox
       />
       <button
         disabled={selectedQuestionType === ""}
-        className="bg-ultramarine-blue-2 rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
+        className="bg-ultramarine-blue-2 cursor-pointer rounded w-50 px-4 text-3xl h-14 text-bold text-snow hover:bg-red"
         onClick={() => handleNewQuiz(selectedQuestionType)}
       >
         Start New Quiz
