@@ -93,7 +93,7 @@ function Result() {
                     ? "You can do Better!! Practice a bit more!!"
                     : result?.userAnswerPercentage < 50
                     ? "Neverthless! Practice More ! You will reach Heights!!"
-                    : ""}
+                    : "Let's Practice more!!!"}
                 </b>
               </p>
             </div>
@@ -118,10 +118,10 @@ function Result() {
           </div>
         )}
       </div>
+      {result?.userAnswerPercentage >= 15 ? (
+            <>
       <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center  ">
         <div className="p-4 sm:w-3/6 hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          {result?.userAnswerPercentage >= 5 ? (
-            <>
               <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
                 <h5>
                   <b>
@@ -159,14 +159,61 @@ function Result() {
                   View Certificate
                 </button>
               </div>
+        </div>
+      </div>
             </>
           ) : (
             ""
           )}
-        </div>
-      </div>
     </>
   );
 }
 
 export default Result;
+{/* <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center  ">
+  <div className="p-4 sm:w-3/6 hover:shadow-xl hover:scale-105  transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+    {result?.userAnswerPercentage >= 5 ? (
+      <>
+        <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
+          <h5>
+            <b>
+              <i>Congrats!!! You are eligible for a Certificate!</i>
+            </b>
+          </h5>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
+            <p>
+              For:{" "}
+              {quizHistory?.quizResults[
+                quizHistory?.quizResults?.length - 1
+              ].quizType
+                .charAt(0)
+                .toUpperCase() +
+                quizHistory?.quizResults[
+                  quizHistory?.quizResults?.length - 1
+                ].quizType.slice(1)}
+            </p>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
+            <p>
+              Date:{" "}
+              {new Date(
+                quizHistory?.quizResults[
+                  quizHistory?.quizResults?.length - 1
+                ].createdOn
+              ).toLocaleString("de-DE")}
+            </p>
+          </div>
+          <button
+            onClick={handleViewCertificate}
+            className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
+          >
+            {" "}
+            View Certificate
+          </button>
+        </div>
+      </>
+    ) : (
+      ""
+    )}
+  </div>
+</div> */}
