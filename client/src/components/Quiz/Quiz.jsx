@@ -101,14 +101,14 @@ function Quiz() {
         <div className="flex md:mt-4 justify-evenly ">
           <div className="ml-2 flex w-3/5 justify-center">
             <button
-              className="mr-2 w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+              className="mr-2 w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handlePrevious}
             >
               Previous
             </button>
             <button
-              className="w-28 px-6 py-2.5  bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+              className="w-28 px-6 py-2.5  bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handleNext}
             >
@@ -118,7 +118,7 @@ function Quiz() {
           <div className="w-2/5 text-center">
             {Number(id) === questionData.length - 1 && (
               <button
-                className="w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+                className="w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700  hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box 
             hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
                 onClick={() => getResult(questionData[0]?.questionType)}

@@ -292,7 +292,8 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="bg-text-ghost-white w-full h-full p-4 inline-flex shadow-6xl justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400  dark:bg-nav-raisin-black-3 dark:hover:bg-nav-raisin-black-4 "
+              className="bg-text-ghost-white w-full h-full p-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4 
+              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200 "
             >
               {question.inputType === "text" ? "" : option?.option}
             </label>
