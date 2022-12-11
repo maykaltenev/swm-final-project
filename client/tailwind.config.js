@@ -36,6 +36,7 @@ module.exports = {
         "bg-xiketic": "#15141E",
         "card-space-cadet": "#202033",
         "nav-raisin-black": "#2B2B33",
+        "nav-raisin-black-2": "#2C2C3A",
         "dark-raisin-black": "#1E1E27",
         "btn-majorelle-blue": "#5855D8",
         "text-ghost-white": "#F0EFF3",
@@ -73,6 +74,7 @@ module.exports = {
         "han-purple-300": "#532BF3",
         "lavender-web": "#E3DFFF",
         "cool-gray": "#818AA3",
+        "white": "rgb(255,255,255)"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

@@ -196,7 +196,7 @@ export default function QuestionCard({
   return (
     <div
       key={question?._id}
-      className="w-full sm:w-[100%] shadow-2xl rounded-3xl lg:w-[65%] h-full lg:p-12 relative flex flex-col justify-center items-center sm:justify-evenly p-2 "
+      className="dark:bg-nav-raisin-black-2 w-full sm:w-[100%] shadow-2xl rounded-3xl lg:w-[65%] h-full lg:p-12 relative flex flex-col justify-center items-center sm:justify-evenly p-2 "
     >
       <div className="pointer absolute top-1 right-3 sm:top-2   sm:right-0 text-xl rounded-full sm:p-2 dark:bg-han-purple dark:text-text-ghost-white bg-cyber-yellow text-git-box">
         {question &&
@@ -206,9 +206,8 @@ export default function QuestionCard({
             <AiOutlineStar onClick={() => handleMark(question?._id)} />
           ))}
       </div>
-
-      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] p">
-        <h1 className="dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4 lg:py-0  text-justify  ">
+      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] ">
+        <h1 className="bg-text-ghost-white dark:bg-btn-majorelle-blue dark:text-text-ghost-white border-2 dark:border-git-nav rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4 lg:py-0  text-justify  ">
           {question?.questionText}
         </h1>
         {question?.code && (
@@ -222,11 +221,12 @@ export default function QuestionCard({
           </div>
         )}
       </div>
-      <ul className="w-[99%] md:w-[100%] h-full grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
+
+      <ul className="w-[99%] md:w-[100%] h-full md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
         {question?.options.map((option, i) => (
-          <li className="w-full border">
+          <li className="w-full  md:h-[10vh]">
             <input
-              className="hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:bg-gray-600 dark:border-gray-500 "
+              className="   hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:bg-gray-600 dark:border-gray-500 "
               type={question?.inputType}
               name={question?.inputType}
               value={
@@ -279,7 +279,7 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="w-full p-4 md:py-6 md:px-8  inline-flex shadow-6xl justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="bg-text-ghost-white w-full h-full p-4 inline-flex shadow-6xl justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
               {question.inputType === "text" ? "" : option?.option}
             </label>

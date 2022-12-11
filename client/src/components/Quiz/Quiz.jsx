@@ -87,28 +87,28 @@ function Quiz() {
             alt="quiz"
           />
         </div>
-        <div className="sm:w-full h-full w-full mb-10 lg:mb-0 md:flex sm:h-[75%] dark:bg-dark-raisin-black">
+        <div className="sm:w-full h-full w-full  mb-10 lg:mb-0 md:flex dark:bg-dark-raisin-black ">
           <QuestionCard
             question={questionData[id]}
             showExplanation={showExplanation}
             currentQuestion={id}
           />
-          <div className="flex h-full p-2 w-full flex-row sm:flex-col sm:h-[90%] sm:items-center sm:justify-between sm:w-1/4  ">
+          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row sm:flex-col sm:h-[73vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
             <CountDownTimer />
             <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
           </div>
         </div>
-        <div className="flex w-full mt-4 justify-around ">
-          <div className="flex w-1/3 justify-start">
+        <div className="flex w-full md:mt-4 justify-evenly ">
+          <div className="flex w-3/5  justify-around border">
             <button
-              className="mr-2 w-36 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+              className="mr-2 w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handlePrevious}
             >
               Previous
             </button>
             <button
-              className="w-36 px-6 py-2.5  lg:py-6 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+              className="w-28 px-6 py-2.5  bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handleNext}
             >
@@ -117,7 +117,7 @@ function Quiz() {
           </div>
           {Number(id) === questionData.length - 1 ? (
             <button
-              className="inline-block px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
+              className="w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box 
             hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={() => getResult(questionData[0]?.questionType)}
