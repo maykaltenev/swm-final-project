@@ -27,5 +27,5 @@ router.delete("/js/quiz/delete", removeJsCollection)
 // http://localhost:5000/questions/js/sessionID/:id
 router.get("/js/sessionID/:id", getAllQuestionsBySession);
 //http://localhost:5000/questions/createMixQuiz
-router.post("/createMixQuiz",createMixQuizSession);
+router.post("/createMixQuiz", createMixQuizSession);
 export default router;

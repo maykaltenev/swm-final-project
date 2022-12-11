@@ -127,6 +127,43 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const handleCreateMixSession = async (questionType, level) => {
+    navigate(`/mypage/${currentQuestion}`);
+    try {
+      await axios
+        .post(
+          "http://localhost:5000/questions/quiz/result",
+          {
+            user: getUser._id,
+            questionType: questionType,
+            level: level,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(
+          (data) => (
+            localStorage.setItem(
+              "quizQuestions",
+              JSON.stringify(data.data.newQuizSession.questions)
+            ),
+            localStorage.setItem(
+              "sessionId",
+              JSON.stringify(data.data.newQuizSession._id)
+            )
+          )
+        )
+        .then(() =>
+          setQuestionData(JSON.parse(localStorage.getItem("quizQuestions")))
+        )
+        .then(() => {
+          setSessionId(JSON.parse(localStorage.getItem("sessionId")));
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getUserUpdated = async (data, questionType) => {
     console.log(data);
     const update = await axios

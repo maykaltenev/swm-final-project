@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 import CheckboxDropdownComponent, {
   createStyles,
 } from "react-checkbox-dropdown";
@@ -40,7 +41,8 @@ function CreateQuiz() {
   // handle onChange event of the dropdown
   const onSelection = (data) => {
     const dataValue = data.map((item) => item.value.toLowerCase().split(" "));
-    console.log("e", dataValue);
+    setSelectedQuestionType(dataValue);
+    console.log("open", selectedQuestionType);
   };
 
   const handleChangeOption = (e) => {
