@@ -37,7 +37,7 @@ function CreateQuiz() {
 
   const { timer } = useContext(UserContext);
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
-  const { handleCreateNewSession, setMarked, setSessionId, setQuestionData } =
+  const { handleCreateMixSession, setMarked, setSessionId, setQuestionData } =
     useContext(QuestionContext);
 
   const handleNewQuiz = (chosenQuestionType) => {
@@ -48,7 +48,7 @@ function CreateQuiz() {
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
-    handleCreateNewSession(chosenQuestionType);
+    handleCreateMixSession(chosenQuestionType);
     timer();
   };
 
@@ -56,14 +56,13 @@ function CreateQuiz() {
   const onSelection = (data) => {
     const dataValue = data.map((item) => item.value.toLowerCase().split(" "));
     setSelectedQuestionType(dataValue);
-    console.log("open", selectedQuestionType);
   };
-
-  const handleChangeOption = (e) => {
-    console.log(e.target.value);
-    if (e.target.value === "") return;
-    setSelectedQuestionType(e.target.value);
-  };
+  console.log(selectedQuestionType);
+  // const handleChangeOption = (e) => {
+  //   console.log(e.target.value);
+  //   if (e.target.value === "") return;
+  //   setSelectedQuestionType(e.target.value);
+  // };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -80,7 +79,6 @@ function CreateQuiz() {
               </h1>
               <button
                 type="button"
-                disabled={selectedQuestionType === ""}
                 className="cursor-pointer px-8 py-2 sm:px-8 sm:mr-5 sm:py-5 block h-fit text-white bg-ultramarine-blue-2 hover:bg-ultramarine-blue focus:ring-4 focus:ring-bg-ultramarine-blue   sm:font-medium rounded-lg  text-center dark:bg-ultramarine-blue dark:hover:bg-ultramarine-blue-2 dark:focus:ring-ultramarine-blue-2
               shadow-3xl hover:shadow transition duration-200"
                 onClick={() => handleNewQuiz(selectedQuestionType)}
@@ -111,6 +109,20 @@ function CreateQuiz() {
                       label: "React",
                       value: "React Intermediate",
                     },
+
+                    {
+                      label: "JS",
+                      value: "Javascript Beginner",
+                    },
+                    {
+                      label: "JS",
+                      value: "Javascript Intermediate",
+                    },
+                    {
+                      label: "JS",
+                      value: "Javascript Advanced",
+                    },
+
                     {
                       label: "React",
                       value: "React Advanced",
@@ -129,19 +141,19 @@ function CreateQuiz() {
                     },
                     {
                       label: "Expressjs",
-                      value: "Expressjs beginner",
+                      value: "Express Beginner",
                     },
                     {
                       label: "Expressjs",
-                      value: "Expressjs Intermediate",
+                      value: "Express Intermediate",
                     },
                     {
                       label: "Expressjs",
-                      value: "Expressjs Advanced",
+                      value: "Express Advanced",
                     },
                     {
                       label: "MongoDB",
-                      value: "MongoDB beginner",
+                      value: "MongoDB Beginner",
                     },
                     {
                       label: "MongoDB",

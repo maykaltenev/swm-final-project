@@ -23,7 +23,7 @@ function App() {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="w-full  flex justify-center dark:bg-bg-xiketic">
+    <div className="w-full h-full flex justify-center dark:bg-bg-xiketic">
       <div className="relative sm:w-3/4 ">
         <Header />
         {user && <SideBar />}

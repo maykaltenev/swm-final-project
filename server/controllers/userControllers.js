@@ -7,9 +7,9 @@ dotenv.config();
 /* -----------------------google strategy-------------------------- */
 
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-console.log('strategy is', GoogleStrategy)
+
 // initialize googlestrategy. syntax ({options}, callback function)
-console.log("clientId", process.env.GOOGLE_CLIENT_ID)
+
 passport.use(
   new GoogleStrategy(
     {
@@ -19,11 +19,11 @@ passport.use(
       proxy: true,
     },
     async (accessToken, refreshToken, profile, cb) => {
-      console.log("inside strategy instance: profile", profile);
+      // console.log("inside strategy instance: profile", profile);
       //       // register the user in db
       //       // only if the user doesn't exist
       //       // in db
-      console.log("the profile is", profile);
+      // console.log("the profile is", profile);
       const email = profile._json.email;
 
       // check if there is such a user in db
@@ -44,7 +44,7 @@ passport.use(
         email,
         password: "google",
       });
-      console.log("saving user", newUser);
+
       /*   pass: email */
 
       const savedUser = await newUser.save();

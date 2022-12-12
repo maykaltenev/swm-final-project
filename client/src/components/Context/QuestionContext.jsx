@@ -127,16 +127,16 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const handleCreateMixSession = async (questionType, level) => {
+  const handleCreateMixSession = async (mixQuestionType) => {
     navigate(`/mypage/${currentQuestion}`);
+    console.log("from context", mixQuestionType);
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/quiz/result",
+          "http://localhost:5000/questions/createMixQuiz",
           {
             user: getUser._id,
-            questionType: questionType,
-            level: level,
+            mixQuestionType: mixQuestionType,
           },
           {
             withCredentials: true,
@@ -222,6 +222,7 @@ const QuestionContextProvider = ({ children }) => {
         questionData,
         setPoints,
         points,
+        handleCreateMixSession,
       }}
     >
       {children}

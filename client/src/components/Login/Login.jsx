@@ -28,7 +28,7 @@ export default function Login() {
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-50 ">
         <form onSubmit={handleLogin}>
-          <div className="bg-pink-100 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className="bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Login</p>
             <p>{error}</p>
             <div class="relative mb-4">
@@ -56,7 +56,7 @@ export default function Login() {
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}
               >
-                {!visible ?  <AiOutlineEyeInvisible /> : <AiOutlineEye /> }
+                {!visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
               </span>
             </div>
             <button

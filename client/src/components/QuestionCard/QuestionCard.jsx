@@ -237,7 +237,7 @@ export default function QuestionCard({
 
       <ul className="w-[99%] md:w-[100%] h-full md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
         {question?.options.map((option, i) => (
-          <li className="w-full  md:h-[14vh]">
+          <li className="sm:p-3 w-full rounded-t-lg  ">
             <input
               className="hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:nav-raisin-black-3 dark:border-gray-500 "
               type={question?.inputType}
@@ -292,7 +292,7 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="bg-text-ghost-white w-full h-full p-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4 
+              className="bg-text-ghost-white w-full h-full pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4 
               dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200 "
             >
               {question.inputType === "text" ? "" : option?.option}
