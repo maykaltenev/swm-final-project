@@ -87,7 +87,7 @@ export default function Register() {
                 name="password"
                 required
               />
-              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
+              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />  }</span>
             </div>
 
             <button

@@ -56,7 +56,7 @@ export default function Login() {
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}
               >
-                {!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+                {!visible ?  <AiOutlineEyeInvisible /> : <AiOutlineEye /> }
               </span>
             </div>
             <button
