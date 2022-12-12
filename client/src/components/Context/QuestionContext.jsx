@@ -168,9 +168,9 @@ const QuestionContextProvider = ({ children }) => {
     console.log(data);
     const update = await axios
       .post("http://localhost:5000/user/quiz/result", {
-        userId: getUser._id,
+        userId: getUser?._id,
         sessionId: sessionId,
-        resultPercentage: data.data.userAnswerPercentage,
+        resultPercentage: data?.data?.userAnswerPercentage,
         quizType: questionType,
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
@@ -223,6 +223,7 @@ const QuestionContextProvider = ({ children }) => {
         setPoints,
         points,
         handleCreateMixSession,
+        getQuizTimeFromLocalStorage,
       }}
     >
       {children}

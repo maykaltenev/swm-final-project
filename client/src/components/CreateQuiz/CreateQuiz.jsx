@@ -8,6 +8,7 @@ import Multiselect from "multiselect-react-dropdown";
 import { QuestionContext } from "../Context/QuestionContext";
 import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
+import { differenceInSeconds } from "date-fns";
 //images
 import Pink from "../../assets/banner-tiles/pink.png";
 import Waves from "../../assets/banner-tiles/waves-pink.png";
@@ -39,7 +40,21 @@ function CreateQuiz() {
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
   const { handleCreateMixSession, setMarked, setSessionId, setQuestionData } =
     useContext(QuestionContext);
+  const getQuizTimeFromLocalStorage = () => {
+    const quizTime = localStorage.getItem("quizTime");
+    if (quizTime) {
+      return JSON.parse(localStorage.getItem("quizTime"));
+    } else {
+      return "";
+    }
+  };
+  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
 
+  const date = new Date();
+  const duration = 600;
+  const [timeDifference, setTimeDifference] = useState(
+    differenceInSeconds(new Date(quizTime?.end), date)
+  );
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
@@ -48,6 +63,8 @@ function CreateQuiz() {
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
+    getQuizTimeFromLocalStorage();
+    setTimeDifference(duration);
     handleCreateMixSession(chosenQuestionType);
     timer();
   };
@@ -79,6 +96,7 @@ function CreateQuiz() {
               </h1>
               <button
                 type="button"
+                disabled={selectedQuestionType.length === 0}
                 className="cursor-pointer px-8 py-2 sm:px-8 sm:mr-5 sm:py-5 block h-fit text-white bg-ultramarine-blue-2 hover:bg-ultramarine-blue focus:ring-4 focus:ring-bg-ultramarine-blue   sm:font-medium rounded-lg  text-center dark:bg-ultramarine-blue dark:hover:bg-ultramarine-blue-2 dark:focus:ring-ultramarine-blue-2
               shadow-3xl hover:shadow transition duration-200"
                 onClick={() => handleNewQuiz(selectedQuestionType)}
