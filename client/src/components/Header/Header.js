@@ -75,7 +75,7 @@ function Header({ theme, setTheme }) {
           <div ref={buttonRef} className="relative">
             <img
               onClick={handleDropMenu}
-              className="cursor-pointer w-14 h-14 border-4 rounded-full  p-1 flex justify-center items-center "
+              className="cursor-pointer w-14 h-14 border-4 rounded-full  border-green-600 flex justify-center items-center "
               alt=""
               src={user.avatar}
             />
@@ -84,7 +84,7 @@ function Header({ theme, setTheme }) {
                 <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   <div className="flex justify-start items-center cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
                     <img
-                      className="cursor-pointer w-14 h-14 border-4 rounded-full flex justify-center items-center"
+                      className="cursor-pointer w-14 h-14 border-4 border-green-600 rounded-full flex justify-center items-center"
                       alt=""
                       src={user.avatar}
                     />
@@ -95,7 +95,7 @@ function Header({ theme, setTheme }) {
                   </div>
                 </div>
                 <Link
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                  className="w-full bg-white rounded border border-green-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
                   to="/mycertificates"
                 >
                   My Certificates{" "}
