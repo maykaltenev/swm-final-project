@@ -86,11 +86,11 @@ function CreateQuiz() {
 
   return (
     <div className="dark:bg-oxford-blue mt-5 w-full min-h-screen flex flex-col justify-start sm:items-start sm:justify-evenly rounded-3xl items-center sm:flex-row text-git-nav shadow-5xl dark:shadow-4xl">
-      <section class="text-gray-600 body-font ">
-        <div class="container px-5 py-24 mx-auto  sm:flex sm:flex-wrap">
-          <div class="sm:flex sm:flex-wrap ">
+      <section className="text-gray-600 body-font ">
+        <div className="container px-5 py-24 mx-auto  sm:flex sm:flex-wrap">
+          <div className="sm:flex sm:flex-wrap ">
             <div className="flex flex-col items-center sm:flex-row align-center sm:justify-evenly mb-4 py-4 sm:py-0 ">
-              <h1 class="sm:text-3xl  text-xl font-medium text-center title-font dark:text-snow lg:w-2/3 lg:mb-0 mb-4  text-git-nav">
+              <h1 className="sm:text-3xl  text-xl font-medium text-center title-font dark:text-snow lg:w-2/3 lg:mb-0 mb-4  text-git-nav">
                 Challenge yourself and see how much you know about the MERN
                 stack
               </h1>
@@ -104,9 +104,9 @@ function CreateQuiz() {
                 Start New Quiz
               </button>
             </div>
-            <div class="sm:flex sm:flex-wrap sm:w-1/2 w-screen">
+            <div className="sm:flex sm:flex-wrap sm:w-1/2 w-screen">
               <div
-                class="md:p-2  p-1 sm:w-1/2  flex flex-col w-screen
+                className="md:p-2  p-1 sm:w-1/2  flex flex-col w-screen
               sm:justify-between text-justify"
               >
                 <Multiselect
@@ -189,10 +189,10 @@ function CreateQuiz() {
                   improve your skills in a particular topic or subject
                 </p>
               </div>
-              <div class="md:p-2 p-1 sm:w-1/2 flex flex-col justify-between">
+              <div className="md:p-2 p-1 sm:w-1/2 flex flex-col justify-between">
                 <img
                   alt="gallery"
-                  class="w-full object-cover h-1.5/2 object-center block"
+                  className="w-full object-cover h-1.5/2 object-center block"
                   src={nodeimg}
                 />
                 <p className=" px-2  leading-relaxed text-base dark:text-snow  text-justify  text-git-nav">
@@ -200,38 +200,38 @@ function CreateQuiz() {
                   in this exciting and in-demand field of web development!
                 </p>
               </div>
-              <div class="md:p-2 p-1 w-full flex overflow-hidden rounded-lg  lg:opacity-100">
+              <div className="md:p-2 p-1 w-full flex overflow-hidden rounded-lg  lg:opacity-100">
                 <img
                   alt="gallery"
-                  class="w-full h-fit object-cover object-center block"
+                  className="w-full h-fit object-cover object-center block"
                   src={reactimg}
                 />
               </div>
             </div>
-            <div class="sm:flex sm:flex-wrap sm:w-1/2">
-              <div class="md:p-2 p-1 overflow-hidden rounded-lg ">
+            <div className="sm:flex sm:flex-wrap sm:w-1/2">
+              <div className="md:p-2 p-1 overflow-hidden rounded-lg ">
                 <img
                   alt="gallery"
-                  class="w-full h-full object-cover object-center block"
+                  className="w-full h-full object-cover object-center block"
                   src={Setup}
                 />
               </div>
-              <div class="md:p-2 p-1 sm:w-1/2">
+              <div className="md:p-2 p-1 sm:w-1/2">
                 <img
                   alt="gallery"
-                  class="sm:w-fit object-cover h-fit object-center block border-rounded"
+                  className="sm:w-fit object-cover h-fit object-center block border-rounded"
                   src={expressimg}
                 />
                 <img
                   alt="gallery"
-                  class="w-fit object-cover h-fit object-center block"
+                  className="w-fit object-cover h-fit object-center block"
                   src={Box}
                 />
               </div>
-              <div class="md:p-2 p-1 sm:w-1/2">
+              <div className="md:p-2 p-1 sm:w-1/2">
                 <img
                   alt="gallery"
-                  class="w-full h-2/3 object-cover object-center block"
+                  className="w-full h-2/3 object-cover object-center block"
                   src={jsimg}
                 />
                 <img

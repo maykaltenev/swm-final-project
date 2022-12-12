@@ -29,6 +29,8 @@ module.exports = {
         '7xl': "4px 4px 0px 0px #475569",
         '8xl': "8px 8px 0px 0px #633EF4",
         '9xl': "14px 14px 0px 0px #D3D2DB",
+        '10xl': "14px 14px 0px 0px #677CF4",
+
 
       },
       colors: {
@@ -77,7 +79,7 @@ module.exports = {
         "lavender-web": "#E3DFFF",
         "cool-gray": "#818AA3",
         "white": "rgb(255,255,255)",
-        "jet": "#2D2D2D"
+        "jet": "#2D2D2D",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

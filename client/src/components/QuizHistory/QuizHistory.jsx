@@ -53,8 +53,8 @@ function QuizHistory() {
   console.log(quizHistory.quizResults);
   return (
     <>
-      <section className="flex min-h-screen">
-        <div className=" text-gray-300 sm:w-1/4  min-h-screen  rounded-xl drop-shadow-lg my-2">
+      <section className="flex min-h-screen w-screen sm:w-fit ">
+        <div className=" text-gray-300 w-1/4 mx-2 sm:w-1/5  min-h-screen  rounded-xl drop-shadow-lg ">
           {quizHistory?.quizResults &&
             quizHistory?.quizResults
               ?.slice()
@@ -62,16 +62,18 @@ function QuizHistory() {
               .map((quiz) => (
                 <Fragment key={quiz.sessionId}>
                   <div
-                    className={`bg-dark-purple sm:h-24 items-center rounded-r-md flex-col-reverse m-px shadow-lg cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
+                    className={`hover:shadow transition duration-200 
+                    bg-text-ghost-white text-nav-raisin-black shadow-7xl
+                    dark:bg-nav-raisin-black-4 dark:text-text-ghost-white sm:w-full  h-24 items-center rounded-r-md flex-col-reverse m-px shadow-5xl my-2 cursor-pointer flex justify-center  p-1 sm:flex-row sm:p-2 ${
                       quiz.sessionId === selected
-                        ? "border-l-4 border-l-green-400 md:border-l-8"
+                        ? "border-l-4 border-l-green-400 rounded-md md:border-l-8"
                         : ""
                     } `}
                     onClick={() => handleShowMore(quiz.sessionId)}
                   >
-                    <div className="">
+                    <div className="w-full  h-full flex justify-center items-center">
                       <img
-                        className=" h-6 w-6 mr-2 sm:h-10 sm:m-2 "
+                        className=" w-2/3 h-2/3 sm:w-fit sm:h-2/3   "
                         src={
                           quiz?.quizType === "javascript"
                             ? jsimg
@@ -99,7 +101,7 @@ function QuizHistory() {
                 </Fragment>
               ))}
         </div>
-        <div className="g:w-1/2 w-full mb-10 lg:mb-0 ">
+        <div className=" w-full mb-10 lg:mb-0 mr-2">
           <CheckAllAnswersResult allQues={result} />
         </div>
       </section>
