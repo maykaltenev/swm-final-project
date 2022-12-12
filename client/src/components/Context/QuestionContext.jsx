@@ -127,6 +127,44 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* mix questons */
+  const handleCreateNewMixSession = async (mixQuestionTypes) => {
+    navigate(`/mypage/${currentQuestion}`);
+    try {
+      await axios
+        .post(
+          "http://localhost:5000/questions/createMixQuiz",
+          {
+            user: getUser._id,
+            mixQuestionTypes:mixQuestionTypes
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(
+          (data) => console.log("the miyx ques",data))
+            /* localStorage.setItem(
+              "quizQuestions",
+              JSON.stringify(data.data.newQuizSession.questions)
+            ),
+            localStorage.setItem(
+              "sessionId",
+              JSON.stringify(data.data.newQuizSession._id)
+            )
+          )
+        )
+        .then(() =>
+          setQuestionData(JSON.parse(localStorage.getItem("quizQuestions")))
+        )
+        .then(() => {
+          setSessionId(JSON.parse(localStorage.getItem("sessionId")));
+        }); */
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  /* mix quest */
   const getUserUpdated = async (data, questionType) => {
     console.log(data);
     const update = await axios
