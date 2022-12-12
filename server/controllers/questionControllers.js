@@ -166,7 +166,7 @@ export const createMixQuizSession = async (req, res) => {
         mixQuestionType: firstLevel
       });
 
-      while (questions.length < 5) {
+      while (questions.length < 10) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
           questions.push(questionsAll[randomQues]);
