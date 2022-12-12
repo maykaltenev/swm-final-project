@@ -41,84 +41,7 @@ export const getAllQuestionsBySession = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-// console.log("mix", mixQuestionTypes)
-// let questions = [];
-// if (mixQuestionTypes) {
-//   if (mixQuestionTypes.length === 1) {
 
-//     console.log("first One", mixQuestionTypes)
-//     const firstType = mixQuestionTypes[0][0];
-//     const firstLevel = mixQuestionTypes[0][1];
-//     let questionsAll = await QuestionData.find({
-//       questionType: firstType,
-//       difficultyLevel: firstLevel
-//     });
-//     while (questions.length < 5) {
-//       let randomQues = Math.floor(Math.random() * questionsAll.length);
-//       if (!questions.includes(questionsAll[randomQues])) {
-//         questions.push(questionsAll[randomQues]);
-//       }
-//     }
-
-//   } else if (mixQuestionTypes.length === 2) {
-//     const firstType = mixQuestionTypes[0][0];
-//     const firstLevel = mixQuestionTypes[0][1];
-//     const secondType = mixQuestionTypes[1][0];
-//     const secondLevel = mixQuestionTypes[1][1];
-//     let questionsAll = await QuestionData.find({
-//       $or: [
-//         {
-//           $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }],
-//         },
-//         {
-//           $and: [
-//             { questionType: secondType },
-//             { difficultyLevel: secondLevel },
-//           ],
-//         },
-//       ],
-//     });
-
-//     /* to randomise the questions to create mix  of ques  */
-//     while (questions.length < 10) {
-//       let randomQues = Math.floor(Math.random() * questionsAll.length);
-//       if (!questions.includes(questionsAll[randomQues])) {
-//         questions.push(questionsAll[randomQues]);
-//       }
-//     }
-
-
-//   } else {
-//     const firstType = mixQuestionTypes[0][0];
-//     const firstLevel = mixQuestionTypes[0][1];
-//     const secondType = mixQuestionTypes[1][0];
-//     const secondLevel = mixQuestionTypes[1][1];
-//     const thirdType = mixQuestionTypes[2][0];
-//     const thirdLevel = mixQuestionTypes[2][1];
-//     const questionsAll = await QuestionData.find({
-//       $or: [
-//         {
-//           $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }],
-//         },
-//         {
-//           $and: [
-//             { questionType: secondType },
-//             { difficultyLevel: secondLevel },
-//           ],
-//         },
-//         {
-//           $and: [{ questionType: thirdType }, { difficultyLevel: thirdLevel }],
-//         },
-//       ],
-//     });
-//     /* to randomise the questions to create mix  of ques  */
-//     while (questions.length < 10) {
-//       let randomQues = Math.floor(Math.random() * questionsAll.length);
-//       if (!questions.includes(questionsAll[randomQues])) {
-//         questions.push(questionsAll[randomQues]);
-//       }
-//     }
-//   }
 export const createQuizSession = async (req, res) => {
   const { user, userSolution, questionType, level } = req.body;
   const questions = await QuestionData.find({
@@ -143,15 +66,6 @@ export const createQuizSession = async (req, res) => {
   }
 };
 
-/* controller for mix-questions
- */
-
-//const { user, userSolution, questionType, level } = req.body;
-// const mixQuestionTypes = [
-//   ["react", "advanced"],
-//   ["nodejs", "beginner"],
-//   ["mongodb", "intermediate"],
-// ];
 export const createMixQuizSession = async (req, res) => {
   const { user, userSolution, mixQuestionType } = req.body;
   console.log(mixQuestionType)
@@ -161,12 +75,13 @@ export const createMixQuizSession = async (req, res) => {
       console.log("inside First", mixQuestionType)
       const firstType = mixQuestionType[0][0];
       const firstLevel = mixQuestionType[0][1];
+
       let questionsAll = await QuestionData.find({
         mixQuestionType: firstType,
         mixQuestionType: firstLevel
       });
 
-      while (questions.length < 10) {
+      while (questions.length < 5) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
           questions.push(questionsAll[randomQues]);
