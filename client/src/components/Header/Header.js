@@ -72,16 +72,16 @@ function Header({ theme, setTheme }) {
         )}
         {/* when the user is signedIn */}
         {user && (
-          <div ref={buttonRef} className="relative">
+          <div ref={buttonRef} className="relative ">
             <img
               onClick={handleDropMenu}
-              className="cursor-pointer w-14 h-14 border-4 rounded-full  border-green-600 flex justify-center items-center "
+              className="cursor-pointer  w-14 h-14 border-4 rounded-full  border-green-600 flex justify-center items-center "
               alt=""
               src={user.avatar}
             />
             {showDropMenu && (
               <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-20 font-poppins text-base">
-                <div className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <div className="dark:border-nav-raisin-black-2 w-full bg-text-ghost-white rounded border dark:bg-nav-raisin-black-2 dark:text-snow border-gray-300  focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:hover:bg-nav-raisin-black-4 transition duration-200">
                   <div className="flex justify-start items-center cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
                     <img
                       className="cursor-pointer w-14 h-14 border-4 border-green-600 rounded-full flex justify-center items-center"
@@ -95,13 +95,16 @@ function Header({ theme, setTheme }) {
                   </div>
                 </div>
                 <Link
-                  className="w-full bg-white rounded border border-green-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+                  className="dark:border-nav-raisin-black-3 w-full bg-text-ghost-white rounded border dark:bg-nav-raisin-black-4 dark:text-snow focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out 
+                  dark:hover:bg-nav-raisin-black-2 transition duration-200"
                   to="/mycertificates"
+
                 >
                   My Certificates{" "}
                 </Link>
                 <div
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out flex items-center cursor-pointer"
+                  className="dark:border-nav-raisin-black-3 w-full bg-text-ghost-white dark:bg-nav-raisin-black-4 dark:text-snow rounded border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out flex items-center cursor-pointer
+                  dark:hover:bg-nav-raisin-black-2 transition duration-200"
                   onClick={handleMode}
                 >
                   <span>{darkTheme ? "Light Mode" : "Dark Mode"}</span>
@@ -110,7 +113,9 @@ function Header({ theme, setTheme }) {
 
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-pointer"
+                  className="dark:border-nav-raisin-black-2 w-full bg-text-ghost-white dark:bg-nav-raisin-black dark:text-snow rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-pointer
+                  dark:hover:bg-red-500 transition duration-600
+                  hover:bg-red-500 transition duration-600"
                 >
                   Logout{" "}
                 </button>
@@ -121,7 +126,7 @@ function Header({ theme, setTheme }) {
       </div>
       {/* if the open login form is there show login form */}
       {(openRegisterForm && <Register />) || (openLoginForm && <Login />)}
-    </div>
+    </div >
   );
 }
 
