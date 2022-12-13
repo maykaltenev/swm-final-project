@@ -91,7 +91,7 @@ export default function BannerTiles() {
                   </div>
                 </div>
               </div>
-              <div className="w-2/5  w-2/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
+              <div className="w-3/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
                 {/* <button className="rounded bg-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey
                 </button> */}
