@@ -20,19 +20,34 @@ function Quiz() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { getResult, setCurrentQuestion, questionData, timeOver } =
-    useContext(QuestionContext);
+  const {
+    getResult,
+    setCurrentQuestion,
+    questionData,
+    timeOver,
+    currentQuestion,
+  } = useContext(QuestionContext);
 
   const { id } = useParams();
 
   const handlePrevious = () => {
     setCurrentQuestion(id);
-    navigate(`/mypage/${id * 1 > 0 ? id * 1 - 1 : id}`);
+    navigate(
+      `/mypage/${
+        currentQuestion * 1 > 0 ? currentQuestion * 1 - 1 : currentQuestion
+      }`
+    );
   };
   const navigate = useNavigate();
   const handleNext = () => {
     setCurrentQuestion(id);
-    navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
+    navigate(
+      `/mypage/${
+        currentQuestion * 1 < questionData.length - 1
+          ? currentQuestion * 1 + 1
+          : currentQuestion
+      }`
+    );
   };
   console.log("questionData", questionData);
   return (

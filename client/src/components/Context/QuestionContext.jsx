@@ -86,6 +86,7 @@ const QuestionContextProvider = ({ children }) => {
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
+    setCurrentQuestion(0);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
 
