@@ -62,7 +62,7 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
+      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
         <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
@@ -100,14 +100,14 @@ function Quiz() {
         <div className="flex md:mt-4 justify-evenly">
           <div className="ml-2 flex w-3/5 justify-center">
             <button
-              className="mr-2 w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
+              className="mr-2 w-28 px-6 py-2.5 md:w-48 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handlePrevious}
             >
               Previous
             </button>
             <button
-              className="w-28 px-6 py-2.5  bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
+              className="w-28 px-6 py-2.5  md:px-10bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
             bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handleNext}
             >
