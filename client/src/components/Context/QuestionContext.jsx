@@ -80,6 +80,8 @@ const QuestionContextProvider = ({ children }) => {
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
 
+    setCurrentQuestion(0);
+
     setTimeOver(false);
     setMarked([]);
     setSessionId("");
@@ -91,7 +93,8 @@ const QuestionContextProvider = ({ children }) => {
     timer();
   };
   const handleCreateNewSession = async (questionType, level) => {
-    navigate(`/mypage/${currentQuestion}`);
+    // navigate(`/mypage/${currentQuestion}`);
+    navigate(`/mypage/0`);
     try {
       await axios
         .post(
@@ -128,7 +131,8 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const handleCreateMixSession = async (mixQuestionType) => {
-    navigate(`/mypage/${currentQuestion}`);
+    // navigate(`/mypage/${currentQuestion}`);
+    navigate(`/mypage/0`);
     console.log("from context", mixQuestionType);
     try {
       await axios

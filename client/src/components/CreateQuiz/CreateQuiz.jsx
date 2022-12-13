@@ -38,8 +38,13 @@ function CreateQuiz() {
 
   const { timer } = useContext(UserContext);
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
-  const { handleCreateMixSession, setMarked, setSessionId, setQuestionData } =
-    useContext(QuestionContext);
+  const {
+    handleCreateMixSession,
+    setMarked,
+    setSessionId,
+    setQuestionData,
+    setCurrentQuestion,
+  } = useContext(QuestionContext);
   const getQuizTimeFromLocalStorage = () => {
     const quizTime = localStorage.getItem("quizTime");
     if (quizTime) {
@@ -60,6 +65,7 @@ function CreateQuiz() {
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
+    setCurrentQuestion(0);
     setMarked([]);
     setSessionId("");
     setQuestionData([]);

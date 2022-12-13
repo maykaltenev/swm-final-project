@@ -68,7 +68,7 @@ export const createQuizSession = async (req, res) => {
 
 export const createMixQuizSession = async (req, res) => {
   const { user, userSolution, mixQuestionType } = req.body;
-  console.log(mixQuestionType)
+
   let questions = [];
   if (mixQuestionType) {
     if (mixQuestionType.length === 1) {
@@ -80,7 +80,8 @@ export const createMixQuizSession = async (req, res) => {
         mixQuestionType: firstType,
         mixQuestionType: firstLevel
       });
-
+      console.log("first", firstType)
+      console.log("LVL", firstLevel)
       while (questions.length < 5) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
@@ -93,6 +94,10 @@ export const createMixQuizSession = async (req, res) => {
       const firstLevel = mixQuestionType[0][1];
       const secondType = mixQuestionType[1][0];
       const secondLevel = mixQuestionType[1][1];
+      console.log("first", firstType)
+      console.log("LVL", firstLevel)
+      console.log("2second", secondType)
+      console.log("2LVL", secondLevel)
       let questionsAll = await QuestionData.find({
         $or: [
           {
@@ -123,6 +128,7 @@ export const createMixQuizSession = async (req, res) => {
       const secondLevel = mixQuestionType[1][1];
       const thirdType = mixQuestionType[2][0];
       const thirdLevel = mixQuestionType[2][1];
+
       const questionsAll = await QuestionData.find({
         $or: [
           {
@@ -148,14 +154,14 @@ export const createMixQuizSession = async (req, res) => {
       }
     }
 
-    console.log("test after one array", questions)
+    console.log(questions)
     try {
       let newQuizSession = await QuizSession.create({
         user,
         questions,
         userSolution,
       });
-      console.log("test", newQuizSession)
+
 
       if (!newQuizSession) return;
 
