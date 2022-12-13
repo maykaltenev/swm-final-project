@@ -202,6 +202,8 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
+        setTimeDifference,
+        setTimeOver,
         timeOver,
         handleTimeOver,
         duration,

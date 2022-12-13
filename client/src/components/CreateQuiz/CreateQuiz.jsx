@@ -44,33 +44,27 @@ function CreateQuiz() {
     setSessionId,
     setQuestionData,
     setCurrentQuestion,
+    setTimeOver,
+    setTimeDifference,
+    getQuizTimeFromLocalStorage,
+    duration,
   } = useContext(QuestionContext);
-  const getQuizTimeFromLocalStorage = () => {
-    const quizTime = localStorage.getItem("quizTime");
-    if (quizTime) {
-      return JSON.parse(localStorage.getItem("quizTime"));
-    } else {
-      return "";
-    }
-  };
-  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
 
-  const date = new Date();
-  const duration = 600;
-  const [timeDifference, setTimeDifference] = useState(
-    differenceInSeconds(new Date(quizTime?.end), date)
-  );
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
+
     setCurrentQuestion(0);
+
+    setTimeOver(false);
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
+
     handleCreateMixSession(chosenQuestionType);
     timer();
   };
