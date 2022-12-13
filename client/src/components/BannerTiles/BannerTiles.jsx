@@ -14,12 +14,14 @@ export default function BannerTiles() {
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48 ">
         <div className=" border-2relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg bg-text-ghost-white md:w-2/3   dark:bg-oxford-blue p-14  border-y-4 rounded-md border-ultramarine-blue-2  dark:border-cyber-yellow ">
+            <h1 className="font text-4xl  font-bold tracking-tight text-ultramarine-blue sm:text-6xl">
+              MERN+
+            </h1>
             <h1 className="font text-4xl  font-bold tracking-tight text-ultramarine-blue-2 sm:text-6xl">
-              MERN+ Excelling in your coding career!
+              Excelling in your coding career!
             </h1>
             <p className="mt-4 sm:text-4xl font-bold   text-bg-xiketic dark:text-cyber-yellow  text-bold ">
-              Excelling in your coding career: how our MERN quiz app can help
-              you stay sharp and up-to-date
+              Unleash your MERN potential with our challenges!
             </p>
           </div>
           <div>
