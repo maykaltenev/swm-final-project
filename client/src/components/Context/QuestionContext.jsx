@@ -84,6 +84,7 @@ const QuestionContextProvider = ({ children }) => {
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
+    setCurrentQuestion(0);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
 
@@ -198,6 +199,8 @@ const QuestionContextProvider = ({ children }) => {
   return (
     <QuestionContext.Provider
       value={{
+        setTimeOver,
+        setCurrentQuestion,
         timeOver,
         handleTimeOver,
         duration,

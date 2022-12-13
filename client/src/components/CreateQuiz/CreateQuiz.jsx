@@ -45,6 +45,8 @@ function CreateQuiz() {
     setQuestionData,
     setTimeDifference,
     duration,
+    setCurrentQuestion,
+    setTimeOver,
   } = useContext(QuestionContext);
   const getQuizTimeFromLocalStorage = () => {
     const quizTime = localStorage.getItem("quizTime");
@@ -62,6 +64,9 @@ function CreateQuiz() {
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
+
+    setTimeOver(false);
+    setCurrentQuestion(0);
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
