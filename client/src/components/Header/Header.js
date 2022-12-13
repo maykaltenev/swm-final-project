@@ -77,7 +77,7 @@ function Header({ theme, setTheme }) {
               onClick={handleDropMenu}
               className="cursor-pointer  w-14 h-14 border-4 rounded-full  border-green-600 flex justify-center items-center "
               alt=""
-              src={user.avatar}
+              src={user?.avatar}
             />
             {showDropMenu && (
               <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-20 font-poppins text-base">
@@ -86,7 +86,7 @@ function Header({ theme, setTheme }) {
                     <img
                       className="cursor-pointer w-14 h-14 border-4 border-green-600 rounded-full flex justify-center items-center"
                       alt=""
-                      src={user.avatar}
+                      src={user?.avatar}
                     />
                     <div className="ml-5 " >
                       {user?.firstName?.charAt(0).toUpperCase() +

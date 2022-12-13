@@ -23,7 +23,7 @@ passport.use(
       //       // register the user in db
       //       // only if the user doesn't exist
       //       // in db
-      // console.log("the profile is", profile);
+      console.log("the profile is", profile);
       const email = profile._json.email;
 
       // check if there is such a user in db
@@ -45,7 +45,7 @@ passport.use(
         email,
         password: "google",
       });
-
+      console.log(newUser)
       /*   pass: email */
 
       const savedUser = await newUser.save();
