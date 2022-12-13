@@ -18,7 +18,7 @@ function ViewCertificate() {
   );
   console.log("quiz history in viewcer", quizHistory);
   return (
-    <div className="container  w-screen sm:w-full min-h-screen flex flex-col justify-center items-center ">
+    <div className="container dark:bg-nav-raisin-black  dark:shadow-4xl w-screen sm:w-full  min-h-screen flex flex-col justify-center items-center ">
       <h1 className="text-center text-xl dark:text-snow mb-5">
         <b>My Certificates</b>
       </h1>

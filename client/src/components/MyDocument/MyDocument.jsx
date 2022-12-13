@@ -35,13 +35,15 @@ const MyDocument = ({ quiz, user }) => {
   };
   console.log("quiz in my doc", quiz);
   return (
-    <div className="container w-screen min-h-full sm:w-4/5 flex flex-col mb-6 dark:text-black font-poppins justify-center items-center ">
-      {quiz.resultPercentage ? (
-        <div className="flex flex-col h-[50vh]  hover:shadow-xl transition duration-300 dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex justify-around items-center mb-5 ">
-          <div className="flex w-screen h-1/5 p-2 justify-evenly items-center ">
-            <div className="w-[25%] flex justify-center items-center  ">
+    <div className="container w-screen h-full dark:bg-nav-raisin-black-2 sm:w-[100%] flex flex-col mb-6 dark:text-black font-poppins justify-center items-center ">
+      {quiz?.resultPercentage ? (
+        <div
+          className={`flex flex-col p-4 w-screen sm:w-[80%] h-[50vh] sm:h-[85vh] hover:shadow-xl  transition duration-300 dark:bg-oxford-blue shadow-5xl border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex justify-around items-center mb-5 `}
+        >
+          <div className="flex w-screen p-2 justify-evenly sm:justify-center items-center">
+            <div className="w-[15%] flex justify-center items-center ">
               <img
-                className="w-[65%] "
+                className="w-[65%] sm:w-[55%] "
                 src={
                   quiz?.quizType === "javascript"
                     ? jsimg
@@ -61,14 +63,14 @@ const MyDocument = ({ quiz, user }) => {
             {!hideViewButton && (
               <button
                 onClick={() => handleView(!hideViewButton)}
-                className="border-2 px-12 rounded-xl cursor-pointer   items-center justify-center bg-ultramarine-blue py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
+                className="px-12 rounded-xl cursor-pointer items-center justify-center bg-ultramarine-blue py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
               >
                 View
               </button>
             )}
           </div>
           {certificates && (
-            <PDFViewer>
+            <PDFViewer className="h-3/4 sm:h-4/5 w-full">
               <Certificate
                 date={quiz?.createdOn}
                 inputType={quiz.quizType}
@@ -90,6 +92,11 @@ const MyDocument = ({ quiz, user }) => {
                 }
               />
             </PDFViewer>
+          )}
+          {!certificates && (
+            <div className="border-4 dark:border-cyber-yellow px-6 py-6 rounded-md dark:text-snow shadow-8xl">
+              {quiz.resultPercentage} %
+            </div>
           )}
           <PDFDownloadLink
             document={
@@ -145,13 +152,13 @@ const MyDocument = ({ quiz, user }) => {
                     Attempted On :{" "}
                     {new Date(quiz.createdOn).toLocaleString("de-DE")}
                   </p>
-                  <button className="rounded md:w-1/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
+                  <button className="rounded  font-medium inline-flex w-full  items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                     Download now!
                   </button>
                 </div>
               )
             }
-          </PDFDownloadLink>{" "}
+          </PDFDownloadLink>
         </div>
       ) : (
         ""
