@@ -1,6 +1,7 @@
 import React from "react";
 // import React, { useEffect } from "react";
 import BannerTiles from "../BannerTiles/BannerTiles";
+import Footer from "../Footer/Footer";
 import HomepageContent from "../HomepageContent/HomepageContent";
 // import axios from "axios";
 // import { useContext } from "react";
@@ -31,6 +32,7 @@ function Home() {
       <div>
         <BannerTiles />
         <HomepageContent />
+        <Footer/>
       </div>
     </div>
   );
