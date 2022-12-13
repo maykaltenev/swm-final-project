@@ -75,13 +75,14 @@ export const createMixQuizSession = async (req, res) => {
       console.log("inside First", mixQuestionType)
       const firstType = mixQuestionType[0][0];
       const firstLevel = mixQuestionType[0][1];
-
+      console.log("first type", firstType)
+      console.log("first level", firstLevel)
       let questionsAll = await QuestionData.find({
-        mixQuestionType: firstType,
-        mixQuestionType: firstLevel
+        questionType: firstType,
+        difficultyLevel: firstLevel
       });
-      console.log("first", firstType)
-      console.log("LVL", firstLevel)
+      console.log("all q in first", questionsAll);
+
       while (questions.length < 5) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
