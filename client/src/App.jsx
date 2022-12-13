@@ -23,15 +23,15 @@ function App() {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="w-full flex justify-center dark:bg-bg-xiketic">
-      <div className="relative sm:w-3/4">
+    <div className="w-full h-full flex justify-center  bg-gray-100 dark:bg-bg-xiketic">
+      <div className="relative sm:w-3/4 ">
         <Header />
         {user && <SideBar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/userprofile/:id" element={<UserProfile />} />
-          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/glogin/:id" element={<GLogin />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/path" element={<UserPath />} />
           <Route path="/path/:level" element={<QuizCard />} />

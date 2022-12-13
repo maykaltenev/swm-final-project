@@ -48,11 +48,11 @@ const MyDocument = () => {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
-    //function to hanlde preview button
-    const handlePreview = () => {
-      setCertificates(!certificates);
-    };
-  console.log("the quiz result is:",quizHistory)
+  //function to hanlde preview button
+  const handlePreview = () => {
+    setCertificates(!certificates);
+  };
+  console.log("the quiz result is:", quizHistory);
   return (
     <div className="font-poppins ">
       <h1 className="text-center text-xl dark:text-snow mb-5">
@@ -81,12 +81,12 @@ const MyDocument = () => {
                   }
                   alt=""
                 />
-                  <button
+                <button
                   onClick={handlePreview}
                   className="rounded md:w-2/4 md:p-3 font-medium inline-flex sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
                 >
                   {" "}
-                 View
+                  View
                 </button>
                 {/* <PDFViewer>
                   <Certificate                  
@@ -145,10 +145,8 @@ const MyDocument = () => {
                       <div>
                         <p className="mb-5">
                           Attempted On :{" "}
-                          {new Date(
-                            quiz.createdOn
-                           ).toLocaleString("de-DE")}
-                           {/* let sortedCars1 = cars.sort((a, b) => new Date(...a.initialRegistration.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse())); */}
+                          {new Date(quiz.createdOn).toLocaleString("de-DE")}
+                          {/* let sortedCars1 = cars.sort((a, b) => new Date(...a.initialRegistration.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse())); */}
                         </p>
                         <button className="rounded md:w-3/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                           Download now!
@@ -168,5 +166,3 @@ const MyDocument = () => {
 };
 
 export default MyDocument;
-
-

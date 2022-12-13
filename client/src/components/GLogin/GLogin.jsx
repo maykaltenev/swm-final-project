@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import BannerTiles from "../BannerTiles/BannerTiles";
+import HomepageContent from "../HomepageContent/HomepageContent";
 
 export default function GLogin() {
   const { id } = useParams();
@@ -20,10 +22,15 @@ export default function GLogin() {
         localStorageUser();
       });
   };
-  
+
   useEffect(() => {
     getData();
   }, []);
 
-  return <div>Hello from glogin at client with id {id}</div>;
+  return (
+    <div>
+      <BannerTiles />
+      <HomepageContent />
+    </div>
+  );
 }

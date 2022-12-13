@@ -103,7 +103,7 @@ export const Certificate = ({
               </Text>
             </View>
             <View>
-              <Text style={styles.lineSpacing}>Date of Issue: {date}</Text>
+              <Text style={styles.lineSpacing}>Date of Issue: {new Date(date).toLocaleString("de-DE")}</Text>
             </View>
             <View>
               <Text style={styles.lineSpacing}>

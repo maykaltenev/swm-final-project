@@ -29,6 +29,8 @@ module.exports = {
         '7xl': "4px 4px 0px 0px #475569",
         '8xl': "8px 8px 0px 0px #633EF4",
         '9xl': "14px 14px 0px 0px #D3D2DB",
+        '10xl': "14px 14px 0px 0px #677CF4",
+
 
       },
       colors: {
@@ -36,6 +38,9 @@ module.exports = {
         "bg-xiketic": "#15141E",
         "card-space-cadet": "#202033",
         "nav-raisin-black": "#2B2B33",
+        "nav-raisin-black-2": "#2C2C3A",
+        "nav-raisin-black-3": "#353546",
+        "nav-raisin-black-4": "#3D3D51",
         "dark-raisin-black": "#1E1E27",
         "btn-majorelle-blue": "#5855D8",
         "text-ghost-white": "#F0EFF3",
@@ -73,6 +78,8 @@ module.exports = {
         "han-purple-300": "#532BF3",
         "lavender-web": "#E3DFFF",
         "cool-gray": "#818AA3",
+        "white": "rgb(255,255,255)",
+        "jet": "#2D2D2D",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

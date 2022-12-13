@@ -17,7 +17,8 @@ import nodeimg from "../../assets/nodeimg.png";
 function Result() {
   const [show, setShow] = useState(false);
   const [certificates, setCertificates] = useState(false);
-  const { questionData, result, getResult, sessionId } = useContext(QuestionContext);
+  const { questionData, result, getResult, sessionId } =
+    useContext(QuestionContext);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   /* getting the quiz history details attached to the user from the local storage */
@@ -52,13 +53,12 @@ function Result() {
   useEffect(() => {
     getResult();
   }, []);
-  
+
   return (
-    <>
+    <div className="h-screen border-2">
       <h1 className="text-center text-xl dark:text-snow ">
         <b> Your Results</b>
       </h1>
-
       <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center ">
         {/* if there is result show the following */}
         {result && (
@@ -221,7 +221,7 @@ function Result() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

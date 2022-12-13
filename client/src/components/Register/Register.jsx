@@ -4,12 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 //image
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import GoogleLogo from "../../assets/googlesignin.png"
+import GoogleLogo from "../../assets/googlesignin.png";
 
 export default function Register() {
-  const { setOpenRegisterForm, setOpenLoginForm, handleShowLoginForm,visible, setVisible} =
-    useContext(UserContext);
- 
+  const {
+    setOpenRegisterForm,
+    setOpenLoginForm,
+    handleShowLoginForm,
+    visible,
+    setVisible,
+  } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -42,7 +47,7 @@ export default function Register() {
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-30 ">
         <form onSubmit={handleSubmit}>
-          <div className=" bg-pink-100 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className=" bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Register</p>
             <div className="relative mb-4">
               <input
@@ -87,7 +92,12 @@ export default function Register() {
                 name="password"
                 required
               />
-              <span className="absolute right-5 top-3" onClick={() => setVisible(!visible)}>{!visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
+              <span
+                className="absolute right-5 top-3"
+                onClick={() => setVisible(!visible)}
+              >
+                {!visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </span>
             </div>
 
             <button
@@ -110,7 +120,9 @@ export default function Register() {
               }
             </p>
 
-          <a href='/user/google'><img src={GoogleLogo} width="230px" alt=''/></a>
+            <a className="flex justify-center border-4" href="/user/google">
+              <img src={GoogleLogo} width="230px" alt="" />
+            </a>
           </div>
         </form>
       </div>

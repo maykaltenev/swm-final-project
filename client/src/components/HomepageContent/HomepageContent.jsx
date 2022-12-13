@@ -4,22 +4,25 @@ import Computer from "../../assets/computer.png";
 
 function HomepageContent() {
   return (
-    <>
-      <section className=" text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center ">
-          <div className="lg:max-w-lg md:w-3/5  mb-10 md:mb-0 ">
+    <div className=" shadow-2xl h-full flex flex-col  dark:bg-dark-raisin-black-2">
+      <section className="text-gray-600 body-font h-full my-5">
+        <div className="container mx-auto flex md:flex-row flex-col items-center ">
+          <div className="lg:max-w-lg md:w-4/5 sm:mr-5 mb-10 md:mb-0   border-ultramarine-blue">
             <img
-              className="object-cover object-center rounded w-full h-80"
+              className="object-cover object-center  rounded-md w-full md:h-80  "
               alt="hero"
               src={Stream}
             />
           </div>
-          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16 border-2 flex align-center flex-col  bg-oxford-blue  rounded-xl border-y border-cyber-yellow">
-            <div className="flex flex-col text-center items-center">
-              <h1 className="title-font sm:w-2/4 sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
+          <div className="lg:flex-grow  border-y-2 p-14 md:w-3/5  border-y-4  border-ultramarine-blue flex align-center flex-col  dark:bg-oxford-blue rounded-md  dark:border-cyber-yellow">
+            <div
+              className="flex flex-col text-center items-center
+            "
+            >
+              <h1 className="title-font  sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
                 Hands-on coding environments
               </h1>
-              <p className="mb-8 leading-relaxed dark:text-snow md:w-2/4">
+              <p className="mb-8 text-justify font-bold  leading-relaxed dark:text-snow p-10">
                 Our mission is to help you improve yourself in MERN stack by
                 practicing our Quizzes. Practice will help you to get rid of
                 fear in attending interviews and you can land your dream Job.
@@ -29,30 +32,31 @@ function HomepageContent() {
         </div>
       </section>
 
-      <div className="text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center justify-center">
-          <div className="lg:flex-grow p-8 md:w-2/5 md:pl-16  align-center flex-col  bg-oxford-blue  rounded-xl border-y border-cyber-yellow">
-            <div className="flex flex-col text-center items-center">
-              <h1 className="title-font sm:w-2/4 sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
-                Hands-on coding environments
+      <div className="text-gray-600 body-font h-full ">
+        <div className="container mx-auto flex  mx-2  md:flex-row flex-col items-center">
+          <div className="lg:flex-grow  border-y-2 p-14 md:w-3/5  border-y-4  border-ultramarine-blue flex align-center flex-col  bg-text-ghost-white dark:bg-oxford-blue rounded-md  dark:border-cyber-yellow">
+            <div className="flex flex-col text-center items-center ">
+              <h1 className="title-font  sm:text-center sm:text-4xl text-3xl mb-4 font-medium text-ultramarine-blue-2 ">
+                Take the ultimate MERN quiz and discover your hidden strengths
               </h1>
-              <p className="mb-8 leading-relaxed dark:text-snow md:w-2/4">
-                Our mission is to help you improve yourself in MERN stack by
-                practicing our Quizzes. Practice will help you to get rid of
-                fear in attending interviews and you can land your dream Job.
+              <p className="mb-8 leading-relaxed font-bold text-justify dark:text-snow md:w-full p-10 ">
+                Becoming a MERN expert: how our quiz app can help you tackle
+                tough theoretical concepts. Preparing for your next coding
+                interview: how our MERN-powered quiz app can help. Unlock your
+                MERN potential and conquer any challenge with our quiz app!
               </p>
             </div>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 ">
+          <div className="lg:max-w-lg md:w-4/5 sm:ml-5 mb-10 md:mb-0 ">
             <img
-              className="object-cover object-left-bottom rounded w-full h-80"
+              className="object-cover object-c  mdp-10 rounded-md w-full md:h-full  "
               alt="hero"
               src={Computer}
             />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

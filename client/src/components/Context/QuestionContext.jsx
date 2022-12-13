@@ -127,13 +127,50 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const handleCreateMixSession = async (mixQuestionType) => {
+    navigate(`/mypage/${currentQuestion}`);
+    console.log("from context", mixQuestionType);
+    try {
+      await axios
+        .post(
+          "http://localhost:5000/questions/createMixQuiz",
+          {
+            user: getUser._id,
+            mixQuestionType: mixQuestionType,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(
+          (data) => (
+            localStorage.setItem(
+              "quizQuestions",
+              JSON.stringify(data.data.newQuizSession.questions)
+            ),
+            localStorage.setItem(
+              "sessionId",
+              JSON.stringify(data.data.newQuizSession._id)
+            )
+          )
+        )
+        .then(() =>
+          setQuestionData(JSON.parse(localStorage.getItem("quizQuestions")))
+        )
+        .then(() => {
+          setSessionId(JSON.parse(localStorage.getItem("sessionId")));
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getUserUpdated = async (data, questionType) => {
     console.log(data);
     const update = await axios
       .post("http://localhost:5000/user/quiz/result", {
-        userId: getUser._id,
+        userId: getUser?._id,
         sessionId: sessionId,
-        resultPercentage: data.data.userAnswerPercentage,
+        resultPercentage: data?.data?.userAnswerPercentage,
         quizType: questionType,
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
@@ -185,6 +222,8 @@ const QuestionContextProvider = ({ children }) => {
         questionData,
         setPoints,
         points,
+        handleCreateMixSession,
+        getQuizTimeFromLocalStorage,
       }}
     >
       {children}

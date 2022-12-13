@@ -10,16 +10,18 @@ import DarkPurple from "../../assets/banner-tiles/dark-purple.png";
 
 export default function BannerTiles() {
   return (
-    <div className="relative overflow-hidden poppins">
+    <div className="relative overflow-hidden poppins dark:shadow-2xl  ">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48 ">
-        <div className=" relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          <div className="sm:max-w-lg bg-oxford-blue p-14 rounded-xl border-y border-cyber-yellow">
-            <h1 className="font text-4xl font-bold tracking-tight text-ultramarine-blue-2 sm:text-6xl">
-              MERN+ is never minus!
+        <div className=" border-2relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+          <div className="sm:max-w-lg bg-text-ghost-white md:w-2/3   dark:bg-oxford-blue p-14  border-y-4 rounded-md border-ultramarine-blue-2  dark:border-cyber-yellow ">
+            <h1 className="font text-4xl  font-bold tracking-tight text-ultramarine-blue sm:text-6xl">
+              MERN+
             </h1>
-            <p className="mt-4 text-xl dark:text-snow text-bold ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque,
-              sed. Lorem ipsum dolor sit amet.
+            <h1 className="font text-4xl  font-bold tracking-tight text-ultramarine-blue-2 sm:text-6xl">
+              Excelling in your coding career!
+            </h1>
+            <p className="mt-4 sm:text-4xl font-bold   text-bg-xiketic dark:text-cyber-yellow  text-bold ">
+              Unleash your MERN potential with our challenges!
             </p>
           </div>
           <div>
@@ -27,12 +29,12 @@ export default function BannerTiles() {
               {/* Decorative image grid */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
+                className="pointer-events-none md:absolute md:inset-y-0 md:mx-auto md:w-full md:max-w-7xl"
               >
-                <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                <div className=" absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 md:left-1/2 md:top-1/2 md:-translate-y-1/2 md:translate-x-8">
+                  <div className="flex items-center space-x-6 md:space-x-8">
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 md:gap-y-8">
+                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 md:opacity-100">
                         <img
                           src={DarkPurple}
                           alt=""
@@ -47,7 +49,7 @@ export default function BannerTiles() {
                         />
                       </div>
                     </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 md:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src={Head}
@@ -70,7 +72,7 @@ export default function BannerTiles() {
                         />
                       </div>
                     </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 md:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src={Neon}
@@ -89,11 +91,11 @@ export default function BannerTiles() {
                   </div>
                 </div>
               </div>
-              <div className="w-2/5 w-3/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
+              <div className="w-2/5  w-2/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
                 {/* <button className="rounded bg-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey
                 </button> */}
-                <button className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow ">
+                <button className="mb-2  sm:w-1/4 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow ">
                   Start Journey
                 </button>
                 <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
