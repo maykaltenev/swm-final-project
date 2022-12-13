@@ -200,7 +200,7 @@ export default function QuestionCard({
       key={question?._id}
       className="dark:bg-nav-raisin-black-2 w-full sm:w-[100%] shadow-2xl rounded-3xl lg:w-[65%] h-full lg:p-12 relative flex flex-col justify-center items-center sm:justify-evenly p-2 "
     >
-      <div className="cursor-pointer absolute top-1 right-3 sm:top-2   sm:right-0 text-xl rounded-full sm:p-2 dark:bg-btn-majorelle-blue dark:text-text-ghost-white bg-cyber-yellow text-git-box">
+      <div className="cursor-pointer absolute top-1 right-3 sm:top-2  dark:bg-cyber-yellow dark:text-nav-raisin-black-2 sm:right-0 text-xl rounded-full sm:p-2  text-text-ghost-white bg-btn-majorelle-blue text-git-box">
         {question &&
           (marked.includes(question._id) ? (
             <AiFillStar onClick={() => handleMark(question?._id)} />
@@ -292,8 +292,8 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="bg-text-ghost-white w-full h-full pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-btn-majorelle-blue peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4 
-              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200 "
+              className="bg-text-ghost-white w-full h-full pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
+              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
             >
               {question.inputType === "text" ? "" : option?.option}
             </label>
