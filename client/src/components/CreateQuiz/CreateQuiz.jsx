@@ -43,6 +43,7 @@ function CreateQuiz() {
     setMarked,
     setSessionId,
     setQuestionData,
+<<<<<<< HEAD
     setTimeDifference,
     duration,
     setCurrentQuestion,
@@ -59,19 +60,39 @@ function CreateQuiz() {
 
   console.log(selectedQuestionType);
 
+=======
+    setCurrentQuestion,
+    setTimeOver,
+    setTimeDifference,
+    getQuizTimeFromLocalStorage,
+    duration,
+  } = useContext(QuestionContext);
+
+>>>>>>> 0d84d3ba1c44855fc2e04fc709cc43dcc3a64fe8
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
 
+<<<<<<< HEAD
     setTimeOver(false);
     setCurrentQuestion(0);
+=======
+    setCurrentQuestion(0);
+
+    setTimeOver(false);
+>>>>>>> 0d84d3ba1c44855fc2e04fc709cc43dcc3a64fe8
     setMarked([]);
     setSessionId("");
     setQuestionData([]);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
+<<<<<<< HEAD
+=======
+
+    handleCreateMixSession(chosenQuestionType);
+>>>>>>> 0d84d3ba1c44855fc2e04fc709cc43dcc3a64fe8
     timer();
     handleCreateMixSession(chosenQuestionType);
   };
