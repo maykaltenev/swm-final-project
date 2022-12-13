@@ -53,7 +53,7 @@ function QuizHistory() {
   console.log(quizHistory.quizResults);
   return (
     <>
-      <section className="flex min-h-screen w-screen sm:w-fit ">
+      <section className="flex min-h-screen w-screen sm:w-full ">
         <div className=" text-gray-300 w-1/4 mx-2 sm:w-1/5  min-h-screen  rounded-xl drop-shadow-lg ">
           {quizHistory?.quizResults &&
             quizHistory?.quizResults

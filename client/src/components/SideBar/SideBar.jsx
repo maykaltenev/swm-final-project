@@ -65,7 +65,7 @@ export default function SideBar() {
       </div>
 
       <div
-        onClick={() => navigate("/userprofile")}
+        onClick={() => navigate("/")}
         className={`${
           showAsideMenu ? "relative " : " absolute sm:relative"
         } flex items-center justify-center
@@ -84,7 +84,7 @@ export default function SideBar() {
          transition-all duration-125 scale-0 md:origin-left 
    ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
-          User profile
+          Home
         </span>
       </div>
 

@@ -34,7 +34,7 @@ function Header({ theme, setTheme }) {
   };
   const handleUserNavigateToUserProfileFromAvatar = () => {
     setShowDropMenu(!showDropMenu);
-    navigate("/userprofile")
+    navigate("/")
   };
 
   function useOutsideCloseDropMenu(ref) {
