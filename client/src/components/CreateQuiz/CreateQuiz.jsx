@@ -38,8 +38,14 @@ function CreateQuiz() {
 
   const { timer } = useContext(UserContext);
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
-  const { handleCreateMixSession, setMarked, setSessionId, setQuestionData } =
-    useContext(QuestionContext);
+  const {
+    handleCreateMixSession,
+    setMarked,
+    setSessionId,
+    setQuestionData,
+    setTimeDifference,
+    duration,
+  } = useContext(QuestionContext);
   const getQuizTimeFromLocalStorage = () => {
     const quizTime = localStorage.getItem("quizTime");
     if (quizTime) {
@@ -48,13 +54,9 @@ function CreateQuiz() {
       return "";
     }
   };
-  const [quizTime, setQuizTime] = useState(getQuizTimeFromLocalStorage());
 
-  const date = new Date();
-  const duration = 600;
-  const [timeDifference, setTimeDifference] = useState(
-    differenceInSeconds(new Date(quizTime?.end), date)
-  );
+  console.log(selectedQuestionType);
+
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
@@ -65,8 +67,8 @@ function CreateQuiz() {
     setQuestionData([]);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
-    handleCreateMixSession(chosenQuestionType);
     timer();
+    handleCreateMixSession(chosenQuestionType);
   };
 
   // handle onChange event of the dropdown
@@ -74,7 +76,7 @@ function CreateQuiz() {
     const dataValue = data.map((item) => item.value.toLowerCase().split(" "));
     setSelectedQuestionType(dataValue);
   };
-  console.log(selectedQuestionType);
+  console.log("selectedQuestionType", selectedQuestionType);
   // const handleChangeOption = (e) => {
   //   console.log(e.target.value);
   //   if (e.target.value === "") return;
