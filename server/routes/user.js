@@ -40,7 +40,6 @@ router.post("/quiz/result", updateUserQuizResults);
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
-
 router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: '/user/google/failure',
     session: false
@@ -51,10 +50,10 @@ router.get('/google/callback', passport.authenticate('google', {
     console.log("the token from google server is:", token)
     res.cookie('cookiename', token)
 
-    res.redirect('http://localhost:3000/userprofile/' + req?.user?._id)
+    res.redirect('http://localhost:3000/glogin/' + req?.user?._id)
 })
 
-router.get('/userprofile/:id', async (req, res) => {
+router.get('/glogin/:id', async (req, res) => {
 
     /*   console.log('from glogin: id is', req.params.id) */
 

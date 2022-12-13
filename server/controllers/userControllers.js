@@ -8,7 +8,7 @@ dotenv.config();
 
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
-// initialize googlestrategy. syntax ({options}, callback function)
+// initialize googlestrategy.syntax({ options }, callback function)
 
 passport.use(
   new GoogleStrategy(
@@ -41,6 +41,7 @@ passport.use(
         firstName: profile._json.given_name,
         lastName: profile._json.family_name,
         username: profile.id,
+        avatar: profile._json.picture,
         email,
         password: "google",
       });
@@ -109,7 +110,7 @@ export const loginUser = async (req, res) => {
 
 export const getUserData = async (req, res) => {
   const { id } = req.body;
-
+  console.log("get user", id)
   try {
     const userData = await User.findOne({ _id: id });
 

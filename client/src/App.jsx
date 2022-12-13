@@ -30,8 +30,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/userprofile/:id" element={<UserProfile />} />
-          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/glogin/:id" element={<GLogin />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/path" element={<UserPath />} />
           <Route path="/path/:level" element={<QuizCard />} />

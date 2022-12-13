@@ -73,7 +73,7 @@ const UserContextProvider = ({ children }) => {
       await axios
         .post(
           "http://localhost:5000/user/userData",
-          { id: user._id },
+          { id: user?._id },
           {
             withCredentials: true,
           }
