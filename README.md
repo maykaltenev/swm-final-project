@@ -12,14 +12,15 @@
 ### About Project
 
 MERN+ is an educational app for the users / students who would like to prepare for interviews and also to practice and polish their skills on MERN stack. This is a group project of 3 students & our motivation to build this app is, we want to build an application which is useful for us and also others on the coding journey.
-Practicing more quiz and coding challenges will be the best one to upgrade our skills.
+There are no beginner friendly apps to test skills and gain confidence on the stack by practicing.
+Challenging ourselves to provide solution to the students and people who want to polish their skills on MERN stack
 
 ### Project Features
- - Google Authentication
- - Coding Challenge
- - Designed for all stages like starting from beginners going through intermediate and becoming an advanced        
+ - Designed for all stages like starting from beginners going through intermediate and becoming an advanced 
    developer in any part of MERN stack
- - User can select path of his choice , select 
+ - Coding Challenge
+ - Google Authentication   
+ - User can select path of his choice 
  - Certificate for accomplishment
 
 ### Future Enhancement plans

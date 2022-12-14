@@ -2,7 +2,7 @@ import express from "express";
 import { QuestionData } from "../models/questions.js";
 import UserSolution from "../models/userSolutions.js";
 import QuizSession from "../models/quizSession.js";
-
+//creating question data
 export const createJsQuestions = async (req, res) => {
   try {
     const createQuestion = await QuestionData.create(req.body);
@@ -13,6 +13,7 @@ export const createJsQuestions = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+//drop questiondata collection
 export const removeJsCollection = async (req, res) => {
   try {
     const deleted = await QuestionData.remove();
@@ -30,9 +31,12 @@ export const removeJsCollection = async (req, res) => {
 //         return res.status(500).json({ message: error.message });
 //     }
 // };
+
+//get all questions from db wrt sessionId
 export const getAllQuestionsBySession = async (req, res) => {
   const sessionId = req.params.id;
   try {
+    //find the sessionId in quizsession collection
     const data = await QuizSession.findById(sessionId);
     return res
       .status(201)
@@ -41,21 +45,23 @@ export const getAllQuestionsBySession = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+//create a quiz session
 export const createQuizSession = async (req, res) => {
+  //get user, usersolution array , questiontype and level from the frontend
   const { user, userSolution, questionType, level } = req.body;
+  //find the questions in questionData according to questiontype(mern) & difficulty level (beginner , intermediate, advanced)
   const questions = await QuestionData.find({
     questionType: questionType,
     difficultyLevel: level,
   });
-
+  //create q new quiz session for the user logged in, questionand usersolution array
   try {
     const newQuizSession = await QuizSession.create({
       user,
       questions,
       userSolution,
     });
-
+    //if already there is newquiz session just return
     if (!newQuizSession) return;
 
     return res
@@ -65,44 +71,45 @@ export const createQuizSession = async (req, res) => {
     return res.send(error.message);
   }
 };
-
+//creating mixquiz question according to the user question type and level selection
 export const createMixQuizSession = async (req, res) => {
+  //get user, usersolution array , mixQuestionType from the frontend
   const { user, userSolution, mixQuestionType } = req.body;
-
+  //array to have the mix of questions
   let questions = [];
   if (mixQuestionType) {
     if (mixQuestionType.length === 1) {
-      console.log("inside First", mixQuestionType)
       const firstType = mixQuestionType[0][0];
       const firstLevel = mixQuestionType[0][1];
-      console.log("first type", firstType)
-      console.log("first level", firstLevel)
+      //find questions according to the type and level from questiondat
       let questionsAll = await QuestionData.find({
         questionType: firstType,
-        difficultyLevel: firstLevel
+        difficultyLevel: firstLevel,
       });
       console.log("all q in first", questionsAll);
-
+      //randomizing the questions
       while (questions.length < 5) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
           questions.push(questionsAll[randomQues]);
         }
       }
-
     } else if (mixQuestionType.length === 2) {
       const firstType = mixQuestionType[0][0];
       const firstLevel = mixQuestionType[0][1];
       const secondType = mixQuestionType[1][0];
       const secondLevel = mixQuestionType[1][1];
-      console.log("first", firstType)
-      console.log("LVL", firstLevel)
-      console.log("2second", secondType)
-      console.log("2LVL", secondLevel)
+      console.log("first", firstType);
+      console.log("LVL", firstLevel);
+      console.log("2second", secondType);
+      console.log("2LVL", secondLevel);
       let questionsAll = await QuestionData.find({
         $or: [
           {
-            $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }],
+            $and: [
+              { questionType: firstType },
+              { difficultyLevel: firstLevel },
+            ],
           },
           {
             $and: [
@@ -120,8 +127,6 @@ export const createMixQuizSession = async (req, res) => {
           questions.push(questionsAll[randomQues]);
         }
       }
-
-
     } else {
       const firstType = mixQuestionType[0][0];
       const firstLevel = mixQuestionType[0][1];
@@ -133,7 +138,10 @@ export const createMixQuizSession = async (req, res) => {
       const questionsAll = await QuestionData.find({
         $or: [
           {
-            $and: [{ questionType: firstType }, { difficultyLevel: firstLevel }],
+            $and: [
+              { questionType: firstType },
+              { difficultyLevel: firstLevel },
+            ],
           },
           {
             $and: [
@@ -142,7 +150,10 @@ export const createMixQuizSession = async (req, res) => {
             ],
           },
           {
-            $and: [{ questionType: thirdType }, { difficultyLevel: thirdLevel }],
+            $and: [
+              { questionType: thirdType },
+              { difficultyLevel: thirdLevel },
+            ],
           },
         ],
       });
@@ -155,14 +166,13 @@ export const createMixQuizSession = async (req, res) => {
       }
     }
 
-    console.log(questions)
+    console.log(questions);
     try {
       let newQuizSession = await QuizSession.create({
         user,
         questions,
         userSolution,
       });
-
 
       if (!newQuizSession) return;
 
@@ -173,18 +183,18 @@ export const createMixQuizSession = async (req, res) => {
       return res.send(error.message);
     }
   }
-}
-
-
+};
+//creating userresponse details
 export const createUserResponse = async (req, res) => {
   try {
+    //getting the user,question,answerand the sessionId from frontend
     const { answer, user, question, sessionId } = req.body;
-
+    //finding the session id and the question on the userSolutions
     const session = await QuizSession.findOne({
       _id: sessionId,
       "userSolutions.question": question,
     });
-
+    //if session exist, and if there is already an answer, just update this new answer to userSolutions-answer
     if (session) {
       const updatedSession = await QuizSession.findOneAndUpdate(
         { _id: sessionId, "userSolutions.question": question },
@@ -200,7 +210,7 @@ export const createUserResponse = async (req, res) => {
 
       return res.status(200).json(updatedSession);
     }
-
+    ////if session exist, and if there is no answer exist, push question and the user selected answer to user solutions array
     const answerFromTheUser = await QuizSession.findByIdAndUpdate(
       sessionId,
       {
@@ -216,7 +226,7 @@ export const createUserResponse = async (req, res) => {
     return res.send(error.message);
   }
 };
-
+//creating result
 export const createResult = async (req, res) => {
   try {
     const { sessionId } = req.body;
@@ -254,7 +264,7 @@ export const createResult = async (req, res) => {
               ); // 2 // 3 // 1
               const userCorrectAnswer = []; // 2
               const userWrongAnswer = [];
-
+              //checking the correct option and the user selected option
               question.options.map((questionOption) => {
                 solutions.answer.filter((solutionInput) => {
                   if (String(questionOption._id) === String(solutionInput)) {
@@ -273,6 +283,7 @@ export const createResult = async (req, res) => {
                 });
               });
               if (
+                //checking and pushin the correct answer & wrong answer to the respective arrays with a property correct = true / false
                 userCorrectAnswer.length === correctOption.length &&
                 solutions.answer.length === correctOption.length
               ) {
@@ -341,12 +352,13 @@ export const createResult = async (req, res) => {
           }
         });
       });
-
+      //calculating the number of correct answers in resultarray
       const correctAnswers = resultArray.reduce((acc, curr) => {
         return acc + curr.mark;
       }, 0);
+      //calculating the number of wrong answers in resultarray
       const wrongAnswers = resultArray.length - correctAnswers;
-
+      //calculating the percentage scored wrt to correct answers
       const userAnswerPercentage = Math.round(
         (correctAnswers / allQuestion.questions.length) * 100
       );
