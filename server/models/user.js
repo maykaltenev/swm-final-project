@@ -14,7 +14,6 @@ const UserSchema = new Schema({
   },
   lastName: {
     type: String,
-    required: [true, "the user must have a lastName"],
   },
   password: {
     type: String,
