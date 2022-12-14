@@ -45,7 +45,7 @@ passport.use(
         email,
         password: "google",
       });
-      console.log(newUser)
+      console.log(newUser);
       /*   pass: email */
 
       const savedUser = await newUser.save();
@@ -55,6 +55,7 @@ passport.use(
   )
 );
 /* -----------------------google strategy-------------------------- */
+//registrating a new user
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -75,7 +76,7 @@ export const registerUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+//login an existing user
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -88,9 +89,10 @@ export const loginUser = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: " user not found" });
     }
-
+    //checking password that exists at the db and the user given from frontend
     const checkPassword = await bcrypt.compare(password, user.password);
     if (checkPassword) {
+      //generating a token for the user using JWT passport
       const token = await generateToken(user);
       return res
         .status(200)
@@ -107,10 +109,10 @@ export const loginUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+//getting the user data from db
 export const getUserData = async (req, res) => {
   const { id } = req.body;
-  console.log("get user", id)
+  console.log("get user", id);
   try {
     const userData = await User.findOne({ _id: id });
 
@@ -130,6 +132,7 @@ export const getUserDatas = async (req, res) => {
   }
 };
 /* ----------------------- */
+//logout of user by clearing all the cookies
 export const logout = async (req, res, next) => {
   try {
     res
@@ -143,10 +146,11 @@ export const logout = async (req, res, next) => {
     res.send(error);
   }
 };
-
+/* updating the quiz timer */
 export const updateQuizTimer = async (req, res) => {
+  //getting start, end and id of the user from frontend
   const { start, end, id } = req.body;
-
+  //setting the quiz timer to start the quiz and also the end time
   try {
     const addQuizTimer = await User.findByIdAndUpdate(
       id,
@@ -160,10 +164,13 @@ export const updateQuizTimer = async (req, res) => {
     return res.status(404).json({ message: error });
   }
 };
+/* updating the quiz results */
 export const updateUserQuizResults = async (req, res) => {
+  //getting the userid, sessionid, result percentage and quiz type from the frontend"
   const { userId, sessionId, resultPercentage, quizType } = req.body;
 
   try {
+    //find the userid and give the session id on the quizresults
     const session = await User.findOne({
       _id: userId,
       "quizResults.sessionId": sessionId,
@@ -172,7 +179,7 @@ export const updateUserQuizResults = async (req, res) => {
     if (session) {
       return;
     }
-
+    //update the user's quiz result with sessionid,result%, quiztypeand created on date and time
     const updateUserQuizResult = await User.findByIdAndUpdate(
       userId,
       {
