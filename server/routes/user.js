@@ -50,7 +50,7 @@ router.get('/google/callback', passport.authenticate('google', {
     console.log("the token from google server is:", token)
     res.cookie('cookiename', token)
 
-    res.redirect('http://localhost:3000/glogin/' + req?.user?._id)
+    res.redirect(process.env.REACT_APP_REDIRECT_URL + "/glogin/" + req?.user?._id)
 })
 
 router.get('/glogin/:id', async (req, res) => {
