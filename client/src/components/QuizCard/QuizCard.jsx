@@ -33,7 +33,9 @@ export default function QuizCard() {
                   JavaScript
                 </h1>
                 <p className="leading-relaxed mb-3 px-4 ">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  JavaScript is the language of creativity. It's a canvas for
+                  building your ideas and bringing them to life. It's what makes
+                  websites interactive,and interesting.
                 </p>
               </div>
               <div className="p-4 flex items-center justify-between">
@@ -89,7 +91,8 @@ export default function QuizCard() {
                   ReactJS
                 </h1>
                 <p className="leading-relaxed mb-3 px-4 ">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  React is a cornerstone of modern web development. It's used by
+                  some of the biggest companies in the world.
                 </p>
               </div>
               <div className="p-4 flex items-center justify-between">
@@ -145,7 +148,9 @@ export default function QuizCard() {
                   NodeJS
                 </h1>
                 <p className="leading-relaxed mb-3 px-4 ">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Node.js is the future of back-end development. It's a fast,
+                  scalable, and lightweight platform that makes it easy to build
+                  and deploy web applications
                 </p>
               </div>
               <div className="p-4 flex items-center justify-between">
@@ -200,7 +205,9 @@ export default function QuizCard() {
                   Express JS
                 </h1>
                 <p className="leading-relaxed mb-3 px-4 ">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Express.js is a powerful tool for building web applications.
+                  It's fast, flexible, and easy to use, making it one of the
+                  most popular web development frameworks out there."
                 </p>
               </div>
               <div className="p-4 flex items-center justify-between">
@@ -255,7 +262,9 @@ export default function QuizCard() {
                   MongoDB
                 </h1>
                 <p className="leading-relaxed mb-3 px-4 ">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  "MongoDB is a flexible, document-oriented database that makes
+                  it easy to store,. It's constantly evolving and pushing the
+                  boundaries of what's possible in the world of data storage.
                 </p>
               </div>
               <div className="p-4 flex items-center justify-between">
