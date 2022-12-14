@@ -99,7 +99,7 @@ const QuestionContextProvider = ({ children }) => {
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/createQuiz",
+          process.env.REACT_APP_BASE_URL + "/questions/createQuiz",
           {
             user: getUser._id,
             questionType: questionType,
@@ -138,7 +138,7 @@ const QuestionContextProvider = ({ children }) => {
     try {
       await axios
         .post(
-          "http://localhost:5000/questions/createMixQuiz",
+          process.env.REACT_APP_BASE_URL + "/questions/createMixQuiz",
           {
             user: getUser._id,
             mixQuestionType: mixQuestionType,
@@ -172,7 +172,7 @@ const QuestionContextProvider = ({ children }) => {
   const getUserUpdated = async (data, questionType) => {
     console.log(data);
     const update = await axios
-      .post("http://localhost:5000/user/quiz/result", {
+      .post(process.env.REACT_APP_BASE_URL + "/user/quiz/result", {
         userId: getUser?._id,
         sessionId: sessionId,
         resultPercentage: data?.data?.userAnswerPercentage,
@@ -184,7 +184,7 @@ const QuestionContextProvider = ({ children }) => {
   const getResult = async (questionType) => {
     try {
       const result = await axios
-        .post("http://localhost:5000/questions/quiz/result", {
+        .post(process.env.REACT_APP_BASE_URL + "/questions/quiz/result", {
           sessionId: sessionId,
         })
         .then((data) => {

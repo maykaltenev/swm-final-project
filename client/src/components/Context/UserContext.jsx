@@ -22,7 +22,7 @@ const UserContextProvider = ({ children }) => {
     try {
       await axios
         .post(
-          "http://localhost:5000/user/login",
+          process.env.REACT_APP_BASE_URL + "/user/login",
           {
             email: formData.get("email"),
             password: formData.get("password"),
@@ -48,7 +48,7 @@ const UserContextProvider = ({ children }) => {
   const handleLogout = async () => {
     try {
       await axios
-        .get("http://localhost:5000/user/logout", {
+        .get(process.env.REACT_APP_BASE_URL + "/user/logout", {
           withCredentials: true,
         })
         .then(() => {
@@ -72,7 +72,7 @@ const UserContextProvider = ({ children }) => {
     try {
       await axios
         .post(
-          "http://localhost:5000/user/userData",
+          process.env.REACT_APP_BASE_URL + "/user/userData",
           { id: user?._id },
           {
             withCredentials: true,
@@ -96,7 +96,7 @@ const UserContextProvider = ({ children }) => {
     try {
       await axios
         .patch(
-          "http://localhost:5000/user/addTimer",
+          process.env.REACT_APP_BASE_URL + "/user/addTimer",
           {
             id: id,
             start: date,
