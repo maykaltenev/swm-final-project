@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import { Certificate } from "../Certificate/Certificate";
@@ -29,10 +29,12 @@ const MyDocument = ({ quiz, user }) => {
   const [certificates, setCertificates] = useState(false);
   const [hideViewButton, setHideViewButton] = useState(false);
   //function to hanlde preview button
+
   const handleView = () => {
     setCertificates(!certificates);
     setHideViewButton(!hideViewButton);
   };
+
   console.log("quiz in my doc", quiz);
   console.log("key", quiz.sessionId);
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Keyboard from "../../assets/banner-tiles/keyboard-black.png";
 import DarkPurpleWindows from "../../assets/banner-tiles/waves.png";
 import PurpleWindows from "../../assets/banner-tiles/window-purple.png";
@@ -7,8 +7,10 @@ import Neon from "../../assets/banner-tiles/neon.png";
 import FlowWater from "../../assets/banner-tiles/flow-water.png";
 import ManCoffee from "../../assets/banner-tiles/man-coffee.png";
 import DarkPurple from "../../assets/banner-tiles/dark-purple.png";
+import { useNavigate } from "react-router-dom";
 
 export default function BannerTiles() {
+  const navigate = useNavigate();
   return (
     <div className="relative overflow-hidden poppins dark:shadow-2xl  ">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48 ">
@@ -95,10 +97,16 @@ export default function BannerTiles() {
                 {/* <button className="rounded bg-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey
                 </button> */}
-                <button className="mb-2  sm:w-1/4 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow ">
+                <button
+                  onClick={() => navigate("/path")}
+                  className="mb-2  sm:w-1/4 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow "
+                >
                   Start Journey
                 </button>
-                <button className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
+                <button
+                  onClick={() => navigate("/createquiz")}
+                  className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
+                >
                   Test Skills
                 </button>
               </div>
