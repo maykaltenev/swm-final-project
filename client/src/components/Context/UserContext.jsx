@@ -15,9 +15,9 @@ const UserContextProvider = ({ children }) => {
   const [signIn, setSignIn] = useState({});
   //for eye icon in password
   const [visible, setVisible] = useState(false);
-
   const navigate = useNavigate();
 
+/* getting the user data and setting to local storage */
   const userData = async (formData) => {
     try {
       await axios
@@ -45,6 +45,7 @@ const UserContextProvider = ({ children }) => {
       setError(" The email address or password is incorrect ");
     }
   };
+  /* logout the user and clear local storage */
   const handleLogout = async () => {
     try {
       await axios
@@ -60,6 +61,7 @@ const UserContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* getting the user details from local storage */
   const localStorageUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -67,7 +69,7 @@ const UserContextProvider = ({ children }) => {
 
     return;
   };
-
+/* setting the quiz timer for the quiz to the user */
   const getUser = async () => {
     try {
       await axios
@@ -89,6 +91,7 @@ const UserContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* timer function to add the 10 min time for each quiz wrt to session id and the user */
   const timer = async () => {
     const date = new Date();
     const id = user?._id;
@@ -115,7 +118,7 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     localStorageUser();
   }, []);
-
+/* opening of registration form and closing login form */
   const handleShowRegisterForm = () => {
     setOpenRegisterForm(true);
     setOpenLoginForm(false);

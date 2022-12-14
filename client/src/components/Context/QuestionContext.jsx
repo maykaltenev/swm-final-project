@@ -57,7 +57,7 @@ const QuestionContextProvider = ({ children }) => {
     }
   };
   const [marked, setMarked] = useState(getMarkedFromLocalStorage());
-
+//getting quiztine from local storage
   const getQuizTimeFromLocalStorage = () => {
     const quizTime = localStorage.getItem("quizTime");
     if (quizTime) {
@@ -74,14 +74,13 @@ const QuestionContextProvider = ({ children }) => {
     differenceInSeconds(new Date(quizTime?.end), date)
   );
   console.log("timeOver", timeOver);
+/* generate a new quiz session by clearing all the old datas from local storage */
   const handleNewQuiz = (chosenQuestionType, level) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
-
     setCurrentQuestion(0);
-
     setTimeOver(false);
     setMarked([]);
     setSessionId("");
@@ -89,10 +88,10 @@ const QuestionContextProvider = ({ children }) => {
     setCurrentQuestion(0);
     getQuizTimeFromLocalStorage();
     setTimeDifference(duration);
-
     handleCreateNewSession(chosenQuestionType, level);
     timer();
   };
+/* creating a new quiz session, start with question Index:0 , and get the questions from db using axios wrt the userID, question type and level */
   const handleCreateNewSession = async (questionType, level) => {
     // navigate(`/mypage/${currentQuestion}`);
     navigate(`/mypage/0`);
@@ -109,7 +108,7 @@ const QuestionContextProvider = ({ children }) => {
             withCredentials: true,
           }
         )
-        .then(
+        .then( //set the response on the local storage
           (data) => (
             localStorage.setItem(
               "quizQuestions",
@@ -131,6 +130,7 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* creating a new mix quiz session, start with question Index:0 , and get the questions from db using axios wrt the userID, mix question type  */
   const handleCreateMixSession = async (mixQuestionType) => {
     // navigate(`/mypage/${currentQuestion}`);
     navigate(`/mypage/0`);
@@ -147,7 +147,7 @@ const QuestionContextProvider = ({ children }) => {
             withCredentials: true,
           }
         )
-        .then(
+        .then( // set the reponse to local storage
           (data) => (
             localStorage.setItem(
               "quizQuestions",
@@ -169,6 +169,7 @@ const QuestionContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  /* update the user array with sessionid, result , quiz type */
   const getUserUpdated = async (data, questionType) => {
     console.log(data);
     const update = await axios
@@ -180,7 +181,7 @@ const QuestionContextProvider = ({ children }) => {
       })
       .then((data) => localStorage.setItem("user", JSON.stringify(data.data)));
   };
-
+/* getting the result from db and navigate to result page */
   const getResult = async (questionType) => {
     try {
       const result = await axios

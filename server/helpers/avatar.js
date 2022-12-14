@@ -1,5 +1,5 @@
 import crypto from "crypto";
-
+/* function to create an avatar */
 export function generateRobohashAvatar() {
   const baseUrl = "https://robohash.org";
   const randomString = generateRandomString(12);

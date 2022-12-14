@@ -11,6 +11,7 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
   };
 
   return (
+    /* displaying the code editor window */
     <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
       <Editor
         height="75vh"

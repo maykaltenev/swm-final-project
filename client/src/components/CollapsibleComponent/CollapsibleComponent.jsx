@@ -15,6 +15,7 @@ export default function Collapsible() {
   };
 
   return (
+    /* to show collapsible component for mern stack beginner , intermediate, advanced and once the user clicks anyone of these he will be navigated to the path where he is able to choose MERN of his choice to start quiz */
     <div className="text-gray-800 min-h-screen flex flex-col items-center  ">
       <div className="container rounded border-ultramarine-blue sm:w-3/5 py-3 px-2">
         {/* JS */}

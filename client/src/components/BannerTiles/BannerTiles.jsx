@@ -33,6 +33,7 @@ export default function BannerTiles() {
                 aria-hidden="true"
                 className="pointer-events-none md:absolute md:inset-y-0 md:mx-auto md:w-full md:max-w-7xl"
               >
+                {/* div for images on the right on home page */}
                 <div className=" absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 md:left-1/2 md:top-1/2 md:-translate-y-1/2 md:translate-x-8">
                   <div className="flex items-center space-x-6 md:space-x-8">
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 md:gap-y-8">
@@ -93,6 +94,7 @@ export default function BannerTiles() {
                   </div>
                 </div>
               </div>
+            {/*   div for button start journey and test skills */}
               <div className="w-3/6 md:w-1/2 lg:w-1/3 sm:flex lg:flex-shrink-0 sm:flex-row sm:justify-around">
                 {/* <button className="rounded bg-cyber-yellow mb-2 sm:mx-4 sm:mb-0 sm:py-4 sm:py-2 px-12  text-center font-medium text-dark-raisin-black hover:bg-javascript-yellow ">
                   Start Journey

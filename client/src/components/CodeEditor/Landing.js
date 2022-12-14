@@ -28,7 +28,7 @@ const Landing = () => {
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
-
+/* function to select the languages in dropdown menu */
   const onSelectChange = (sl) => {
     console.log("selected Option...", sl);
     setLanguage(sl);
@@ -41,6 +41,7 @@ const Landing = () => {
       handleCompile();
     }
   }, [ctrlPress, enterPress]);
+
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -60,6 +61,7 @@ const Landing = () => {
       source_code: btoa(code),
       stdin: btoa(customInput),
     };
+    /* compling the code from judgeAuth api ---sending the code to the api for compilation*/
     const options = {
       method: "POST",
       url: process.env.REACT_APP_RAPID_API_URL,
@@ -97,7 +99,7 @@ const Landing = () => {
         console.log("catch block...", error);
       });
   };
-
+/* getting the response from judgeauth */
   const checkStatus = async (token) => {
     const options = {
       method: "GET",
@@ -132,7 +134,7 @@ const Landing = () => {
       showErrorToast();
     }
   };
-
+/* function to handle theme */
   function handleThemeChange(th) {
     const theme = th;
     console.log("theme...", theme);
@@ -149,6 +151,7 @@ const Landing = () => {
     );
   }, []);
 
+  /* show a message of sucess */
   const showSuccessToast = (msg) => {
     toast.success(msg || `Compiled Successfully!`, {
       position: "top-right",
@@ -160,6 +163,7 @@ const Landing = () => {
       progress: undefined,
     });
   };
+    /* show a message of error */
   const showErrorToast = (msg, timer) => {
     toast.error(msg || `Something went wrong! Please try again.`, {
       position: "top-right",
