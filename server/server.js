@@ -46,9 +46,9 @@ mongoose
   .catch((error) => console.log(error, "Database did not connect! ☹️❌"));
 
 // Serve frontend client/build folder
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  res.sendFile(path.join(__dirname + "../client/build/index.html"));
 });
 
 app.listen(port, () =>
