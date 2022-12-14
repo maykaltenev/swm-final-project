@@ -10,12 +10,7 @@ import { UserContext } from "../Context/UserContext";
 import SideBar from "../SideBar/SideBar";
 import { differenceInSeconds } from "date-fns";
 //images
-import Pink from "../../assets/banner-tiles/pink.png";
-import Waves from "../../assets/banner-tiles/waves-pink.png";
-import Tri from "../../assets/banner-tiles/tri-purple.png";
-import Key from "../../assets/banner-tiles/purple-keyboard.png";
-import Floating from "../../assets/banner-tiles/floating-blue.png";
-import Sky from "../../assets/banner-tiles/sky-purple.png";
+
 import Setup from "../../assets/banner-tiles/setup.png";
 import Box from "../../assets/banner-tiles/box.png";
 

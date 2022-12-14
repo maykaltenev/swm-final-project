@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Keyboard from "../../assets/banner-tiles/keyboard-black.png";
-import DarkPurpleWindows from "../../assets/banner-tiles/waves.png";
+
 import PurpleWindows from "../../assets/banner-tiles/window-purple.png";
 import Head from "../../assets/banner-tiles/head.png";
 import Neon from "../../assets/banner-tiles/neon.png";
