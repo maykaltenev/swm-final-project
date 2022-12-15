@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+/* set the value in local storage  */
 const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -25,7 +25,7 @@ const useLocalStorage = (key, initialValue) => {
   };
   return [storedValue, setValue];
 };
-
+/* to enable the dark mode theme */
 const useDarkMode = () => {
   const [enabled, setEnabled] = useLocalStorage("dark-theme");
   const isEnabled = typeof enabledState === "undefined" && enabled;

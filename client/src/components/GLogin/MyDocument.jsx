@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
 const MyDocument = () => {
   const { user } = useContext(UserContext);
   const [certificates, setCertificates] = useState(false);
+  /* getting the quiz history of the user from the local history */
   const getQuizHistoryFromLocalStorage = () => {
     const quizHistory = localStorage.getItem("user");
     if (quizHistory) {
@@ -48,16 +49,17 @@ const MyDocument = () => {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
-  //function to hanlde preview button
+  //function to show and hide the certificates
   const handlePreview = () => {
     setCertificates(!certificates);
   };
-  console.log("the quiz result is:", quizHistory);
+
   return (
     <div className="font-poppins ">
       <h1 className="text-center text-xl dark:text-snow mb-5">
         <b>My Certificates</b>
       </h1>
+      {/* displaying the quiz result percentage */}
       <div className="container  flex flex-col mb-6 dark:text-black py-26 font-poppins justify-center items-center ">
         {quizHistory.quizResults &&
           quizHistory.quizResults.map((quiz) =>
@@ -88,28 +90,7 @@ const MyDocument = () => {
                   {" "}
                   View
                 </button>
-                {/* <PDFViewer>
-                  <Certificate                  
-                    date={quiz.createdOn}
-                    inputType={quiz.quizType}
-                    sessionId={quiz.sessionId}
-                    name={`${user.firstName} ${user.lastName} `}
-                    percentage={quiz.resultPercentage}
-                    inputTypeImage={
-                      quiz?.quizType === "javascript"
-                        ? jsimg
-                        : quiz?.quizType === "react"
-                        ? reactimg
-                        : quiz?.quizType === "express"
-                        ? expressimg
-                        : quiz?.quizType === "mongodb"
-                        ? mongodbimg
-                        : quiz?.quizType === "nodejs"
-                        ? nodeimg
-                        : ""
-                    }
-                  />
-                </PDFViewer> */}
+                {/* displaying the certificate and button to download with pdfdownload link */}
                 <PDFDownloadLink
                   document={
                     <Certificate
@@ -146,7 +127,6 @@ const MyDocument = () => {
                         <p className="mb-5">
                           Attempted On :{" "}
                           {new Date(quiz.createdOn).toLocaleString("de-DE")}
-                          {/* let sortedCars1 = cars.sort((a, b) => new Date(...a.initialRegistration.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse())); */}
                         </p>
                         <button className="rounded md:w-3/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue ">
                           Download now!

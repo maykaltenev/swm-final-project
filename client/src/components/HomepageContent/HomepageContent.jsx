@@ -1,7 +1,7 @@
 import React from "react";
 import Stream from "../../assets/stream.png";
 import Computer from "../../assets/computer.png";
-
+/* function to display the home page content */
 function HomepageContent() {
   return (
     <div className=" shadow-2xl h-full flex flex-col  dark:bg-dark-raisin-black-2">

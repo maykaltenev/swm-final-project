@@ -30,7 +30,6 @@ const options = [
 
 function CreateQuiz() {
   const [checkboxValue, setCheckboxValue] = useState([]);
-
   const { timer } = useContext(UserContext);
   const [selectedQuestionType, setSelectedQuestionType] = useState("");
   const {
@@ -44,15 +43,12 @@ function CreateQuiz() {
     getQuizTimeFromLocalStorage,
     duration,
   } = useContext(QuestionContext);
-
   const handleNewQuiz = (chosenQuestionType) => {
     localStorage.removeItem("marked");
     localStorage.removeItem("quizQuestions");
     localStorage.removeItem("sessionId");
     localStorage.removeItem("answers");
-
     setCurrentQuestion(0);
-
     setTimeOver(false);
     setMarked([]);
     setSessionId("");
@@ -71,11 +67,7 @@ function CreateQuiz() {
     setSelectedQuestionType(dataValue);
   };
   console.log("selectedQuestionType", selectedQuestionType);
-  // const handleChangeOption = (e) => {
-  //   console.log(e.target.value);
-  //   if (e.target.value === "") return;
-  //   setSelectedQuestionType(e.target.value);
-  // };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -90,6 +82,7 @@ function CreateQuiz() {
                 Challenge yourself and see how much you know about the MERN
                 stack
               </h1>
+              {/* once the user clicks this button, new quiz session is started */}
               <button
                 type="button"
                 disabled={selectedQuestionType.length === 0}
@@ -100,11 +93,13 @@ function CreateQuiz() {
                 Start New Quiz
               </button>
             </div>
+            {/* user can select type and level of MERN and start the mixQUes quiz */}
             <div className="sm:flex sm:flex-wrap sm:w-1/2 w-screen">
               <div
                 className="md:p-2  p-1 sm:w-1/2  flex flex-col w-screen
               sm:justify-between text-justify"
               >
+                {/* user can select minimum 1 type & maximum of 3 types to start the mixquestion quiz*/}
                 <Multiselect
                   placeholder="Select only 3"
                   selectionLimit="3"
@@ -185,6 +180,7 @@ function CreateQuiz() {
                   improve your skills in a particular topic or subject
                 </p>
               </div>
+              {/* each question will have the logo of MERN type selected */}
               <div className="md:p-2 p-1 sm:w-1/2 flex flex-col justify-between">
                 <img
                   alt="gallery"

@@ -36,6 +36,7 @@ export default function QuestionCard({
   const getUser = JSON.parse(localStorage.getItem("user"));
 
   const userInput = useRef(null);
+  /* get the answers from the local storage */
   const getAnswersFromLocalStorage = () => {
     const answer = localStorage.getItem("answers");
     if (answer) {
@@ -45,6 +46,7 @@ export default function QuestionCard({
     }
   };
   const [answer, setAnswer] = useState(getAnswersFromLocalStorage());
+  /* store the user selected answer based on the input type = radio/checkbox/text */
   const handleUserAnswer = (
     question,
     e,
@@ -53,6 +55,7 @@ export default function QuestionCard({
     inputType,
     userInput
   ) => {
+    /*  check the questionId if correct, then store the session id, question and the selected answer based on the input type= radio/checkbox/text*/
     const questionExist = answer?.find((item) => item.questionID === question);
     if (questionExist) {
       if (inputType === "radio") {
@@ -148,11 +151,11 @@ export default function QuestionCard({
       }
     }
   };
-
+  /* set the localstorage with answers once when answers are selected by the user */
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answer));
   }, [answer]);
-
+  /* update the user selected answers to the backend with the session id, question, answer */
   const addUserAnswerInput = async (question, answer, user, sessionId) => {
     try {
       await axios.patch(
@@ -169,14 +172,12 @@ export default function QuestionCard({
       console.log("error adding comment", error);
     }
   };
-
+  /* to mark the particular question, so that user can comeback again to this question to review wrt to the queston Id */
   const handleMark = (id) => {
     const alreadyMarked = marked?.includes(id);
-
     if (alreadyMarked) {
       const filtered = marked?.filter((el) => el !== id);
       setMarked(filtered);
-
       return;
     } else {
       return setMarked((prev) => [...prev, id]);
@@ -244,6 +245,7 @@ export default function QuestionCard({
             />
           </div>
         )}
+        {/* hint for theusers--- if the input type is checkbox, user has to select more than 1 answers */}
         {question?.inputType === "checkbox" && (
           <div className="text-sm md:text-base text-btn-majorelle-blue dark:text-cyber-yellow flex rounded-md px-1 w-full items-center justify-center mb-1">
             <HiOutlineLightBulb className="text-xl" />
@@ -252,6 +254,7 @@ export default function QuestionCard({
         )}
       </div>
 
+      {/* display the options */}
       <ul className="w-[99%] lg:w-[90%] lg:h-[25vh] grid grid-cols-1 gap-1  md:grid-cols-2 md:gap-0 lg:gap-1  sm:grid-cols-2 mb-5 lg:mb-0 ">
         {question?.options.map((option, i) => (
           <li className="sm:p-3  w-full rounded-t-lg  ">

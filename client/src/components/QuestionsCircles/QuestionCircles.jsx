@@ -5,16 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 export default function QuestionCircles({ setCurrentQuestion }) {
   const { questionData, marked } = useContext(QuestionContext);
   const navigate = useNavigate();
+  /* change the index of the question */
   const handleChangeIndex = (i) => {
     navigate(`/mypage/${i}`);
     console.log(i);
   };
+  /* display the question */
   return (
     <div
       className="w-3/4  sm:h-3/5 lg:h-2/5 lg:w-6/6 sm:w-full p-3 rounded-3xl grid grid-cols-5 gap-3  sm:grid-cols-3  lg:grid-cols-5 lg:gap-1  sm:gap-4  sm:py-2 
       dark:bg-btn-majorelle-blue sm:dark:bg-transparent "
     >
       {questionData.map((question, i) => (
+        // selecting the questions and give colors
         <div
           //
           // lg:border-4

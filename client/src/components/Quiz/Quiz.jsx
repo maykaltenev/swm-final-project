@@ -16,7 +16,6 @@ import nodeimg from "../../assets/nodeimg.png";
 
 function Quiz() {
   const [showExplanation, setShowExplanation] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,12 +28,13 @@ function Quiz() {
   } = useContext(QuestionContext);
 
   const { id } = useParams();
-
+  /* navigating to the previous question */
   const handlePrevious = () => {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 > 0 ? id * 1 - 1 : id}`);
   };
   const navigate = useNavigate();
+  /* navigating to the next question */
   const handleNext = () => {
     setCurrentQuestion(id);
     navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
@@ -50,6 +50,7 @@ function Quiz() {
               : ""
           }
         >
+          {/* showing the submit button , if the time is over */}
           {timeOver && (
             <div className=" w-full h-full flex items-center  justify-center ">
               <div className="z-50 w-4/5 h-1/4  flex flex-col items-center  justify-center border-2  rounded-xl shadow-lg  p-3 my-2 sm:w-2/5 sm:h-1/5  sm:p-5  bg-white">
@@ -67,12 +68,13 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[60%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
-        <div className="dark:border-git-box rounded-3xl ml-3 sm:w-[64%]  dark:text-text-ghost-white text-git-box flex flex-row  items-center  justify-end">
+      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
+        <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
             <span> {questionData.length}</span>
           </div>
+          {/* display the image of MERN according to the question type */}
           <img
             className="h-8 w-8 ml-5 sm:h-10 sm:w-12 sm:m-2 "
             src={
@@ -99,17 +101,18 @@ function Quiz() {
           />
           <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row md:flex-col  sm:items-center sm:justify-evenly md:w-1/4 md:ml-4  ">
             <CountDownTimer />
-            <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
+            <QuestionCircles />
           </div>
         </div>
-        <div className="flex sm:mt-10  h-full w-full justify-evenly ">
-          <div className=" ">
+        <div className="flex md:mt-4 justify-evenly">
+          <div className="ml-2 flex w-3/5 justify-center">
             <button
               className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
               onClick={handlePrevious}
             >
               Previous
             </button>
+            {/* go to the next question, if this button is clicked */}
             <button
               className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
               onClick={handleNext}
@@ -117,7 +120,7 @@ function Quiz() {
               Next
             </button>
           </div>
-          <div className="">
+          <div className="w-2/5 text-center">
             {Number(id) === questionData.length - 1 && (
               <button
                 className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-5 md:px-8 lg:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"

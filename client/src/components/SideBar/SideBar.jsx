@@ -18,9 +18,11 @@ export default function SideBar() {
   const [scrolling, handleScrolling] = useState(false);
 
   const asideRef = useRef(null);
+  /* dropdown menu */
   const handleDropMenu = () => {
     setShowAsideMenu(!showAsideMenu);
   };
+  /* call this function to click outside the dropdown menu */
   useOutsideCloseDropMenu(asideRef, setShowAsideMenu, scrolling);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function SideBar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [showAsideMenu]);
-
+  /* navigating the icons to the respective paths like home, path,coding challenge, quiz history */
   return (
     <div
       ref={asideRef}
@@ -49,6 +51,7 @@ export default function SideBar() {
      md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:w-screen md:w-screen sm:w-16 flex lg:w-20 lg:flex-col  text-white shadow-l z-50`}
       onClick={handleDropMenu}
     >
+      {/* show the aside menu */}
       <div
         className={`${showAsideMenu ? "relative " : "absolute sm:relative"} 
          sm:hidden flex items-center justify-center
@@ -63,7 +66,7 @@ export default function SideBar() {
         <VscCircleFilled className="w-5 h-5" />
         <VscCircleFilled className="w-5 h-5" />
       </div>
-
+      {/* icon will navigate to home page */}
       <div
         onClick={() => navigate("/")}
         className={`${
