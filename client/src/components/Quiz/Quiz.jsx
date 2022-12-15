@@ -32,24 +32,13 @@ function Quiz() {
 
   const handlePrevious = () => {
     setCurrentQuestion(id);
-    navigate(
-      `/mypage/${
-        currentQuestion * 1 > 0 ? currentQuestion * 1 - 1 : currentQuestion
-      }`
-    );
+    navigate(`/mypage/${id * 1 > 0 ? id * 1 - 1 : id}`);
   };
   const navigate = useNavigate();
   const handleNext = () => {
     setCurrentQuestion(id);
-    navigate(
-      `/mypage/${
-        currentQuestion * 1 < questionData.length - 1
-          ? currentQuestion * 1 + 1
-          : currentQuestion
-      }`
-    );
+    navigate(`/mypage/${id * 1 < questionData.length - 1 ? id * 1 + 1 : id}`);
   };
-  console.log("questionData", questionData);
   return (
     <div className="relative">
       {
