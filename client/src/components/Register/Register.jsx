@@ -116,7 +116,6 @@ export default function Register() {
                 </button>
               }
             </p>
-<<<<<<< HEAD
 
             <a
               className="cursor-pointer  flex justify-center "
@@ -129,11 +128,6 @@ export default function Register() {
                 height="46px"
                 alt=""
               />
-=======
-            {/* google logo to sign in as a google auth */}
-            <a className="flex justify-center border-4" href="/user/google">
-              <img src={GoogleLogo} width="230px" alt="" />
->>>>>>> 296763d0b33121acb562e03ae3f0595a7ba38f61
             </a>
           </div>
         </form>
