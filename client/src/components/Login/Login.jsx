@@ -17,7 +17,6 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setOpenLoginForm(false);
-
     const formData = new FormData(event.target);
     userData(formData);
   };
@@ -27,6 +26,7 @@ export default function Login() {
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-50">
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-50 ">
+        {/* input form from the user */}
         <form onSubmit={handleLogin}>
           <div className="bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Login</p>
@@ -52,6 +52,7 @@ export default function Login() {
                 name="password"
                 required
               />
+              {/* to display the eye icon to show and hide on password */}
               <span
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}

@@ -29,14 +29,10 @@ const MyDocument = ({ quiz, user }) => {
   const [certificates, setCertificates] = useState(false);
   const [hideViewButton, setHideViewButton] = useState(false);
   //function to hanlde preview button
-
   const handleView = () => {
     setCertificates(!certificates);
     setHideViewButton(!hideViewButton);
   };
-
-  console.log("quiz in my doc", quiz);
-  console.log("key", quiz.sessionId);
   return (
     <div className="container w-screen h-full dark:bg-nav-raisin-black-2 sm:w-[100%] flex flex-col mb-6 dark:text-black font-poppins justify-center items-center ">
       {quiz?.resultPercentage ? (
@@ -118,6 +114,7 @@ const MyDocument = ({ quiz, user }) => {
               {quiz.resultPercentage} %
             </div>
           )}
+          {/* to download the certificate */}
           <PDFDownloadLink
             document={
               <Certificate
@@ -145,6 +142,7 @@ const MyDocument = ({ quiz, user }) => {
             }
             fileName="certificate.pdf"
           >
+            {/* loading and option to download */}
             {({ blob, url, loading, error }) =>
               loading ? (
                 <div role="status ">
