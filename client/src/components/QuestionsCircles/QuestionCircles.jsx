@@ -11,7 +11,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
   };
   return (
     <div
-      className="w-3/4  sm:h-3/5 lg:h-3/5 lg:w-5/6 sm:w-full p-3 rounded-3xl grid grid-cols-5 gap-3  sm:grid-cols-3 sm:gap-4  sm:py-2 
+      className="w-3/4  sm:h-3/5 lg:h-2/5 lg:w-6/6 sm:w-full p-3 rounded-3xl grid grid-cols-5 gap-3  sm:grid-cols-3  lg:grid-cols-5 lg:gap-1  sm:gap-4  sm:py-2 
       dark:bg-btn-majorelle-blue sm:dark:bg-transparent "
     >
       {questionData.map((question, i) => (

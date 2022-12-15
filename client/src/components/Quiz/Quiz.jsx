@@ -67,7 +67,7 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
+      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[60%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
         <div className="dark:border-git-box rounded-3xl ml-3 sm:w-[64%]  dark:text-text-ghost-white text-git-box flex flex-row  items-center  justify-end">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
@@ -97,12 +97,12 @@ function Quiz() {
             showExplanation={showExplanation}
             currentQuestion={id}
           />
-          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row sm:flex-col sm:h-[73vh] md:h-[75vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
+          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row md:flex-col  sm:items-center sm:justify-evenly md:w-1/4 md:ml-4  ">
             <CountDownTimer />
             <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
           </div>
         </div>
-        <div className="flex mt-1  h-full w-full justify-evenly ">
+        <div className="flex sm:mt-10  h-full w-full justify-evenly ">
           <div className=" ">
             <button
               className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"

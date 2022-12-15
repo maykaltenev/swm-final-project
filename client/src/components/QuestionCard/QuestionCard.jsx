@@ -198,7 +198,7 @@ export default function QuestionCard({
   return (
     <div
       key={question?._id}
-      className="dark:bg-nav-raisin-black-2 w-full h-fit sm:w-[100%] shadow-2xl rounded-3xl md:w-3/5 md:h-[65vh] relative flex flex-col  items-center justify-around	 "
+      className="dark:bg-nav-raisin-black-2 w-full h-fit sm:w-[100%] shadow-2xl rounded-3xl md:w-3/5 md:h-[65vh] pb-4 relative flex flex-col  items-center justify-around	 "
     >
       <div
         className={`flex flex-col  md:mt-3 md:mr-2 justify-start align-center w-[98%] ${
