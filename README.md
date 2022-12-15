@@ -72,5 +72,5 @@ GitHub:<br> [sgujuluva](https://github.com/)<br> [altinawiwaseem](https://github
 
 ---
 
-Made with ❤️ by SWM
+Made with ❤️ by Dream Team
 
