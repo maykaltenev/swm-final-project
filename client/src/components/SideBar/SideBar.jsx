@@ -44,9 +44,9 @@ export default function SideBar() {
   return (
     <div
       ref={asideRef}
-      className={`sticky  
-      ${scrolling ? "top-0 md:top-20" : "top-20 "} 
-       md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:h-screen sm:w-16 md:w-18m-0 flex lg:w-20 sm:flex-col  text-white shadow-l z-50`}
+      className={`sticky
+      ${scrolling ? "top-0 sm:top-20 md:top-20" : "top-20 "} 
+     md:fixed flex bg-opacity-50 p-2 sm:left-0 sm:w-screen md:w-screen sm:w-16 flex lg:w-20 lg:flex-col  text-white shadow-l z-50`}
       onClick={handleDropMenu}
     >
       <div
@@ -81,8 +81,8 @@ export default function SideBar() {
           className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
          text-snow bg-black-choral
          text-xs font-bold
-         transition-all duration-125 scale-0 md:origin-left 
-   ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
+        transition-all duration-125 scale-0 lg:origin-left 
+${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Home
         </span>
@@ -106,7 +106,7 @@ export default function SideBar() {
           className={`absolute w-auto p-2 m-2 min-w-max top-12 sm:top-0 right-0 md:left-14 rounded-md shadow-md
         text-snow bg-black-choral
         text-xs font-bold
-        transition-all duration-125 scale-0 md:origin-left 
+        transition-all duration-125 scale-0 lg:origin-left 
 ${showAsideMenu ? "group-hover:scale-125" : "group-hover:scale-0"}`}
         >
           Start Quiz

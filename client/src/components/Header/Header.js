@@ -64,7 +64,7 @@ function Header({ theme, setTheme }) {
 
         {!user && (
           <button
-            className="rounded md:w-1/6 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue"
+            className="rounded  md:p-3 font-medium inline-flex sm:w-[15%] items-center justify-center bg-btn-majorelle-blue px-6 py-3 text-cyber-yellow hover:bg-han-purple "
             onClick={handleShowRegisterForm}
           >
             Join Us!
