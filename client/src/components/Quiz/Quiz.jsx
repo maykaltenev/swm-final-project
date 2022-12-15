@@ -77,14 +77,14 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex flex-col lg:items-center lg:text-justify lg:h-screen h-screen w-screen justify-evenly md:h-full lg:w-full  dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl ">
-        <div className="dark:border-git-box lg:items-center  rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row items-center ">
+      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
+        <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
             <span> {questionData.length}</span>
           </div>
           <img
-            className="h-8 w-8 ml-5 sm:h-10 sm:w-12 sm:m-2  "
+            className="h-8 w-8 ml-5 sm:h-10 sm:w-12 sm:m-2 "
             src={
               questionData[id]?.questionType === "javascript"
                 ? jsimg
@@ -101,36 +101,40 @@ function Quiz() {
             alt="quiz"
           />
         </div>
-        <div className="flex flex-col h-[100vh] sm:w-full sm:h-[80vh] md:justify-center  w-full h-screen justify-between lg:mb-0 md:flex-row dark:bg-dark-raisin-black ">
+        <div className="sm:w-full h-full w-full  mb-10 lg:mb-0 md:flex dark:bg-dark-raisin-black ">
           <QuestionCard
             question={questionData[id]}
             showExplanation={showExplanation}
             currentQuestion={id}
           />
-          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 sm:flex-row sm:flex-col sm:h-[75vh] md:h-[65vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
+          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row sm:flex-col sm:h-[73vh] md:h-[75vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
             <CountDownTimer />
             <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
           </div>
         </div>
-        <div className="flex mt-1 md:mt-4 h-full w-full justify-evenly ">
-          <div className=" ">
+        <div className="flex md:mt-4 justify-evenly">
+          <div className="ml-2 flex w-3/5 justify-center">
             <button
-              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
+              className="mr-2 w-28 px-6 py-2.5 md:w-48 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
+            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handlePrevious}
             >
               Previous
             </button>
             <button
-              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
+              className="w-28 px-6 py-2.5  md:px-10bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
+            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={handleNext}
             >
               Next
             </button>
           </div>
-          <div className="">
+          <div className="w-2/5 text-center">
             {Number(id) === questionData.length - 1 && (
               <button
-                className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-5 md:px-8 lg:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
+                className="w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700  hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
+            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box 
+            hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
                 onClick={() => getResult(questionData[0]?.questionType)}
               >
                 Submit
