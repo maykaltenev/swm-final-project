@@ -18,7 +18,7 @@ export default function QuestionCircles({ setCurrentQuestion }) {
         <div
           //
           // lg:border-4
-          className="cursor-pointer text-bg-git-nav w-3 h-3 p-3 sm:w-4 sm:h-4 sm:p-4  lg:border-4 border-full sm:border-l-2 sm:border-r-2 rounded-full dark:border-snow dark:text-snow  border-2 active:dark:border-cyber-yellow active:dark:text-cyber-yellow shadow-6xl p-3 flex justify-center items-center  lg:text-xl  hover:shadow  transition duration-200"
+          className="cursor-pointer text-bg-git-nav w-3 h-3 p-3 lg:w-4 lg:h-4 sm:p-4  lg:border-4 border-full lg:border-l-2 lg:border-r-2 rounded-full dark:border-snow dark:text-snow  border-2 active:dark:border-cyber-yellow active:dark:text-cyber-yellow shadow-6xl p-3 flex justify-center items-center  lg:text-xl  hover:shadow  transition duration-200"
           style={{
             backgroundColor: marked.includes(question?._id) ? "#FFD51C" : "",
             borderColor: marked.includes(question?._id) ? "#F5D51C" : "",

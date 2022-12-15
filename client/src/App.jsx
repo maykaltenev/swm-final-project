@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="w-full h-full flex justify-center  bg-gray-100 dark:bg-bg-xiketic">
-      <div className="relative sm:w-3/4 ">
+      <div className="relative lg:w-3/4 h-full">
         <Header />
         {user && <SideBar />}
         <Routes>

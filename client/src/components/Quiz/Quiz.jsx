@@ -51,7 +51,7 @@ function Quiz() {
   };
   console.log("questionData", questionData);
   return (
-    <div className="relative ">
+    <div className="relative">
       {
         <div
           className={
@@ -77,14 +77,14 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex flex-col lg:items-center lg:text-justify h-screen w-screen sm:w-full  dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
-        <div className="dark:border-git-box  lg:items-center  rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
+      <div className="flex flex-col lg:items-center lg:text-justify lg:h-screen h-screen w-screen justify-evenly md:h-full lg:w-full  dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl ">
+        <div className="dark:border-git-box lg:items-center  rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row items-center ">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
             <span> {questionData.length}</span>
           </div>
           <img
-            className="h-8 w-8 ml-5 sm:h-10 sm:w-12 sm:m-2 "
+            className="h-8 w-8 ml-5 sm:h-10 sm:w-12 sm:m-2  "
             src={
               questionData[id]?.questionType === "javascript"
                 ? jsimg

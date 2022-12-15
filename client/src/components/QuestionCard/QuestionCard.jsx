@@ -252,7 +252,7 @@ export default function QuestionCard({
         )}
       </div>
 
-      <ul className="w-[99%] md:w-[90%]  md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-1  mb-5 sm:mb-0 ">
+      <ul className="w-[99%] lg:w-[90%] lg:h-[25vh] grid grid-cols-1 gap-1  md:grid-cols-2 md:gap-0 lg:gap-1  sm:grid-cols-2 mb-5 lg:mb-0 ">
         {question?.options.map((option, i) => (
           <li className="sm:p-3  w-full rounded-t-lg  ">
             <input
@@ -309,7 +309,7 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-300 bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
+              className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-git-box bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
               dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
             >
               {question.inputType === "text" ? "" : option?.option}
