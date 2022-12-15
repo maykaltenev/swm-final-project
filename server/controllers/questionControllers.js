@@ -86,7 +86,7 @@ export const createMixQuizSession = async (req, res) => {
         questionType: firstType,
         difficultyLevel: firstLevel,
       });
-      console.log("all q in first", questionsAll);
+
       //randomizing the questions
       while (questions.length < 5) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
@@ -99,10 +99,6 @@ export const createMixQuizSession = async (req, res) => {
       const firstLevel = mixQuestionType[0][1];
       const secondType = mixQuestionType[1][0];
       const secondLevel = mixQuestionType[1][1];
-      console.log("first", firstType);
-      console.log("LVL", firstLevel);
-      console.log("2second", secondType);
-      console.log("2LVL", secondLevel);
       let questionsAll = await QuestionData.find({
         $or: [
           {
@@ -166,7 +162,6 @@ export const createMixQuizSession = async (req, res) => {
       }
     }
 
-    console.log(questions);
     try {
       let newQuizSession = await QuizSession.create({
         user,

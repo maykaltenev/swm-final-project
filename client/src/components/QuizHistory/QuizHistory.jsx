@@ -16,7 +16,7 @@ function QuizHistory() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+/* getting the quiz history of the user from the local storage */
   const getQuizHistoryFromLocalStorage = () => {
     const quizHistory = localStorage.getItem("user");
     if (quizHistory) {
@@ -28,7 +28,7 @@ function QuizHistory() {
   const [quizHistory, setQuizHistory] = useState(
     getQuizHistoryFromLocalStorage
   );
-  console.log(quizHistory);
+/* based on the session id, get the user's result  */
   const handleShowMore = async (sessionId) => {
     try {
       const result = await axios
@@ -37,8 +37,7 @@ function QuizHistory() {
         })
         .then((data) => {
           setResult(data.data);
-          console.log("the setresult is", data.data);
-        });
+                });
       setSelected(sessionId);
       return;
     } catch (error) {
@@ -50,7 +49,7 @@ function QuizHistory() {
     getQuizHistoryFromLocalStorage();
     handleShowMore();
   }, []);
-  console.log(quizHistory.quizResults);
+/* display all the results of the attempted quiz based on the date and time of the user */
   return (
     <>
       <section className="flex min-h-screen w-screen sm:w-full ">
@@ -61,6 +60,7 @@ function QuizHistory() {
               .reverse()
               .map((quiz) => (
                 <Fragment key={quiz.sessionId}>
+                  {/* if the user selects a particular quiz history, then display all the questions and the user selected answer */}
                   <div
                     className={`hover:shadow transition duration-200 
                     bg-text-ghost-white text-nav-raisin-black shadow-7xl

@@ -16,7 +16,7 @@ export default function Register() {
   } = useContext(UserContext);
 
   const navigate = useNavigate();
-
+  /* getting the registration details from the user to register as a new user */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -36,16 +36,12 @@ export default function Register() {
     setOpenLoginForm(true);
   };
 
-  /* const handleRegistration = () => {
- setOpenRegisterForm(false) 
-  setOpenLoginForm(true)
-  }
-   */
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-30 ">
+        {/* registration form */}
         <form onSubmit={handleSubmit}>
           <div className=" bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Register</p>
@@ -92,6 +88,7 @@ export default function Register() {
                 name="password"
                 required
               />
+              {/* to show / hide password */}
               <span
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}
@@ -119,7 +116,7 @@ export default function Register() {
                 </button>
               }
             </p>
-
+            {/* google logo to sign in as a google auth */}
             <a className="flex justify-center border-4" href="/user/google">
               <img src={GoogleLogo} width="230px" alt="" />
             </a>
