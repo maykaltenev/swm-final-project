@@ -107,7 +107,7 @@ function Quiz() {
             showExplanation={showExplanation}
             currentQuestion={id}
           />
-          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 flex-row sm:flex-col sm:h-[75vh] md:h-[65vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
+          <div className="dark:bg-nav-raisin-black-2  flex p-2 w-full bg-transparent rounded-3xl shadow-xl border-gray-800 sm:flex-row sm:flex-col sm:h-[75vh] md:h-[65vh] sm:items-center sm:justify-between sm:w-1/4 md:ml-4  ">
             <CountDownTimer />
             <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
           </div>
@@ -115,7 +115,7 @@ function Quiz() {
         <div className="flex mt-1 md:mt-4 h-full w-full justify-evenly ">
           <div className=" ">
             <button
-              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 t text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
+              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
               onClick={handlePrevious}
             >
               Previous
