@@ -198,27 +198,44 @@ export default function QuestionCard({
   return (
     <div
       key={question?._id}
-      className="dark:bg-nav-raisin-black-2 w-full sm:w-[100%] shadow-2xl rounded-3xl lg:w-[65%] h-full lg:p-12 relative flex flex-col justify-center items-center sm:justify-evenly p-2 "
+      className="dark:bg-nav-raisin-black-2 w-full h-fit sm:w-[100%] shadow-2xl rounded-3xl md:w-3/5 md:h-[65vh] relative flex flex-col  items-center justify-around	 "
     >
-      <div className="cursor-pointer absolute top-1 right-3 sm:top-2  dark:bg-cyber-yellow dark:text-nav-raisin-black-2 sm:right-0 text-xl rounded-full sm:p-2  text-text-ghost-white bg-btn-majorelle-blue text-git-box">
-        {question &&
-          (marked.includes(question._id) ? (
-            <AiFillStar onClick={() => handleMark(question?._id)} />
-          ) : (
-            <AiOutlineStar onClick={() => handleMark(question?._id)} />
-          ))}
-      </div>
-
-      <div className="flex flex-col justify-start align-center w-[98%] h-[35vh] sm:w-[90%] lg:w-[91%] mb-2">
-        <h1 className="bg-text-ghost-white text-gray-500 dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl w-full h-[45%] align-center p-2 py-4  text-justify ">
+      <div
+        className={`flex flex-col  md:mt-3 md:mr-2 justify-start align-center w-[98%] ${
+          question?.code ? "h-[35vh]" : "h-[25vh]"
+        } md:h-[30vh] md:h-[35vh] sm:w-[90%] lg:w-[91%] mb-2`}
+      >
+        <h1 className="bg-text-ghost-white text-gray-500 dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl text-sm md:text-base w-full h-[40%] align-center p-2 py-4  text-justify ">
           {question?.questionText}
         </h1>
+        <div className="cursor-pointer flex  justify-end absolute top-1 right-3 sm:top-0 sm:right-0  rounded-full sm:p-2 dark:text-snow border-full text-git-box">
+          {question &&
+            (marked.includes(question._id) ? (
+              <AiFillStar
+                onClick={() => handleMark(question?._id)}
+                className=""
+                style={{
+                  fontSize: "1.3rem",
+                  color: "#FFD51C",
+                  border: "2px solid #FFD51C",
+                  borderRadius: "100%",
+                }}
+              />
+            ) : (
+              <AiOutlineStar
+                onClick={() => handleMark(question?._id)}
+                style={{
+                  fontSize: "1.5rem",
+                }}
+              />
+            ))}
+        </div>
         {question?.code && (
-          <div className="mt-1h-[55%] items-center pointer bg-git-nav dark:bg-jet text-red-500 dark:text-btn-majorelle-blue">
+          <div className=" mt-1 items-center pointer bg-git-nav dark:bg-jet text-red-500 dark:text-btn-majorelle-blue">
             <Editor
               style={{
                 marginLeft: 45,
-                fontSize: 15,
+                fontSize: 13,
                 lineHeight: 1.5,
               }}
               value={question?.code}
@@ -228,16 +245,16 @@ export default function QuestionCard({
           </div>
         )}
         {question?.inputType === "checkbox" && (
-          <div className="mt-4 text-btn-majorelle-blue dark:text-cyber-yellow flex rounded-md px-1 w-full items-center justify-center mb-1">
+          <div className="text-sm md:text-base text-btn-majorelle-blue dark:text-cyber-yellow flex rounded-md px-1 w-full items-center justify-center mb-1">
             <HiOutlineLightBulb className="text-xl" />
             <div>more than one answers </div>
           </div>
         )}
       </div>
 
-      <ul className="w-[99%] md:w-[100%] h-full md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-3  ">
+      <ul className="w-[99%] md:w-[90%]  md:h-[25vh] grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-1  mb-5 sm:mb-0 ">
         {question?.options.map((option, i) => (
-          <li className="sm:p-3 w-full rounded-t-lg  ">
+          <li className="sm:p-3  w-full rounded-t-lg  ">
             <input
               className="hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:nav-raisin-black-3 dark:border-gray-500 "
               type={question?.inputType}
@@ -292,7 +309,7 @@ export default function QuestionCard({
             />
             <label
               for={option?._id}
-              className="bg-text-ghost-white w-full h-full pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-500 bg-white rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
+              className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-gray-300 bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
               dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
             >
               {question.inputType === "text" ? "" : option?.option}

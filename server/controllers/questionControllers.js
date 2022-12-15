@@ -147,7 +147,7 @@ export const createMixQuizSession = async (req, res) => {
         ],
       });
       /* to randomise the questions to create mix  of ques  */
-      while (questions.length < 10) {
+      while (questions.length < 15) {
         let randomQues = Math.floor(Math.random() * questionsAll.length);
         if (!questions.includes(questionsAll[randomQues])) {
           questions.push(questionsAll[randomQues]);
