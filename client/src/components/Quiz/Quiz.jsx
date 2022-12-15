@@ -68,8 +68,8 @@ function Quiz() {
           )}
         </div>
       }
-      <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
-        <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
+      <div className="flex flex-col min-h-screen w-screen sm:w-full sm:h-[60%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
+        <div className="dark:border-git-box rounded-3xl ml-3 sm:w-[64%]  dark:text-text-ghost-white text-git-box flex flex-row  items-center  justify-end">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
             <span> {questionData.length}</span>
