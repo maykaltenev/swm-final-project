@@ -47,7 +47,7 @@ export default function Register() {
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-30 ">
         <form onSubmit={handleSubmit}>
-          <div className=" bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className=" bg-nav-raisin-black-4 text-white rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Register</p>
             <div className="relative mb-4">
               <input
@@ -101,18 +101,18 @@ export default function Register() {
             </div>
 
             <button
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
+              className="text-white bg-btn-majorelle-blue border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
               type="submit"
             >
               Register
             </button>
 
-            <p>
+            <p className="text-sm sm:text-md">
               Already have an account ?{" "}
               {
                 <button
                   onClick={handleShowLoginForm}
-                  className="text-blue-600 hover:text-primary-bg"
+                  className="text-cyber-yellow "
                   variant="contained"
                 >
                   Login
@@ -120,8 +120,17 @@ export default function Register() {
               }
             </p>
 
-            <a className="flex justify-center border-4" href="/user/google">
-              <img src={GoogleLogo} width="230px" alt="" />
+            <a
+              className="cursor-pointer  flex justify-center "
+              href="/user/google"
+            >
+              <img
+                className="p-4"
+                src={GoogleLogo}
+                width="278px"
+                height="46px"
+                alt=""
+              />
             </a>
           </div>
         </form>
