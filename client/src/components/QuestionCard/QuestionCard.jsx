@@ -205,10 +205,10 @@ export default function QuestionCard({
           question?.code ? "h-[35vh]" : "h-[25vh]"
         } md:h-[30vh] md:h-[35vh] sm:w-[90%] lg:w-[91%] mb-2`}
       >
-        <h1 className="bg-text-ghost-white text-gray-500 dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl text-sm md:text-base w-full h-[40%] align-center p-2 py-4  text-justify ">
+        <h1 className="bg-text-ghost-white text-gray-500 dark:bg-btn-majorelle-blue dark:text-text-ghost-white rounded-xl shadow-xl text-sm md:text-base w-full h-[40%] align-center p-2 sm:py-4  text-justify ">
           {question?.questionText}
         </h1>
-        <div className="cursor-pointer flex  justify-end absolute top-1 right-3 sm:top-0 sm:right-0  rounded-full sm:p-2 dark:text-snow border-full text-git-box">
+        <div className="cursor-pointer flex  justify-end absolute -top-7 right-32  sm:top-0 sm:right-0  rounded-full sm:p-2 dark:text-snow border-full text-git-box">
           {question &&
             (marked.includes(question._id) ? (
               <AiFillStar
@@ -255,20 +255,12 @@ export default function QuestionCard({
       <ul className="w-[99%] lg:w-[90%] lg:h-[25vh] grid grid-cols-1 gap-1  md:grid-cols-2 md:gap-0 lg:gap-1  sm:grid-cols-2 mb-5 lg:mb-0 ">
         {question?.options.map((option, i) => (
           <li className="sm:p-3  w-full rounded-t-lg  ">
-            {question?.inputType === "text" ? (
+            {question?.inputType === "text" && (
               <label
                 for="Write the Answer"
                 class=" block mb-2 ml-4 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Type Your Answer
-              </label>
-            ) : (
-              <label
-                for={option?._id}
-                className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-git-box bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
-              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
-              >
-                {question.inputType === "text" ? "" : option?.option}
               </label>
             )}
             <input
@@ -327,6 +319,15 @@ export default function QuestionCard({
                     )
               }
             />
+            {question?.inputType === "text" || (
+              <label
+                for={option?._id}
+                className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-git-box bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
+              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
+              >
+                {question.inputType === "text" ? "" : option?.option}
+              </label>
+            )}
           </li>
         ))}
       </ul>

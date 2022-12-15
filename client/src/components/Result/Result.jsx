@@ -54,7 +54,7 @@ function Result() {
   }, []);
 
   return (
-    <>
+    <div className={`${show ? "h-full" : "h-screen"} `}>
       <h1 className="text-center text-xl dark:text-snow ">
         <b> Your Results</b>
       </h1>
@@ -100,14 +100,14 @@ function Result() {
             {/* button to check answers--- will display all the questions and the correct answer and the explanation */}
             <div className="flex">
               <button
-                className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-6 py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow "
+                className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-cyber-yellow px-2 mx-1 sm:px-6 sm:py-3 text-bg-ultramarine-blue-2  text-ultramarine-blue hover:bg-javascript-yellow "
                 onClick={handleCheckAnswers}
               >
                 Check Answers
               </button>
               {/* try again button will navigate to start quiz */}
               <button
-                className="rounded md:w-2/4 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
+                className="mb-2 md:w-2/4 md:p-3 md:mr-2 sm:mb-0 rounded font-medium inline-flex w-full sm:w-2/4 items-center justify-center bg-ultramarine-blue px-6 py-3 mx-1 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue "
                 onClick={handleTryAgain}
               >
                 Try Again
@@ -119,9 +119,9 @@ function Result() {
         )}
       </div>
       {result?.userAnswerPercentage >= 15 ? (
-            <>
-      <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center  ">
-        <div className="p-4 sm:w-3/6 hover:shadow-xl transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+        <>
+          <div className="container flex mb-6 dark:text-black py-26 font-poppins justify-center  ">
+            <div className="p-4 sm:w-3/6 hover:shadow-xl transition duration-300 h-full dark:bg-oxford-blue border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <div className="bg-white rounded-xl shadow-lg  p-3 my-2 sm:w-5/4 sm:p-5">
                 <h5>
                   <b>
@@ -159,13 +159,13 @@ function Result() {
                   View Certificate
                 </button>
               </div>
-        </div>
-      </div>
-            </>
-          ) : (
-            ""
-          )}
-    </>
+            </div>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+    </div>
   );
 }
 

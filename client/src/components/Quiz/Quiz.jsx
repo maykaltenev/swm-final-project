@@ -46,7 +46,7 @@ function Quiz() {
         <div
           className={
             timeOver
-              ? " w-full h-full bg-gray-300 bg-opacity-60 border-2  absolute"
+              ? " w-full  z-50 h-full bg-gray-300 bg-opacity-60   absolute"
               : ""
           }
         >
@@ -68,7 +68,7 @@ function Quiz() {
         </div>
       }
       <div className="flex b flex-col min-h-screen w-screen sm:w-full sm:h-[75%] dark:bg-dark-raisin-black dark:shadow-4xl shadow-5xl rounded-xl">
-        <div className="dark:border-git-box rounded-3xl ml-3 dark:text-text-ghost-white text-git-box flex flex-row  items-center ">
+        <div className="dark:border-git-box rounded-3xl ml-3 sm:w-[64%]  dark:text-text-ghost-white text-git-box flex flex-row  items-center  justify-end">
           <div>
             <span className=" ">{id * 1 + 1}</span>/
             <span> {questionData.length}</span>
@@ -91,7 +91,7 @@ function Quiz() {
             alt="quiz"
           />
         </div>
-        <div className="sm:w-full h-full w-full  mb-10 lg:mb-0 md:flex dark:bg-dark-raisin-black ">
+        <div className="sm:w-full h-full w-full  mb-4 lg:mb-0 md:flex dark:bg-dark-raisin-black  justify-evenly">
           <QuestionCard
             question={questionData[id]}
             showExplanation={showExplanation}
@@ -102,29 +102,25 @@ function Quiz() {
             <QuestionCircles /* setCurrentQuestion={setCurrentQuestion} */ />
           </div>
         </div>
-        <div className="flex md:mt-4 justify-evenly">
-          <div className="ml-2 flex w-3/5 justify-center">
+        <div className="flex mt-1  h-full w-full justify-evenly ">
+          <div className=" ">
             <button
-              className="mr-2 w-28 px-6 py-2.5 md:w-48 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
-            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-6 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
               onClick={handlePrevious}
             >
               Previous
             </button>
             <button
-              className="w-28 px-6 py-2.5  md:px-10bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
-            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+              className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-6 md:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
               onClick={handleNext}
             >
               Next
             </button>
           </div>
-          <div className="w-2/5 text-center">
+          <div className="">
             {Number(id) === questionData.length - 1 && (
               <button
-                className="w-28 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700  hover:bg-gray-700 dark:hover:bg-gray-700  dark:hover:text-snow
-            bg-btn-majorelle-blue dark:bg-cyber-yellow dark:text-git-box 
-            hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+                className="inline-flex items-center justify-center mr-2 rounded-md border border-transparent dark:bg-cyber-yellow px-5 md:px-8 lg:px-10 py-2 md:py-3 text-base font-medium dark:text-git-box dark:hover:bg-btn-majorelle-blue dark:text-git-box dark:hover:text-snow dark:hover:text-snow bg-btn-majorelle-blue text-snow hover:bg-cyber-yellow hover:text-git-box"
                 onClick={() => getResult(questionData[0]?.questionType)}
               >
                 Submit
