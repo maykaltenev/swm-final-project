@@ -28,15 +28,16 @@ function Header({ theme, setTheme }) {
   const handleMode = () => setDarkTheme(!darkTheme);
 
   const buttonRef = useRef(null);
-
+  /* function to show / hide dropdown menu */
   const handleDropMenu = () => {
     setShowDropMenu(!showDropMenu);
   };
+  /* function to show / hide dropdown menu and navigate to home page when user click on avatar */
   const handleUserNavigateToUserProfileFromAvatar = () => {
     setShowDropMenu(!showDropMenu);
-    navigate("/")
+    navigate("/");
   };
-
+/* function to click outside in the home page and hide the dropdown menu */
   function useOutsideCloseDropMenu(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -61,16 +62,16 @@ function Header({ theme, setTheme }) {
         >
           <img className="w-24 sm:w-32" src={Logo} alt="" />
         </Link>
-
+{/* if there is no user, show the join us button */}
         {!user && (
           <button
-            className="rounded md:w-1/6 md:p-3 font-medium inline-flex w-full sm:w-1/3 items-center justify-center bg-ultramarine-blue px-6 py-3 text-cyber-yellow hover:bg-ultramarine-blue-2  bg-ultramarine-blue"
+            className="rounded  md:p-3 font-medium inline-flex sm:w-[15%] items-center justify-center bg-btn-majorelle-blue px-6 py-3 text-cyber-yellow hover:bg-han-purple "
             onClick={handleShowRegisterForm}
           >
             Join Us!
           </button>
         )}
-        {/* when the user is signedIn */}
+        {/* when the user is signedIn, display the dropdown menu */}
         {user && (
           <div ref={buttonRef} className="relative ">
             <img
@@ -79,16 +80,20 @@ function Header({ theme, setTheme }) {
               alt=""
               src={user?.avatar}
             />
+            {/* drop down is displayed  with user avathar, my certificates, color theme and logout button*/}
             {showDropMenu && (
               <div className="flex flex-col w-60 z-[100] text-white absolute right-2 top-20 font-poppins text-base">
                 <div className="dark:border-nav-raisin-black-2 w-full bg-text-ghost-white rounded border dark:bg-nav-raisin-black-2 dark:text-snow border-gray-300  focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:hover:bg-nav-raisin-black-4 transition duration-200">
-                  <div className="flex justify-start items-center cursor-pointer" onClick={handleUserNavigateToUserProfileFromAvatar}>
+                  <div
+                    className="flex justify-start items-center cursor-pointer"
+                    onClick={handleUserNavigateToUserProfileFromAvatar}
+                  >
                     <img
                       className="cursor-pointer w-14 h-14 border-4 border-green-600 rounded-full flex justify-center items-center"
                       alt=""
                       src={user?.avatar}
                     />
-                    <div className="ml-5 " >
+                    <div className="ml-5 ">
                       {user?.firstName?.charAt(0).toUpperCase() +
                         user?.firstName?.slice(1)}{" "}
                     </div>
@@ -98,7 +103,6 @@ function Header({ theme, setTheme }) {
                   className="dark:border-nav-raisin-black-3 w-full bg-text-ghost-white rounded border dark:bg-nav-raisin-black-4 dark:text-snow focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out 
                   dark:hover:bg-nav-raisin-black-2 transition duration-200"
                   to="/mycertificates"
-
                 >
                   My Certificates{" "}
                 </Link>
@@ -108,7 +112,9 @@ function Header({ theme, setTheme }) {
                   onClick={handleMode}
                 >
                   <span>{darkTheme ? "Light Mode" : "Dark Mode"}</span>
-                  <span className="ml-5">{darkTheme ? <FaSun /> : <FaMoon />}</span>
+                  <span className="ml-5">
+                    {darkTheme ? <FaSun /> : <FaMoon />}
+                  </span>
                 </div>
 
                 <button
@@ -126,7 +132,7 @@ function Header({ theme, setTheme }) {
       </div>
       {/* if the open login form is there show login form */}
       {(openRegisterForm && <Register />) || (openLoginForm && <Login />)}
-    </div >
+    </div>
   );
 }
 

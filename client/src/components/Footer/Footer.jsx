@@ -1,5 +1,5 @@
 import React from "react";
-
+/* footer to display the link for the tutorials of mERN */
 function Footer() {
   return (
     <footer className="mt-5 dark:bg-nav-raisin-black-2 text-gray-600 body-font shadow-4xl rounded-md ">

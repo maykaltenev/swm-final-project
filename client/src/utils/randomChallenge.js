@@ -20,42 +20,6 @@ const transformNumbers = function (number) {
 };
 console.log(numbers.map(transformNumbers));
 `,
-  `
-/* 
-    1. Complete the code below to have a function that returns the number of times
-    it's been called.
-    
-    For example:
-    - when you run it the first time, it should return 1
-    - the second time, it should return 2
-    - then 3
-    - and so on
-
-    Hint: you don't need to use loops
-*/
-
-function myCounter() { 
-   /* WRITE YOUR CODE HERE */
-}
-
-console.log(myCounter()); // 1
-console.log(myCounter()); // 2
-console.log(myCounter()); // 3
-`,
-  `/* Write the function camelize(str) that changes 
-  dash-separated words like “my-short-string” into 
-  camel-cased “myShortString”.
-*/
-
-function camelize(str) {
-  /* WRITE YOUR CODE HERE */
-
-}
-
-
-console.log(camelize("background-color"))
- console.log(camelize("list-style-image"))
-console.log(camelize("-webkit-transition"))`,
 ];
 
 export const randomChallenge = () => {

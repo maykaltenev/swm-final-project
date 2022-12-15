@@ -17,18 +17,18 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setOpenLoginForm(false);
-
     const formData = new FormData(event.target);
     userData(formData);
   };
 
   return (
     /* overlay for register component on top of home component ---homepage */
-    <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-50">
+    <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-50 ">
+        {/* input form from the user */}
         <form onSubmit={handleLogin}>
-          <div className="bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className="bg-nav-raisin-black-4 text-white rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Login</p>
             <p>{error}</p>
             <div class="relative mb-4">
@@ -52,6 +52,7 @@ export default function Login() {
                 name="password"
                 required
               />
+              {/* to display the eye icon to show and hide on password */}
               <span
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}
@@ -60,17 +61,17 @@ export default function Login() {
               </span>
             </div>
             <button
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
+              className="text-white bg-btn-majorelle-blue border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
               type="submit"
             >
               Login
             </button>
-            <p>
+            <p className="text-sm sm:text-md">
               Don't have an account ?{" "}
               {
                 <button
                   onClick={handleShowRegisterForm}
-                  className="text-blue-600 hover:text-primary-bg"
+                  className="text-cyber-yellow hover:text-primary-bg"
                   variant="contained"
                 >
                   Register

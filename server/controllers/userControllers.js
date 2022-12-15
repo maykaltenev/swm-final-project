@@ -23,7 +23,7 @@ passport.use(
       //       // register the user in db
       //       // only if the user doesn't exist
       //       // in db
-      console.log("the profile is", profile);
+
       const email = profile._json.email;
 
       // check if there is such a user in db
@@ -45,7 +45,7 @@ passport.use(
         email,
         password: "google",
       });
-      console.log(newUser);
+
       /*   pass: email */
 
       const savedUser = await newUser.save();
@@ -112,7 +112,7 @@ export const loginUser = async (req, res) => {
 //getting the user data from db
 export const getUserData = async (req, res) => {
   const { id } = req.body;
-  console.log("get user", id);
+
   try {
     const userData = await User.findOne({ _id: id });
 

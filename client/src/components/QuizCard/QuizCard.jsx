@@ -12,7 +12,7 @@ export default function QuizCard() {
   const { handleNewQuiz } = useContext(QuestionContext);
 
   const { level } = useParams();
-
+/* displaying the cards of question type and all levels like beginner, intermediate, advanced */
   return (
     <div className="container flex mb-6 dark:text-snow py-26 ">
       <div className="flex flex-wrap">

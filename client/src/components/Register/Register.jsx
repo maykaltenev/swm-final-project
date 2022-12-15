@@ -16,7 +16,7 @@ export default function Register() {
   } = useContext(UserContext);
 
   const navigate = useNavigate();
-
+  /* getting the registration details from the user to register as a new user */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -36,18 +36,14 @@ export default function Register() {
     setOpenLoginForm(true);
   };
 
-  /* const handleRegistration = () => {
- setOpenRegisterForm(false) 
-  setOpenLoginForm(true)
-  }
-   */
   return (
     /* overlay for register component on top of home component ---homepage */
     <div className="fixed w-full h-full top-20 left-0 right-0 bg-neutral-800/75 flex justify-center align-center z-10">
       {/* overlay of register component*/}
       <div className="absolute top-50 left-50 z-30 ">
+        {/* registration form */}
         <form onSubmit={handleSubmit}>
-          <div className=" bg-gray-200 rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
+          <div className=" bg-nav-raisin-black-4 text-white rounded-lg p-8 flex flex-col m-3 m-10 font-poppins">
             <p className="title-font text-2xl mb-4">Register</p>
             <div className="relative mb-4">
               <input
@@ -92,6 +88,7 @@ export default function Register() {
                 name="password"
                 required
               />
+              {/* to show / hide password */}
               <span
                 className="absolute right-5 top-3"
                 onClick={() => setVisible(!visible)}
@@ -101,18 +98,18 @@ export default function Register() {
             </div>
 
             <button
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
+              className="text-white bg-btn-majorelle-blue border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mb-4"
               type="submit"
             >
               Register
             </button>
 
-            <p>
+            <p className="text-sm sm:text-md">
               Already have an account ?{" "}
               {
                 <button
                   onClick={handleShowLoginForm}
-                  className="text-blue-600 hover:text-primary-bg"
+                  className="text-cyber-yellow "
                   variant="contained"
                 >
                   Login
@@ -120,8 +117,17 @@ export default function Register() {
               }
             </p>
 
-            <a className="flex justify-center border-4" href="/user/google">
-              <img src={GoogleLogo} width="230px" alt="" />
+            <a
+              className="cursor-pointer  flex justify-center "
+              href="/user/google"
+            >
+              <img
+                className="p-4"
+                src={GoogleLogo}
+                width="278px"
+                height="46px"
+                alt=""
+              />
             </a>
           </div>
         </form>
