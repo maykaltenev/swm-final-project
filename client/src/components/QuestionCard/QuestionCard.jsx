@@ -255,8 +255,28 @@ export default function QuestionCard({
       <ul className="w-[99%] lg:w-[90%] lg:h-[25vh] grid grid-cols-1 gap-1  md:grid-cols-2 md:gap-0 lg:gap-1  sm:grid-cols-2 mb-5 lg:mb-0 ">
         {question?.options.map((option, i) => (
           <li className="sm:p-3  w-full rounded-t-lg  ">
+            {question?.inputType === "text" ? (
+              <label
+                for="Write the Answer"
+                class=" block mb-2 ml-4 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Type Your Answer
+              </label>
+            ) : (
+              <label
+                for={option?._id}
+                className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-git-box bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
+              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
+              >
+                {question.inputType === "text" ? "" : option?.option}
+              </label>
+            )}
             <input
-              className="hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:nav-raisin-black-3 dark:border-gray-500 "
+              className={` ${
+                question?.inputType === "text"
+                  ? "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mx-auto  focus:border-blue-500 block w-[90%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  : "hidden peer w-full bg-gray-100 border-gray-300 dark:ring-offset-gray-100  dark:nav-raisin-black-3 dark:border-gray-500"
+              }    `}
               type={question?.inputType}
               name={question?.inputType}
               value={
@@ -307,13 +327,6 @@ export default function QuestionCard({
                     )
               }
             />
-            <label
-              for={option?._id}
-              className="bg-text-ghost-white w-full h-full p-2 pl-4 inline-flex shadow-3xl hover:shadow transition duration-200 bg-white mt-2 justify-between items-center  text-git-box bg-white text-sm md:text-base rounded-xl border border-gray-200 cursor-pointer dark:hover:text-gray-200 dark:border-gray-700 dark:peer-checked:text-cyber-yellow peer-checked:border-2 dark:peer-checked:border-cyber-yellow peer-checked:border-btn-majorelle-blue peer-checked:text-btn-majorelle-blue hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-nav-raisin-black-4
-              dark:hover:shadow dark:hover:bg-nav-raisin-black-3 transition duration-200"
-            >
-              {question.inputType === "text" ? "" : option?.option}
-            </label>
           </li>
         ))}
       </ul>
